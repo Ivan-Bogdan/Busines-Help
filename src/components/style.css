@@ -1,0 +1,703 @@
+.container {
+  width: 1280px;
+  max-width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0 auto;
+}
+
+.mh-logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  line-height: 0.9;
+}
+
+.mh-logo span {
+  color: white;
+}
+
+.shrift{
+    
+}
+/* NEW */
+
+body {
+  font-family: "Open Sans" sans-serif;
+}
+a {
+  color: black;
+}
+
+.mh-logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.mh-logo span {
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.header {
+  background: #6bbe5a;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header a:hover {
+  background: #6bbe5a;
+  color: #000000;
+  transition: all 0.1s ease-in;
+}
+
+.header-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display-none {
+  display: flex;
+}
+
+.menu > ul {
+  display: -webkit-box;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: -130px;
+}
+
+nav ul li a {
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px 10px 15px;
+  font-size: 18px;
+  display: block;
+  transition: all 0.1s ease-in;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.menu > ul li {
+  position: relative;
+}
+
+.menu li ul {
+  position: absolute;
+  min-width: 150px;
+  display: none;
+}
+
+.menu li > ul li a {
+  padding: 10px;
+}
+
+.menu li > ul li ul {
+  position: absolute;
+  right: -150px;
+  top: 0;
+}
+
+.menu li:hover > ul {
+  display: block;
+}
+
+.log {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.log a {
+  color: white;
+  font-size: 18px;
+  display: block;
+  padding: 10px 20px 10px 15px;
+  transition: all 0.1s ease-in;
+}
+
+.log a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.man {
+  width: 356px;
+  height: 480px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 10;
+}
+
+.fon {
+  width: 815px;
+  height: 335px;
+  margin-left: -305px;
+  margin-top: 160px;
+  z-index: -16;
+}
+
+.elips {
+  position: absolute;
+  margin-left: -470px;
+  margin-top: 160px;
+  z-index: 0;
+}
+.arka{
+  width: 973px;
+  height: 315px;
+  position: absolute;
+  margin-left: -890px;
+  margin-top: 55px;
+  z-index: 1;
+}
+.ind{
+  z-index: 2;
+}
+
+.log__login {
+}
+
+.log__registration {
+}
+
+.main {
+  width: 100%;
+}
+
+.main-section{
+  background-image: url(/assets/images/Прямоугольник\ 56.png);
+  height: 472px;
+}
+
+.bg {
+  background-image: url(/assets/images/соц\ сети.png);
+  height: 300px;
+}
+
+.row {
+  justify-content: space-between;
+  flex: inherit;
+}
+
+/* Гамбургер */
+.menu-icon-wrapper {
+  width: 30px;
+  height: 30px;
+  /* background: red; */
+  margin: 15px;
+  margin-left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 5;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.menu-icon {
+  position: relative;
+  width: 30px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+}
+.menu-icon::before {
+  z-index: -5;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+  transition: transform 0.1s ease-in, top 0.1s linear 0.1s;
+}
+.menu-icon::after {
+  z-index: -5;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  border-radius: 3px;
+  background: #fff;
+  transition: transform 0.1s ease-in, top 0.1s linear 0.1s;
+}
+.menu-icon.menu-icon-active {
+  background: transparent;
+}
+.menu-icon.menu-icon-active::before {
+  transform: rotate(45deg);
+  top: 0;
+  transition: top 0.1s linear, transform 0.1s ease-in 0.1s;
+}
+.menu-icon.menu-icon-active::after {
+  transform: rotate(-45deg);
+  top: 0;
+  transition: top 0.1s linear, transform 0.1s ease-in 0.1s;
+}
+/* Гамбургер */
+
+section {
+  padding: 100px 50px;
+}
+
+.menu {
+}
+
+.offer {
+  margin-top: 80px;
+}
+
+.offer__title {
+  font-family: "Open Sans" sans-serif;
+  font-size: 55px;
+  font-weight: 800;
+  line-height: 0.85;
+  max-width: 330px;
+}
+
+.offer__text {
+  font-family: "Open Sans" sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 400px;
+}
+
+.offer__btn {
+  background: #3d3c40;
+  border: 2px solid #3d3c40;
+  padding: 10px 25px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.offer__btn:hover {
+  background: #fff;
+  border: 2px solid #3d3c40;
+  color: #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+.addition {
+  padding-bottom: 80px;
+}
+
+h2 {
+  margin-bottom: 50px;
+}
+
+.trigger {
+  margin-bottom: -10px;
+  display: flex;
+}
+
+.trigger__img {
+  width: 25px;
+  height: 24px;
+  background-image: url(/assets/images/кнопка.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  flex: 0 0 auto;
+}
+
+.trigger__desc {
+  font-family: "Open Sans" sans-serif;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.title2 {
+  font-family: "Open Sans" sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  background: #4f5a4d;
+}
+
+.footer p {
+  text-align: center;
+  margin: 0;
+  color: #fff;
+}
+
+.col {
+  font-size: 14px;
+}
+
+.footer_text {
+  color: white;
+  flex: auto;
+  text-decoration: none;
+}
+
+
+/* MODAL WINDOW */
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  font-family: "Open Sans" sans-serif;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.button5 {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 15px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container3 {
+  padding: 10px 70px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+/* .modal {
+  display: none; 
+  position: fixed;
+  z-index: 300; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); 
+  padding-top: 60px;
+} */
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 20% auto 15% auto; 
+  border: 1px solid #888;
+  width: 480px;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+select {
+  font-size: 20px;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 1;
+  border: 1;
+  border-radius: 2px;
+  height: 55px;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+    no-repeat right #ffffff;
+  -webkit-appearance: none;
+  background-position-x: 99%;
+}
+option{
+  font-family: "Open Sans" sans-serif;
+  font-size: 16px;
+}
+
+.reg {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  color: black;
+}
+
+
+
+
+/* -------- Медиа запросы -------- */
+/* 992-1200px lg  Large */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1280px;
+  }
+  .trigger__desc {
+    width: 510px;
+  }
+}
+
+
+
+@media screen and (max-width: 991px) {
+  .man {
+    display: none;
+  }
+  .fon {
+    display: none;
+  }
+  .elips {
+    display: none;
+  }
+  .arka{
+      display: none;
+  }
+  .row .footer_text:nth-child(2) {
+    display: none;
+  }
+  .row .footer_text:nth-child(3) {
+    display: none;
+  }
+  .row .footer_text:nth-child(5) {
+    display: none;
+  }
+  .row .footer_text:nth-child(6) {
+    display: none;
+  }
+  .mh-logo {
+    font-size: 24px;
+  }
+  .bg{
+    height: 240px;
+  }
+}
+
+/* 768-992px md  Medium */
+@media screen and (max-width: 992px) {
+}
+
+/* 576-768px sm  Small */
+@media screen and (max-width: 1200px) {
+  .header {
+    padding-top: 10px;
+  }
+
+  .header-col {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .mobile-container {
+    transition: all 0.5s ease-in;
+    position: absolute;
+  }
+  .display-none {
+    display: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+  }
+
+  .menu > ul {
+    flex-direction: column;
+    display: block;
+    background-color: #6bbe5a;
+  }
+
+  .menu ul li > ul li a {
+    background: #59585c;
+  }
+
+  .menu ul li > ul {
+    position: flex;
+  }
+
+  .menu ul li > ul li > ul {
+    position: relative;
+    top: none;
+    left: 0;
+  }
+
+  .menu ul li > ul li > ul li a {
+    background: #828185;
+  }
+
+  .menu {
+    order: 2;
+    width: 100%;
+  }
+
+  .log {
+    order: 1;
+    width: 50%;
+  }
+
+  .log a {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+  }
+
+  .menu-icon-wrapper {
+    display: inline-block;
+  }
+
+  .container {
+    max-width: 992px;
+  }
+  .trigger__desc {
+    max-width: 400px;
+  }
+}
+
+/* 320-576px     Extra small */
+@media screen and (max-width: 1441px) {
+  .fon {
+    width: 583px;
+    height: 217px;
+    margin-left: -205px;
+    margin-top: 230px;
+  }
+  .man {
+    width: 311px;
+    height: 420px;
+    margin-top: 17px;
+  }
+
+  .elips {
+    margin-left: -370px;
+  }
+  .arka{
+      width: 718px;
+      height: 233px;
+      margin-left: -650px;
+      margin-top: 130px;
+  }
+
+  .bg{
+      height: 260px;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-4 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  
+}
+
+@media (min-width: 992px) {
+  .col {
+    max-width: 33%;
+  }
+  .footer_text {
+    flex: 0 0 33%;
+  }
+  .col2 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
