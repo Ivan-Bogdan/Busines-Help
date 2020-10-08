@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/style.css";
+import "./components/Modal.css";
 import Man from "./assets/img/Sloy244.png";
 import Fon from "./assets/img/Эллипс2.png";
 import Elips from "./assets/img/Эллипс5.png";
@@ -8,23 +9,34 @@ import Arka from "./assets/img/Слой239.png";
 import asd from "./assets/img/Прямоугольник56.png";
 import Success from "./assets/img/кнопка.png";
 import SocialNetworks from "./assets/img/соцсети.png";
-import Modal from './components/Modal';
+import SignUp from "./components/SingUp";
+import "./jq";
+import SignIn from "./components/SignIn";
+import { isAuthenticated, signout, getUser, updateToken } from "./API/http";
 
 export default class App extends Component {
+  state = {
+    isSignUpOpen: false,
+    isSignInOpen: false,
+  };
 
-    state = {
-        isModalOpen: false,
-      };
-    
-      toggleModal = () => {
-        this.setState((state) => ({
-          isModalOpen: !state.isModalOpen,
-        }));
-      };
-    render() {
-        return (
-            <div className="app">
-                 <header class="header" id="header">
+  toggleModalSignIn = () => {
+    this.setState((state) => ({
+      isSignInOpen: !state.isSignInOpen,
+      isSignUpOpen: false,
+    }));
+  };
+  toggleModalSignUp = () => {
+    this.setState((state) => ({
+      isSignUpOpen: !state.isSignUpOpen,
+      isSignInOpen: false,
+    }));
+  };
+
+  render() {
+    return (
+      <div className="app">
+        <header class="header" id="header">
           <div class="container-fluid container">
             <div class="row">
               <div class="menu-icon-wrapper">
@@ -35,18 +47,30 @@ export default class App extends Component {
                 <span>Helper</span>
               </a>
               <div class="col header-col">
-                <div class="mobile-container display-none">
+                <div class="mobile-container display-none" >
                   <nav class="menu">
                     <ul>
                       <li></li>
                       <li>
-                        <a href="#">Статистика</a>
+                        <a href="#" onClick={getUser}>
+                          Статистика
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Мои услуги</a>
+                        <a href="/myservices">Мои услуги</a>
                       </li>
                       <li>
-                        <a href="#">Мои клиенты</a>
+                        <a
+                          href="#"
+                          onClick={() => {
+                            let data = {
+                              fingerpring:"078e2f612515c3d6c5231931ff9596a2"
+                            }
+                            updateToken(data);
+                          }}
+                        >
+                          Мои клиенты
+                        </a>
                       </li>
                       <li>
                         <a href="#">Персонал</a>
@@ -61,29 +85,49 @@ export default class App extends Component {
                   </nav>
                 </div>
               </div>
-              <div class="log">
-                <a href="#" class="log__log-in">
-                  Вход
-                </a>
-                <a
-                  href="#"
-                  onClick={this.toggleModal}
-                  id=""
-                  class="log__registration"
-                >
-                  Регистрация
-                </a>
-              </div>
+
+              {!isAuthenticated() && (
+                <div class="log">
+                  <a
+                    href="#"
+                    class="log__log-in"
+                    onClick={this.toggleModalSignIn}
+                  >
+                    Вход
+                  </a>
+                  <a
+                    href="#"
+                    onClick={this.toggleModalSignUp}
+                    id=""
+                    class="log__registration"
+                  >
+                    Регистрация
+                  </a>
+                </div>
+              )}
+              {isAuthenticated() && (
+                <div class="log">
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signout(() => {
+                        this.setState({ ...this.state });
+                      });
+                    }}
+                    id=""
+                    class="log__log-in"
+                  >
+                    Выйти
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </header>
 
         <main class="main" id="main">
-          <section
-            class="main-section"
-            id="main-section"
-            style={{ backgroundImage: `url(${asd})` }}
-          >
+          <section class="main-section" id="main-section">
             <div class="container bg">
               <div class="row">
                 <div class="col2 ind">
@@ -230,12 +274,15 @@ export default class App extends Component {
           </div>
         </footer>
 
-                <main>
-                {this.state.isModalOpen && (
-            <Modal onClose={this.toggleModal}></Modal>
+        <div className="App">
+          {this.state.isSignUpOpen && (
+            <SignUp onClose={this.toggleModalSignUp}></SignUp>
           )}
-                </main>
-            </div>
-        );
-    }
+          {this.state.isSignInOpen && (
+            <SignIn onClose={this.toggleModalSignIn}></SignIn>
+          )}
+        </div>
+      </div>
+    );
+  }
 }

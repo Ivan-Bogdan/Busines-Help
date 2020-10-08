@@ -1,14 +1,19 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import { cityList } from "../API/http";
-import axios from "axios"
+import { cityList, Reg } from "../API/http";
+import * as Fingerprint2 from "fingerprintjs2";
+import * as FPJS from "@fingerprintjs/fingerprintjs";
 
 import "./style.css";
 import "./Modal.css";
 
 const getSuggestionValue = (suggestion) => suggestion;
 
-export default class Modal extends React.Component {
+const getHashable = (components) => {
+  return components.map((component) => component.value).join("");
+};
+
+export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,39 +22,96 @@ export default class Modal extends React.Component {
       phone: "",
       password: "",
       password2: "",
+      fingerprint: this._finger(),
       role_id: 1,
       data: {
-        otype: "",
+        otype: 0,
         name: "",
         unp: "",
-        city:"",
+        city: "",
         city_id: "",
         address: "",
         oked: "",
         full_name: "",
       },
-      suggestions: []
+      suggestions: [],
     };
   }
+  displayHash = (hash) => {
+    this.state.fingerprint = hash;
+    console.log(hash);
+  };
 
-  cityList = (payload) => {
-    return axios.post('http://altproduction.ru:8080/rest/v1/city/',JSON.stringify(payload))
-.then(response => {
-        console.log(response.data.city)
-        return response.data 
-})
-.catch(error => {
-        console.log(error)
-        return error
-})
-}
+  _finger = () => {
+    if (window.requestIdleCallback) {
+      requestIdleCallback(()=> {
+        FPJS.get((components) => {
+          const hash = FPJS.x64hash128(getHashable(components));
+          this.displayHash(hash)
+          console.log(hash);
+        });
+      });
+    } else {
+      setTimeout(()=> {
+        FPJS.get((components)=> {
+          console.log(FPJS.x64hash128(getHashable(components)));
+        });
+      }, 500);
+    }
+  };
+
+  _getFingerprint = () => {
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => {
+        Fingerprint2.get((components) => {
+          const hash = Fingerprint2.x64hash128(getHashable(components));
+          this.displayHash(hash);
+        });
+      });
+    } else {
+      setTimeout(() => {
+        Fingerprint2.get((components) => {
+          const hash = Fingerprint2.x64hash128(getHashable(components));
+          this.displayHash(hash);
+        });
+      }, 500);
+    }
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let payload = {
+      email: this.state.email,
+      password: this.state.password,
+      phone: this.state.phone,
+      role_id: this.state.role_id,
+      fingerprint: this.state.fingerprint,
+      data: {
+        otype: parseInt(this.state.data.otype, 10),
+        name: this.state.data.name,
+        unp: this.state.data.unp,
+        city_id: this.state.data.city_id,
+        address: this.state.data.address,
+        oked: this.state.data.oked,
+        full_name: this.state.data.full_name,
+      },
+    };
+
+    Reg(payload).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        console.log(data);
+      }
+      console.log(payload);
+    });
+  };
 
   onChange = (event, { newValue }) => {
     this.setState({ value: newValue });
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
-    console.log(value);
     this.setState({
       suggestions: this.getSuggestions(value),
     });
@@ -70,7 +132,6 @@ export default class Modal extends React.Component {
     const inputLength = inputValue.length;
 
     let { suggestions } = this.state;
-    console.log(suggestions);
 
     if (suggestions == undefined) {
       return (suggestions = "");
@@ -84,7 +145,6 @@ export default class Modal extends React.Component {
   };
 
   render() {
-
     const { suggestions } = this.state;
     return (
       <div className="modal">
@@ -150,13 +210,15 @@ export default class Modal extends React.Component {
               <option disabled selected style={{ display: "none" }}>
                 Форма деятельности
               </option>
-              <option value="0">ИП</option>
-              <option value="1">ООО</option>
-              <option value="2">ОАО</option>
-              <option value="3">ЧУП</option>
-              <option value="4">ЧТУП</option>
-              <option value="5">ИНОЕ</option>
-              <option value="6">Иностранное предприятие</option>
+              <option type="number" value={Number(0)}>
+                ИП
+              </option>
+              <option value={Number(1)}>ООО</option>
+              <option value={Number(2)}>ОАО</option>
+              <option value={Number(3)}>ЧУП</option>
+              <option value={Number(4)}>ЧТУП</option>
+              <option value={Number(5)}>ИНОЕ</option>
+              <option value={Number(6)}>Иностранное предприятие</option>
             </select>
 
             <input
@@ -181,50 +243,49 @@ export default class Modal extends React.Component {
                 });
               }}
             />
-            
-           <Autosuggest
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={(suggestions) => (
-                <span>
-                  {console.log(suggestions)}
-                  {suggestions}
-                </span>
-              )}
-              inputProps={{
-                id: "city",
-                name: "city",
-                value: this.state.city,
-                placeholder: "Населенный пункт",
-                onChange: (_event, { newValue }) => {
-                  _event.preventDefault();
-                  let payload = {
-                    city: newValue,
-                    limit: 10,
-                  };
+            <span>
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={(suggestions) => <span>{suggestions}</span>}
+                inputProps={{
+                  id: "city",
+                  name: "city",
+                  value: this.state.data.city,
+                  placeholder: "Город",
+                  onChange: (_event, { newValue }) => {
+                    _event.preventDefault();
+                    let payload = {
+                      city: newValue,
+                      limit: 10,
+                    };
 
-                  cityList(payload).then((data) => {
-                    if (data.error) {
-                      console.log(data.error);
-                    }
-                    let { city } = data;
-                    let normalize = [];
-                    city.forEach((el) => {
-                      normalize.push(el.city);
+                    cityList(payload).then((data) => {
+                      if (data.error) {
+                        console.log(data.error);
+                      }
+                      let { city } = data;
+                      let normalize = [];
+                      city.forEach((el) => {
+                        normalize.push(el.city);
+                      });
+                      if (city.length != 0)
+                        this.state.data.city_id = city["0"].id;
+                      else {
+                        this.state.data.city_id = "null";
+                      }
+                      this.setState({ suggestions: normalize });
                     });
-                    if(city.length != 0) this.state.city_id = city["0"].id
-                    else { this.state.city_id = "null"}
-                    console.log(normalize);
-                    this.setState({ suggestions: normalize });
-                  });
 
-                  this.setState({ city: newValue });
-                },
-              }}
-            />
-              
+                    this.setState({
+                      data: { ...this.state.data, city: newValue },
+                    });
+                  },
+                }}
+              />
+            </span>
             <input
               type="text"
               placeholder="Адрес регистрации"
@@ -262,7 +323,11 @@ export default class Modal extends React.Component {
               }}
             />
 
-            <button type="submit" className="button5">
+            <button
+              type="submit"
+              className="button5"
+              onClick={this.handleSubmit}
+            >
               Регистрация
             </button>
             <button type="submit" className="button5">

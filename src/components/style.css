@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+
 .container {
   width: 1280px;
   max-width: 100%;
@@ -5,23 +7,19 @@
   margin: 0 auto;
 }
 
-.mh-logo {
-  font-family: "Montserrat", sans-serif;
-  font-size: 30px;
-  line-height: 0.9;
-}
 
-.mh-logo span {
-  color: white;
-}
 
-.shrift{
-    
+.item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: grey;
 }
 /* NEW */
 
 body {
-  font-family: "Open Sans" sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 a {
   color: black;
@@ -30,6 +28,8 @@ a {
 .mh-logo {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
+  font-weight: 700;
+  line-height: 0.9;
   vertical-align: middle;
   text-decoration: none;
 }
@@ -171,7 +171,7 @@ nav ul li a:hover {
   margin-top: 160px;
   z-index: 0;
 }
-.arka{
+.arka {
   width: 973px;
   height: 315px;
   position: absolute;
@@ -179,7 +179,7 @@ nav ul li a:hover {
   margin-top: 55px;
   z-index: 1;
 }
-.ind{
+.ind {
   z-index: 2;
 }
 
@@ -193,8 +193,8 @@ nav ul li a:hover {
   width: 100%;
 }
 
-.main-section{
-  background-image: url(/assets/images/Прямоугольник\ 56.png);
+.main-section {
+  background: url(../assets/img/Прямоугольник56.png);
   height: 472px;
 }
 
@@ -370,12 +370,13 @@ h2 {
   text-decoration: none;
 }
 
-
 /* MODAL WINDOW */
 
 /* Full-width input fields */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="date"],
+input[type="number"] {
   width: 100%;
   font-family: "Open Sans" sans-serif;
   font-size: 20px;
@@ -396,6 +397,11 @@ input[type="password"] {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+}
+
+.button_create {
+  background-color: #4caf50;
+  color: white;
 }
 
 button:hover {
@@ -443,9 +449,16 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 20% auto 15% auto; 
+  margin: 20% auto 15% auto;
   border: 1px solid #888;
   width: 480px;
+}
+
+.modal-content2 {
+  background-color: #fefefe;
+  margin: 20% auto 15% auto;
+  border: 1px solid #888;
+  width: 700px;
 }
 
 /* The Close Button (x) */
@@ -511,19 +524,16 @@ select {
   -webkit-appearance: none;
   background-position-x: 99%;
 }
-option{
+option {
   font-family: "Open Sans" sans-serif;
   font-size: 16px;
 }
 
 .reg {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 30px;
   color: black;
 }
-
-
-
 
 /* -------- Медиа запросы -------- */
 /* 992-1200px lg  Large */
@@ -536,8 +546,6 @@ option{
   }
 }
 
-
-
 @media screen and (max-width: 991px) {
   .man {
     display: none;
@@ -548,8 +556,8 @@ option{
   .elips {
     display: none;
   }
-  .arka{
-      display: none;
+  .arka {
+    display: none;
   }
   .row .footer_text:nth-child(2) {
     display: none;
@@ -566,7 +574,7 @@ option{
   .mh-logo {
     font-size: 24px;
   }
-  .bg{
+  .bg {
     height: 240px;
   }
 }
@@ -667,15 +675,15 @@ option{
   .elips {
     margin-left: -370px;
   }
-  .arka{
-      width: 718px;
-      height: 233px;
-      margin-left: -650px;
-      margin-top: 130px;
+  .arka {
+    width: 718px;
+    height: 233px;
+    margin-left: -650px;
+    margin-top: 130px;
   }
 
-  .bg{
-      height: 260px;
+  .bg {
+    height: 260px;
   }
 }
 
@@ -685,8 +693,6 @@ option{
     flex: 0 0 50%;
     max-width: 50%;
   }
-  
-  
 }
 
 @media (min-width: 992px) {
@@ -700,4 +706,76 @@ option{
     flex: 0 0 50%;
     max-width: 50%;
   }
+}
+
+.react-autosuggest__container {
+  position: relative;
+  width: 100%;
+  font-family: "Open Sans" sans-serif;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.react-autosuggest__input {
+  width: 240px;
+  height: 30px;
+  padding: 10px 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+  outline: none;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  top: 51px;
+  width: 280px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #ddd;
+}
+
+.services {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
