@@ -30,24 +30,6 @@ const MyServ = () => {
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
-  const FetchData = async () => {
-    let payload = {
-      limit: limit,
-      sort: sort,
-      desc: desc,
-      offset: selectedTaskPage * 10,
-    };
-    const result = await get_task_list(payload);
-    if (result.message) {
-      setError(result.message);
-      localStorage.clear();
-    } else {
-      setCount(result.count);
-      setTasks(result.tasks);
-      return setError("");
-    }
-  };
-
   useEffect(() => {
     _getFingerprint();
     setTimeout(() => {
@@ -88,6 +70,24 @@ const MyServ = () => {
   const callbackFilter = (desc, sort) => {
     setDesc(desc);
     setSort(sort);
+  };
+
+  const FetchData = async () => {
+    let payload = {
+      limit: limit,
+      sort: sort,
+      desc: desc,
+      offset: selectedTaskPage * 10,
+    };
+    const result = await get_task_list(payload);
+    if (result.message) {
+      setError(result.message);
+      localStorage.clear();
+    } else {
+      setCount(result.count);
+      setTasks(result.tasks);
+      return setError("");
+    }
   };
 
   const _getFingerprint = () => {

@@ -134,7 +134,7 @@ export default class App extends Component {
               </div>
               <div className="row">
                 <div className="col-lg-4">
-                  <div classname="trigger">
+                  <div className="trigger">
                     <div
                       className="trigger__img"
                       style={{ backgroundImage: `url(${Success})` }}
