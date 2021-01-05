@@ -1,8 +1,4 @@
 .modal {
-<<<<<<< HEAD
-=======
-  position: absolute;
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   top: 0;
   width: 100%;
   height: 100%;
@@ -12,11 +8,8 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
-<<<<<<< HEAD
   overflow: scroll;
   padding: 5px; 
-=======
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 .modal .modal__close-button {
@@ -31,27 +24,16 @@
   width: 100%;
   font-family: "Open Sans" sans-serif;
   font-size: 20px;
-<<<<<<< HEAD
   /*padding: 12px 20px;*/
   /*margin: 8px 0;*/
   display: inline-block;
   /*border: 1px solid #ccc;*/
-=======
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   box-sizing: border-box;
 }
 
 .react-autosuggest__input {
   width: 240px;
-<<<<<<< HEAD
   height: 55px;
-=======
-  height: 30px;
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;

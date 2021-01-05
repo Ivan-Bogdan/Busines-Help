@@ -14,7 +14,6 @@ const getHashable = (components) => {
 };
 
 export default class SignUp extends React.Component {
-<<<<<<< HEAD
   componentDidMount() {
     const modal = document.getElementById("id01");
     window.onclick = function (event) {
@@ -23,8 +22,6 @@ export default class SignUp extends React.Component {
       }
     };
   }
-=======
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   constructor(props) {
     super(props);
 
@@ -46,45 +43,25 @@ export default class SignUp extends React.Component {
         full_name: "",
       },
       suggestions: [],
-<<<<<<< HEAD
       error: "",
     };
   }
   displayHash = (hash) => {
     this.setState({ fingerprint: hash });
-=======
-    };
-  }
-  displayHash = (hash) => {
-    this.state.fingerprint = hash;
-    console.log(hash);
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   };
 
   _finger = () => {
     if (window.requestIdleCallback) {
-<<<<<<< HEAD
       requestIdleCallback(() => {
         FPJS.get((components) => {
           const hash = FPJS.x64hash128(getHashable(components));
           this.displayHash(hash);
-=======
-      requestIdleCallback(()=> {
-        FPJS.get((components) => {
-          const hash = FPJS.x64hash128(getHashable(components));
-          this.displayHash(hash)
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           console.log(hash);
         });
       });
     } else {
-<<<<<<< HEAD
       setTimeout(() => {
         FPJS.get((components) => {
-=======
-      setTimeout(()=> {
-        FPJS.get((components)=> {
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           console.log(FPJS.x64hash128(getHashable(components)));
         });
       }, 500);
@@ -111,7 +88,6 @@ export default class SignUp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
     if (this.validEmail(this.state.email) === false) {
       console.log("invalid email");
     } else {
@@ -141,33 +117,6 @@ export default class SignUp extends React.Component {
         console.log(payload);
       });
     }
-=======
-    let payload = {
-      email: this.state.email,
-      password: this.state.password,
-      phone: this.state.phone,
-      role_id: this.state.role_id,
-      fingerprint: this.state.fingerprint,
-      data: {
-        otype: parseInt(this.state.data.otype, 10),
-        name: this.state.data.name,
-        unp: this.state.data.unp,
-        city_id: this.state.data.city_id,
-        address: this.state.data.address,
-        oked: this.state.data.oked,
-        full_name: this.state.data.full_name,
-      },
-    };
-
-    Reg(payload).then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        console.log(data);
-      }
-      console.log(payload);
-    });
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   };
 
   onChange = (event, { newValue }) => {
@@ -196,11 +145,7 @@ export default class SignUp extends React.Component {
 
     let { suggestions } = this.state;
 
-<<<<<<< HEAD
     if (suggestions === undefined) {
-=======
-    if (suggestions == undefined) {
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
       return (suggestions = "");
     } else {
       return inputLength === 0
@@ -211,7 +156,6 @@ export default class SignUp extends React.Component {
     }
   };
 
-<<<<<<< HEAD
   validEmail = (userEmail) => {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
   };
@@ -220,12 +164,6 @@ export default class SignUp extends React.Component {
     const { suggestions } = this.state;
     return (
       <div className="modal" id="id01">
-=======
-  render() {
-    const { suggestions } = this.state;
-    return (
-      <div className="modal">
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
         <form class="modal-content animate">
           <div class="imgcontainer">
             <span
@@ -236,16 +174,12 @@ export default class SignUp extends React.Component {
               ×
             </span>
             <p class="reg">Регистрация</p>
-<<<<<<< HEAD
             <p style={{ color: "red" }}>{this.state.error}</p>
-=======
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           </div>
           {this.props.children}
 
           <div class="container3">
             {this.props.children}
-<<<<<<< HEAD
             <div class="form__field">
               <input
                 type="email"
@@ -310,55 +244,13 @@ export default class SignUp extends React.Component {
             </div>
             <select
               className="select1"
-=======
-            <input
-              type="text"
-              placeholder="E-mail"
-              name="email"
-              value={this.state.email}
-              onChange={(data) => {
-                this.setState({ email: data.target.value });
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Телефон"
-              name="tel"
-              value={this.state.phone}
-              onChange={(data) => {
-                this.setState({ phone: data.target.value });
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Придумайте пароль"
-              name="psw"
-              value={this.state.password}
-              onChange={(data) => {
-                this.setState({ password: data.target.value });
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Повторите пароль"
-              name="psw2"
-              value={this.state.password2}
-              onChange={(data) => {
-                this.setState({ password2: data.target.value });
-              }}
-            />
-            <select
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               value={this.state.data.otype}
               onChange={(prevState) => {
                 this.setState({
                   data: { ...this.state.data, otype: prevState.target.value },
                 });
               }}
-<<<<<<< HEAD
               required
-=======
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
             >
               <option disabled selected style={{ display: "none" }}>
                 Форма деятельности
@@ -384,7 +276,6 @@ export default class SignUp extends React.Component {
                   data: { ...this.state.data, name: prevState.target.value },
                 });
               }}
-<<<<<<< HEAD
               required
             />
             <div class="form__field">
@@ -451,63 +342,6 @@ export default class SignUp extends React.Component {
                 },
               }}
             />
-=======
-            />
-            <input
-              type="text"
-              placeholder="УНП"
-              name="unp"
-              value={this.state.unp}
-              onChange={(prevState) => {
-                this.setState({
-                  data: { ...this.state.data, unp: prevState.target.value },
-                });
-              }}
-            />
-            <span>
-              <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={(suggestions) => <span>{suggestions}</span>}
-                inputProps={{
-                  id: "city",
-                  name: "city",
-                  value: this.state.data.city,
-                  placeholder: "Город",
-                  onChange: (_event, { newValue }) => {
-                    _event.preventDefault();
-                    let payload = {
-                      city: newValue,
-                      limit: 10,
-                    };
-
-                    cityList(payload).then((data) => {
-                      if (data.error) {
-                        console.log(data.error);
-                      }
-                      let { city } = data;
-                      let normalize = [];
-                      city.forEach((el) => {
-                        normalize.push(el.city);
-                      });
-                      if (city.length != 0)
-                        this.state.data.city_id = city["0"].id;
-                      else {
-                        this.state.data.city_id = "null";
-                      }
-                      this.setState({ suggestions: normalize });
-                    });
-
-                    this.setState({
-                      data: { ...this.state.data, city: newValue },
-                    });
-                  },
-                }}
-              />
-            </span>
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
             <input
               type="text"
               placeholder="Адрес регистрации"
@@ -518,7 +352,6 @@ export default class SignUp extends React.Component {
                   data: { ...this.state.data, address: prevState.target.value },
                 });
               }}
-<<<<<<< HEAD
               required
             />
             <div class="form__field">
@@ -539,20 +372,6 @@ export default class SignUp extends React.Component {
                 Это поле должно содержать пять (5) цифр
               </span>
             </div>
-=======
-            />
-            <input
-              type="text"
-              placeholder="ОКЭД"
-              name="OKED"
-              value={this.state.oked}
-              onChange={(prevState) => {
-                this.setState({
-                  data: { ...this.state.data, oked: prevState.target.value },
-                });
-              }}
-            />
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
             <input
               type="text"
               placeholder="ФИО руководителя"
@@ -566,10 +385,7 @@ export default class SignUp extends React.Component {
                   },
                 });
               }}
-<<<<<<< HEAD
               required
-=======
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
             />
 
             <button

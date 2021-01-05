@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { delete_task, DeleteTask } from "../../API/http";
 import UpdateTask from "./UpdateTask";
 import Modal from "./Modal";
@@ -96,14 +95,6 @@ export default class ActionsTask extends Component {
     return (
       <div className="modal" id="id01">
         <form class="modal-signin animate">
-=======
-
-export default class ActionsTask extends Component {
-  render() {
-    return (
-      <div className="modal">
-        <form class="modal-content2 animate">
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           <div class="imgcontainer">
             <span
               className="close"
@@ -112,7 +103,6 @@ export default class ActionsTask extends Component {
             >
               ×
             </span>
-<<<<<<< HEAD
             <p class="reg"></p>
           </div>
           {this.props.children}
@@ -196,29 +186,6 @@ export default class ActionsTask extends Component {
             </div>
           </div>
         </Modal>
-=======
-            <p class="reg">Действия задания</p>
-          </div>
-          {this.props.children}
-
-          <div style={{display:"block"}}>
-            <button
-              type="submit"
-              className="button_create"
-              onClick={this.LoginUser}
-            >
-              Отмена
-            </button>
-            <button
-              type="submit"
-              className="button_create"
-              onClick={this.LoginUser}
-            >
-              Отмена
-            </button>
-          </div>
-        </form>
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
       </div>
     );
   }
