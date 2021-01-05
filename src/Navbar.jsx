@@ -60,10 +60,10 @@ export default class Navbar extends Component {
             <div className="menu-icon-wrapper">
               <div className="menu-icon"></div>
             </div>
-            <a className="mh-logo" href="/">
+            <Link className="mh-logo" to="/">
               Business <br />
               <span>Helper</span>
-            </a>
+            </Link>
             <div className="col header-col">
               <div className="mobile-container display-none">
                 <nav className="menu">
