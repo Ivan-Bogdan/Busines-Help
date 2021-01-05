@@ -61,11 +61,9 @@ export default class SignIn extends Component {
       } else {
         this.setState({ error: null });
         authenticate(data, () => {
-          {
-            this.setState({
-              ...this.state,
-            });
-          }
+          this.setState({
+            ...this.state,
+          });
         });
         window.location.reload();
       }
@@ -88,7 +86,7 @@ export default class SignIn extends Component {
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
-          
+
           <div class="container3">
             {this.props.children}
             <input

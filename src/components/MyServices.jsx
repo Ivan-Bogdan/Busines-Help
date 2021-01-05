@@ -20,7 +20,6 @@ const MyServ = () => {
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [limit] = useState(10);
-  const [offset, setOffset] = useState(0);
 
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
@@ -29,6 +28,24 @@ const MyServ = () => {
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const FetchData = async () => {
+    let payload = {
+      limit: limit,
+      sort: sort,
+      desc: desc,
+      offset: selectedTaskPage * 10,
+    };
+    const result = await get_task_list(payload);
+    if (result.message) {
+      setError(result.message);
+      localStorage.clear();
+    } else {
+      setCount(result.count);
+      setTasks(result.tasks);
+      return setError("");
+    }
+  };
 
   useEffect(() => {
     _getFingerprint();
@@ -50,7 +67,6 @@ const MyServ = () => {
     }, 300);
   }, [
     fingerprint,
-    offset,
     FetchData,
     error,
     count,
@@ -70,24 +86,6 @@ const MyServ = () => {
   const callbackFilter = (desc, sort) => {
     setDesc(desc);
     setSort(sort);
-  };
-
-  const FetchData = async () => {
-    let payload = {
-      limit: limit,
-      sort: sort,
-      desc: desc,
-      offset: selectedTaskPage * 10,
-    };
-    const result = await get_task_list(payload);
-    if (result.message) {
-      setError(result.message);
-      localStorage.clear();
-    } else {
-      setCount(result.count);
-      setTasks(result.tasks);
-      return setError("");
-    }
   };
 
   const _getFingerprint = () => {

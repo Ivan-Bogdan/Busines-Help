@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import {
-  isAuthenticated,
-  signout,
-  getUser,
-  get_Task,
-} from "./API/http";
+import { isAuthenticated, signout } from "./API/http";
 import SignUp from "./components/SingUp";
 import SignIn from "./components/SignIn";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   componentDidMount() {
@@ -72,41 +68,24 @@ export default class Navbar extends Component {
               <div className="mobile-container display-none">
                 <nav className="menu">
                   <ul>
-                    <li></li>
+                    {/* <li></li> */}
                     <li>
-                      <a href="#" onClick={getUser}>
-                        Статистика
-                      </a>
+                      <Link>Статистика</Link>
                     </li>
                     <li>
-                      <a href="/myservices">Мои услуги</a>
+                      <Link to={`/myservices`}>Мои услуги</Link>
                     </li>
                     <li>
-                      <a
-                        href="/myclients"
-                        
-                      >
-                        Мои клиенты
-                      </a>
+                      <Link to={`/myclients`}>Мои клиенты</Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        onClick={() => {
-                          let payload = {
-                            task_id: "857f6d55-3f2d-4b31-adaf-92cf0dc9fbfb",
-                          };
-                          get_Task(payload);
-                        }}
-                      >
-                        Персонал
-                      </a>
+                      <Link>Персонал</Link>
                     </li>
                     <li>
-                      <a href="#">Банк</a>
+                      <Link>Банк</Link>
                     </li>
                     <li>
-                      <a href="#">Авто</a>
+                      <Link>Авто</Link>
                     </li>
                   </ul>
                 </nav>
@@ -115,38 +94,34 @@ export default class Navbar extends Component {
 
             {!isAuthenticated() && (
               <div className="log">
-                <a
-                  href="#"
+                <Link
                   className="log__log-in"
                   onClick={this.toggleModalSignIn}
                 >
                   Вход
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
                   onClick={this.toggleModalSignUp}
                   id=""
                   className="log__registration"
                 >
                   Регистрация
-                </a>
+                </Link>
               </div>
             )}
             {isAuthenticated() && (
               <div className="log">
-                <a
-                  href="#"
+                <Link
                   onClick={(e) => {
                     e.preventDefault();
                     signout(() => {
                       this.setState({ ...this.state });
                     });
                   }}
-                  id=""
                   className="log__log-in"
                 >
                   Выйти
-                </a>
+                </Link>
               </div>
             )}
           </div>

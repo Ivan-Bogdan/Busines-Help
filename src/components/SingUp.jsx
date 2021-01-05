@@ -109,7 +109,7 @@ export default class SignUp extends React.Component {
       };
 
       Reg(payload).then((data) => {
-        if (data.message == "User exist") {
+        if (data.message === "User exist") {
           this.setState({ error: "Пользователь существует!" });
         } else {
           console.log(data);

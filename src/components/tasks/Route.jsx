@@ -111,7 +111,7 @@ export default class Route extends Component {
             );
           }}
         />
-        {(this.state.address.length == 0 || this.state.city_id.length == 0) && (
+        {(this.state.address.length === 0 || this.state.city_id.length === 0) && (
           <p style={{ color: "red" }}>
             Заполните поля
           </p>

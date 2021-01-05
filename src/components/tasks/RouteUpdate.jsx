@@ -124,7 +124,7 @@ export default class RouteUpdate extends Component {
           }}
           disabled={this.props.disabled}
         />
-        {(this.state.address.length == 0 || this.state.city_id.length == 0) && (
+        {(this.state.address.length === 0 || this.state.city_id.length === 0) && (
           <p style={{ color: "red" }}>
             Пока не заполнишь поля, плюс не нажмётся
           </p>

@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { update_task, get_task, cityName } from "../../API/http";
+import React, { Component } from "react";
+import { update_task, get_task } from "../../API/http";
 import RouteUpdate from "./RouteUpdate";
 
 export default class UpdateTask extends Component {
@@ -230,7 +230,7 @@ export default class UpdateTask extends Component {
               </option>
             </select>
 
-            {this.state.type == "0" && (
+            {this.state.type === "0" && (
               <div style={{ marginLeft: "20px" }}>
                 <input
                   type="text"
