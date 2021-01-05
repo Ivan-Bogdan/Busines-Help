@@ -189,15 +189,15 @@ ul {
 }
 
 .client_name {
-  width: 350px;
+  width: 420px;
 }
 
 .client_unp {
-  width: 154px;
+  width: 170px;
 }
 
 .client_address {
-  width: 350px;
+  width: 340px;
 }
 
 .display-none {
@@ -874,6 +874,24 @@ span.psw {
   .trigger__desc {
     max-width: 220px;
     font-size: 14px;
+  }
+  .content_client {
+    display: flex;
+    max-width: 90%;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  section{
+    padding: 100px 1px;
+  }
+  .client_item{
+    font-size: 18px;
+  }
+  .editing{
+    width: 30px;
+    height: 30px;
   }
 }
 
