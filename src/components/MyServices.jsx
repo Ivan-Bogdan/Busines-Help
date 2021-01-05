@@ -113,27 +113,29 @@ const MyServ = () => {
       <main className="main" id="main">
         <section className="main-section3" id="main-section">
           <div className="container">
-            <button
-              type="submit"
-              className="button_create"
-              onClick={toggleModal}
-            >
-              Создать
-            </button>
+            <div className="flex" style={{ marginBottom: "20px" }}>
+              <button
+                type="submit"
+                className="button_create"
+                onClick={toggleModal}
+              >
+                Создать
+              </button>
+              <div className="filter_div" align="right">
+                <button className="sorting" onClick={toggleFilter}></button>
+                {isOpenFilter && (
+                  <FilterComponent
+                    sort={sort}
+                    desc={desc}
+                    dataFilter={callbackFilter}
+                    onClose={toggleFilter}
+                  ></FilterComponent>
+                )}
+              </div>
+            </div>
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            <div className="filter_div" align="right">
-              <button className="sorting" onClick={toggleFilter}></button>
-              {isOpenFilter && (
-                <FilterComponent
-                  sort={sort}
-                  desc={desc}
-                  dataFilter={callbackFilter}
-                  onClose={toggleFilter}
-                ></FilterComponent>
-              )}
-            </div>
             {tasks.map((task, i) => (
               <div className="task_item">
                 <Task task={task}></Task>
