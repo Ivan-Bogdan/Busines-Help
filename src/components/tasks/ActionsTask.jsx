@@ -1,73 +1,11 @@
 import React, { Component } from "react";
 import { delete_task, DeleteTask } from "../../API/http";
 import UpdateTask from "./UpdateTask";
-import Modal from "./Modal";
+import Modal from "../Modal";
 
-/* const ActionT = () => {
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  const FetchData = async () => {
-    const result = await delete_task({ task_id: this.props.id });
-    if (result.message) {
-      console.log(result.message);
-    }
-    window.location.reload();
-  };
-
-  return (
-    <div className="modal" id="id01">
-      <form class="modal-signin animate">
-        <div class="imgcontainer">
-          <span
-            className="close"
-            onClick={this.props.onClose}
-            title="Close Modal"
-          >
-            ×
-          </span>
-          <p class="reg"></p>
-        </div>
-        {this.props.children}
-
-        <div className="container3" style={{ display: "block" }}>
-          <button type="submit" className="button5" onClick={toggleModal}>
-            Редактировать
-          </button>
-
-          <button
-            type="submit"
-            className="button5"
-            onClick={(event) => {
-              event.preventDefault();
-              FetchData;
-            }}
-          >
-            Удалить
-          </button>
-        </div>
-      </form>
-      <div className="App">
-        {modal && <UpdateTask onClose={toggleModal}></UpdateTask>}
-      </div>
-    </div>
-  );
-};
-
-export default ActionT; */
 
 export default class ActionsTask extends Component {
- /*  componentDidMount() {
-    const modal = document.getElementById("id01");
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  } */
+
 
   constructor(props) {
     super(props);
@@ -130,11 +68,6 @@ export default class ActionsTask extends Component {
             </button>
           </div>
         </form>
-        {/*  <div className="App">
-          {this.state.isUpdateOpen && (
-            <UpdateTask onClose={this.toggleModalUpdateTask}></UpdateTask>
-          )}
-        </div> */}
 
         <Modal isShowing={this.state.isUpdateOpen} elem={5125} id={2}>
           <div className="modal-overlay" />

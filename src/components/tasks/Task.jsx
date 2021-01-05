@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { delete_task, city__name } from "../../API/http";
-import Modal from "./Modal";
+import Modal from "../Modal";
 import UpdateTask from "./UpdateTask";
 import ReadTask from "./ReadTask";
 
