@@ -3,14 +3,6 @@ import { create_task } from "../../API/http";
 import Route from "./Route";
 
 export default class CreateTask extends Component {
-  componentDidMount() {
-    const modal = document.getElementById("id01");
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  }
 
   constructor(props) {
     super(props);
