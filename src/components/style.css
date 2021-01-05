@@ -110,6 +110,17 @@ ul {
   flex-wrap: wrap;
 }
 
+.content_client {
+  display: flex;
+  max-width: 90%;
+  flex-wrap: wrap;
+
+  /*   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; */
+}
+
 .task_container {
   display: flex;
   justify-content: space-between;
@@ -123,6 +134,34 @@ ul {
   height: auto;
   padding: 7px;
 }
+
+.client_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: rgba(128, 128, 128, 0.52);
+  border: 3px solid black;
+  border-radius: 20px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 7px;
+}
+
+.client_container {
+  background-color: rgba(128, 128, 128, 0.52);
+  border: 3px solid black;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 7px;
+  margin-bottom: 7px;
+}
+
+/* .width_28{
+  width: 28%;
+} */
 
 .task_name {
   margin-left: 10px;
@@ -147,6 +186,18 @@ ul {
 .task_route {
   text-align: left;
   width: 252px;
+}
+
+.client_name {
+  width: 350px;
+}
+
+.client_unp {
+  width: 154px;
+}
+
+.client_address {
+  width: 350px;
 }
 
 .display-none {
@@ -532,6 +583,13 @@ button:hover {
   width: 100%;
   margin-bottom: 10px;
   font-size: 23px;
+  font-weight: 800;
+}
+
+.client_item {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 21px;
   font-weight: 800;
 }
 

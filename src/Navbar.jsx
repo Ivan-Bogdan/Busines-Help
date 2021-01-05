@@ -83,7 +83,7 @@ export default class Navbar extends Component {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/myclients"
                         
                       >
                         Мои клиенты

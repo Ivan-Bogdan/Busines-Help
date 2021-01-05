@@ -157,13 +157,13 @@ export default class App extends Component {
                       </li>
                       <li>
                         <a
-                          href="#"
-                          onClick={() => {
+                          href="/myclients"
+                          /*  onClick={() => {
                             let payload = {
                               fingerprint: this.state.fingerprint,
                             };
                             update_token(payload);
-                          }}
+                          }} */
                         >
                           Мои клиенты
                         </a>
