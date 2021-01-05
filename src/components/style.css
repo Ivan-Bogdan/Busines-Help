@@ -560,6 +560,9 @@ input:invalid:not(:placeholder-shown) + .form__error {
 button:hover {
   opacity: 0.8;
 }
+button:active, button:focus {
+  outline: none;
+}
 
 /* Extra styles for the cancel button */
 .cancelbtn {

@@ -91,7 +91,7 @@ const Task = ({ task }) => {
         )}
         <div className="task_route">{cityName}</div>
       </div>
-      <a href="#" className="editing" onClick={toggleModal} />
+      <button className="editing" onClick={toggleModal} />
 
       <div className="App">
         <Modal isShowing={modal}>
