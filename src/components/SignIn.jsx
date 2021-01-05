@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import {
   Login,
   authenticate /* isAuthenticated, getUser  */,
 } from "../API/http";
+=======
+import { Login, authenticate, isAuthenticated, getUser } from "../API/http";
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 
 import "./style.css";
@@ -13,6 +17,7 @@ const getHashable = (components) => {
 };
 
 export default class SignIn extends Component {
+<<<<<<< HEAD
   componentDidMount() {
     const modal = document.getElementById("id01");
     window.onclick = function (event) {
@@ -21,19 +26,29 @@ export default class SignIn extends Component {
       }
     };
   }
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
       password: "",
+<<<<<<< HEAD
       error: "",
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
       fingerprint: this._getFingerprint(),
     };
   }
 
   displayHash(hash) {
+<<<<<<< HEAD
     this.setState({ fingerprint: hash });
+=======
+    this.state.fingerprint = hash;
+    console.log(hash);
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   }
 
   _getFingerprint = () => {
@@ -42,6 +57,10 @@ export default class SignIn extends Component {
         FPJS.get((components) => {
           const hash = FPJS.x64hash128(getHashable(components));
           this.displayHash(hash);
+<<<<<<< HEAD
+=======
+          console.log(hash);
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
         });
       });
     } else {
@@ -55,6 +74,7 @@ export default class SignIn extends Component {
 
   LoginUser = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     Login(this.state).then((data) => {
       if (data.message) {
         this.setState({ error: "Неверные данные" });
@@ -85,6 +105,31 @@ export default class SignIn extends Component {
     return (
       <div className="modal" id="id01">
         <form class="modal-signin animate">
+=======
+    let payload = {
+      email: this.state.email,
+      password: this.state.password,
+      fingerprint: this.state.fingerprint,
+    };
+
+    Login(payload).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      }
+      authenticate(data, () => {
+        this.setState({
+          ...this.state,
+        });
+      });
+      console.log(payload);
+    });
+  };
+
+  render() {
+    return (
+      <div className="modal">
+        <form class="modal-content animate">
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           <div class="imgcontainer">
             <span
               className="close"
@@ -94,10 +139,16 @@ export default class SignIn extends Component {
               ×
             </span>
             <p class="reg">Войти</p>
+<<<<<<< HEAD
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
           
+=======
+          </div>
+          {this.props.children}
+
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           <div class="container3">
             {this.props.children}
             <input

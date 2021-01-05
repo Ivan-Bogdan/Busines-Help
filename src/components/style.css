@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 
+<<<<<<< HEAD
 .app {
   overflow: hidden;
 }
@@ -9,12 +10,22 @@ img {
 }
 
 .container {
+=======
+.container {
+  width: 1280px;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   max-width: 100%;
   padding: 0px 0px 0px 0px;
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 .item {
+=======
+
+
+.item{
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +34,7 @@ img {
 }
 /* NEW */
 
+<<<<<<< HEAD
 .editing {
   background: url(../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png);
   width: 40px;
@@ -37,6 +49,8 @@ img {
   height: 50px;
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -69,10 +83,16 @@ ul {
 
 .header {
   background: #6bbe5a;
+<<<<<<< HEAD
   display: flex;
   width: 100%;
   z-index: 100;
   position: fixed;
+=======
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 .header a:hover {
@@ -80,11 +100,14 @@ ul {
   color: #000000;
   transition: all 0.1s ease-in;
 }
+<<<<<<< HEAD
 .reg {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
   color: black;
 }
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 
 .header-col {
   display: flex;
@@ -104,6 +127,7 @@ ul {
   justify-content: space-between;
 }
 
+<<<<<<< HEAD
 .content_task {
   display: flex;
   max-width: 90%;
@@ -149,16 +173,21 @@ ul {
   width: 252px;
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 .display-none {
   display: flex;
 }
 
+<<<<<<< HEAD
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 .menu > ul {
   display: -webkit-box;
   justify-content: space-between;
@@ -206,6 +235,10 @@ nav ul li a:hover {
 }
 
 .log {
+<<<<<<< HEAD
+=======
+  width: 200px;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -252,12 +285,17 @@ nav ul li a:hover {
   position: absolute;
   margin-left: -890px;
   margin-top: 55px;
+<<<<<<< HEAD
   z-index: -1;
+=======
+  z-index: 1;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 .ind {
   z-index: 2;
 }
 
+<<<<<<< HEAD
 .main {
   width: 100%;
   display: grid;
@@ -265,15 +303,28 @@ nav ul li a:hover {
 
 .filter_div {
   position: relative;
+=======
+.log__login {
+}
+
+.log__registration {
+}
+
+.main {
+  width: 100%;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 .main-section {
   background: url(../assets/img/Прямоугольник56.png);
   height: 472px;
+<<<<<<< HEAD
   z-index: -1;
 }
 .main-section3 {
   height: auto;
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 .bg {
@@ -284,14 +335,21 @@ nav ul li a:hover {
 .row {
   justify-content: space-between;
   flex: inherit;
+<<<<<<< HEAD
   margin-left: 10px;
   margin-right: 10px;
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 /* Гамбургер */
 .menu-icon-wrapper {
   width: 30px;
   height: 30px;
+<<<<<<< HEAD
+=======
+  /* background: red; */
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   margin: 15px;
   margin-left: 0;
   display: none;
@@ -354,6 +412,12 @@ section {
   padding: 100px 50px;
 }
 
+<<<<<<< HEAD
+=======
+.menu {
+}
+
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 .offer {
   margin-top: 80px;
 }
@@ -428,10 +492,13 @@ h2 {
   width: 100%;
   padding: 20px 0;
   background: #4f5a4d;
+<<<<<<< HEAD
   display: flex;
   position: fixed;
   left: 0;
   bottom: 0;
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }
 
 .footer p {
@@ -456,9 +523,13 @@ h2 {
 input[type="text"],
 input[type="password"],
 input[type="date"],
+<<<<<<< HEAD
 input[type="number"],
 input[type="email"],
 input[type="tel"] {
+=======
+input[type="number"] {
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   width: 100%;
   font-family: "Open Sans" sans-serif;
   font-size: 20px;
@@ -469,6 +540,7 @@ input[type="tel"] {
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .form__error {
   color: red;
   text-align: left;
@@ -489,6 +561,8 @@ input:invalid:not(:placeholder-shown) + .form__error {
   display: block;
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 /* Set a style for all buttons */
 .button5 {
   background-color: #4caf50;
@@ -528,6 +602,7 @@ button:hover {
   padding: 10px 70px;
 }
 
+<<<<<<< HEAD
 .task_item {
   width: 100%;
   margin-bottom: 10px;
@@ -535,11 +610,14 @@ button:hover {
   font-weight: 800;
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
+<<<<<<< HEAD
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
@@ -550,17 +628,43 @@ span.psw {
 
 .modal-signin {
   background-color: #fefefe;
+=======
+/* The Modal (background) */
+/* .modal {
+  display: none; 
+  position: fixed;
+  z-index: 300; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); 
+  padding-top: 60px;
+} */
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 20% auto 15% auto;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   border: 1px solid #888;
   width: 480px;
 }
 
 .modal-content2 {
   background-color: #fefefe;
+<<<<<<< HEAD
   margin: auto;
+=======
+  margin: 20% auto 15% auto;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   border: 1px solid #888;
   width: 700px;
 }
 
+<<<<<<< HEAD
 .modal-content4 {
   background-color: #fefefe;
   right: 0;
@@ -581,6 +685,15 @@ span.psw {
   top: 0;
   color: #000;
   font-size: 29px;
+=======
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 20px;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   font-weight: bold;
 }
 
@@ -614,6 +727,7 @@ span.psw {
   }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: /* 788 */820px) {
   .task_container {
     flex-wrap: wrap;
@@ -652,6 +766,53 @@ span.psw {
 
 /* Change styles for span and cancel button on extra small screens */
 
+=======
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+select {
+  font-size: 20px;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 1;
+  border: 1;
+  border-radius: 2px;
+  height: 55px;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+    no-repeat right #ffffff;
+  -webkit-appearance: none;
+  background-position-x: 99%;
+}
+option {
+  font-family: "Open Sans" sans-serif;
+  font-size: 16px;
+}
+
+.reg {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  color: black;
+}
+
+/* -------- Медиа запросы -------- */
+/* 992-1200px lg  Large */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1280px;
+  }
+  .trigger__desc {
+    width: 510px;
+  }
+}
+
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 @media screen and (max-width: 991px) {
   .man {
     display: none;
@@ -683,11 +844,22 @@ span.psw {
   .bg {
     height: 240px;
   }
+<<<<<<< HEAD
   .aps {
     max-width: 430px;
   }
 }
 @media screen and (max-width: 1315px) {
+=======
+}
+
+/* 768-992px md  Medium */
+@media screen and (max-width: 992px) {
+}
+
+/* 576-768px sm  Small */
+@media screen and (max-width: 1200px) {
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   .header {
     padding-top: 10px;
   }
@@ -740,10 +912,18 @@ span.psw {
 
   .log {
     order: 1;
+<<<<<<< HEAD
+=======
+    width: 50%;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   }
 
   .log a {
     padding: 10px;
+<<<<<<< HEAD
+=======
+    width: 50%;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
     text-align: center;
   }
 
@@ -752,13 +932,18 @@ span.psw {
   }
 
   .container {
+<<<<<<< HEAD
     max-width: 100%;
+=======
+    max-width: 992px;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   }
   .trigger__desc {
     max-width: 400px;
   }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 587px) {
   .modal-content {
     margin: auto;
@@ -961,6 +1146,8 @@ select option:focus {
 
 /* 576-768px sm  Small */
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 /* 320-576px     Extra small */
 @media screen and (max-width: 1441px) {
   .fon {
@@ -983,7 +1170,10 @@ select option:focus {
     height: 233px;
     margin-left: -650px;
     margin-top: 130px;
+<<<<<<< HEAD
     z-index: 2px;
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   }
 
   .bg {
@@ -1000,6 +1190,12 @@ select option:focus {
 }
 
 @media (min-width: 992px) {
+<<<<<<< HEAD
+=======
+  .col {
+    max-width: 33%;
+  }
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   .footer_text {
     flex: 0 0 33%;
   }
@@ -1009,27 +1205,41 @@ select option:focus {
   }
 }
 
+<<<<<<< HEAD
 @media (min-width: 1315px) {
   .col {
     max-width: 33%;
   }
 }
 
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 .react-autosuggest__container {
   position: relative;
   width: 100%;
   font-family: "Open Sans" sans-serif;
   font-size: 20px;
+<<<<<<< HEAD
   /* padding: 12px 20px;*/
   /*margin: 8px 0;*/
   display: inline-block;
   /*border: 1px solid #ccc;*/
+=======
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   box-sizing: border-box;
 }
 
 .react-autosuggest__input {
   width: 240px;
+<<<<<<< HEAD
   height: 55px;
+=======
+  height: 30px;
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
@@ -1085,5 +1295,8 @@ select option:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+<<<<<<< HEAD
   margin-top: 8px;
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
 }

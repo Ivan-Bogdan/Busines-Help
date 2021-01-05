@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { create_task } from "../../API/http";
 import Route from "./Route";
 
@@ -12,10 +13,16 @@ export default class CreateTask extends Component {
     };
   }
 
+=======
+import { createTask } from "../../API/http";
+
+export default class CreateTask extends Component {
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
   constructor(props) {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       obj: {
         address: "",
         city: "",
@@ -85,6 +92,55 @@ export default class CreateTask extends Component {
   render() {
     return (
       <div className="modal" id="id01">
+=======
+      name: "",
+      client: "",
+      date: "",
+      price: "int",
+      performer: "",
+      status: "",
+      type: 0,
+      paid: "",
+      additional_task: {},
+    };
+  }
+
+  Create_Task = (event) => {
+    event.preventDefault();
+    let payload = {
+      name: "shok",
+      client: "1b99a4c0-c679-4245-a00c-7be79799f98e",
+      date: "2020-10-02 16:48:16",
+      price: 123,
+      performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
+      status: 1,
+      type: 0,
+      paid: 0,
+      customer_id: null,
+      additional_task: {
+        route: [
+          {
+            city: "0",
+            address: "0",
+            point: 0,
+          },
+          {
+            city: "1",
+            address: "1",
+            point: 1,
+          },
+        ],
+        ttn: "thas",
+        contract_number: "215ga1",
+        waybill: "sadads",
+      },
+    };
+    createTask(payload);
+  };
+  render() {
+    return (
+      <div className="modal">
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
         <form class="modal-content2 animate">
           <div class="imgcontainer">
             <span
@@ -95,7 +151,10 @@ export default class CreateTask extends Component {
               ×
             </span>
             <p class="reg">Создать услугу</p>
+<<<<<<< HEAD
             <p style={{ color: "red" }}>{this.state.error}</p>
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           </div>
           {this.props.children}
 
@@ -112,7 +171,11 @@ export default class CreateTask extends Component {
             />
             <input
               type="text"
+<<<<<<< HEAD
               placeholder="Клиент (ТУТ БУДЕТ АВТОКОМПЛИТ)"
+=======
+              placeholder="Клиент"
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               value={this.state.client}
               name="client"
               onChange={(data) => {
@@ -134,12 +197,20 @@ export default class CreateTask extends Component {
               value={this.state.price}
               name="price"
               onChange={(data) => {
+<<<<<<< HEAD
                 this.setState({ price: Number(data.target.value) });
+=======
+                this.setState({ price: data.target.value });
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               }}
             />
             <input
               type="text"
+<<<<<<< HEAD
               placeholder="Исполнитель (ТУТ БУДЕТ АВТОКОМПЛИТ)"
+=======
+              placeholder="Исполнитель"
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               value={this.state.performer}
               name="performer"
               onChange={(data) => {
@@ -147,6 +218,7 @@ export default class CreateTask extends Component {
               }}
             />
             <select
+<<<<<<< HEAD
               className="select1"
               value={this.state.type}
               onChange={(data) => {
@@ -238,12 +310,18 @@ export default class CreateTask extends Component {
 
             <select
               className="select1"
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               value={this.state.status}
               onChange={(data) => {
                 this.setState({ status: data.target.value });
               }}
             >
+<<<<<<< HEAD
               <option value="" disabled selected style={{ display: "none" }}>
+=======
+              <option disabled selected style={{ display: "none" }}>
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
                 Статус
               </option>
               <option type="number" value={Number(0)}>
@@ -259,6 +337,7 @@ export default class CreateTask extends Component {
                 Отменён
               </option>
             </select>
+<<<<<<< HEAD
             <select
               className="select1"
               value={this.state.paid}
@@ -276,11 +355,17 @@ export default class CreateTask extends Component {
                 Оплачено
               </option>
             </select>
+=======
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
             <div className="services">
               <button
                 type="submit"
                 className="button_create"
+<<<<<<< HEAD
                 onClick={this.props.onClose}
+=======
+                onClick={this.LoginUser}
+>>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
               >
                 Отмена
               </button>
