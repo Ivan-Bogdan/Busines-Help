@@ -20,6 +20,7 @@ const MyServ = () => {
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [limit] = useState(10);
+  const [offset, setOffset] = useState(0);
 
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
@@ -67,6 +68,7 @@ const MyServ = () => {
     }, 300);
   }, [
     fingerprint,
+    offset,
     FetchData,
     error,
     count,
