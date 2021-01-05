@@ -19,8 +19,8 @@ const Client_Item = ({ item }) => {
       <div className="App">
         <Modal isShowing={modal}>
           <div className="modal" id="id01">
-            <form class="modal-signin animate">
-              <div class="imgcontainer">
+            <form className="modal-signin animate">
+              <div className="imgcontainer">
                 <span
                   className="close"
                   onClick={toggleModal}
@@ -28,7 +28,7 @@ const Client_Item = ({ item }) => {
                 >
                   ×
                 </span>
-                <p class="reg"></p>
+                <p className="reg"></p>
               </div>
 
               <div className="container3" style={{ display: "block" }}>

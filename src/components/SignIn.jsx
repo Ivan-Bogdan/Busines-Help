@@ -13,14 +13,6 @@ const getHashable = (components) => {
 };
 
 export default class SignIn extends Component {
-  componentDidMount() {
-    const modal = document.getElementById("id01");
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  }
   constructor(props) {
     super(props);
 
@@ -73,8 +65,8 @@ export default class SignIn extends Component {
   render() {
     return (
       <div className="modal" id="id01">
-        <form class="modal-signin animate">
-          <div class="imgcontainer">
+        <form className="modal-signin animate">
+          <div className="imgcontainer">
             <span
               className="close"
               onClick={this.props.onClose}
@@ -82,12 +74,12 @@ export default class SignIn extends Component {
             >
               ×
             </span>
-            <p class="reg">Войти</p>
+            <p className="reg">Войти</p>
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
 
-          <div class="container3">
+          <div className="container3">
             {this.props.children}
             <input
               type="text"

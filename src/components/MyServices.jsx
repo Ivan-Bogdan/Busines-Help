@@ -45,8 +45,8 @@ const MyServ = () => {
             }
           });
         }
+        FetchData();
       }
-      FetchData();
     }, 300);
   }, [
     fingerprint,

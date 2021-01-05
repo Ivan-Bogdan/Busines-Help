@@ -7,7 +7,7 @@
 img {
   border: none;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
@@ -564,10 +564,11 @@ button:hover {
   opacity: 0.8;
 }
 button:active,
-button:focus input:active,
+button:focus,
+input:active,
 input:focus,
-select:active,
-select:focus {
+select:focus,
+select:active {
   outline: none;
 }
 

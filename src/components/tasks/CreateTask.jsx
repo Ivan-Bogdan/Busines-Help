@@ -77,8 +77,8 @@ export default class CreateTask extends Component {
   render() {
     return (
       <div className="modal" id="id01">
-        <form class="modal-content2 animate">
-          <div class="imgcontainer">
+        <form className="modal-content2 animate">
+          <div className="imgcontainer">
             <span
               className="close"
               onClick={this.props.onClose}
@@ -86,12 +86,12 @@ export default class CreateTask extends Component {
             >
               ×
             </span>
-            <p class="reg">Создать услугу</p>
+            <p className="reg">Создать услугу</p>
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
 
-          <div class="container3">
+          <div className="container3">
             {this.props.children}
             <input
               type="text"
@@ -145,7 +145,7 @@ export default class CreateTask extends Component {
                 this.setState({ type: data.target.value });
               }}
             >
-              <option value="" disabled selected style={{ display: "none" }}>
+              <option value="" disabled defaultValue style={{ display: "none" }}>
                 Тип
               </option>
               <option type="number" value={Number(0)}>
@@ -235,7 +235,7 @@ export default class CreateTask extends Component {
                 this.setState({ status: data.target.value });
               }}
             >
-              <option value="" disabled selected style={{ display: "none" }}>
+              <option value="" disabled defaultValue style={{ display: "none" }}>
                 Статус
               </option>
               <option type="number" value={Number(0)}>
@@ -258,7 +258,7 @@ export default class CreateTask extends Component {
                 this.setState({ paid: data.target.value });
               }}
             >
-              <option value="" disabled selected style={{ display: "none" }}>
+              <option value="" disabled defaultValue style={{ display: "none" }}>
                 Оплачено/Неоплачено
               </option>
               <option type="number" value={Number(0)}>

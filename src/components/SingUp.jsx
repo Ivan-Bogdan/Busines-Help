@@ -14,14 +14,6 @@ const getHashable = (components) => {
 };
 
 export default class SignUp extends React.Component {
-  componentDidMount() {
-    const modal = document.getElementById("id01");
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  }
   constructor(props) {
     super(props);
 
@@ -164,8 +156,8 @@ export default class SignUp extends React.Component {
     const { suggestions } = this.state;
     return (
       <div className="modal" id="id01">
-        <form class="modal-content animate">
-          <div class="imgcontainer">
+        <form className="modal-content animate">
+          <div className="imgcontainer">
             <span
               className="close"
               onClick={this.props.onClose}
@@ -173,14 +165,14 @@ export default class SignUp extends React.Component {
             >
               ×
             </span>
-            <p class="reg">Регистрация</p>
+            <p className="reg">Регистрация</p>
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
 
-          <div class="container3">
+          <div className="container3">
             {this.props.children}
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="email"
                 placeholder="E-mail"
@@ -191,11 +183,11 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">
+              <span className="form__error">
                 Это поле должно содержать E-Mail в формате example@site.com
               </span>
             </div>
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="tel"
                 placeholder="Телефон"
@@ -207,11 +199,11 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">
+              <span className="form__error">
                 Это поле содержит телефон в неверном формате
               </span>
             </div>
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="password"
                 placeholder="Придумайте пароль"
@@ -223,12 +215,12 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">
+              <span className="form__error">
                 Пароль должен иметь не менее 8 символом, хотябы одну заглавную
                 букву и цифру
               </span>
             </div>
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="password"
                 placeholder="Повторите пароль"
@@ -240,7 +232,7 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">Пароли не совпадают</span>
+              <span className="form__error">Пароли не совпадают</span>
             </div>
             <select
               className="select1"
@@ -252,7 +244,7 @@ export default class SignUp extends React.Component {
               }}
               required
             >
-              <option disabled selected style={{ display: "none" }}>
+              <option disabled value style={{ display: "none" }}>
                 Форма деятельности
               </option>
               <option type="number" value={Number(0)}>
@@ -278,7 +270,7 @@ export default class SignUp extends React.Component {
               }}
               required
             />
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="text"
                 placeholder="УНП"
@@ -292,7 +284,7 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">
+              <span className="form__error">
                 Это поле должно содержать девять (9) цифр
               </span>
             </div>
@@ -354,7 +346,7 @@ export default class SignUp extends React.Component {
               }}
               required
             />
-            <div class="form__field">
+            <div className="form__field">
               <input
                 type="text"
                 placeholder="ОКЭД"
@@ -368,7 +360,7 @@ export default class SignUp extends React.Component {
                 }}
                 required
               />
-              <span class="form__error">
+              <span className="form__error">
                 Это поле должно содержать пять (5) цифр
               </span>
             </div>
@@ -395,9 +387,9 @@ export default class SignUp extends React.Component {
             >
               Регистрация
             </button>
-            <button type="submit" className="button5">
+            {/* <button type="submit" className="button5">
               Логин
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
