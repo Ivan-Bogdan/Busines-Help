@@ -29,11 +29,7 @@ var modal = document.getElementById("id01");
 
       // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-<<<<<<< HEAD
         if (event.target === modal) {
-=======
-        if (event.target == modal) {
->>>>>>> 2c640a995ffef113034fb92a6655c31a1bf4a3c8
           modal.style.display = "none";
         }
       };
