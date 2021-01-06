@@ -25,7 +25,7 @@ export default class SignUp extends React.Component {
       fingerprint: this._finger(),
       role_id: 1,
       data: {
-        otype: 0,
+        otype: "",
         name: "",
         unp: "",
         city: "",
@@ -235,6 +235,7 @@ export default class SignUp extends React.Component {
               <span className="form__error">Пароли не совпадают</span>
             </div>
             <select
+              required
               className="select1"
               value={this.state.data.otype}
               onChange={(prevState) => {
@@ -242,10 +243,22 @@ export default class SignUp extends React.Component {
                   data: { ...this.state.data, otype: prevState.target.value },
                 });
               }}
-              required
             >
-              <option disabled value style={{ display: "none" }}>
+              <option
+                value=""
+                disabled
+                defaultValue
+                style={{ display: "none" }}
+              >
                 Форма деятельности
+              </option>
+              <option
+                value=""
+                disabled
+                defaultValue
+                style={{ display: "none" }}
+              >
+                Тип
               </option>
               <option type="number" value={Number(0)}>
                 ИП
@@ -383,13 +396,10 @@ export default class SignUp extends React.Component {
             <button
               type="submit"
               className="button5"
-              onClick={this.handleSubmit}
+              onClick={() => this.handleSubmit}
             >
               Регистрация
             </button>
-            {/* <button type="submit" className="button5">
-              Логин
-            </button> */}
           </div>
         </form>
       </div>
