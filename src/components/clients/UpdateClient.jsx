@@ -61,6 +61,44 @@ export default class UpdateClient extends Component {
       window.location.href = `/myclients/`;
     }, 100);
   };
+
+  onChange = (event, { newValue }) => {
+    this.setState({ value: newValue });
+  };
+
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: this.getSuggestions(value),
+    });
+  };
+
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: [],
+    });
+  };
+
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  getSuggestions = (value) => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    let { suggestions } = this.state;
+
+    if (suggestions === undefined) {
+      return (suggestions = "");
+    } else {
+      return inputLength === 0
+        ? []
+        : suggestions.filter(
+            (lang) => lang.toLowerCase().slice(0, inputLength) === inputValue
+          );
+    }
+  };
+
   render() {
     const { suggestions } = this.state;
     return (
