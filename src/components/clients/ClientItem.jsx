@@ -3,7 +3,7 @@ import { city__name, delete_client } from "../../API/http";
 import Modal from "../Modal";
 import UpdateClient from "./UpdateClient";
 
-const ClientItem = ({ item, deleteClient }) => {
+const ClientItem = ({ item, deleteClient, update }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadTask, setIsReadTask] = useState(false);
@@ -91,6 +91,7 @@ const ClientItem = ({ item, deleteClient }) => {
           onClose={toggleModal2}
           client={item.id}
           city={item.city_id}
+          update={update}
         ></UpdateClient>
       )}
       {/* 
