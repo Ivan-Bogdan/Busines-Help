@@ -23,11 +23,21 @@ export default class UpdateClient extends Component {
             unp: data.client.unp,
             city_id: data.client.city_id,
             address: data.client.address,
-            full_name: <data className="client signatory"></data>,
+            full_name: data.client.signatory,
           });
         }
       });
     }, 200);
+  }
+
+  componentDidMount() {
+    cityName({ id: this.state.city_id }).then((data) => {
+      if (data.message) {
+        console.log(data.message);
+      } else {
+        this.setState({ city: data.city });
+      }
+    });
   }
 
   constructor(props) {
@@ -36,10 +46,13 @@ export default class UpdateClient extends Component {
       name: "",
       phone: "",
       unp: "",
+
+      city: "",
       city_id: "",
       address: "",
       full_name: "",
       suggestions: [],
+      error: "",
     };
   }
 
@@ -112,7 +125,7 @@ export default class UpdateClient extends Component {
             >
               ×
             </span>
-            <p className="reg">Новый клиент</p>
+            <p className="reg">Изменить клиента</p>
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
@@ -163,35 +176,6 @@ export default class UpdateClient extends Component {
                 Это поле содержит телефон в неверном формате
               </span>
             </div>
-            <select
-              required
-              className="select1"
-              value={this.state.otype}
-              onChange={(data) => {
-                this.setState({
-                  otype: data.target.value,
-                });
-              }}
-            >
-              <option
-                value=""
-                disabled
-                defaultValue
-                style={{ display: "none" }}
-              >
-                Форма деятельности
-              </option>
-              <option type="number" value={Number(0)}>
-                ИП
-              </option>
-              <option value={Number(1)}>ООО</option>
-              <option value={Number(2)}>ОАО</option>
-              <option value={Number(3)}>ЧУП</option>
-              <option value={Number(4)}>ЧТУП</option>
-              <option value={Number(5)}>ИНОЕ</option>
-              <option value={Number(6)}>Иностранное предприятие</option>
-            </select>
-
             <Autosuggest
               suggestions={suggestions}
               required
@@ -256,7 +240,7 @@ export default class UpdateClient extends Component {
               className="button5"
               onClick={this.handleSubmit}
             >
-              Создать
+              Изменить
             </button>
           </div>
         </form>
