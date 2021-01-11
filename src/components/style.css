@@ -115,7 +115,7 @@ ul {
 
 .content_client {
   display: flex;
-  max-width: 90%;
+  width: 90%;
   flex-wrap: wrap;
 
   /*   display: flex;
@@ -192,7 +192,7 @@ ul {
 }
 
 .client_name {
-  width: 420px;
+  width: 350px;
 }
 
 .client_unp {
