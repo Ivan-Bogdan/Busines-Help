@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { authenticate, get_client_list, update_token } from "../API/http";
+import {
+  authenticate,
+  delete_client,
+  get_client_list,
+  update_token,
+} from "../API/http";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
@@ -86,6 +91,14 @@ const MyClients = () => {
     setCreateClient(!isCreateClient);
   };
 
+  const deleteClient = async (item) => {
+    const result = await delete_client({ id: item.id });
+    if (result.message) {
+      console.log(result.message);
+    }
+    //window.location.reload();
+  };
+
   return (
     <div>
       <Navbar />
@@ -103,7 +116,7 @@ const MyClients = () => {
           </div>
           {clients.map((item, index) => (
             <div key={index} className="client_item">
-              <ClientItem item={item} />
+              <ClientItem item={item} deleteClient={deleteClient} />
             </div>
           ))}
         </div>
