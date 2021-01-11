@@ -328,7 +328,7 @@ export default class UpdateTask extends Component {
                 className="button_create"
                 onClick={(event) => {
                   event.preventDefault();
-                  window.location.href = `/myservices/`;
+                  this.props.onClose;
                 }}
               >
                 Отмена
