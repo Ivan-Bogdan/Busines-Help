@@ -236,7 +236,7 @@ export default class UpdateClient extends Component {
             <button
               type="submit"
               className="button5"
-              onClick={this.handleSubmit}
+              onClick={this.Update_Client}
             >
               Изменить
             </button>
