@@ -74,6 +74,7 @@ const ClientItem = ({ item }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     deleteClient();
+                    setModal(false);
                   }}
                 >
                   Удалить
