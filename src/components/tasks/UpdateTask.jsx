@@ -230,7 +230,7 @@ export default class UpdateTask extends Component {
               </option>
             </select>
 
-            {this.state.type === "0" && (
+            {this.state.type === 0 && (
               <div style={{ marginLeft: "20px" }}>
                 <input
                   type="text"
