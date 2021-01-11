@@ -92,7 +92,7 @@ const MyClients = () => {
   };
 
   const deleteClient = async (item) => {
-    const result = await delete_client({ id: item.id });
+    const result = await delete_client({ id: item });
     if (result.message) {
       console.log(result.message);
     }
