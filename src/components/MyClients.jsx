@@ -39,7 +39,7 @@ const MyClients = () => {
         FetchData();
       }
     }, 300);
-  }, [FetchData, error, count, selectedTaskPage, desc, sort]);
+  }, [FetchData, clients, error, count, selectedTaskPage, desc, sort]);
 
   const FetchData = async () => {
     let payload = {
@@ -95,7 +95,7 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-            {clients.map((item, index) => (
+          {clients.map((item, index) => (
             <div key={index} className="client_item">
               <ClientItem item={item} />
             </div>

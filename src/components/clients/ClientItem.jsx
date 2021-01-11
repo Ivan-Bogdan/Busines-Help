@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { city__name } from "../../API/http";
+import { city__name, delete_client } from "../../API/http";
 import Modal from "../Modal";
 
 const ClientItem = ({ item }) => {
@@ -18,6 +18,14 @@ const ClientItem = ({ item }) => {
       }
     })();
   }, [item]);
+
+  const deleteClient = async () => {
+    const result = await delete_client({ id: item.id });
+    if (result.message) {
+      console.log(result.message);
+    }
+    //window.location.reload();
+  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -63,6 +71,7 @@ const ClientItem = ({ item }) => {
                   className="button5"
                   onClick={(event) => {
                     event.preventDefault();
+                    deleteClient()
                   }}
                 >
                   Удалить
