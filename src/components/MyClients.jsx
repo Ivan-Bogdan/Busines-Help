@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
-import Client_Item from "./clients/Client_Item";
+import ClientItem from "./clients/ClientItem";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -44,9 +44,9 @@ const MyClients = () => {
   const FetchData = async () => {
     let payload = {
       limit: limit,
+      offset: selectedTaskPage * 10,
       sort: sort,
       desc: desc,
-      offset: selectedTaskPage * 10,
     };
     const result = await get_client_list(payload);
     if (result.message) {
@@ -95,9 +95,9 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-          {clients.map((item, acc) => (
-            <div key={acc} className="client_item">
-              <Client_Item key={acc} item={item} />
+          {clients.map((item, index) => (
+            <div key={index} className="client_item">
+              <ClientItem item={item} />
             </div>
           ))}
         </div>

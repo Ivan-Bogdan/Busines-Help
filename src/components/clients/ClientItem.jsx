@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
 
-const Client_Item = ({ item }) => {
+const ClientItem = ({ item }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -61,4 +61,4 @@ const Client_Item = ({ item }) => {
   );
 };
 
-export default Client_Item;
+export default ClientItem;
