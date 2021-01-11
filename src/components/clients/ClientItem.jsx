@@ -36,7 +36,9 @@ const ClientItem = ({ item }) => {
       <div className="content_client">
         <div className="client_name">{item.name}</div>
         <div className="client_unp">{item.unp}</div>
-        <div className="client_address">{cityName} {item.address}</div>
+        <div className="client_address">
+          {cityName} {item.address}
+        </div>
       </div>
       <button className="editing" onClick={toggleModal} />
       <div className="App">
@@ -71,7 +73,7 @@ const ClientItem = ({ item }) => {
                   className="button5"
                   onClick={(event) => {
                     event.preventDefault();
-                    deleteClient()
+                    deleteClient();
                   }}
                 >
                   Удалить
