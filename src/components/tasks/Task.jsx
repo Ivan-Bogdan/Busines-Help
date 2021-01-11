@@ -119,6 +119,7 @@ const Task = ({ task, deleteTask }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     deleteTask(task.id);
+                    setModal(false);
                   }}
                 >
                   Удалить
