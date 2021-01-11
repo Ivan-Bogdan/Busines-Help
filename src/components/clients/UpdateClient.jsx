@@ -46,7 +46,6 @@ export default class UpdateClient extends Component {
       name: "",
       phone: "",
       unp: "",
-
       city: "",
       city_id: "",
       address: "",
