@@ -21,7 +21,6 @@ export default class UpdateClient extends Component {
             name: data.client.name,
             phone: data.client.phone,
             unp: data.client.unp,
-            city_id: data.client.city_id,
             address: data.client.address,
             full_name: data.client.signatory,
           });
@@ -47,7 +46,7 @@ export default class UpdateClient extends Component {
       phone: "",
       unp: "",
       city: "",
-      city_id: "",
+      city_id: this.props.city,
       address: "",
       full_name: "",
       suggestions: [],
