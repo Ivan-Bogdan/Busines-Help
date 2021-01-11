@@ -53,8 +53,8 @@ const MyClients = () => {
       setError(result.message);
       localStorage.clear();
     } else {
-      setCount(result.count);
-      setClients(result.clients);
+      setCount(result.count);/* 
+      setClients(result.clients); */
       return setError("");
     }
   };
@@ -95,11 +95,11 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-          {clients.map((item, index) => (
+          {/*   {clients.map((item, index) => (
             <div key={index} className="client_item">
               <ClientItem item={item} />
             </div>
-          ))}
+          ))} */}
         </div>
       </section>
       <Footer />
