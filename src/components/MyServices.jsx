@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { get_task_list, update_token, authenticate } from "../API/http";
+import {
+  get_task_list,
+  update_token,
+  authenticate,
+  delete_task,
+} from "../API/http";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/style.css";
@@ -107,6 +112,14 @@ const MyServ = () => {
     }
   };
 
+  const deleteTask = async (task) => {
+    const result = await delete_task({ task_id: task });
+    if (result.message) {
+      console.log(result.message);
+    }
+    FetchData();
+  };
+
   return (
     <div className="app">
       <Navbar />
@@ -138,7 +151,7 @@ const MyServ = () => {
           <div className="container">
             {tasks.map((task, index) => (
               <div key={index} className="task_item">
-                <Task task={task}></Task>
+                <Task task={task} deleteTask={deleteTask}></Task>
               </div>
             ))}
             <div className={isVisible ? "block3" : "block1"} align="right">

@@ -28,28 +28,23 @@ const MyClients = () => {
   const [sort, setSort] = useState("name");
 
   useEffect(() => {
-    if (!mounted.current) {
-      _getFingerprint();
-      setTimeout(() => {
-        if (localStorage.getItem("token")) {
-          if (fingerprint !== "") {
-            let pay = { fingerprint: fingerprint };
-            console.log(pay);
-            update_token(pay).then((data) => {
-              if (data.message) {
-                console.log(data.message);
-              } else {
-                authenticate(data, () => {});
-              }
-            });
-          }
-          FetchData();
+    _getFingerprint();
+    setTimeout(() => {
+      if (localStorage.getItem("token")) {
+        if (fingerprint !== "") {
+          let pay = { fingerprint: fingerprint };
+          console.log(pay);
+          update_token(pay).then((data) => {
+            if (data.message) {
+              console.log(data.message);
+            } else {
+              authenticate(data, () => {});
+            }
+          });
         }
-      }, 300);
-      mounted.current = true;
-    } else {
-      FetchData();
-    }
+        FetchData();
+      }
+    }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
   const FetchData = async () => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { delete_task, city__name } from "../../API/http";
+import { city__name } from "../../API/http";
 import Modal from "../Modal";
 import UpdateTask from "./UpdateTask";
 import ReadTask from "./ReadTask";
 
-const Task = ({ task }) => {
+const Task = ({ task, deleteTask }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadTask, setIsReadTask] = useState(false);
@@ -39,14 +39,6 @@ const Task = ({ task }) => {
     }
     func();
   }, [task]);
-
-  const FetchData = async () => {
-    const result = await delete_task({ task_id: task.id });
-    if (result.message) {
-      console.log(result.message);
-    }
-    window.location.reload();
-  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -126,7 +118,7 @@ const Task = ({ task }) => {
                   className="button5"
                   onClick={(event) => {
                     event.preventDefault();
-                    FetchData();
+                    deleteTask(task.id);
                   }}
                 >
                   Удалить
