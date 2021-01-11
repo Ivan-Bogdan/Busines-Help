@@ -86,7 +86,7 @@ const ClientItem = ({ item, deleteClient }) => {
         </Modal>
       </div>
       {modal2 && (
-        <UpdateClient onClose={toggleModal2} task={item.id}></UpdateClient>
+        <UpdateClient onClose={toggleModal2} client={item.id}></UpdateClient>
       )}{/* 
       {isReadTask && <ReadTask onClose={toogleReadTask} task={item.id} />} */}
     </div>
