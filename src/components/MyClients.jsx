@@ -3,8 +3,8 @@ import { authenticate, get_client_list, update_token } from "../API/http";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
-import Client from "./clients/Client_Item";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
+import Client_Item from "./clients/Client_Item";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -97,7 +97,7 @@ const MyClients = () => {
           </div>
           {clients.map((item, acc) => (
             <div key={acc} className="client_item">
-              <Client key={acc} item={item} />
+              <Client_Item key={acc} item={item} />
             </div>
           ))}
         </div>
