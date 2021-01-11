@@ -18,12 +18,12 @@ export default class UpdateClient extends Component {
         } else {
           console.log(data);
           this.setState({
-            name: data.task.name,
-            phone: data.task.date.toLocaleString().substr(0, 10),
-            unp: data.task.price,
-            city_id: data.task.status,
-            address: data.task.type,
-            full_name: data.task.paid,
+            name: data.client.name,
+            phone: data.client.phone,
+            unp: data.client.unp,
+            city_id: data.client.city_id,
+            address: data.client.address,
+            full_name: <data className="client signatory"></data>,
           });
         }
       });
