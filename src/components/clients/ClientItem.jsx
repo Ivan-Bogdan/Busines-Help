@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { city__name, delete_client } from "../../API/http";
 import Modal from "../Modal";
+import UpdateClient from "./UpdateClient";
 
 const ClientItem = ({ item, deleteClient }) => {
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const [isReadTask, setIsReadTask] = useState(false);
   const [cityName, setCityName] = useState("");
 
   useEffect(() => {
@@ -21,6 +24,12 @@ const ClientItem = ({ item, deleteClient }) => {
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+  const toggleModal2 = () => {
+    setModal2(!modal2);
+  };
+  const toogleReadTask = () => {
+    setIsReadTask(!isReadTask);
   };
 
   return (
@@ -76,6 +85,10 @@ const ClientItem = ({ item, deleteClient }) => {
           </div>
         </Modal>
       </div>
+      {modal2 && (
+        <UpdateClient onClose={toggleModal2} task={item.id}></UpdateClient>
+      )}{/* 
+      {isReadTask && <ReadTask onClose={toogleReadTask} task={item.id} />} */}
     </div>
   );
 };
