@@ -95,7 +95,7 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-          {clients.clients.map((item, acc) => (
+          {clients.map((item, acc) => (
             <div key={acc} className="client_item">
               <Client key={acc} item={item} />
             </div>
