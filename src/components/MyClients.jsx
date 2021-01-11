@@ -39,7 +39,7 @@ const MyClients = () => {
         FetchData();
       }
     }, 300);
-  }, [FetchData, clients, error, count, selectedTaskPage, desc, sort]);
+  }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
   const FetchData = async () => {
     let payload = {
