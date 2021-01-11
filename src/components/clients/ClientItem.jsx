@@ -64,6 +64,7 @@ const ClientItem = ({ item, deleteClient }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     setModal(false);
+                    setModal2(true);
                   }}
                 >
                   Редактировать
@@ -87,7 +88,8 @@ const ClientItem = ({ item, deleteClient }) => {
       </div>
       {modal2 && (
         <UpdateClient onClose={toggleModal2} client={item.id}></UpdateClient>
-      )}{/* 
+      )}
+      {/* 
       {isReadTask && <ReadTask onClose={toogleReadTask} task={item.id} />} */}
     </div>
   );
