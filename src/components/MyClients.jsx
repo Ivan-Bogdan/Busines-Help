@@ -54,7 +54,7 @@ const MyClients = () => {
       localStorage.clear();
     } else {
       setCount(result.count);
-      setClients(result.tasks);
+      setClients(result.clients);
       return setError("");
     }
   };
