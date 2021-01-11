@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { authenticate, get_client_list, update_token } from "../API/http";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -11,6 +11,7 @@ const getHashable = (components) => {
 };
 
 const MyClients = () => {
+  const mounted = useRef();
   const [error, setError] = useState(false);
   const [fingerprint, setFingerprint] = useState("");
   const [count, setCount] = useState(0);
@@ -22,23 +23,28 @@ const MyClients = () => {
   const [sort, setSort] = useState("name");
 
   useEffect(() => {
-    _getFingerprint();
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        if (fingerprint !== "") {
-          let pay = { fingerprint: fingerprint };
-          console.log(pay);
-          update_token(pay).then((data) => {
-            if (data.message) {
-              console.log(data.message);
-            } else {
-              authenticate(data, () => {});
-            }
-          });
+    if (!mounted.current) {
+      _getFingerprint();
+      setTimeout(() => {
+        if (localStorage.getItem("token")) {
+          if (fingerprint !== "") {
+            let pay = { fingerprint: fingerprint };
+            console.log(pay);
+            update_token(pay).then((data) => {
+              if (data.message) {
+                console.log(data.message);
+              } else {
+                authenticate(data, () => {});
+              }
+            });
+          }
+          FetchData();
         }
-        FetchData();
-      }
-    }, 300);
+      }, 300);
+      mounted.current = true;
+    } else {
+      FetchData();
+    }
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
   const FetchData = async () => {
