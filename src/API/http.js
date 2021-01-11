@@ -163,7 +163,7 @@ export async function get_task_list(payload) {
   return await response.json();
 }
 
-/* export async function update_token(payload) {
+export async function update_token(payload) {
   return axios
     .post(
       "http://altproduction.ru/rest/account/update/",
@@ -177,9 +177,9 @@ export async function get_task_list(payload) {
       console.log(error);
       return error;
     }); 
-}*/
+}
 
-export async function update_token(payload) {
+/* export async function update_token(payload) {
   let response = await fetch("http://altproduction.ru/rest/account/update/", {
     method: "POST",
     headers: {
@@ -188,7 +188,7 @@ export async function update_token(payload) {
     body: JSON.stringify(payload),
   });
   return await response.json();
-}
+} */
 
 export async function create_task(payload) {
   let response = await fetch("http://altproduction.ru/rest/task/create_task/", {
