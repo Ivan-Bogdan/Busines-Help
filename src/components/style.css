@@ -888,7 +888,7 @@ span.psw {
   }
   .content_client {
     display: flex;
-    max-width: 90%;
+    max-width: 89%;
     flex-wrap: wrap;
     text-align: center;
     align-items: center;
