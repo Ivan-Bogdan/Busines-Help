@@ -97,6 +97,7 @@ const MyClients = () => {
       console.log(result.message);
     }
     //window.location.reload();
+    FetchData();
   };
 
   return (
