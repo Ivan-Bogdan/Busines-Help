@@ -54,6 +54,25 @@ export default class UpdateClient extends Component {
     };
   }
 
+  updateClient = (e) => {
+    e.preventDefault();
+    let payload = {
+      id: this.props.client,
+      phone: this.state.phone,
+      name: this.state.name,
+      unp: this.state.unp,
+      city_id: this.state.city_id,
+      address: this.state.address,
+      full_name: this.state.full_name,
+    };
+    update_client(payload).catch((err) => {
+      console.log(err);
+    });
+    setTimeout(() => {
+      window.location.href = `/myclients/`;
+    }, 100);
+  };
+
   onChange = (event, { newValue }) => {
     this.setState({ value: newValue });
   };
@@ -217,7 +236,7 @@ export default class UpdateClient extends Component {
             <button
               type="submit"
               className="button5"
-              onClick={this.props.update}
+              onClick={this.updateClient}
             >
               Изменить
             </button>
