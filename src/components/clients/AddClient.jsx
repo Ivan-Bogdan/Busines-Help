@@ -1,6 +1,6 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import { cityList, Reg } from "../../API/http";
+import { cityList, create_client } from "../../API/http";
 
 import "../style.css";
 import "../Modal.css";
@@ -26,27 +26,24 @@ export default class AddClient extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.validEmail(this.state.email) === false) {
-      console.log("invalid email");
-    } else {
-      let payload = {
-        name: this.state.name,
-        unp: this.state.unp,
-        phone: this.state.phone,
-        otype: parseInt(this.state.otype, 10),
-        city_id: this.state.city_id,
-        address: this.state.address,
-      };
 
-      Reg(payload).then((data) => {
-        if (data.message === "User exist") {
-          this.setState({ error: "Пользователь существует!" });
-        } else {
-          console.log(data);
-        }
-        console.log(payload);
-      });
-    }
+    let payload = {
+      name: this.state.name,
+      unp: this.state.unp,
+      phone: this.state.phone,
+      otype: parseInt(this.state.otype, 10),
+      city_id: this.state.city_id,
+      address: this.state.address,
+    };
+
+    create_client(payload).then((data) => {
+      if (data.message === "User exist") {
+        this.setState({ error: "Пользователь существует!" });
+      } else {
+        console.log(data);
+      }
+      console.log(payload);
+    });
   };
 
   onChange = (event, { newValue }) => {
@@ -155,6 +152,7 @@ export default class AddClient extends React.Component {
               </span>
             </div>
             <select
+              required
               className="select1"
               value={this.state.otype}
               onChange={(data) => {
@@ -183,8 +181,8 @@ export default class AddClient extends React.Component {
             </select>
 
             <Autosuggest
-              required
               suggestions={suggestions}
+              required
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}
@@ -244,7 +242,7 @@ export default class AddClient extends React.Component {
             <button
               type="submit"
               className="button5"
-              onClick={()=>this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Создать
             </button>

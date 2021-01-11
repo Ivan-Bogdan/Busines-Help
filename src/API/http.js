@@ -224,9 +224,82 @@ export async function update_task(payload) {
 }
 
 export async function city__name(payload) {
-  let response = await fetch("http://altproduction.ru:8080/rest/v1/city_by_id/", {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+  let response = await fetch(
+    "http://altproduction.ru:8080/rest/v1/city_by_id/",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }
+  );
+  return await response.json();
+}
+
+export async function create_client(payload) {
+  let response = await fetch(
+    "http://altproduction.ru/rest/client/create_client/",
+    {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return await response.json();
+}
+
+export async function get_client_list(payload) {
+  let response = await fetch(
+    "http://altproduction.ru/rest/client/get_client_list/",
+    {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return await response.json();
+}
+
+export async function update_client(payload) {
+  let response = await fetch(
+    "http://altproduction.ru/rest/client/update_client/",
+    {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return await response.json();
+}
+
+export async function get_client(payload) {
+  let response = await fetch(
+    "http://altproduction.ru/rest/client/get_client/",
+    {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  return await response.json();
+}
+
+export async function delete_client(payload) {
+  let response = await fetch(
+    "http://altproduction.ru/rest/client/delete_client/",
+    {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(payload),
+    }
+  );
   return await response.json();
 }
