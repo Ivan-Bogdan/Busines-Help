@@ -136,8 +136,8 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            {tasks.map((task, i) => (
-              <div className="task_item">
+            {tasks.map((task, index) => (
+              <div key={index} className="task_item">
                 <Task task={task}></Task>
               </div>
             ))}
