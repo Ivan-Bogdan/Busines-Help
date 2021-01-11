@@ -112,7 +112,7 @@ export default class UpdateClient extends Component {
   };
 
   render() {
-    const { suggestions } = this.state;
+    const { suggestions, city } = this.state;
     return (
       <div className="modal" id="id01">
         <form className="modal-content animate">
@@ -185,7 +185,7 @@ export default class UpdateClient extends Component {
               inputProps={{
                 id: "city",
                 name: "city",
-                value: this.state.city,
+                value: city,
                 placeholder: "Город",
                 onChange: (_event, { newValue }) => {
                   _event.preventDefault();
