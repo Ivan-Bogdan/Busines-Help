@@ -31,7 +31,7 @@ export default class AddClient extends React.Component {
       name: this.state.name,
       unp: this.state.unp,
       phone: this.state.phone,
-      otype: parseInt(this.state.otype, 10),
+      type: parseInt(this.state.otype, 10),
       city_id: this.state.city_id,
       address: this.state.address,
     };
