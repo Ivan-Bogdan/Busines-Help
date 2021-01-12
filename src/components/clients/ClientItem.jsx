@@ -17,7 +17,7 @@ const ClientItem = ({ item, deleteClient }) => {
       if (result.message) {
         setCityName("Unknown");
       } else {
-        setCityName(result.city);
+        setCityName(result.type_abbr, ". ", result.city);
       }
     })();
   }, [item]);
