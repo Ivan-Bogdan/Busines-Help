@@ -87,6 +87,7 @@ ul {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
   color: black;
+  font-weight: 400;
 }
 
 .header-col {
@@ -210,7 +211,7 @@ ul {
 .read_client {
   color: black;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .flex {
