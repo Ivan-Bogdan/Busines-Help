@@ -3,7 +3,7 @@ import React from "react";
 const ReadClient = ({ onClose, client }) => {
   return (
     <div className="modal" id="id03">
-      <form class="modal-content2 animate" style={{ padding: "0 25px" }}>
+      <form class="modal-content2 animate" style={{ padding: "0 5px" }}>
         <div class="imgcontainer">
           <span
             className="close"
@@ -14,10 +14,10 @@ const ReadClient = ({ onClose, client }) => {
           </span>
           <p class="reg">Просмотр клиента</p>
         </div>
-        <div>{client.name}</div>
-        <div>{client.unp}</div>
-        <div>{client.phone}</div>
-        <div>{client.name}</div>
+        <div className="read_client">{client.name}</div>
+        <div className="read_client">{client.unp}</div>
+        <div className="read_client">{client.phone}</div>
+        <div className="read_client">{client.name}</div>
       </form>
     </div>
   );
