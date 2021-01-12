@@ -224,7 +224,6 @@ export default class AddClient extends React.Component {
               onClick={(event) => {
                 event.preventDefault();
                 this.props.create(name, unp, phone, otype, city_id, address);
-                this.props.onClose;
               }}
             >
               Создать
