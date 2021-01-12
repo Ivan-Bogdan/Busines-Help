@@ -36,7 +36,7 @@ const ClientItem = ({ item, deleteClient }) => {
 
   return (
     <div className="client_container">
-      <div className="content_client">
+      <div className="content_client" onClick={toogleReadClient}>
         <div className="client_name">{item.name}</div>
         <div className="client_unp">{item.unp}</div>
         <div className="client_address">
@@ -95,7 +95,9 @@ const ClientItem = ({ item, deleteClient }) => {
           city={item.city_id}
         ></UpdateClient>
       )}
-      {isReadСlient && <ReadClient onClose={toogleReadClient} client={item.id} />}
+      {isReadСlient && (
+        <ReadClient onClose={toogleReadClient} client={item.id} />
+      )}
     </div>
   );
 };
