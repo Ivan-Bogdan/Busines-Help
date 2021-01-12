@@ -72,6 +72,7 @@ const MyClients = () => {
       unp: unp,
       phone: phone,
       type: parseInt(type, 10),
+      date: Date.now(),
       city_id: city,
       address: address,
     };
