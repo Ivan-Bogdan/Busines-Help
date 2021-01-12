@@ -66,7 +66,7 @@ const MyClients = () => {
     }
   };
 
-  const createClient = async (name,unp,phone,type,city,address) => {
+  const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
       name: name,
       unp: unp,
@@ -79,7 +79,7 @@ const MyClients = () => {
     if (result.message) {
       console.log(result.message);
     }
-    //window.location.reload();
+    setCreateClient(false);
     FetchData();
   };
 
@@ -130,17 +130,19 @@ const MyClients = () => {
           </div>
           {clients.map((item, index) => (
             <div key={index} className="client_item">
-              <ClientItem
-                item={item}
-                deleteClient={deleteClient}
-              />
+              <ClientItem item={item} deleteClient={deleteClient} />
             </div>
           ))}
         </div>
       </section>
       <Footer />
       <div className="App">
-        {isCreateClient && <AddClient onClose={toggleCreateClient} create={createClient}></AddClient>}
+        {isCreateClient && (
+          <AddClient
+            onClose={toggleCreateClient}
+            create={createClient}
+          ></AddClient>
+        )}
       </div>
     </div>
   );
