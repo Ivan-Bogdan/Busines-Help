@@ -17,7 +17,9 @@ const ReadClient = ({ onClose, client }) => {
         <div className="read_client">{client.name}</div>
         <div className="read_client">{client.unp}</div>
         <div className="read_client">{client.phone}</div>
-        <div className="read_client">{client.name}</div>
+        <div className="read_client">{client.type}</div>
+        <div className="read_client">{client.city_id}</div>
+        <div className="read_client">{client.address}</div>
       </form>
     </div>
   );
