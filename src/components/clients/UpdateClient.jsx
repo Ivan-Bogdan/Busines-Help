@@ -4,6 +4,8 @@ import { update_client, get_client } from "../../API/http";
 import Autosuggest from "react-autosuggest";
 import { cityList, cityName } from "../../API/http";
 
+import "../style.css";
+
 const getSuggestionValue = (suggestion) => suggestion;
 
 export default class UpdateClient extends Component {
