@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { city__name, delete_client } from "../../API/http";
 import Modal from "../Modal";
+import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
 
 const ClientItem = ({ item, deleteClient }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const [isReadTask, setIsReadTask] = useState(false);
+  const [isReadСlient, setIsReadСlient] = useState(false);
   const [cityName, setCityName] = useState("");
 
   useEffect(() => {
@@ -29,8 +30,8 @@ const ClientItem = ({ item, deleteClient }) => {
   const toggleModal2 = () => {
     setModal2(!modal2);
   };
-  const toogleReadTask = () => {
-    setIsReadTask(!isReadTask);
+  const toogleReadClient = () => {
+    setIsReadСlient(!isReadСlient);
   };
 
   return (
@@ -94,8 +95,7 @@ const ClientItem = ({ item, deleteClient }) => {
           city={item.city_id}
         ></UpdateClient>
       )}
-      {/* 
-      {isReadTask && <ReadTask onClose={toogleReadTask} task={item.id} />} */}
+      {isReadСlient && <ReadClient onClose={toogleReadClient} client={item.id} />}
     </div>
   );
 };
