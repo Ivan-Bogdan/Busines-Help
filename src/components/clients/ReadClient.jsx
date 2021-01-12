@@ -1,5 +1,6 @@
 import React from "react";
 import "../style.css";
+import "../Modal.css";
 
 const ReadClient = ({ onClose, client }) => {
   return (

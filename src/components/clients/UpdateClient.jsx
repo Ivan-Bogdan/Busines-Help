@@ -5,6 +5,7 @@ import Autosuggest from "react-autosuggest";
 import { cityList, cityName } from "../../API/http";
 
 import "../style.css";
+import "../Modal.css";
 
 const getSuggestionValue = (suggestion) => suggestion;
 
