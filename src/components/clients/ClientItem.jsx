@@ -96,7 +96,7 @@ const ClientItem = ({ item, deleteClient }) => {
         ></UpdateClient>
       )}
       {isReadСlient && (
-        <ReadClient onClose={toogleReadClient} client={item.id} />
+        <ReadClient onClose={toogleReadClient} client={item} />
       )}
     </div>
   );
