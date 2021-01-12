@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   authenticate,
+  create_client,
   delete_client,
   get_client_list,
   update_client,
@@ -17,7 +18,6 @@ const getHashable = (components) => {
 };
 
 const MyClients = () => {
-  const mounted = useRef();
   const [error, setError] = useState(false);
   const [fingerprint, setFingerprint] = useState("");
   const [count, setCount] = useState(0);
@@ -64,6 +64,23 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
+  };
+
+  const createClient = async (name,unp,phone,type,city,address) => {
+    let payload = {
+      name: name,
+      unp: unp,
+      phone: phone,
+      type: parseInt(type, 10),
+      city_id: city,
+      address: address,
+    };
+    const result = await create_client(payload);
+    if (result.message) {
+      console.log(result.message);
+    }
+    //window.location.reload();
+    FetchData();
   };
 
   const _getFingerprint = () => {
@@ -123,7 +140,7 @@ const MyClients = () => {
       </section>
       <Footer />
       <div className="App">
-        {isCreateClient && <AddClient onClose={toggleCreateClient}></AddClient>}
+        {isCreateClient && <AddClient onClose={toggleCreateClient} create={createClient}></AddClient>}
       </div>
     </div>
   );

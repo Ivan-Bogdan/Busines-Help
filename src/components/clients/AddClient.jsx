@@ -1,6 +1,6 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import { cityList, create_client } from "../../API/http";
+import { cityList } from "../../API/http";
 
 import "../style.css";
 import "../Modal.css";
@@ -23,28 +23,6 @@ export default class AddClient extends React.Component {
       error: "",
     };
   }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    let payload = {
-      name: this.state.name,
-      unp: this.state.unp,
-      phone: this.state.phone,
-      type: parseInt(this.state.otype, 10),
-      city_id: this.state.city_id,
-      address: this.state.address,
-    };
-
-    create_client(payload).then((data) => {
-      if (data.message === "User exist") {
-        this.setState({ error: "Пользователь существует!" });
-      } else {
-        console.log(data);
-      }
-      console.log(payload);
-    });
-  };
 
   onChange = (event, { newValue }) => {
     this.setState({ value: newValue });
@@ -89,6 +67,7 @@ export default class AddClient extends React.Component {
 
   render() {
     const { suggestions } = this.state;
+    const { name, unp, phone, type, city_id, address } = this.state;
     return (
       <div className="modal" id="id01">
         <form className="modal-content animate">
@@ -242,7 +221,11 @@ export default class AddClient extends React.Component {
             <button
               type="submit"
               className="button5"
-              onClick={this.handleSubmit}
+              onClick={(event) => {
+                event.preventDefault();
+                this.props.create(name, unp, phone, type, city_id, address);
+                this.props.onClose;
+              }}
             >
               Создать
             </button>
