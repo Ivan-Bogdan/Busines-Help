@@ -67,7 +67,7 @@ export default class AddClient extends React.Component {
 
   render() {
     const { suggestions } = this.state;
-    const { name, unp, phone, type, city_id, address } = this.state;
+    const { name, unp, phone, otype, city_id, address } = this.state;
     return (
       <div className="modal" id="id01">
         <form className="modal-content animate">
@@ -223,7 +223,7 @@ export default class AddClient extends React.Component {
               className="button5"
               onClick={(event) => {
                 event.preventDefault();
-                this.props.create(name, unp, phone, type, city_id, address);
+                this.props.create(name, unp, phone, otype, city_id, address);
                 this.props.onClose;
               }}
             >
