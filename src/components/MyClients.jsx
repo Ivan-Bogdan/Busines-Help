@@ -78,7 +78,7 @@ const MyClients = () => {
     };
     const result = await create_client(payload);
     if (result.message) {
-      console.log(result.message);
+      alert(result.message);
     } else {
       setCreateClient(false);
       FetchData();
