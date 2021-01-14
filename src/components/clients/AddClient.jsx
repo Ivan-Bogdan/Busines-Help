@@ -96,40 +96,6 @@ export default class AddClient extends React.Component {
               }}
               required
             />
-            <div className="form__field">
-              <input
-                type="text"
-                placeholder="УНП"
-                name="unp"
-                pattern="(\d{9})"
-                value={this.state.unp}
-                onChange={(data) => {
-                  this.setState({
-                    unp: data.target.value,
-                  });
-                }}
-                required
-              />
-              <span className="form__error">
-                Это поле должно содержать девять (9) цифр
-              </span>
-            </div>
-            <div className="form__field">
-              <input
-                type="tel"
-                placeholder="Телефон"
-                name="tel"
-                pattern="(\+375|80|375)(29|25|44|33)(\d{3})(\d{2})(\d{2})"
-                value={this.state.phone}
-                onChange={(data) => {
-                  this.setState({ phone: data.target.value });
-                }}
-                required
-              />
-              <span className="form__error">
-                Это поле содержит телефон в неверном формате
-              </span>
-            </div>
             <select
               required
               className="select1"
@@ -157,8 +123,45 @@ export default class AddClient extends React.Component {
               <option value={Number(4)}>ЧТУП</option>
               <option value={Number(5)}>ИНОЕ</option>
               <option value={Number(6)}>Иностранное предприятие</option>
+              <option value={Number(7)}>Физическое лицо</option>
             </select>
 
+            <div className="form__field">
+              {this.state.otype !== "7" && this.state.otype.length !== 0 && (
+                <input
+                  type="text"
+                  placeholder="УНП"
+                  name="unp"
+                  pattern="(\d{9})"
+                  value={this.state.unp}
+                  onChange={(data) => {
+                    this.setState({
+                      unp: data.target.value,
+                    });
+                  }}
+                  required
+                />
+              )}
+              <span className="form__error">
+                Это поле должно содержать девять (9) цифр
+              </span>
+            </div>
+            <div className="form__field">
+              <input
+                type="tel"
+                placeholder="Телефон"
+                name="tel"
+                pattern="(\+375|80|375)(29|25|44|33)(\d{3})(\d{2})(\d{2})"
+                value={this.state.phone}
+                onChange={(data) => {
+                  this.setState({ phone: data.target.value });
+                }}
+                required
+              />
+              <span className="form__error">
+                Это поле содержит телефон в неверном формате
+              </span>
+            </div>
             <Autosuggest
               suggestions={suggestions}
               required
