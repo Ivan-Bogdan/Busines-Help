@@ -44,12 +44,12 @@ export default class SignUp extends React.Component {
         name: "",
         unp: "",
         city: "",
-        city_id: "",
         address: "",
         oked: "",
         full_name: "",
       },
       suggestions: [],
+      city_id: "",
       error: "",
     };
   }
@@ -108,7 +108,7 @@ export default class SignUp extends React.Component {
           otype: parseInt(this.state.data.otype, 10),
           name: this.state.data.name,
           unp: this.state.data.unp,
-          city_id: this.state.data.city_id,
+          city_id: this.state.city_id,
           address: this.state.data.address,
           oked: this.state.data.oked,
           full_name: this.state.data.full_name,
@@ -116,20 +116,20 @@ export default class SignUp extends React.Component {
       };
 
       Reg(payload).then((data) => {
-        if (data.message === "User exist") {
-          this.setState({ error: "Пользователь существует!" });
+        if (data.message) {
+          this.setState({ error: data.response.data.message });
         } else {
-          console.log(data);
+          this.props.onClose();
+          setTimeout(() => {
+            window.alert("Вы успешно зарегистрировались!");
+          }, 150);
         }
-        console.log(payload);
       });
     }
   };
 
   getSuggestionValue = (suggestion) => {
-    this.setState({
-      data: { ...this.state.data, city_id: suggestion.id },
-    });
+    this.setState({ city_id: suggestion.id });
     return suggestion.city;
   };
 
@@ -372,9 +372,9 @@ export default class SignUp extends React.Component {
             />
 
             <button
-              type="submit"
+              type="button"
               className="button5"
-              onClick={() => this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Регистрация
             </button>
