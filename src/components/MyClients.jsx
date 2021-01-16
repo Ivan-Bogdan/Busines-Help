@@ -37,7 +37,6 @@ const MyClients = () => {
           console.log(pay);
           update_token(pay).then((data) => {
             if (data.message) {
-              localStorage.clear();
               console.log(data.message);
             } else {
               authenticate(data, () => {});
@@ -59,6 +58,7 @@ const MyClients = () => {
     const result = await get_client_list(payload);
     if (result.message) {
       setError(result.message);
+      localStorage.clear();
     } else {
       setCount(result.count);
       setClients(result.clients);
