@@ -43,9 +43,6 @@ const MyClients = () => {
             }
           });
         }
-        useCallback(() => {
-          FetchData();
-        }, [clients]);
       }
     }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
