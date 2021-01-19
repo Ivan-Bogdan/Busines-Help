@@ -48,9 +48,9 @@ const MyClients = () => {
     }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
-  const FetchData = useCallback(() => {
+  const FetchData = useCallback( async() => {
      let payload = { limit: limit, offset: selectedTaskPage * 10, sort: sort, desc: desc, };
-      const result = await get_client_list(payload); 
+      const result =await get_client_list(payload); 
       if (result.message) 
       { setError(result.message);
          localStorage.clear(); 
