@@ -43,12 +43,14 @@ const MyClients = () => {
             }
           });
         }
-        FetchData();
+        useCallback(() => {
+          FetchData();
+        }, [clients]);
       }
     }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
-  const FetchData = useCallback(async () => {
+  const FetchData = async () => {
     let payload = {
       limit: limit,
       offset: selectedTaskPage * 10,
@@ -64,7 +66,7 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
-  }, [clients]);
+  };
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
