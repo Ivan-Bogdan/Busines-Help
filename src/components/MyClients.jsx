@@ -48,13 +48,23 @@ const MyClients = () => {
     }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
-  const FetchData = useCallback( async() => {
-     let payload = { limit: limit, offset: selectedTaskPage * 10, sort: sort, desc: desc, };
-      const result =await get_client_list(payload); 
-      if (result.message) 
-      { setError(result.message);
-         localStorage.clear(); 
-        } else { setCount(result.count); setClients(result.clients); return setError(""); } },[result]);
+  const FetchData = useCallback(async () => {
+    let payload = {
+      limit: limit,
+      offset: selectedTaskPage * 10,
+      sort: sort,
+      desc: desc,
+    };
+    const result = await get_client_list(payload);
+    if (result.message) {
+      setError(result.message);
+      localStorage.clear();
+    } else {
+      setCount(result.count);
+      setClients(result.clients);
+      return setError("");
+    }
+  }, [result]);
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
