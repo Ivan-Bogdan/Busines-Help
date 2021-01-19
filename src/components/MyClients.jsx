@@ -64,7 +64,7 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
-  }, [result]);
+  }, []);
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
