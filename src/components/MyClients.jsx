@@ -43,6 +43,7 @@ const MyClients = () => {
             }
           });
         }
+        FetchData();
       }
     }, 300);
   }, [FetchData, error, count, selectedTaskPage, desc, sort]);
