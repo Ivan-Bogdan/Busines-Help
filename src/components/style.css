@@ -1020,6 +1020,7 @@ select option:focus {
   line-height: 23px;
   margin: 3px;
   padding: 5px;
+  cursor: default;
 }
 
 .background_grey {
