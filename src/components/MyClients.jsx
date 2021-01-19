@@ -106,13 +106,16 @@ const MyClients = () => {
     setCreateClient(!isCreateClient);
   };
 
-  const deleteClient = async (item) => {
-    const result = await delete_client({ id: item });
-    if (result.message) {
-      console.log(result.message);
-    }
-    FetchData();
-  };
+  const deleteClient = useCallback(
+    async (item) => {
+      const result = await delete_client({ id: item });
+      if (result.message) {
+        console.log(result.message);
+      }
+      FetchData();
+    },
+    [clients]
+  );
 
   return (
     <div>
