@@ -164,7 +164,6 @@ export default class SignUp extends React.Component {
   render() {
     const { suggestions } = this.state;
     const { city } = this.state.data;
-    console.log(city);
     const inputProps = {
       placeholder: "Город",
       value: city,

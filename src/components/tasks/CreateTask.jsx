@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import Autosuggest from "react-autosuggest";
 import { create_task } from "../../API/http";
 import Route from "./Route";
+
+const renderSuggestion = (cleints) => <span>{cleints.name}</span>;
 
 export default class CreateTask extends Component {
   constructor(props) {
@@ -32,6 +35,7 @@ export default class CreateTask extends Component {
       suggestions: [],
       city: "",
       city_id: "",
+      clients: [],
       count: 0,
     };
   }
@@ -85,7 +89,47 @@ export default class CreateTask extends Component {
     });
   };
 
+  getSuggestionValue = (suggestion) => {
+    this.setState({ client: suggestion.id });
+    return suggestion.name;
+  };
+
+  onChange = (event, { newValue, method }) => {
+    this.setState({
+      client: newValue,
+    });
+  };
+
+  onSuggestionsFetchRequested = ({ value }) => {
+    fetch(`http://altproduction.ru/rest/client/get_client_list/`, {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        limit: 5,
+        offset: 0,
+        sort: "name",
+        desc: true,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ clients: data.clients });
+      });
+  }; // нужно поле для поиска в боди
+
+  onSuggestionsClearRequested = () => {
+    this.setState({ clients: [] });
+  };
+
   render() {
+    const { clients, client } = this.state;
+    const inputProps = {
+      placeholder: "Клиент",
+      value: client,
+      onChange: this.onChange,
+    };
     return (
       <div className="modal" id="id01">
         <form className="modal-content2 animate">
@@ -121,6 +165,14 @@ export default class CreateTask extends Component {
               onChange={(data) => {
                 this.setState({ client: data.target.value });
               }}
+            />
+            <Autosuggest
+              suggestions={clients}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={this.getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputProps}
             />
             <input
               type="date"
