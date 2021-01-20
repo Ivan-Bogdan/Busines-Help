@@ -27,12 +27,17 @@ export default class UpdateTask extends Component {
                 ...prevState.additional_task,
                 cert_of_complete:
                   data.task.additional_task.cert_of_complete.name,
-                cert_of_complete_date_sig:
-                  data.task.additional_task.cert_of_complete.date_sig,
+                cert_of_complete_date_sig: data.task.additional_task.cert_of_complete.date_sig
+                  .toLocaleString()
+                  .substr(0, 10),
                 contract: data.task.additional_task.contract_number,
-                contract_date_sig: data.task.additional_task.contract.date_sig,
+                contract_date_sig: data.task.additional_task.contract.date_sig
+                  .toLocaleString()
+                  .substr(0, 10),
                 waybill: data.task.additional_task.waybill.name,
-                waybill_date_sig: data.task.additional_task.waybill.date_sig,
+                waybill_date_sig: data.task.additional_task.waybill.date_sig
+                  .toLocaleString()
+                  .substr(0, 10),
                 route: data.task.additional_task.route,
               },
             }));
