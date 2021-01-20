@@ -25,9 +25,14 @@ export default class UpdateTask extends Component {
             this.setState((prevState) => ({
               additional_task: {
                 ...prevState.additional_task,
-                ttn: data.task.additional_task.ttn,
-                contract_number: data.task.additional_task.contract_number,
+                cert_of_complete:
+                  data.task.additional_task.cert_of_complete.name,
+                cert_of_complete_date_sig:
+                  data.task.additional_task.cert_of_complete.date_sig,
+                contract: data.task.additional_task.contract_number,
+                contract_date_sig: data.task.additional_task.contract.date_sig,
                 waybill: data.task.additional_task.waybill.name,
+                waybill_date_sig: data.task.additional_task.waybill.date_sig,
                 route: data.task.additional_task.route,
               },
             }));
@@ -35,8 +40,8 @@ export default class UpdateTask extends Component {
             this.setState((prevState) => ({
               additional_task: {
                 ...prevState.additional_task,
-                ttn: "",
-                contract_number: "",
+                cert_of_complete: "",
+                contract: "",
                 waybill: "",
                 route: [],
               },
@@ -319,7 +324,7 @@ export default class UpdateTask extends Component {
                     }));
                   }}
                 />
-                 <input
+                <input
                   type="date"
                   placeholder="Дата контракта"
                   value={this.state.additional_task.contract_date_sig}
