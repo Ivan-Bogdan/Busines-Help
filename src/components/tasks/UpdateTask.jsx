@@ -30,7 +30,7 @@ export default class UpdateTask extends Component {
                 cert_of_complete_date_sig: data.task.additional_task.cert_of_complete.date_sig
                   .toLocaleString()
                   .substr(0, 10),
-                contract: data.task.additional_task.contract_number,
+                contract: data.task.additional_task.contract.name,
                 contract_date_sig: data.task.additional_task.contract.date_sig
                   .toLocaleString()
                   .substr(0, 10),
