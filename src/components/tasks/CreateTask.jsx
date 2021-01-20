@@ -3,7 +3,6 @@ import { create_task } from "../../API/http";
 import Route from "./Route";
 
 export default class CreateTask extends Component {
-
   constructor(props) {
     super(props);
 
@@ -22,9 +21,12 @@ export default class CreateTask extends Component {
       paid: "",
       additional_task: {
         route: [],
-        ttn: "",
-        contract_number: "",
+        cert_of_complete: "",
+        cert_of_complete_date_sig: "",
+        contract: "",
+        contract_date_sig: "",
         waybill: "",
+        waybill_date_sig: "",
       },
       error: "",
       suggestions: [],
@@ -50,7 +52,7 @@ export default class CreateTask extends Component {
     this.state.additional_task.route.push(this.state.obj);
     let payload = {
       name: this.state.name,
-      client: "1b99a4c0-c679-4245-a00c-7be79799f98e", //dont update
+      client: "40b29214-03d8-4955-b946-e8e2ccbe1f6e", //dont update
       date: this.state.date,
       price: this.state.price,
       performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0", //dont update
@@ -60,9 +62,18 @@ export default class CreateTask extends Component {
       customer_id: null,
       additional_task: {
         route: this.state.additional_task.route,
-        ttn: this.state.additional_task.ttn,
-        contract_number: this.state.additional_task.contract_number,
-        waybill: this.state.additional_task.waybill,
+        cert_of_complete: {
+          name: this.state.additional_task.cert_of_complete,
+          date_sig: this.state.additional_task.cert_of_complete_date_sig,
+        },
+        contract: {
+          name: this.state.additional_task.contract,
+          date_sig: this.state.additional_task.contract_date_sig,
+        },
+        waybill: {
+          name: this.state.additional_task.waybill,
+          date_sig: this.state.additional_task.waybill_date_sig,
+        },
       },
     };
     create_task(payload).then((data) => {
@@ -145,7 +156,12 @@ export default class CreateTask extends Component {
                 this.setState({ type: data.target.value });
               }}
             >
-              <option value="" disabled defaultValue style={{ display: "none" }}>
+              <option
+                value=""
+                disabled
+                defaultValue
+                style={{ display: "none" }}
+              >
                 Тип
               </option>
               <option type="number" value={Number(0)}>
@@ -158,14 +174,29 @@ export default class CreateTask extends Component {
                 <input
                   type="text"
                   placeholder="ТТН"
-                  value={this.state.additional_task.ttn}
-                  name="ttn"
+                  value={this.state.additional_task.cert_of_complete}
+                  name="cert_of_complete"
                   onChange={(data) => {
                     const newValue = data.target.value;
                     this.setState((prevState) => ({
                       additional_task: {
                         ...prevState.additional_task,
-                        ttn: newValue,
+                        cert_of_complete: newValue,
+                      },
+                    }));
+                  }}
+                />
+                <input
+                  type="date"
+                  placeholder="Дата ТТН"
+                  value={this.state.additional_task.cert_of_complete_date_sig}
+                  name="cert_of_complete_date"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        cert_of_complete_date_sig: newValue,
                       },
                     }));
                   }}
@@ -186,16 +217,46 @@ export default class CreateTask extends Component {
                   }}
                 />
                 <input
-                  type="text"
-                  placeholder="Контактный номер"
-                  value={this.state.additional_task.contract_number}
-                  name="contract_number"
+                  type="date"
+                  placeholder="Дата накладной"
+                  value={this.state.additional_task.waybill_date_sig}
+                  name="waybill_date"
                   onChange={(data) => {
                     const newValue = data.target.value;
                     this.setState((prevState) => ({
                       additional_task: {
                         ...prevState.additional_task,
-                        contract_number: newValue,
+                        waybill_date_sig: newValue,
+                      },
+                    }));
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Контракт"
+                  value={this.state.additional_task.contract_number}
+                  name="contract"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        contract: newValue,
+                      },
+                    }));
+                  }}
+                />
+                <input
+                  type="date"
+                  placeholder="Дата контракта"
+                  value={this.state.additional_task.contract_date_sig}
+                  name="contract_date"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        contract_date_sig: newValue,
                       },
                     }));
                   }}
@@ -235,7 +296,12 @@ export default class CreateTask extends Component {
                 this.setState({ status: data.target.value });
               }}
             >
-              <option value="" disabled defaultValue style={{ display: "none" }}>
+              <option
+                value=""
+                disabled
+                defaultValue
+                style={{ display: "none" }}
+              >
                 Статус
               </option>
               <option type="number" value={Number(0)}>
@@ -258,7 +324,12 @@ export default class CreateTask extends Component {
                 this.setState({ paid: data.target.value });
               }}
             >
-              <option value="" disabled defaultValue style={{ display: "none" }}>
+              <option
+                value=""
+                disabled
+                defaultValue
+                style={{ display: "none" }}
+              >
                 Оплачено/Неоплачено
               </option>
               <option type="number" value={Number(0)}>

@@ -27,7 +27,7 @@ export default class UpdateTask extends Component {
                 ...prevState.additional_task,
                 ttn: data.task.additional_task.ttn,
                 contract_number: data.task.additional_task.contract_number,
-                waybill: data.task.additional_task.waybill,
+                waybill: data.task.additional_task.waybill.name,
                 route: data.task.additional_task.route,
               },
             }));
@@ -66,9 +66,12 @@ export default class UpdateTask extends Component {
       paid: "",
       additional_task: {
         route: [],
-        ttn: "",
-        contract_number: "",
+        cert_of_complete: "",
+        cert_of_complete_date_sig: "",
+        contract: "",
+        contract_date_sig: "",
         waybill: "",
+        waybill_date_sig: "",
       },
     };
   }
@@ -116,9 +119,18 @@ export default class UpdateTask extends Component {
       customer_id: null,
       additional_task: {
         route: this.state.additional_task.route,
-        ttn: this.state.additional_task.ttn,
-        contract_number: this.state.additional_task.contract_number,
-        waybill: this.state.additional_task.waybill,
+        cert_of_complete: {
+          name: this.state.additional_task.cert_of_complete.name,
+          date_sig: "",
+        },
+        contract: {
+          name: this.state.additional_task.contract.name,
+          date_sig: "",
+        },
+        waybill: {
+          name: this.state.additional_task.waybill.name,
+          date_sig: "",
+        },
       },
     };
     update_task(payload).catch((err) => {
@@ -235,14 +247,29 @@ export default class UpdateTask extends Component {
                 <input
                   type="text"
                   placeholder="ТТН"
-                  value={this.state.additional_task.ttn}
-                  name="ttn"
+                  value={this.state.additional_task.cert_of_complete}
+                  name="cert_of_complete"
                   onChange={(data) => {
                     const newValue = data.target.value;
                     this.setState((prevState) => ({
                       additional_task: {
                         ...prevState.additional_task,
-                        ttn: newValue,
+                        cert_of_complete: newValue,
+                      },
+                    }));
+                  }}
+                />
+                <input
+                  type="date"
+                  placeholder="Дата ТТН"
+                  value={this.state.additional_task.cert_of_complete_date_sig}
+                  name="cert_of_complete_date"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        cert_of_complete_date_sig: newValue,
                       },
                     }));
                   }}
@@ -263,16 +290,46 @@ export default class UpdateTask extends Component {
                   }}
                 />
                 <input
-                  type="text"
-                  placeholder="Контактный номер"
-                  value={this.state.additional_task.contract_number}
-                  name="contract_number"
+                  type="date"
+                  placeholder="Дата накладной"
+                  value={this.state.additional_task.waybill_date_sig}
+                  name="waybill_date"
                   onChange={(data) => {
                     const newValue = data.target.value;
                     this.setState((prevState) => ({
                       additional_task: {
                         ...prevState.additional_task,
-                        contract_number: newValue,
+                        waybill_date_sig: newValue,
+                      },
+                    }));
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Контракт"
+                  value={this.state.additional_task.contract}
+                  name="contract"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        contract: newValue,
+                      },
+                    }));
+                  }}
+                />
+                 <input
+                  type="date"
+                  placeholder="Дата контракта"
+                  value={this.state.additional_task.contract_date_sig}
+                  name="contract_date"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
+                    this.setState((prevState) => ({
+                      additional_task: {
+                        ...prevState.additional_task,
+                        contract_date_sig: newValue,
                       },
                     }));
                   }}
