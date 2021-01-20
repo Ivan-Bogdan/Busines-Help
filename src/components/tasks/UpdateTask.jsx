@@ -130,16 +130,16 @@ export default class UpdateTask extends Component {
       additional_task: {
         route: this.state.additional_task.route,
         cert_of_complete: {
-          name: this.state.additional_task.cert_of_complete.name,
-          date_sig: "",
+          name: this.state.additional_task.cert_of_complete,
+          date_sig: this.state.additional_task.cert_of_complete_date_sig,
         },
         contract: {
-          name: this.state.additional_task.contract.name,
-          date_sig: "",
+          name: this.state.additional_task.contract,
+          date_sig: this.state.additional_task.contract_date_sig,
         },
         waybill: {
-          name: this.state.additional_task.waybill.name,
-          date_sig: "",
+          name: this.state.additional_task.waybill,
+          date_sig: this.state.additional_task.waybill_date_sig,
         },
       },
     };
