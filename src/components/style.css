@@ -1150,7 +1150,7 @@ select option:focus {
   display: block;
   position: absolute;
   top: 51px;
-  width: 100%;
+  width: 280px;
   border: 1px solid #aaa;
   background-color: #fff;
   font-family: Helvetica, sans-serif;
