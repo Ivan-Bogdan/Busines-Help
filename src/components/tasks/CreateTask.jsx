@@ -101,7 +101,7 @@ export default class CreateTask extends Component {
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru/rest/client/get_client_list/`, {
+    fetch(`http://altproduction.ru/rest/client/find_client/`, {
       method: "POST",
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -109,8 +109,7 @@ export default class CreateTask extends Component {
       body: JSON.stringify({
         limit: 5,
         offset: 0,
-        sort: "name",
-        desc: true,
+        name: value,
       }),
     })
       .then((response) => response.json())
