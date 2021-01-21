@@ -16,6 +16,7 @@ export default class CreateTask extends Component {
       },
       name: "",
       client: "",
+      client_id: "",
       date: "",
       price: 0,
       performer: "",
@@ -90,7 +91,7 @@ export default class CreateTask extends Component {
   };
 
   getSuggestionValue = (suggestion) => {
-    this.setState({ client: suggestion.id });
+    this.setState({ client_id: suggestion.id });
     return suggestion.name;
   };
 
