@@ -156,15 +156,6 @@ export default class CreateTask extends Component {
                 this.setState({ name: data.target.value });
               }}
             />
-            <input
-              type="text"
-              placeholder="Клиент (ТУТ БУДЕТ АВТОКОМПЛИТ)"
-              value={this.state.client}
-              name="client"
-              onChange={(data) => {
-                this.setState({ client: data.target.value });
-              }}
-            />
             <Autosuggest
               suggestions={clients}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
