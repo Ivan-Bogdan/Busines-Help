@@ -57,7 +57,7 @@ export default class CreateTask extends Component {
     this.state.additional_task.route.push(this.state.obj);
     let payload = {
       name: this.state.name,
-      client: "40b29214-03d8-4955-b946-e8e2ccbe1f6e", //dont update
+      client: this.state.client_id, //dont update
       date: this.state.date,
       price: this.state.price,
       performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0", //dont update
