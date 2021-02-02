@@ -7,7 +7,7 @@ const FilterWindow = ({ onClose }) => {
     <div className="modal-content4">
       <div className="flex">
         <p>Сортировать по</p>
-        <select value={sort} onChange={(data) => setSort(data.target.value)}>
+        <select style={{border:"1px solid lightgrey"}} value={sort} onChange={(data) => setSort(data.target.value)}>
           <option value="name">Название</option>
           <option value="date">Дата</option>
         </select>

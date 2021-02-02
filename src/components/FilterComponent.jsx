@@ -15,6 +15,7 @@ export default class FilterComponent extends Component {
         <div className="flex">
           <p>Сортировать по</p>
           <select
+            style={{ border: "1px solid lightgrey" }}
             value={this.state.sort}
             onChange={(data) => {
               this.setState({ sort: data.target.value });
