@@ -356,7 +356,13 @@ nav ul li a:hover {
   margin-left: 10px;
   margin-right: 10px;
 }
-
+.icon-plus {
+  width: 62px;
+  height: 62px;
+  position: absolute;
+  right: -8px;
+  bottom: 5px;
+}
 /* Гамбургер */
 .menu-icon-wrapper {
   width: 30px;
@@ -578,6 +584,16 @@ input:invalid:not(:placeholder-shown) + .form__error {
 .button_create {
   background-color: #4caf50;
   color: white;
+}
+
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
 }
 
 button:hover {
@@ -941,7 +957,6 @@ span.psw {
   padding-left: 20px;
   margin: 8px 0;
   line-height: 1;
-  border: 1px solid lightgray;
   border-radius: 2px;
   height: 55px;
   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
@@ -952,6 +967,7 @@ span.psw {
 
 select {
   height: 50px;
+  border: 1px solid lightgrey;
 }
 
 .select2 {
@@ -960,7 +976,6 @@ select {
   padding-left: 20px;
   margin: 8px 0;
   line-height: 1;
-  border: 1;
   border-radius: 2px;
   height: 55px;
   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
@@ -1194,4 +1209,5 @@ select option:focus {
   align-items: center;
   justify-content: space-between;
   margin-top: 8px;
+  flex-direction: column;
 }

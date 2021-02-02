@@ -56,7 +56,13 @@ export default class Route extends Component {
   render() {
     const { suggestions } = this.state;
     return (
-      <div /* style={{ marginLeft: "20px" }} */>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Autosuggest
           required
           suggestions={suggestions}
@@ -68,7 +74,7 @@ export default class Route extends Component {
             id: "city",
             name: "city",
             value: this.state.city,
-            placeholder: "Город",
+            placeholder: "Город, деревня",
             onChange: (_event, { newValue }) => {
               _event.preventDefault();
               let payload = {
@@ -98,8 +104,9 @@ export default class Route extends Component {
           }}
         />
         <input
+          style={{ marginLeft: 10 }}
           type="text"
-          placeholder="Адрес"
+          placeholder="Улица, дом"
           value={this.state.address}
           name="Adress"
           onChange={(data) => {
@@ -111,12 +118,11 @@ export default class Route extends Component {
             );
           }}
         />
-        {(this.state.address.length === 0 || this.state.city_id.length === 0) && (
-          <p style={{ color: "red" }}>
-            Заполните поля
-          </p>
-        )}
-        <div style={{ marginLeft: "20px" }}></div>
+        {/*  {(this.state.address.length === 0 ||
+          this.state.city_id.length === 0) && (
+          <p style={{ color: "red" }}>Заполните поля</p>
+        )} */}
+        {/*  <div style={{ marginLeft: "20px" }}></div> */}
         {/* {[...Array(this.state.count)].map((item, acc) => (
                   <Route point={acc + 1} updateData={this.updateData} />
                 ))} */}

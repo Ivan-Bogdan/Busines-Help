@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
+import { faPlusSquare } from "@fortawesome/fontawesome-free-regular";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { create_task } from "../../API/http";
 import Route from "./Route";
 
@@ -142,6 +144,7 @@ export default class CreateTask extends Component {
               ×
             </span>
             <p className="reg">СОЗДАНИЕ УСЛУГИ</p>
+
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
@@ -215,21 +218,15 @@ export default class CreateTask extends Component {
             />
             <p className="black">Тип услуги</p>
             <select
-              style={{ color: "lightgray" }}
+              style={{ border: "1px solid lightgrey" }}
+              required
               className="select1"
               value={this.state.type}
               onChange={(data) => {
                 this.setState({ type: data.target.value });
               }}
             >
-              <option
-                value=""
-                selected
-                hidden
-                disabled
-                defaultValue
-                style={{ display: "none", color: "lightgray" }}
-              >
+              <option value="" disabled selected>
                 Грузоперевозка
               </option>
               <option style={{ color: "black" }} value={Number(0)}>
@@ -327,7 +324,7 @@ export default class CreateTask extends Component {
                 <p className="black">Дата путевого листа</p>
                 <input
                   type="text"
-                  placeholder="115.10.2021"
+                  placeholder="15.10.2021"
                   value={this.state.additional_task.contract_date_sig}
                   name="contract_date"
                   onChange={(data) => {
@@ -341,50 +338,94 @@ export default class CreateTask extends Component {
                   }}
                 />
                 <p className="black">Маршрут погрузки</p>
-                {/*  <div style={{ marginLeft: "20px" }}></div> */}
-                <Route point={0} updateData={this.updateData} />
-                {[...Array(this.state.count)].map((item, acc) => (
-                  <Route point={acc + 1} updateData={this.updateData} />
-                ))}
-                <button
-                  disabled={this.state.isClickable}
-                  style={{ backgroundColor: "#4caf50" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    this.setState(({ count }) => ({
-                      count: count + 1,
-                    }));
-                    this.state.additional_task.route.push(this.state.obj);
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Route point={0} updateData={this.updateData} />
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      position: "relative",
+                    }}
+                  >
+                    {[...Array(this.state.count)].map((item, acc) => (
+                      <Route
+                        key={acc}
+                        point={acc + 1}
+                        updateData={this.updateData}
+                      />
+                    ))}
+                    <FontAwesomeIcon
+                      disabled={this.state.isClickable}
+                      icon={faPlusSquare}
+                      color={"lightgrey"}
+                      style={{
+                        width: 62,
+                        height: 62,
+                      }} /* 
+                      className={this.state.count > 0 ? "icon-plus " : "null"} */
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState(({ count }) => ({
+                          count: count + 1,
+                        }));
+                        this.state.additional_task.route.push(this.state.obj);
+                        this.setState((prevState) => ({
+                          obj: {
+                            ...prevState.obj,
+                            address: "",
+                            city: "",
+                          },
+                        }));
+                      }}
+                    />
+                  </div>
+                  {/* <button style={{}}>+</button> */}
+                </div>
+                <p className="black">Маршрут погрузки</p>
+                <input
+                  type="text"
+                  placeholder="Примечание"
+                  value={this.state.additional_task.note}
+                  name="note"
+                  onChange={(data) => {
+                    const newValue = data.target.value;
                     this.setState((prevState) => ({
-                      obj: {
-                        ...prevState.obj,
-                        address: "",
-                        city: "",
+                      additional_task: {
+                        ...prevState.additional_task,
+                        note: newValue,
                       },
                     }));
                   }}
-                >
-                  +
-                </button>
+                />
               </div>
             )}
-
+            <p className="black">Статус услуги</p>
             <select
+              style={{ border: "1px solid lightgrey" }}
               className="select1"
               value={this.state.status}
               onChange={(data) => {
                 this.setState({ status: data.target.value });
               }}
             >
-              <option
+              {/* <option
                 value=""
                 disabled
-                defaultValue
+                
                 style={{ display: "none" }}
               >
                 Статус
-              </option>
-              <option type="number" value={Number(0)}>
+              </option> */}
+              <option type="number" defaultValue value={Number(0)}>
                 К выполнению
               </option>
               <option type="number" value={Number(1)}>
@@ -397,7 +438,9 @@ export default class CreateTask extends Component {
                 Отменён
               </option>
             </select>
+            <p className="black">Оплата услуги</p>
             <select
+              style={{ border: "1px solid lightgrey" }}
               className="select1"
               value={this.state.paid}
               onChange={(data) => {
@@ -419,20 +462,83 @@ export default class CreateTask extends Component {
                 Оплачено
               </option>
             </select>
+            {this.state.paid === "1" && (
+              <div>
+                <p className="black">Вид оплаты</p>
+                <select
+                  className="select1"
+                  style={{ border: "1px solid lightgrey" }}
+                  value={this.state.typepaid}
+                  onChange={(data) => {
+                    this.setState({ typepaid: data.target.value });
+                  }}
+                >
+                  <option type="number" value={Number(0)}>
+                    Платежное поручение (банк)
+                  </option>
+                  <option type="number" value={Number(1)}>
+                    Квитанция (наличные)
+                  </option>
+                  <option type="number" value={Number(2)}>
+                    Чек КСА (наличные)
+                  </option>
+                  <option type="number" value={Number(3)}>
+                    Терминал (по карте)
+                  </option>
+                  <option type="number" value={Number(4)}>
+                    Иной платеж
+                  </option>
+                </select>
+
+                <p className="black">Номер платежа</p>
+                <input
+                  type="text"
+                  placeholder="154"
+                  value={this.state.number_paid}
+                  name="price"
+                  onChange={(data) => {
+                    this.setState({ number_paid: data.target.value });
+                  }}
+                />
+
+                <p className="black">Сумма</p>
+                <input
+                  type="number"
+                  placeholder="Сумма"
+                  value={this.state.price2}
+                  name="price"
+                  onChange={(data) => {
+                    this.setState({ price2: Number(data.target.value) });
+                  }}
+                />
+
+                <p className="black">Дата оплаты</p>
+                <input
+                  type="text"
+                  placeholder="15.10.2021"
+                  value={this.state.date_of_paid}
+                  name="price"
+                  onChange={(data) => {
+                    this.setState({ date_of_paid: data.target.value });
+                  }}
+                />
+              </div>
+            )}
             <div className="services">
-              <button
+              {/* <button
                 type="submit"
                 className="button_create"
                 onClick={this.props.onClose}
               >
                 Отмена
-              </button>
+              </button> */}
               <button
+                style={{ padding: "15px 50px" }}
                 type="submit"
                 className="button_create"
                 onClick={this.Create_Task}
               >
-                Добавить
+                СОЗДАТЬ
               </button>
             </div>
           </div>
