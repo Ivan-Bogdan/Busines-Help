@@ -141,22 +141,24 @@ export default class CreateTask extends Component {
             >
               ×
             </span>
-            <p className="reg">Создать услугу</p>
+            <p className="reg">СОЗДАНИЕ УСЛУГИ</p>
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
           {this.props.children}
 
           <div className="container3">
             {this.props.children}
+            <p className="black">Наименование услуги</p>
             <input
               type="text"
-              placeholder="Наименование"
+              placeholder="Создание сервиса поиска"
               value={this.state.name}
               name="name"
               onChange={(data) => {
                 this.setState({ name: data.target.value });
               }}
             />
+            <p className="black">Клиент</p>
             <Autosuggest
               suggestions={clients}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -165,24 +167,43 @@ export default class CreateTask extends Component {
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
             />
+            <p className="black">Дата</p>
             <input
-              type="date"
-              placeholder="Дата"
+              type="text"
+              placeholder="18.10.2021"
               value={this.state.date}
               name="date"
               onChange={(data) => {
                 this.setState({ date: data.target.value });
               }}
             />
-            <input
-              type="number"
-              placeholder="Сумма"
-              value={this.state.price}
-              name="price"
-              onChange={(data) => {
-                this.setState({ price: Number(data.target.value) });
+            <p className="black">Сумма</p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
-            />
+            >
+              <input
+                type="number"
+                placeholder="Сумма"
+                value={this.state.price}
+                name="price"
+                onChange={(data) => {
+                  this.setState({ price: Number(data.target.value) });
+                }}
+              />
+              <select style={{ height: 55, border: "1px solid lightgrey" }}>
+                <option value="BYN" defaultValue>
+                  BYN
+                </option>
+                <option value="USD">USD</option>
+                <option value="RUB">RUB</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+            <p className="black">Исполнитель</p>
             <input
               type="text"
               placeholder="Исполнитель (ТУТ БУДЕТ АВТОКОМПЛИТ)"
@@ -192,7 +213,9 @@ export default class CreateTask extends Component {
                 this.setState({ performer: data.target.value });
               }}
             />
+            <p className="black">Тип услуги</p>
             <select
+              style={{ color: "lightgray" }}
               className="select1"
               value={this.state.type}
               onChange={(data) => {
@@ -201,22 +224,25 @@ export default class CreateTask extends Component {
             >
               <option
                 value=""
+                selected
+                hidden
                 disabled
                 defaultValue
-                style={{ display: "none" }}
+                style={{ display: "none", color: "lightgray" }}
               >
-                Тип
+                Грузоперевозка
               </option>
-              <option type="number" value={Number(0)}>
+              <option style={{ color: "black" }} value={Number(0)}>
                 Грузоперевозка
               </option>
             </select>
 
             {this.state.type === "0" && (
-              <div style={{ marginLeft: "20px" }}>
+              <div>
+                <p className="black">Номер договора</p>
                 <input
                   type="text"
-                  placeholder="ТТН"
+                  placeholder="154"
                   value={this.state.additional_task.cert_of_complete}
                   name="cert_of_complete"
                   onChange={(data) => {
@@ -229,9 +255,10 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 />
+                <p className="black">Дата договора</p>
                 <input
-                  type="date"
-                  placeholder="Дата ТТН"
+                  type="text"
+                  placeholder="15.10.2021"
                   value={this.state.additional_task.cert_of_complete_date_sig}
                   name="cert_of_complete_date"
                   onChange={(data) => {
@@ -244,9 +271,10 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 />
+                <p className="black">Номер накладной</p>
                 <input
                   type="text"
-                  placeholder="Накладная"
+                  placeholder="154"
                   value={this.state.additional_task.waybill}
                   name="waybill"
                   onChange={(data) => {
@@ -259,9 +287,10 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 />
+                <p className="black">Дата накладной</p>
                 <input
-                  type="date"
-                  placeholder="Дата накладной"
+                  type="text"
+                  placeholder="15.10.2021"
                   value={this.state.additional_task.waybill_date_sig}
                   name="waybill_date"
                   onChange={(data) => {
@@ -274,24 +303,31 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 />
+                <p className="black">Номер путевого листа</p>
+                <div className="form__field">
+                  <input
+                    type="text"
+                    placeholder="Контракт"
+                    pattern=".{1,}"
+                    required
+                    value={this.state.additional_task.contract_number}
+                    name="contract"
+                    onChange={(data) => {
+                      const newValue = data.target.value;
+                      this.setState((prevState) => ({
+                        additional_task: {
+                          ...prevState.additional_task,
+                          contract: newValue,
+                        },
+                      }));
+                    }}
+                  />
+                  <span className="form__error">Заполните поле</span>
+                </div>
+                <p className="black">Дата путевого листа</p>
                 <input
                   type="text"
-                  placeholder="Контракт"
-                  value={this.state.additional_task.contract_number}
-                  name="contract"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        contract: newValue,
-                      },
-                    }));
-                  }}
-                />
-                <input
-                  type="date"
-                  placeholder="Дата контракта"
+                  placeholder="115.10.2021"
                   value={this.state.additional_task.contract_date_sig}
                   name="contract_date"
                   onChange={(data) => {
@@ -304,7 +340,8 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 />
-                <div style={{ marginLeft: "20px" }}></div>
+                <p className="black">Маршрут погрузки</p>
+                {/*  <div style={{ marginLeft: "20px" }}></div> */}
                 <Route point={0} updateData={this.updateData} />
                 {[...Array(this.state.count)].map((item, acc) => (
                   <Route point={acc + 1} updateData={this.updateData} />

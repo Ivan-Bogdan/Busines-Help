@@ -4,6 +4,14 @@
   overflow: hidden;
 }
 
+.black {
+  color: black;
+  margin-bottom: 0;
+  text-align: center;
+}
+.currency {
+}
+
 img {
   border: none;
 }
@@ -85,9 +93,9 @@ ul {
 }
 .reg {
   font-family: "Montserrat", sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   color: black;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .header-col {
@@ -546,6 +554,11 @@ input:valid:not(:placeholder-shown) {
 input:invalid:not(:placeholder-shown) {
   border-color: red;
 }
+
+input:invalid + .form__error {
+  border-color: red;
+}
+
 input:invalid:not(:placeholder-shown) + .form__error {
   display: block;
 }
@@ -928,7 +941,7 @@ span.psw {
   padding-left: 20px;
   margin: 8px 0;
   line-height: 1;
-  border: 1;
+  border: 1px solid lightgray;
   border-radius: 2px;
   height: 55px;
   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)

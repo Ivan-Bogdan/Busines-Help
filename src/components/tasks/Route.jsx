@@ -56,7 +56,7 @@ export default class Route extends Component {
   render() {
     const { suggestions } = this.state;
     return (
-      <div style={{ marginLeft: "20px" }}>
+      <div /* style={{ marginLeft: "20px" }} */>
         <Autosuggest
           required
           suggestions={suggestions}
