@@ -390,7 +390,7 @@ export default class UpdateTask extends Component {
               </option>
             </select>
             <div className="services">
-              <button
+            {/*   <button
                 type="submit"
                 className="button_create"
                 onClick={(event) => {
@@ -399,7 +399,7 @@ export default class UpdateTask extends Component {
                 }}
               >
                 Отмена
-              </button>
+              </button> */}
               <button
                 type="submit"
                 className="button_create"
