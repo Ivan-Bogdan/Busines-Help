@@ -363,15 +363,15 @@ export default class CreateTask extends Component {
                         updateData={this.updateData}
                       />
                     ))}
-                    <FontAwesomeIcon
+                     <FontAwesomeIcon
                       disabled={this.state.isClickable}
                       icon={faPlusSquare}
                       color={"lightgrey"}
                       style={{
                         width: 62,
                         height: 62,
-                      }} /* 
-                      className={this.state.count > 0 ? "icon-plus " : "null"} */
+                      }} 
+                      //className={this.state.count > 0 ? "icon-plus " : "null"}
                       onClick={(e) => {
                         e.preventDefault();
                         this.setState(({ count }) => ({
@@ -386,7 +386,7 @@ export default class CreateTask extends Component {
                           },
                         }));
                       }}
-                    />
+                    /> 
                   </div>
                   {/* <button style={{}}>+</button> */}
                 </div>

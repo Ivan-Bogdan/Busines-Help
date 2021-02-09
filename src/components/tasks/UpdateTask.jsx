@@ -390,16 +390,6 @@ export default class UpdateTask extends Component {
               </option>
             </select>
             <div className="services">
-            {/*   <button
-                type="submit"
-                className="button_create"
-                onClick={(event) => {
-                  event.preventDefault();
-                  this.props.onClose;
-                }}
-              >
-                Отмена
-              </button> */}
               <button
                 type="submit"
                 className="button_create"
