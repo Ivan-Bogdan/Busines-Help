@@ -190,7 +190,6 @@ export default class CreateTask extends Component {
               }}
             >
               <input
-                style={{ height: 47 }}
                 type="number"
                 placeholder="Сумма"
                 value={this.state.price}
@@ -347,8 +346,6 @@ export default class CreateTask extends Component {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "space-between",
                   }}
                 >
                   <Route point={0} updateData={this.updateData} />
@@ -539,7 +536,7 @@ export default class CreateTask extends Component {
               </option>
             </select>
 
-            <div className="flex" style={{ margin: "25px 0 " }}>
+            <div className="flex m25-0">
               <input type="text" placeholder="Номер" />
               <input
                 style={{ marginLeft: 10 }}
@@ -548,29 +545,28 @@ export default class CreateTask extends Component {
               />
               <img
                 src={icon_delete}
+                className="delete_icon"
                 height={34}
                 alt="delete"
-                style={{ marginLeft: 15, cursor: "pointer" }}
               />
             </div>
             <select
               className="select1"
-              style={{ border: "1px solid lightgrey", textAlignLast: "center" }}
+              style={{ border: "1px solid lightgrey" }}
             >
-              
               <option value="" disabled selected>
-              Добавить документ
+                Добавить документ
               </option>
-              <option type="number" value={Number(0)} >
+              <option type="number" value={Number(0)}>
                 Договор
               </option>
-              <option type="number" value={Number(1)} >
+              <option type="number" value={Number(1)}>
                 Путевой лист
               </option>
-              <option type="number" value={Number(2)} >
+              <option type="number" value={Number(2)}>
                 ТТИ-1
               </option>
-              <option type="number" value={Number(3)} >
+              <option type="number" value={Number(3)}>
                 ТН
               </option>
             </select>

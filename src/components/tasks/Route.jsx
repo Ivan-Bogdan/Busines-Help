@@ -72,13 +72,7 @@ export default class Route extends Component {
       onChange: this.onChange,
     };
     return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="flex" id="route">
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -87,27 +81,28 @@ export default class Route extends Component {
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
-        <input
-          style={{ marginLeft: 10 }}
-          type="text"
-          placeholder="Улица, дом"
-          value={this.state.address}
-          name="Adress"
-          onChange={(data) => {
-            this.setState({ address: data.target.value });
-            this.props.updateData(
-              data.target.value,
-              this.state.city_id,
-              this.props.point
-            );
-          }}
-        />
-        <img
-          src={PLUS_icon}
-          alt="plus"
-          height={47}
-          style={{ marginLeft: 10, cursor: "pointer" }}
-        />
+        <div className="flex ml10 ">
+          <input
+            type="text"
+            placeholder="Улица, дом"
+            value={this.state.address}
+            name="Adress"
+            onChange={(data) => {
+              this.setState({ address: data.target.value });
+              this.props.updateData(
+                data.target.value,
+                this.state.city_id,
+                this.props.point
+              );
+            }}
+          />
+          <img
+            src={PLUS_icon}
+            className="plus_icon"
+            alt="plus"
+            height={47}
+          />
+        </div>
       </div>
     );
   }

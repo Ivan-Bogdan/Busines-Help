@@ -9,7 +9,13 @@
   margin-bottom: 0;
   text-align: center;
 }
-.currency {
+
+.plus_icon {
+  margin-left: 10px;
+  cursor: pointer;
+  width: 47px;
+  height: 47px;
+  margin-top: 0;
 }
 
 img {
@@ -25,15 +31,19 @@ a:hover {
   margin: 0 auto;
 }
 
+.m25-0 {
+  margin: 25px 0;
+}
+
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 5px;
 }
 
 .delete_icon {
-  background: url(../assets/img/удалить.png)#ffffff;
+  margin-left: 15px;
+  cursor: pointer;
 }
 
 .item {
@@ -537,6 +547,10 @@ h2 {
 }
 
 /* MODAL WINDOW */
+.ml10 {
+  margin-left: 10px;
+  width: 100%;
+}
 
 /* Full-width input fields */
 input[type="text"],
@@ -876,10 +890,39 @@ span.psw {
   }
 }
 
+.select1 {
+  font-size: 20px;
+  width: 100%;
+  padding-left: 20px;
+  margin: 8px 0;
+  line-height: 1;
+  border-radius: 2px;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
+}
+
+.select_price {
+  font-size: 18px;
+  width: 164px;
+  padding-left: 20px;
+  margin: 8px 0;
+  line-height: 1;
+  border-radius: 2px;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
+}
+
 @media screen and (max-width: 587px) {
   .modal-content {
     margin: auto;
   }
+  #route {
+    flex-direction: column;
+  }
+  .ml10 {
+    margin-left: 0;
+  }
+
   .modal-content2 {
     margin: auto;
     width: 700px;
@@ -952,6 +995,46 @@ span.psw {
     width: 30px;
     height: 30px;
   }
+
+  .select_price {
+    font-size: 13px;
+    padding-left: 4px;
+    width: 126px;
+    height: 30px;
+    background-size: 30px;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 30px;
+  }
+  .select1 {
+    background-size: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+  .delete_icon {
+    height: 28px;
+    margin-top: 0;
+    margin-left: 7px;
+  }
+  .m25-0 {
+    margin: 8px 0;
+  }
+  .plus_icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media screen and (max-width: 300px) {
@@ -962,27 +1045,6 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
-}
-.select1 {
-  font-size: 20px;
-  width: 100%;
-  padding-left: 20px;
-  margin: 8px 0;
-  line-height: 1;
-  border-radius: 2px;
-  height: 47px;
-  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
-}
-
-.select_price {
-  font-size: 18px;
-  width: 164px;
-  padding-left: 20px;
-  margin: 8px 0;
-  line-height: 1;
-  border-radius: 2px;
-  height: 47px;
-  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
 }
 
 select {
