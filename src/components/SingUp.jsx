@@ -6,7 +6,6 @@ import * as FPJS from "@fingerprintjs/fingerprintjs";
 
 import "./style.css";
 import "./Modal.css";
-
 const renderSuggestion = (suggestion) => (
   <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
     <span>
@@ -14,12 +13,12 @@ const renderSuggestion = (suggestion) => (
       {suggestion.type_abbr}. {suggestion.city}{" "}
     </span>{" "}
     <div>
-      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
       {suggestion.city !== suggestion.district && (
         <span style={{ color: "#aaa", fontSize: 10 }}>
-          {suggestion.district} район
+          {suggestion.district} р-н,
         </span>
-      )}
+      )}{" "}
+      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
     </div>
   </div>
 );

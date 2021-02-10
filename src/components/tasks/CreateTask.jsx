@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { create_task } from "../../API/http";
 import Route from "./Route";
 import icon_delete from "../../assets/img/удалить.png";
+
 const renderSuggestion = (cleints) => <span>{cleints.name}</span>;
 
 export default class CreateTask extends Component {

@@ -12,12 +12,12 @@ const renderSuggestion = (suggestion) => (
       {suggestion.type_abbr}. {suggestion.city}{" "}
     </span>{" "}
     <div>
-      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
       {suggestion.city !== suggestion.district && (
         <span style={{ color: "#aaa", fontSize: 10 }}>
-          {suggestion.district} район
+          {suggestion.district} р-н,
         </span>
-      )}
+      )}{" "}
+      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
     </div>
   </div>
 );
