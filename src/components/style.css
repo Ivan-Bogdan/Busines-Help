@@ -3,6 +3,9 @@
 .app {
   overflow: hidden;
 }
+p {
+  margin-bottom: 0;
+}
 
 .black {
   color: black;
@@ -44,6 +47,10 @@ a:hover {
 .delete_icon {
   margin-left: 15px;
   cursor: pointer;
+}
+
+.mb20 {
+  margin-bottom: 20px;
 }
 
 .item {
@@ -1035,6 +1042,13 @@ span.psw {
   .plus_icon {
     width: 30px;
     height: 30px;
+  }
+  .button_create {
+    width: 140px;
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
   }
 }
 

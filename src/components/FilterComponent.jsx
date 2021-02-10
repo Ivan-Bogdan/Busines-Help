@@ -12,7 +12,7 @@ export default class FilterComponent extends Component {
   render() {
     return (
       <form className="modal-content4">
-        <div className="flex">
+        <div className="flex mb20">
           <p>Сортировать по</p>
           <select
             style={{ border: "1px solid lightgrey" }}
