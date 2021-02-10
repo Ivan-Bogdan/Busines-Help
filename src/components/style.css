@@ -25,6 +25,17 @@ a:hover {
   margin: 0 auto;
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.delete_icon {
+  background: url(../assets/img/удалить.png)#ffffff;
+}
+
 .item {
   display: flex;
   justify-content: space-between;
@@ -542,6 +553,7 @@ input[type="tel"] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  height: 47px;
 }
 
 .form__error {
@@ -958,16 +970,36 @@ span.psw {
   margin: 8px 0;
   line-height: 1;
   border-radius: 2px;
-  height: 55px;
-  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-    no-repeat right #ffffff;
-  -webkit-appearance: none;
-  background-position-x: 99%;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
+}
+
+.select_price {
+  font-size: 18px;
+  width: 164px;
+  padding-left: 20px;
+  margin: 8px 0;
+  line-height: 1;
+  border-radius: 2px;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
 }
 
 select {
-  height: 50px;
-  border: 1px solid lightgrey;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+section:checked {
+  font-size: 20px;
+  width: 100%;
+  padding-left: 20px;
+  margin: 8px 0;
+  line-height: 1;
+  border-radius: 2px;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
+  transform: rotate(180deg);
 }
 
 .select2 {
@@ -977,9 +1009,8 @@ select {
   margin: 8px 0;
   line-height: 1;
   border-radius: 2px;
-  height: 55px;
-  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-    no-repeat left #ffffff;
+  height: 47px;
+  background: url(../assets/img/strelka.png) no-repeat right #ffffff;
   -webkit-appearance: none;
   overflow: scroll;
 }

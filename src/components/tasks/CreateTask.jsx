@@ -4,7 +4,7 @@ import { faPlusSquare } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { create_task } from "../../API/http";
 import Route from "./Route";
-
+import icon_delete from "../../assets/img/удалить.png";
 const renderSuggestion = (cleints) => <span>{cleints.name}</span>;
 
 export default class CreateTask extends Component {
@@ -119,7 +119,7 @@ export default class CreateTask extends Component {
       .then((data) => {
         this.setState({ clients: data.clients });
       });
-  }; // нужно поле для поиска в боди
+  };
 
   onSuggestionsClearRequested = () => {
     this.setState({ clients: [] });
@@ -189,6 +189,7 @@ export default class CreateTask extends Component {
               }}
             >
               <input
+                style={{ height: 47 }}
                 type="number"
                 placeholder="Сумма"
                 value={this.state.price}
@@ -197,7 +198,10 @@ export default class CreateTask extends Component {
                   this.setState({ price: Number(data.target.value) });
                 }}
               />
-              <select style={{ height: 55, border: "1px solid lightgrey" }}>
+              <select
+                className="select_price"
+                style={{ border: "1px solid lightgrey" }}
+              >
                 <option value="BYN" defaultValue>
                   BYN
                 </option>
@@ -363,14 +367,14 @@ export default class CreateTask extends Component {
                         updateData={this.updateData}
                       />
                     ))}
-                     <FontAwesomeIcon
+                    {/* <FontAwesomeIcon
                       disabled={this.state.isClickable}
                       icon={faPlusSquare}
                       color={"lightgrey"}
                       style={{
                         width: 62,
                         height: 62,
-                      }} 
+                      }}
                       //className={this.state.count > 0 ? "icon-plus " : "null"}
                       onClick={(e) => {
                         e.preventDefault();
@@ -386,7 +390,7 @@ export default class CreateTask extends Component {
                           },
                         }));
                       }}
-                    /> 
+                    /> */}
                   </div>
                   {/* <button style={{}}>+</button> */}
                 </div>
@@ -524,14 +528,52 @@ export default class CreateTask extends Component {
                 />
               </div>
             )}
+            <p className="black">Документы</p>
+            <select
+              className="select1"
+              style={{ border: "1px solid lightgrey" }}
+            >
+              <option type="number" value={Number(0)}>
+                Путевой лист
+              </option>
+            </select>
+
+            <div className="flex" style={{ margin: "25px 0 " }}>
+              <input type="text" placeholder="Номер" />
+              <input
+                style={{ marginLeft: 10 }}
+                type="text"
+                placeholder="Дата"
+              />
+              <img
+                src={icon_delete}
+                height={34}
+                alt="delete"
+                style={{ marginLeft: 15, cursor: "pointer" }}
+              />
+            </div>
+            <select
+              className="select1"
+              style={{ border: "1px solid lightgrey", textAlignLast: "center" }}
+            >
+              
+              <option value="" disabled selected>
+              Добавить документ
+              </option>
+              <option type="number" value={Number(0)} >
+                Договор
+              </option>
+              <option type="number" value={Number(1)} >
+                Путевой лист
+              </option>
+              <option type="number" value={Number(2)} >
+                ТТИ-1
+              </option>
+              <option type="number" value={Number(3)} >
+                ТН
+              </option>
+            </select>
             <div className="services">
-              {/* <button
-                type="submit"
-                className="button_create"
-                onClick={this.props.onClose}
-              >
-                Отмена
-              </button> */}
               <button
                 style={{ padding: "15px 50px" }}
                 type="submit"

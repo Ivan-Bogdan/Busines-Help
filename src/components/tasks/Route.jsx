@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
+import PLUS_icon from "../../assets/img/PLUS_icon.png";
 
 const renderSuggestion = (suggestion) => (
   <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
@@ -75,7 +76,7 @@ export default class Route extends Component {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-between"
         }}
       >
         <Autosuggest
@@ -87,7 +88,7 @@ export default class Route extends Component {
           inputProps={inputProps}
         />
         <input
-          style={{ marginLeft: 10 }}
+          style={{ marginLeft: 10}}
           type="text"
           placeholder="Улица, дом"
           value={this.state.address}
@@ -101,14 +102,7 @@ export default class Route extends Component {
             );
           }}
         />
-        {/*  {(this.state.address.length === 0 ||
-          this.state.city_id.length === 0) && (
-          <p style={{ color: "red" }}>Заполните поля</p>
-        )} */}
-        {/*  <div style={{ marginLeft: "20px" }}></div> */}
-        {/* {[...Array(this.state.count)].map((item, acc) => (
-                  <Route point={acc + 1} updateData={this.updateData} />
-                ))} */}
+        <img src={PLUS_icon} alt="plus" height={47} style={{ marginLeft: 10}}/>
       </div>
     );
   }
