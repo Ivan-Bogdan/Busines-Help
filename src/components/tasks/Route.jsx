@@ -76,7 +76,7 @@ export default class Route extends Component {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
         }}
       >
         <Autosuggest
@@ -88,7 +88,7 @@ export default class Route extends Component {
           inputProps={inputProps}
         />
         <input
-          style={{ marginLeft: 10}}
+          style={{ marginLeft: 10 }}
           type="text"
           placeholder="Улица, дом"
           value={this.state.address}
@@ -102,7 +102,12 @@ export default class Route extends Component {
             );
           }}
         />
-        <img src={PLUS_icon} alt="plus" height={47} style={{ marginLeft: 10}}/>
+        <img
+          src={PLUS_icon}
+          alt="plus"
+          height={47}
+          style={{ marginLeft: 10, cursor: "pointer" }}
+        />
       </div>
     );
   }
