@@ -113,6 +113,7 @@ export default class AddClient extends React.Component {
               required
             />
             <select
+              style={{ border: "1px solid #ccc" }}
               required
               className="select1"
               value={this.state.otype}
