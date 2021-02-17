@@ -43,7 +43,7 @@
   margin: auto;
 }
 .container_task {
-  width: 860px;
+  max-width: 860px;
   margin: auto;
   border: 1px solid grey;
 }
