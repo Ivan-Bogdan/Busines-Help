@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 .app {
   overflow: hidden;
@@ -353,7 +353,7 @@ nav ul li a:hover {
 
 .main {
   width: 100%;
- /*  display: grid; */
+  /*  display: grid; */
 }
 
 .filter_div {
@@ -451,10 +451,6 @@ nav ul li a:hover {
 
 section {
   padding: 100px 50px;
-}
-
-.offer {
-  margin-top: 80px;
 }
 
 .offer__title {
@@ -927,6 +923,21 @@ span.psw {
     margin-left: 0;
   }
 
+  .main-section {
+    background: url(../assets/img/Прямоугольник56.png);
+    height: 360px;
+    background-repeat: round;
+    z-index: -1;
+  }
+
+  .add2 {
+    padding: 70px 20px;
+  }
+
+  .offer {
+    margin: 30px 40px;
+  }
+
   .modal-content2 {
     margin: auto;
     width: 700px;
@@ -972,13 +983,13 @@ span.psw {
     font-size: 22px;
   }
   .offer__text {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #7b7b7b;
     max-width: 280px;
   }
   .trigger__desc {
-    max-width: 220px;
+    max-width: 255px;
     font-size: 14px;
   }
   .content_client {

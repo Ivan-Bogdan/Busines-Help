@@ -106,7 +106,7 @@ export default class App extends Component {
           <section className="main-section" id="main-section">
             <div className="container bg">
               <div className="row">
-                <div className="col2">
+                <div className="col2 m30-40">
                   <div className="offer">
                     <h1 className="offer__title">Бизнес - помощник</h1>
                     <p className="offer__text">
@@ -125,8 +125,8 @@ export default class App extends Component {
               </div>
             </div>
           </section>
-          <section className="addition" id="addition">
-            <div className="container">
+          <section className="addition add2" id="addition">
+            <div className="container m30-40">
               <div className="row">
                 <div className="col text-align-center">
                   <h2 className="title2">Мы предлагаем:</h2>
@@ -203,7 +203,7 @@ export default class App extends Component {
                       style={{ backgroundImage: `url(${Success})` }}
                     ></div>
                     <p className="trigger__desc">
-                      Облачное решение(доступен везде где есть интернет)
+                      Облачное решение(доступен везде, где есть интернет)
                     </p>
                   </div>
                 </div>
