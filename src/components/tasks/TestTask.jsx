@@ -15,20 +15,24 @@ const TestTask = () => {
         </div>
         <div>
           <div className="flex-task">
-            <div>
+            <div className="block1">
               <div className="price color-green">+2000,00 BYN</div>
-              <div className="paid">Оплачено/Долг</div>
-              <div className="price-debt">
-                <span className="color-green">2000,00 </span>/ 0
+              <div>
+                <div className="paid">Оплачено/Долг</div>
+                <div className="price-debt">
+                  <span className="color-green">2000,00 </span>/ 0
+                </div>
               </div>
             </div>
-            <div className="w407">
-              <div className="task_name">ОАО "Кирпич-комплект"</div>
-              <div className="fz20 color-grey">Витебск - Минск</div>
-              <div className="fw600 fz20">Арматура</div>
-            </div>
-            <div>
-              <img className="cursor" src={img251} alt="" width={40}></img>
+            <div className="block3">
+              <div className="w407">
+                <div className="task_name">ОАО "Кирпич-комплект"</div>
+                <div className="fz20 color-grey">Витебск - Минск</div>
+                <div className="fw600 fz20">Арматура</div>
+              </div>
+              <div>
+                <img className="cursor" src={img251} alt="" width={40}></img>
+              </div>
             </div>
           </div>
         </div>
@@ -43,21 +47,25 @@ const TestTask = () => {
         </div>
         <div>
           <div className="flex-task">
-            <div>
+            <div className="block1">
               <div className="price color-blue">2000,00 BYN</div>
-              <div className="paid">Оплачено/Долг</div>
-              <div className="price-debt">
-                <span className="color-green">2000,00 </span>/{" "}
-                <span className="color-red">1500,00</span>
+              <div>
+                <div className="paid">Оплачено/Долг</div>
+                <div className="price-debt">
+                  <span className="color-green">2000,00 </span>/{" "}
+                  <span className="color-red">1500,00</span>
+                </div>
               </div>
             </div>
-            <div className="w407">
-              <div className="task_name">ЧУП "Реклама"</div>
-              <div className="fz20 color-grey">Гомель - Витебск</div>
-              <div className="fw600 fz20">Кирпич</div>
-            </div>
-            <div>
-              <img className="cursor" src={img251} alt="" width={40}></img>
+            <div className="block3">
+              <div className="w407">
+                <div className="task_name">ЧУП "Реклама"</div>
+                <div className="fz20 color-grey">Гомель - Витебск</div>
+                <div className="fw600 fz20">Кирпич</div>
+              </div>
+              <div>
+                <img className="cursor" src={img251} alt="" width={40}></img>
+              </div>
             </div>
           </div>
         </div>
@@ -72,21 +80,25 @@ const TestTask = () => {
         </div>
         <div>
           <div className="flex-task">
-            <div>
+            <div className="block1">
               <div className="price color-red"> -1500,00 BYN</div>
-              <div className="paid">Оплачено/Долг</div>
-              <div className="price-debt">
-                <span className="color-grey">0 </span>/{" "}
-                <span className="color-red">1500,00</span>
+              <div>
+                <div className="paid">Оплачено/Долг</div>
+                <div className="price-debt">
+                  <span className="color-grey">0 </span>/{" "}
+                  <span className="color-red">1500,00</span>
+                </div>
               </div>
             </div>
-            <div className="w407">
-              <div className="task_name">ЧУП "Ремонт-комплект"</div>
-              <div className="fz20 color-grey">Браслав - Витебск</div>
-              <div className="fw600 fz20">Строительные работы</div>
-            </div>
-            <div>
-              <img className="cursor" src={img251} alt="" width={40}></img>
+            <div className="block3">
+              <div className="w407">
+                <div className="task_name">ЧУП "Ремонт-комплект"</div>
+                <div className="fz20 color-grey">Браслав - Витебск</div>
+                <div className="fw600 fz20">Строительные работы</div>
+              </div>
+              <div>
+                <img className="cursor" src={img251} alt="" width={40}></img>
+              </div>
             </div>
           </div>
         </div>

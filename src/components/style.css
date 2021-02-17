@@ -353,7 +353,7 @@ nav ul li a:hover {
 
 .main {
   width: 100%;
-  display: grid;
+ /*  display: grid; */
 }
 
 .filter_div {

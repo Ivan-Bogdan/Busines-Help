@@ -49,13 +49,13 @@
 }
 
 .title {
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 760px;
   margin: auto;
   font-weight: 600;
+  padding: 10px 10px;
 }
 
 .flex-task {
@@ -64,7 +64,7 @@
   justify-content: space-between;
   max-width: 760px;
   margin: auto;
-  height: 170px;
+  padding: 10px 10px;
 }
 .price {
   font-size: 30px;
@@ -86,4 +86,36 @@
 
 .cursor {
   cursor: pointer;
+}
+.block3 {
+  display: contents;
+}
+
+@media screen and (max-width: 587px) {
+  .flex-task {
+    display: block;
+  }
+  .block1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .block3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cursor {
+    width: 30px;
+    height: 30px;
+  }
+  .fz20 {
+    font-size: 15px;
+  }
+  .task_name {
+    font-size: 21px;
+  }
+  .price {
+    font-size: 21px;
+  }
 }
