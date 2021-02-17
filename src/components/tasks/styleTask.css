@@ -1,0 +1,89 @@
+.color-green {
+  color: green;
+}
+.color-grey {
+  color: grey;
+}
+.color-red {
+  color: red;
+}
+.color-lightblue {
+  color: #73a9b3;
+}
+.color-blue {
+  color: #218193;
+}
+.fz20 {
+  font-size: 20px;
+}
+.fw600 {
+  font-weight: 600;
+}
+.w407 {
+  width: 407px;
+}
+
+.greenlight {
+  background-color: #e1fbdb;
+  border-bottom: 1px solid grey;
+}
+
+.bluelight {
+  background-color: #dbf6fb;
+  border-bottom: 1px solid grey;
+}
+
+.redlight {
+  background-color: #ffdbdb;
+  border-bottom: 1px solid grey;
+}
+
+.main {
+  font-family: "Open Sans", sans-serif;
+  margin: auto;
+}
+.container_task {
+  width: 860px;
+  margin: auto;
+  border: 1px solid grey;
+}
+
+.title {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 760px;
+  margin: auto;
+  font-weight: 600;
+}
+
+.flex-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 760px;
+  margin: auto;
+  height: 170px;
+}
+.price {
+  font-size: 30px;
+}
+.paid {
+  font-weight: 600;
+  color: rgb(99, 99, 99);
+}
+.price-debt {
+  font-weight: 600;
+  color: rgb(99, 99, 99);
+}
+
+.task_name {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cursor {
+  cursor: pointer;
+}

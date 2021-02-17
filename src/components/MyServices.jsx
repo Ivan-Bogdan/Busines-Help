@@ -14,6 +14,7 @@ import Task from "./tasks/Task";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
+import TestTask from "./tasks/TestTask";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -149,6 +150,7 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
+            <TestTask></TestTask>
             {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task task={task} deleteTask={deleteTask}></Task>

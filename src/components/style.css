@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
 .app {
   overflow: hidden;
@@ -203,11 +204,6 @@ ul {
   width: 28%;
 } */
 
-.task_name {
-  margin-left: 10px;
-  width: 200px;
-  text-align: left;
-}
 .task_price {
   text-align: left;
   width: 150px;
