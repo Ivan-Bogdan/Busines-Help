@@ -151,11 +151,11 @@ const MyServ = () => {
           </div>
           <div className="container">
             <TestTask></TestTask>
-            {tasks.map((task, index) => (
+            {/* {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task task={task} deleteTask={deleteTask}></Task>
               </div>
-            ))}
+            ))} */} //new layout
             <div className={isVisible ? "block3" : "block1"} align="right">
               {!isVisible && (
                 <div
