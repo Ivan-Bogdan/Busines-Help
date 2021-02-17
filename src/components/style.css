@@ -526,7 +526,7 @@ h2 {
 
 .footer {
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0;
   background: #4f5a4d;
   display: flex;
   position: fixed;
@@ -966,7 +966,7 @@ span.psw {
     line-height: 1.03;
   }
   a:not([href]):not([class]) {
-    font-size: 13px;
+    font-size: 12px;
   }
   .mh-logo {
     font-size: 22px;
