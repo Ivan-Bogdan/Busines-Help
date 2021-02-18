@@ -22,12 +22,8 @@
 .react-autosuggest__container {
   position: relative;
   width: 100%;
-  font-family: "Open Sans" sans-serif;
   font-size: 20px;
-  /*padding: 12px 20px;*/
-  /*margin: 8px 0;*/
   display: inline-block;
-  /*border: 1px solid #ccc;*/
   box-sizing: border-box;
 }
 
@@ -39,7 +35,6 @@
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
-  border-radius: 4px;
 }
 
 .react-autosuggest__input--focused {

@@ -1276,7 +1276,6 @@ select option:focus {
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
-  border-radius: 4px;
 }
 
 .react-autosuggest__input--focused {
