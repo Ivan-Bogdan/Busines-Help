@@ -180,24 +180,13 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  background-color: rgba(128, 128, 128, 0.52);
-  border: 3px solid black;
+  border: 1px solid grey;
   border-radius: 20px;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin: auto;
   height: auto;
   padding: 7px;
-}
-
-.client_container {
-  background-color: rgba(128, 128, 128, 0.52);
-  border: 3px solid black;
-  border-radius: 20px;
-  flex-wrap: wrap;
-  height: auto;
-  padding: 7px;
-  margin-bottom: 7px;
 }
 
 /* .width_28{
@@ -993,6 +982,7 @@ span.psw {
     font-size: 14px;
   }
   .content_client {
+    font-family: "Open Sans" sans-serif;
     display: flex;
     max-width: 89%;
     flex-wrap: wrap;
