@@ -43,7 +43,6 @@ const ClientItem = ({ item, deleteClient }) => {
           {cityName} {item.address}
         </div>
       </div>
-      <button className="editing" onClick={toggleModal} />
       <div className="App">
         <Modal isShowing={modal}>
           <div className="modal" id="id01">
@@ -88,6 +87,7 @@ const ClientItem = ({ item, deleteClient }) => {
           </div>
         </Modal>
       </div>
+      <button className="editing" onClick={toggleModal} />
       {modal2 && (
         <UpdateClient
           onClose={toggleModal2}
@@ -95,9 +95,7 @@ const ClientItem = ({ item, deleteClient }) => {
           city={item.city_id}
         ></UpdateClient>
       )}
-      {isReadСlient && (
-        <ReadClient onClose={toogleReadClient} client={item} />
-      )}
+      {isReadСlient && <ReadClient onClose={toogleReadClient} client={item} />}
     </div>
   );
 };
