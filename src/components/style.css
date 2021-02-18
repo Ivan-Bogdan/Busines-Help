@@ -1051,6 +1051,15 @@ span.psw {
     border-bottom: 1px solid grey;
     border-top: 1px solid grey;
   }
+  .client_name{
+    font-size: 18px;
+  }
+  .client_unp{
+    font-size: 16px;
+  }
+  .client_address{
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 300px) {
