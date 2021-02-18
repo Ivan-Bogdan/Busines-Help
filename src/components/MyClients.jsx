@@ -12,6 +12,7 @@ import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 import ClientItem from "./clients/ClientItem";
+import TestClient from "./clients/TestClient";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -132,11 +133,12 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-          {clients.map((item, index) => (
+          {/* {clients.map((item, index) => (
             <div key={index} className="client_item">
               <ClientItem item={item} deleteClient={deleteClient} />
             </div>
-          ))}
+          ))} */}
+          <TestClient></TestClient>
         </div>
       </section>
       <Footer />
