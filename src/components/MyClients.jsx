@@ -133,18 +133,11 @@ const MyClients = () => {
             </button>
             <button className="sorting"></button>
           </div>
-          <div
-            style={{
-              borderBottom: "1px solid grey",
-              borderTop: "1px solid grey",
-            }}
-          >
-            {clients.map((item, index) => (
-              <div key={index} className="client_item">
-                <ClientItem item={item} deleteClient={deleteClient} />
-              </div>
-            ))}
-          </div>
+          {clients.map((item, index) => (
+            <div key={index} className="client_item">
+              <ClientItem item={item} deleteClient={deleteClient} />
+            </div>
+          ))}
         </div>
       </section>
       <Footer />
