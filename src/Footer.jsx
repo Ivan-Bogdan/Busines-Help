@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import SocialNetworks from "./assets/img/соцсети.png";
 
-import { testing } from "./API/http";
 
 export default class Footer extends Component {
   render() {
@@ -14,7 +13,7 @@ export default class Footer extends Component {
               <a style={{ color: "black" }}>ООО «Наименование ИП»</a>
             </div>
             <div className="col footer_text">
-              <a href="" onClick={testing().then((data) => console.log(data))}>
+              <a href="">
                 О нас
               </a>
             </div>

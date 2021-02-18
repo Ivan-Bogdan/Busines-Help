@@ -1,20 +1,5 @@
 import axios from "axios";
 
-
-export const testing = () => { //УДАЛИТЬ, ЭТО НЕ ИЗ ЭТОГО ПРОЕКТА!
-  return axios
-    .get(
-      "http://localhost:6666/appointments"
-    )
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      console.log(error);
-      return error;
-    });
-};
-
 export const cityName = (payload) => {
   return axios
     .post(
