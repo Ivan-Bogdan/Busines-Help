@@ -242,7 +242,7 @@ export default class CreateTask extends Component {
             {this.state.type === "0" && (
               <div>
                 <p className="black">Номер договора</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="154"
                   value={this.state.additional_task.cert_of_complete}
@@ -256,9 +256,9 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
                 <p className="black">Дата договора</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="15.10.2021"
                   value={this.state.additional_task.cert_of_complete_date_sig}
@@ -272,9 +272,9 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
                 <p className="black">Номер накладной</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="154"
                   value={this.state.additional_task.waybill}
@@ -288,7 +288,7 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
                 <p className="black">Дата накладной</p>
                 <input
                   type="text"
@@ -307,7 +307,7 @@ export default class CreateTask extends Component {
                 />
                 <p className="black">Номер путевого листа</p>
                 <div className="form__field">
-                  <input
+                  {/* <input
                     type="text"
                     placeholder="Контракт"
                     pattern=".{1,}"
@@ -323,11 +323,11 @@ export default class CreateTask extends Component {
                         },
                       }));
                     }}
-                  />
+                  /> */}
                   <span className="form__error">Заполните поле</span>
                 </div>
                 <p className="black">Дата путевого листа</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="15.10.2021"
                   value={this.state.additional_task.contract_date_sig}
@@ -341,7 +341,7 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
                 <p className="black">Маршрут погрузки</p>
                 <div
                   style={{
@@ -369,7 +369,7 @@ export default class CreateTask extends Component {
                   </div>
                 </div>
                 <p className="black">Маршрут погрузки</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Примечание"
                   value={this.state.additional_task.note}
@@ -383,7 +383,7 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
               </div>
             )}
             <p className="black">Статус услуги</p>
@@ -480,7 +480,7 @@ export default class CreateTask extends Component {
                 />
 
                 <p className="black">Сумма</p>
-                <input
+                {/* <input
                   type="number"
                   placeholder="Сумма"
                   value={this.state.price2}
@@ -488,10 +488,10 @@ export default class CreateTask extends Component {
                   onChange={(data) => {
                     this.setState({ price2: Number(data.target.value) });
                   }}
-                />
+                /> */}
 
                 <p className="black">Дата оплаты</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="15.10.2021"
                   value={this.state.date_of_paid}
@@ -499,7 +499,7 @@ export default class CreateTask extends Component {
                   onChange={(data) => {
                     this.setState({ date_of_paid: data.target.value });
                   }}
-                />
+                /> */}
               </div>
             )}
             <p className="black">Документы</p>
