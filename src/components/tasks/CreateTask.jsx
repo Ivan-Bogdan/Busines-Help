@@ -41,7 +41,7 @@ export default class CreateTask extends Component {
   updateData = (address, city, point) => {
     this.setState((prevState) => ({
       obj: {
-        ...prevState.address,
+        ...prevState.obj,
         address: address,
         city: city,
         point: point,
