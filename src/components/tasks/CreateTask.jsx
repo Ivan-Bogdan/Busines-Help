@@ -56,13 +56,15 @@ export default class CreateTask extends Component {
       name: this.state.name,
       client: this.state.client_id,
       date: this.state.date,
-      price: { price: this.state.price, currency: this.state.price.currency },
+      price: {
+        price: Number(this.state.price),
+        currency: this.state.price.currency,
+      },
       performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
       status: Number(this.state.status),
       type: Number(this.state.type),
       paid: Number(this.state.paid),
-      // customer_id: null,
-      route: this.state.additional_task.route,
+      route: this.state.route,
       payments: this.state.payments,
       docs: this.state.docs,
     };

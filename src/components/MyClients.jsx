@@ -29,26 +29,6 @@ const MyClients = () => {
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  useEffect(() => {
-    _getFingerprint();
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        if (fingerprint !== "") {
-          let pay = { fingerprint: fingerprint };
-          console.log(pay);
-          update_token(pay).then((data) => {
-            if (data.message) {
-              console.log(data.message);
-            } else {
-              authenticate(data, () => {});
-            }
-          });
-        }
-        FetchData();
-      }
-    }, 300);
-  }, [FetchData, error, count, selectedTaskPage, desc, sort]);
-
   const FetchData = async () => {
     let payload = {
       limit: limit,
@@ -117,6 +97,26 @@ const MyClients = () => {
     },
     [clients]
   );
+
+  useEffect(() => {
+    _getFingerprint();
+    setTimeout(() => {
+      if (localStorage.getItem("token")) {
+        if (fingerprint !== "") {
+          let pay = { fingerprint: fingerprint };
+          console.log(pay);
+          update_token(pay).then((data) => {
+            if (data.message) {
+              console.log(data.message);
+            } else {
+              authenticate(data, () => {});
+            }
+          });
+        }
+        FetchData();
+      }
+    }, 300);
+  }, [FetchData, error, count, selectedTaskPage, desc, sort]);
 
   return (
     <div>

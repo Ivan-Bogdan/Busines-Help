@@ -30,6 +30,15 @@ export default class Route extends Component {
       address: "",
     };
   }
+  componentDidMount() {
+    if (this.state.city && this.state.address) {
+      this.props.updateData(
+        data.target.value,
+        this.state.city_id,
+        this.props.point
+      );
+    }
+  }
 
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
@@ -81,7 +90,7 @@ export default class Route extends Component {
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
-        <div className="flex ml10 ">
+        <div className="flex ml10">
           <input
             type="text"
             placeholder="Улица, дом"
@@ -89,19 +98,9 @@ export default class Route extends Component {
             name="Adress"
             onChange={(data) => {
               this.setState({ address: data.target.value });
-              this.props.updateData(
-                data.target.value,
-                this.state.city_id,
-                this.props.point
-              );
             }}
           />
-          <img
-            src={PLUS_icon}
-            className="plus_icon"
-            alt="plus"
-            height={47}
-          />
+          <img src={PLUS_icon} className="plus_icon" alt="plus" height={47} />
         </div>
       </div>
     );
