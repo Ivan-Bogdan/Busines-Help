@@ -290,7 +290,7 @@ export default class CreateTask extends Component {
                   }}
                 /> */}
                 <p className="black">Дата накладной</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="15.10.2021"
                   value={this.state.additional_task.waybill_date_sig}
@@ -304,7 +304,7 @@ export default class CreateTask extends Component {
                       },
                     }));
                   }}
-                />
+                /> */}
                 <p className="black">Номер путевого листа</p>
                 <div className="form__field">
                   {/* <input
