@@ -6,7 +6,7 @@ import { create_task } from "../../API/http";
 import Route from "./Route";
 import icon_delete from "../../assets/img/удалить.png";
 
-const renderSuggestion = (cleints) => <span>{cleints.name}</span>;
+const renderSuggestion = (clients) => <span>{clients.name}</span>;
 
 export default class CreateTask extends Component {
   constructor(props) {
@@ -21,20 +21,14 @@ export default class CreateTask extends Component {
       client: "",
       client_id: "",
       date: "",
-      price: 0,
+      price: { price: 0, currency: "" },
       performer: "",
       status: "",
       type: "",
       paid: "",
-      additional_task: {
-        route: [],
-        cert_of_complete: "",
-        cert_of_complete_date_sig: "",
-        contract: "",
-        contract_date_sig: "",
-        waybill: "",
-        waybill_date_sig: "",
-      },
+      route: [],
+      payments: [],
+      docs: [],
       error: "",
       suggestions: [],
       city: "",
@@ -57,32 +51,20 @@ export default class CreateTask extends Component {
 
   Create_Task = (event) => {
     event.preventDefault();
-    this.state.additional_task.route.push(this.state.obj);
+    this.state.route.push(this.state.obj);
     let payload = {
       name: this.state.name,
       client: this.state.client_id,
       date: this.state.date,
-      price: this.state.price,
-      performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0", //dont update
+      price: { price: this.state.price, currency: this.state.price.currency },
+      performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
       status: Number(this.state.status),
       type: Number(this.state.type),
       paid: Number(this.state.paid),
-      customer_id: null,
-      additional_task: {
-        route: this.state.additional_task.route,
-        cert_of_complete: {
-          name: this.state.additional_task.cert_of_complete,
-          date_sig: this.state.additional_task.cert_of_complete_date_sig,
-        },
-        contract: {
-          name: this.state.additional_task.contract,
-          date_sig: this.state.additional_task.contract_date_sig,
-        },
-        waybill: {
-          name: this.state.additional_task.waybill,
-          date_sig: this.state.additional_task.waybill_date_sig,
-        },
-      },
+      // customer_id: null,
+      route: this.state.additional_task.route,
+      payments: this.state.payments,
+      docs: this.state.docs,
     };
     create_task(payload).then((data) => {
       if (data.message) {
@@ -192,14 +174,31 @@ export default class CreateTask extends Component {
               <input
                 type="number"
                 placeholder="Сумма"
-                value={this.state.price}
+                value={this.state.price.price}
                 name="price"
                 onChange={(data) => {
-                  this.setState({ price: Number(data.target.value) });
+                  const newValue = data.target.value;
+                  this.setState((prevState) => ({
+                    price: {
+                      ...prevState.price,
+                      price: newValue,
+                    },
+                  }));
+                  // this.setState({ price: Number(data.target.value) });
                 }}
               />
               <select
                 className="select_price"
+                value={this.state.price.currency}
+                onChange={(data) => {
+                  const newValue = data.target.value;
+                  this.setState((prevState) => ({
+                    price: {
+                      ...prevState.price,
+                      currency: newValue,
+                    },
+                  }));
+                }}
                 style={{ border: "1px solid lightgrey" }}
               >
                 <option value="BYN" defaultValue>
@@ -365,32 +364,7 @@ export default class CreateTask extends Component {
                         updateData={this.updateData}
                       />
                     ))}
-                    {/* <FontAwesomeIcon
-                      disabled={this.state.isClickable}
-                      icon={faPlusSquare}
-                      color={"lightgrey"}
-                      style={{
-                        width: 62,
-                        height: 62,
-                      }}
-                      //className={this.state.count > 0 ? "icon-plus " : "null"}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        this.setState(({ count }) => ({
-                          count: count + 1,
-                        }));
-                        this.state.additional_task.route.push(this.state.obj);
-                        this.setState((prevState) => ({
-                          obj: {
-                            ...prevState.obj,
-                            address: "",
-                            city: "",
-                          },
-                        }));
-                      }}
-                    /> */}
                   </div>
-                  {/* <button style={{}}>+</button> */}
                 </div>
                 <p className="black">Маршрут погрузки</p>
                 <input
