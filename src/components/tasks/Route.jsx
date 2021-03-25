@@ -31,11 +31,13 @@ export default class Route extends Component {
     };
   }
   componentDidMount() {
-    this.props.updateData(
-      data.target.value,
-      this.state.city_id,
-      this.props.point
-    );
+    if (this.state.city && this.state.address) {
+      this.props.updateData(
+        this.state.address,
+        this.state.city_id,
+        this.props.point
+      );
+    }
   }
 
   getSuggestionValue = (suggestion) => {
