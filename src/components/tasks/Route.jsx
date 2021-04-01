@@ -30,15 +30,15 @@ export default class Route extends Component {
       address: "",
     };
   }
-  componentDidMount() {
-    if (this.state.city && this.state.address) {
-      this.props.updateData(
-        this.state.address,
-        this.state.city_id,
-        this.props.point
-      );
-    }
-  }
+  // componentDidMount() {
+  //   if (this.state.city && this.state.address) {
+  //     this.props.updateData(
+  //       this.state.address,
+  //       this.state.city_id,
+  //       this.props.point
+  //     );
+  //   }
+  // }
 
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
@@ -100,7 +100,17 @@ export default class Route extends Component {
               this.setState({ address: data.target.value });
             }}
           />
-          <img src={PLUS_icon} className="plus_icon" alt="plus" height={47} />
+          {this.props.count <= this.props.number + 1 && (
+            <img
+              src={PLUS_icon}
+              onClick={() =>
+                this.props.updateData(this.state.address, this.state.city_id)
+              }
+              className="plus_icon"
+              alt="plus"
+              height={47}
+            />
+          )}
         </div>
       </div>
     );

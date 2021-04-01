@@ -70,7 +70,7 @@ export default class Navbar extends Component {
                   <ul>
                     {/* <li></li> */}
                     <li>
-                      <Link>Статистика</Link>
+                      <Link to="/">Статистика</Link>
                     </li>
                     <li>
                       <Link to={`/myservices`}>Мои услуги</Link>
@@ -79,13 +79,13 @@ export default class Navbar extends Component {
                       <Link to={`/myclients`}>Мои клиенты</Link>
                     </li>
                     <li>
-                      <Link>Персонал</Link>
+                      <Link to="/">Персонал</Link>
                     </li>
                     <li>
-                      <Link>Банк</Link>
+                      <Link to="/">Банк</Link>
                     </li>
                     <li>
-                      <Link>Авто</Link>
+                      <Link to="/">Авто</Link>
                     </li>
                   </ul>
                 </nav>
@@ -97,6 +97,7 @@ export default class Navbar extends Component {
                 <Link
                   className="log__log-in"
                   onClick={this.toggleModalSignIn}
+                  to="/"
                 >
                   Вход
                 </Link>
@@ -104,6 +105,7 @@ export default class Navbar extends Component {
                   onClick={this.toggleModalSignUp}
                   id=""
                   className="log__registration"
+                  to="/"
                 >
                   Регистрация
                 </Link>
@@ -118,6 +120,7 @@ export default class Navbar extends Component {
                       this.setState({ ...this.state });
                     });
                   }}
+                  to="/"
                   className="log__log-in"
                 >
                   Выйти

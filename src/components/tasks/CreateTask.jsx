@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { create_task } from "../../API/http";
 import Route from "./Route";
 import icon_delete from "../../assets/img/удалить.png";
+import PLUS_icon from "../../assets/img/PLUS_icon.png";
+import Doc from "./Doc";
 
 const renderSuggestion = (clients) => <span>{clients.name}</span>;
 
@@ -13,10 +15,6 @@ export default class CreateTask extends Component {
     super(props);
 
     this.state = {
-      obj: {
-        address: "",
-        city: "",
-      },
       name: "",
       client: "",
       client_id: "",
@@ -38,15 +36,11 @@ export default class CreateTask extends Component {
     };
   }
 
-  updateData = (address, city, point) => {
-    this.setState((prevState) => ({
-      obj: {
-        ...prevState.obj,
-        address: address,
-        city: city,
-        point: point,
-      },
-    }));
+  updateData = (address, city) => {
+    this.setState({
+      route: [...this.state.route, { address, city, point: this.state.count }],
+    });
+    this.setState({ count: this.state.count + 1 });
   };
 
   Create_Task = (event) => {
@@ -57,7 +51,7 @@ export default class CreateTask extends Component {
       client: this.state.client_id,
       date: this.state.date,
       price: {
-        price: Number(this.state.price),
+        price: Number(this.state.price.price),
         currency: this.state.price.currency,
       },
       performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
@@ -186,7 +180,6 @@ export default class CreateTask extends Component {
                       price: newValue,
                     },
                   }));
-                  // this.setState({ price: Number(data.target.value) });
                 }}
               />
               <select
@@ -241,7 +234,7 @@ export default class CreateTask extends Component {
 
             {this.state.type === "0" && (
               <div>
-                <p className="black">Номер договора</p>
+                {/* <p className="black">Номер договора</p> */}
                 {/* <input
                   type="text"
                   placeholder="154"
@@ -257,7 +250,7 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 /> */}
-                <p className="black">Дата договора</p>
+                {/* <p className="black">Дата договора</p> */}
                 {/* <input
                   type="text"
                   placeholder="15.10.2021"
@@ -273,7 +266,7 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 /> */}
-                <p className="black">Номер накладной</p>
+                {/* <p className="black">Номер накладной</p> */}
                 {/* <input
                   type="text"
                   placeholder="154"
@@ -289,7 +282,7 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 /> */}
-                <p className="black">Дата накладной</p>
+                {/* <p className="black">Дата накладной</p> */}
                 {/* <input
                   type="text"
                   placeholder="15.10.2021"
@@ -305,9 +298,9 @@ export default class CreateTask extends Component {
                     }));
                   }}
                 /> */}
-                <p className="black">Номер путевого листа</p>
-                <div className="form__field">
-                  {/* <input
+                {/* <p className="black">Номер путевого листа</p> */}
+                {/* <div className="form__field"> */}
+                {/* <input
                     type="text"
                     placeholder="Контракт"
                     pattern=".{1,}"
@@ -324,9 +317,9 @@ export default class CreateTask extends Component {
                       }));
                     }}
                   /> */}
-                  <span className="form__error">Заполните поле</span>
-                </div>
-                <p className="black">Дата путевого листа</p>
+                {/* <span className="form__error">Заполните поле</span> */}
+                {/* </div> */}
+                {/* <p className="black">Дата путевого листа</p> */}
                 {/* <input
                   type="text"
                   placeholder="15.10.2021"
@@ -349,26 +342,26 @@ export default class CreateTask extends Component {
                     flexDirection: "column",
                   }}
                 >
-                  <Route point={0} updateData={this.updateData} />
+                  <Route
+                    number={-1}
+                    count={this.state.count}
+                    updateData={this.updateData}
+                  />
 
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: "column",
-                      position: "relative",
-                    }}
-                  >
-                    {[...Array(this.state.count)].map((item, acc) => (
-                      <Route
-                        key={acc}
-                        point={acc + 1}
-                        updateData={this.updateData}
-                      />
+                  <div className="routelist">
+                    {[...Array(this.state.count)].map((item, index) => (
+                      <div>
+                        <Route
+                          key={index}
+                          updateData={this.updateData}
+                          number={index}
+                          count={this.state.count}
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
-                <p className="black">Маршрут погрузки</p>
+                {/* <p className="black">Маршрут погрузки</p> */}
                 {/* <input
                   type="text"
                   placeholder="Примечание"
@@ -395,14 +388,6 @@ export default class CreateTask extends Component {
                 this.setState({ status: data.target.value });
               }}
             >
-              {/* <option
-                value=""
-                disabled
-                
-                style={{ display: "none" }}
-              >
-                Статус
-              </option> */}
               <option type="number" defaultValue value={Number(0)}>
                 К выполнению
               </option>
@@ -479,7 +464,7 @@ export default class CreateTask extends Component {
                   }}
                 />
 
-                <p className="black">Сумма</p>
+                {/* <p className="black">Сумма</p> */}
                 {/* <input
                   type="number"
                   placeholder="Сумма"
@@ -490,7 +475,7 @@ export default class CreateTask extends Component {
                   }}
                 /> */}
 
-                <p className="black">Дата оплаты</p>
+                {/* <p className="black">Дата оплаты</p> */}
                 {/* <input
                   type="text"
                   placeholder="15.10.2021"
@@ -512,20 +497,34 @@ export default class CreateTask extends Component {
               </option>
             </select>
 
+            {/* <Doc></Doc> */}
             <div className="flex m25-0">
-              <input type="text" placeholder="Номер" />
+              <input
+                type="text"
+                value={this.state.numberDoc}
+                placeholder="Номер"
+                onChange={({ target }) => {
+                  this.setState({ numberDoc: target.value });
+                }}
+              />
               <input
                 style={{ marginLeft: 10 }}
                 type="text"
+                value={this.state.dateDoc}
                 placeholder="Дата"
+                onChange={({ target }) => {
+                  this.setState({ dateDoc: target.value });
+                }}
               />
               <img
                 src={icon_delete}
                 className="delete_icon"
                 height={34}
+                onClick={() => {}}
                 alt="delete"
               />
             </div>
+
             <select
               className="select1"
               style={{ border: "1px solid lightgrey" }}

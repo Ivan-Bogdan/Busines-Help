@@ -36,7 +36,7 @@ a:hover {
 }
 
 .m25-0 {
-  margin: 25px 0;
+  margin: 10px 0 30px;
 }
 
 .flex {
@@ -1050,13 +1050,13 @@ span.psw {
     border-bottom: 1px solid grey;
     border-top: 1px solid grey;
   }
-  .client_name{
+  .client_name {
     font-size: 18px;
   }
-  .client_unp{
+  .client_unp {
     font-size: 16px;
   }
-  .client_address{
+  .client_address {
     font-size: 16px;
   }
 }

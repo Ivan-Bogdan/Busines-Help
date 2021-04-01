@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import SocialNetworks from "./assets/img/соцсети.png";
-
+import { Link } from "react-router-dom";
 
 export default class Footer extends Component {
   render() {
@@ -13,21 +13,19 @@ export default class Footer extends Component {
               <a style={{ color: "black" }}>ООО «Наименование ИП»</a>
             </div>
             <div className="col footer_text">
-              <a href="">
-                О нас
-              </a>
+              <Link to="/">О нас</Link>
             </div>
             <div className="col footer_text">
-              <a href="">Как пользоваться</a>
+              <Link to="/">Как пользоваться</Link>
             </div>
             <div className="col footer_text">
               <a style={{ color: "black" }}>© 2017-2020 Все права защищены</a>
             </div>
             <div className="col footer_text">
-              <a href="">Контакты</a>
+              <Link to="/">Контакты</Link>
             </div>
             <div className="col footer_text">
-              <a href="">Вопрос - Ответ</a>
+              <Link to="/">Вопрос - Ответ</Link>
             </div>
           </div>
           <img src={SocialNetworks} alt="" />
