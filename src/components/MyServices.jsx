@@ -42,7 +42,6 @@ const MyServ = () => {
       if (localStorage.getItem("token")) {
         if (fingerprint !== "") {
           let pay = { fingerprint: fingerprint };
-          console.log(pay);
           update_token(pay).then((data) => {
             if (data.message) {
               console.log(data.message);

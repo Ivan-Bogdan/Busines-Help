@@ -107,7 +107,6 @@ const MyClients = () => {
           let pay = { fingerprint: fingerprint };
           update_token(pay).then((data) => {
             if (data.message) {
-              console.log(data.message);
             } else {
               authenticate(data, () => {});
             }
@@ -126,23 +125,6 @@ const MyClients = () => {
     desc,
     sort,
   ]);
-  useEffect(() => {
-    _getFingerprint();
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        if (fingerprint !== "") {
-          let pay = { fingerprint };
-          update_token(pay).then((data) => {
-            if (data.message) {
-            } else {
-              authenticate(data, () => {});
-            }
-          });
-        }
-        FetchData();
-      }
-    }, 300);
-  }, [FetchData, error, count]);
 
   return (
     <div>
