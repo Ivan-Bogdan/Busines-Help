@@ -10,7 +10,6 @@ export const cityName = (payload) => {
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -22,7 +21,6 @@ export const cityList = (payload) => {
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -34,11 +32,9 @@ export const Reg = (payload) => {
       JSON.stringify(payload)
     )
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -50,11 +46,9 @@ export const Login = (payload) => {
       JSON.stringify(payload)
     )
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -62,7 +56,6 @@ export const Login = (payload) => {
 export const authenticate = (data, next) => {
   if (typeof window !== "undefined") {
     if (data !== undefined) {
-      console.log(data.data.token);
       localStorage.setItem("token", data.data.token);
     } else {
       return false;
@@ -98,11 +91,9 @@ export const getUser = () => {
       },
     })
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -119,11 +110,9 @@ export const DeleteTask = (payload) => {
       payload
     )
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -140,11 +129,9 @@ export const get_Task = (payload) => {
     JSON.stringify(payload)
   )
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 };
@@ -170,11 +157,9 @@ export async function update_token(payload) {
       JSON.stringify(payload)
     )
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     }); 
 }

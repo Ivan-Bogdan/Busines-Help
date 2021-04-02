@@ -26,7 +26,6 @@ export default class App extends Component {
       if (localStorage.getItem("token")) {
         update_token(this.state).then((data) => {
           if (data.message) {
-            console.log(data.message);
           } else {
             authenticate(data, () => {
               this.setState({
@@ -80,21 +79,6 @@ export default class App extends Component {
       isSignUpOpen: !state.isSignUpOpen,
       isSignInOpen: false,
     }));
-  };
-
-  Refresh = (event) => {
-    event.preventDefault();
-    update_token(this.state).then((data) => {
-      if (data.message) {
-        console.log(data.message);
-      } else {
-        authenticate(data, () => {
-          this.setState({
-            ...this.state,
-          });
-        });
-      }
-    });
   };
 
   render() {

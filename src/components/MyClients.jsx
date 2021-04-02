@@ -93,7 +93,6 @@ const MyClients = () => {
     async (item) => {
       const result = await delete_client({ id: item });
       if (result.message) {
-        console.log(result.message);
       }
       FetchData();
     },
@@ -106,7 +105,6 @@ const MyClients = () => {
       if (localStorage.getItem("token")) {
         if (fingerprint !== "") {
           let pay = { fingerprint: fingerprint };
-          console.log(pay);
           update_token(pay).then((data) => {
             if (data.message) {
               console.log(data.message);
@@ -134,10 +132,8 @@ const MyClients = () => {
       if (localStorage.getItem("token")) {
         if (fingerprint !== "") {
           let pay = { fingerprint };
-          console.log(pay);
           update_token(pay).then((data) => {
             if (data.message) {
-              console.log(data.message);
             } else {
               authenticate(data, () => {});
             }

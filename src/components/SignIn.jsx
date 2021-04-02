@@ -36,12 +36,6 @@ export default class SignIn extends Component {
           this.displayHash(hash);
         });
       });
-    } else {
-      setTimeout(() => {
-        FPJS.get((components) => {
-          console.log(FPJS.x64hash128(getHashable(components)));
-        });
-      }, 500);
     }
   };
 
