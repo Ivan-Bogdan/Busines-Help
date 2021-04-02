@@ -116,7 +116,7 @@ const MyClients = () => {
         FetchData();
       }
     }, 300);
-  }, [FetchData]);
+  }, [fingerprint, FetchData, error, count, selectedTaskPage, desc, sort]);
 
   return (
     <div>
