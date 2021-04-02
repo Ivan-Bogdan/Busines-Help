@@ -26,10 +26,11 @@ const MyClients = () => {
   const [clients, setClients] = useState([]);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [limit] = useState(10);
+  const [offset] = useState(0);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  const FetchData = useCallback(async () => {
+  const FetchData = async () => {
     let payload = {
       limit: limit,
       offset: selectedTaskPage * 10,
@@ -45,7 +46,7 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
-  }, [clients, count]);
+  };
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
@@ -105,6 +106,34 @@ const MyClients = () => {
       if (localStorage.getItem("token")) {
         if (fingerprint !== "") {
           let pay = { fingerprint: fingerprint };
+          console.log(pay);
+          update_token(pay).then((data) => {
+            if (data.message) {
+              console.log(data.message);
+            } else {
+              authenticate(data, () => {});
+            }
+          });
+        }
+        FetchData();
+      }
+    }, 300);
+  }, [
+    fingerprint,
+    offset,
+    FetchData,
+    error,
+    count,
+    selectedTaskPage,
+    desc,
+    sort,
+  ]);
+  useEffect(() => {
+    _getFingerprint();
+    setTimeout(() => {
+      if (localStorage.getItem("token")) {
+        if (fingerprint !== "") {
+          let pay = { fingerprint };
           console.log(pay);
           update_token(pay).then((data) => {
             if (data.message) {
