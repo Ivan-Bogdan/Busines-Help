@@ -29,7 +29,7 @@ const MyClients = () => {
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  const FetchData = async () => {
+  const FetchData = useCallback(async () => {
     let payload = {
       limit: limit,
       offset: selectedTaskPage * 10,
@@ -45,7 +45,7 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
-  };
+  }, [clients, count]);
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
@@ -116,7 +116,7 @@ const MyClients = () => {
         FetchData();
       }
     }, 300);
-  }, [FetchData, error, count, selectedTaskPage, desc, sort]);
+  }, [FetchData]);
 
   return (
     <div>

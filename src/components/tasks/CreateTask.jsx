@@ -241,7 +241,7 @@ export default class CreateTask extends Component {
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "column", //sd
+                    flexDirection: "column",
                   }}
                 >
                   <Route
