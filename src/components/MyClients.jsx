@@ -77,7 +77,8 @@ const MyClients = () => {
     } else {
       setTimeout(() => {
         FPJS.get((components) => {
-          console.log(FPJS.x64hash128(getHashable(components)));
+          const hash = FPJS.x64hash128(getHashable(components));
+          setFingerprint(hash);
         });
       }, 500);
     }
@@ -116,7 +117,7 @@ const MyClients = () => {
         FetchData();
       }
     }, 300);
-  }, [fingerprint, FetchData, error, count, selectedTaskPage, desc, sort]);
+  }, [FetchData, error, count]);
 
   return (
     <div>
