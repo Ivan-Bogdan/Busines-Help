@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
-import { faPlusSquare } from "@fortawesome/fontawesome-free-regular";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { create_task } from "../../API/http";
 import Route from "./Route";
-import icon_delete from "../../assets/img/удалить.png";
-import PLUS_icon from "../../assets/img/PLUS_icon.png";
 import Doc from "./Doc";
 
 const renderSuggestion = (clients) => <span>{clients.name}</span>;
@@ -19,7 +15,7 @@ export default class CreateTask extends Component {
       client: "",
       client_id: "",
       date: "",
-      price: { price: 0, currency: "" },
+      price: { price: 0, currency: "BYN" },
       performer: "",
       status: "",
       type: "",
@@ -32,7 +28,8 @@ export default class CreateTask extends Component {
       city: "",
       city_id: "",
       clients: [],
-      count: 0,
+      countRoute: 0,
+      countDoc: 0,
     };
   }
 
@@ -40,12 +37,18 @@ export default class CreateTask extends Component {
     this.setState({
       route: [...this.state.route, { address, city, point: this.state.count }],
     });
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ countRoute: this.state.countRoute + 1 });
+  };
+
+  updateDoc = (docsType, number, date) => {
+    this.setState({
+      docs: [...this.state.docs, { docsType, number, date }],
+    });
+    this.setState({ countDoc: this.state.countDoc + 1 });
   };
 
   Create_Task = (event) => {
     event.preventDefault();
-    this.state.route.push(this.state.obj);
     let payload = {
       name: this.state.name,
       client: this.state.client_id,
@@ -151,7 +154,7 @@ export default class CreateTask extends Component {
             />
             <p className="black">Дата</p>
             <input
-              type="text"
+              type="date"
               placeholder="18.10.2021"
               value={this.state.date}
               name="date"
@@ -234,107 +237,6 @@ export default class CreateTask extends Component {
 
             {this.state.type === "0" && (
               <div>
-                {/* <p className="black">Номер договора</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="154"
-                  value={this.state.additional_task.cert_of_complete}
-                  name="cert_of_complete"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        cert_of_complete: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
-                {/* <p className="black">Дата договора</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="15.10.2021"
-                  value={this.state.additional_task.cert_of_complete_date_sig}
-                  name="cert_of_complete_date"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        cert_of_complete_date_sig: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
-                {/* <p className="black">Номер накладной</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="154"
-                  value={this.state.additional_task.waybill}
-                  name="waybill"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        waybill: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
-                {/* <p className="black">Дата накладной</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="15.10.2021"
-                  value={this.state.additional_task.waybill_date_sig}
-                  name="waybill_date"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        waybill_date_sig: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
-                {/* <p className="black">Номер путевого листа</p> */}
-                {/* <div className="form__field"> */}
-                {/* <input
-                    type="text"
-                    placeholder="Контракт"
-                    pattern=".{1,}"
-                    required
-                    value={this.state.additional_task.contract_number}
-                    name="contract"
-                    onChange={(data) => {
-                      const newValue = data.target.value;
-                      this.setState((prevState) => ({
-                        additional_task: {
-                          ...prevState.additional_task,
-                          contract: newValue,
-                        },
-                      }));
-                    }}
-                  /> */}
-                {/* <span className="form__error">Заполните поле</span> */}
-                {/* </div> */}
-                {/* <p className="black">Дата путевого листа</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="15.10.2021"
-                  value={this.state.additional_task.contract_date_sig}
-                  name="contract_date"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        contract_date_sig: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
                 <p className="black">Маршрут погрузки</p>
                 <div
                   style={{
@@ -344,39 +246,23 @@ export default class CreateTask extends Component {
                 >
                   <Route
                     number={-1}
-                    count={this.state.count}
+                    count={this.state.countRoute}
                     updateData={this.updateData}
                   />
 
                   <div className="routelist">
-                    {[...Array(this.state.count)].map((item, index) => (
+                    {[...Array(this.state.countRoute)].map((item, index) => (
                       <div>
                         <Route
                           key={index}
                           updateData={this.updateData}
                           number={index}
-                          count={this.state.count}
+                          count={this.state.countRoute}
                         />
                       </div>
                     ))}
                   </div>
                 </div>
-                {/* <p className="black">Маршрут погрузки</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="Примечание"
-                  value={this.state.additional_task.note}
-                  name="note"
-                  onChange={(data) => {
-                    const newValue = data.target.value;
-                    this.setState((prevState) => ({
-                      additional_task: {
-                        ...prevState.additional_task,
-                        note: newValue,
-                      },
-                    }));
-                  }}
-                /> */}
               </div>
             )}
             <p className="black">Статус услуги</p>
@@ -463,88 +349,27 @@ export default class CreateTask extends Component {
                     this.setState({ number_paid: data.target.value });
                   }}
                 />
-
-                {/* <p className="black">Сумма</p> */}
-                {/* <input
-                  type="number"
-                  placeholder="Сумма"
-                  value={this.state.price2}
-                  name="price"
-                  onChange={(data) => {
-                    this.setState({ price2: Number(data.target.value) });
-                  }}
-                /> */}
-
-                {/* <p className="black">Дата оплаты</p> */}
-                {/* <input
-                  type="text"
-                  placeholder="15.10.2021"
-                  value={this.state.date_of_paid}
-                  name="price"
-                  onChange={(data) => {
-                    this.setState({ date_of_paid: data.target.value });
-                  }}
-                /> */}
               </div>
             )}
-            <p className="black">Документы</p>
-            <select
-              className="select1"
-              style={{ border: "1px solid lightgrey" }}
-            >
-              <option type="number" value={Number(0)}>
-                Путевой лист
-              </option>
-            </select>
 
-            {/* <Doc></Doc> */}
-            <div className="flex m25-0">
-              <input
-                type="text"
-                value={this.state.numberDoc}
-                placeholder="Номер"
-                onChange={({ target }) => {
-                  this.setState({ numberDoc: target.value });
-                }}
-              />
-              <input
-                style={{ marginLeft: 10 }}
-                type="text"
-                value={this.state.dateDoc}
-                placeholder="Дата"
-                onChange={({ target }) => {
-                  this.setState({ dateDoc: target.value });
-                }}
-              />
-              <img
-                src={icon_delete}
-                className="delete_icon"
-                height={34}
-                onClick={() => {}}
-                alt="delete"
-              />
-            </div>
+            <Doc
+              count={this.state.countDoc}
+              updateDoc={this.updateDoc}
+              index={-1}
+              key={-1}
+            />
 
-            <select
-              className="select1"
-              style={{ border: "1px solid lightgrey" }}
-            >
-              <option value="" disabled selected>
-                Добавить документ
-              </option>
-              <option type="number" value={Number(0)}>
-                Договор
-              </option>
-              <option type="number" value={Number(1)}>
-                Путевой лист
-              </option>
-              <option type="number" value={Number(2)}>
-                ТТИ-1
-              </option>
-              <option type="number" value={Number(3)}>
-                ТН
-              </option>
-            </select>
+            {[...Array(this.state.countDoc)].map((item, index) => (
+              <div key={index}>
+                <Doc
+                  index={index}
+                  key={index}
+                  count={this.state.countDoc}
+                  updateDoc={this.updateDoc}
+                />
+              </div>
+            ))}
+
             <div className="services">
               <button
                 style={{ padding: "15px 50px" }}

@@ -8,6 +8,9 @@ p {
   margin-bottom: 0;
 }
 
+.d-none {
+  display: none;
+}
 .black {
   color: black;
   margin-bottom: 0;
@@ -36,7 +39,7 @@ a:hover {
 }
 
 .m25-0 {
-  margin: 10px 0 30px;
+  margin: 10px 0 10px;
 }
 
 .flex {

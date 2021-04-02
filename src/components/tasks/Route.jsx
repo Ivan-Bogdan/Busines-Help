@@ -30,15 +30,6 @@ export default class Route extends Component {
       address: "",
     };
   }
-  // componentDidMount() {
-  //   if (this.state.city && this.state.address) {
-  //     this.props.updateData(
-  //       this.state.address,
-  //       this.state.city_id,
-  //       this.props.point
-  //     );
-  //   }
-  // }
 
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
