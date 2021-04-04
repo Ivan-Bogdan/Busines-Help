@@ -112,7 +112,7 @@ const MyClients = () => {
             }
           });
         }
-        FetchData;
+        FetchData();
       }
     }, 300);
   }, [FetchData]);
