@@ -103,7 +103,7 @@ const MyClients = () => {
     _getFingerprint();
     setTimeout(() => {
       if (localStorage.getItem("token")) {
-        if (fingerprint !== "") {
+        if (fingerprint) {
           let pay = { fingerprint: fingerprint };
           update_token(pay).then((data) => {
             if (data.message) {
