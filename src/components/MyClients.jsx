@@ -115,7 +115,7 @@ const MyClients = () => {
         FetchData;
       }
     }, 300);
-  }, [fingerprint, FetchData]);
+  }, [FetchData]);
 
   return (
     <div>
