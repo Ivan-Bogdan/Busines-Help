@@ -149,12 +149,14 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            <TestTask></TestTask> {/*new layout */}
-            {/* {tasks.map((task, index) => (
+            {/* <TestTask></TestTask> */}
+
+            {/*new layout */}
+            {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task task={task} deleteTask={deleteTask}></Task>
               </div>
-            ))} */}
+            ))}
             <div className={isVisible ? "block3" : "block1"} align="right">
               {!isVisible && (
                 <div
