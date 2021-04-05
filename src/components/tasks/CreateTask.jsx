@@ -57,7 +57,7 @@ export default class CreateTask extends Component {
         price: Number(this.state.price.price),
         currency: this.state.price.currency,
       },
-      performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
+      performer: "a109692b-5714-4bd8-84ae-478bef445bf7",
       status: Number(this.state.status),
       type: Number(this.state.type),
       paid: Number(this.state.paid),
