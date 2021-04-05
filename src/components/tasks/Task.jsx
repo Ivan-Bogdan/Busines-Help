@@ -70,7 +70,7 @@ const Task = ({ task, deleteTask }) => {
           {new Date(task.date).toLocaleString().substr(0, 10)}
         </div>
         <div className="task_name">{task.name}</div>
-        <div className="task_price">{task.price} BYN</div>
+        <div className="task_price">{task.price.price} BYN</div>
 
         {task.status === 0 && <div className="task_status">К выполнению</div>}
         {task.status === 1 && <div className="task_status">В работе</div>}
