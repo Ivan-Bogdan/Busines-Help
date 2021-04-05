@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { city__name } from "../../API/http";
+import { city__name, get_client } from "../../API/http";
 import Modal from "../Modal";
 import UpdateTask from "./UpdateTask";
 import ReadTask from "./ReadTask";
@@ -10,6 +10,7 @@ const Task = ({ task, deleteTask }) => {
   const [modal2, setModal2] = useState(false);
   const [isReadTask, setIsReadTask] = useState(false);
   const [cityName, setCityName] = useState("");
+  const [clientCurrent, setClientCurrent] = useState("");
 
   useEffect(() => {
     async function func() {
@@ -34,6 +35,12 @@ const Task = ({ task, deleteTask }) => {
         } else {
           setCityName(cityOne.city + "-" + cityTwo.city);
         }
+      }
+      if (tast.client) {
+        const clientCurrent = await get_client({
+          get_id: tast.client,
+        });
+        setClientCurrent(clientCurrent.client.name);
       }
     }
     func();
@@ -88,7 +95,7 @@ const Task = ({ task, deleteTask }) => {
             </div>
             <div className="block3">
               <div className="w407">
-                <div className="task_name">ОАО "Кирпич-комплект"</div>
+                <div className="task_name">{clientCurrent}</div>
                 <div className="fz20 color-grey">{cityName}</div>
                 <div className="fw600 fz20">{task.name}</div>
               </div>
