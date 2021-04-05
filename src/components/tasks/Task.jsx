@@ -83,6 +83,48 @@ const Task = ({ task, deleteTask }) => {
       </div>
       <button className="editing" onClick={toggleModal} />
 
+      <div className="main container_task">
+        <div className="greenlight">
+          <div className="title">
+            <div className="color-grey">
+              {new Date(task.date).toLocaleString().substr(0, 10)}
+            </div>
+            {task.status === 0 && (
+              <div className="color-lightblue">К выполнению</div>
+            )}
+
+            {task.status === 1 && (
+              <div className="color-lightblue">В работе</div>
+            )}
+            {task.status === 2 && <div className="color-green">Выполнена</div>}
+            {task.status === 3 && <div className="color-red">Отменен</div>}
+          </div>
+        </div>
+        <div>
+          <div className="flex-task">
+            <div className="block1">
+              <div className="price color-green">{`${task.price.price} ${task.price.currency}`}</div>
+              <div>
+                <div className="paid">Оплачено/Долг</div>
+                <div className="price-debt">
+                  <span className="color-green">2000,00 </span>/ 0
+                </div>
+              </div>
+            </div>
+            <div className="block3">
+              <div className="w407">
+                <div className="task_name">ОАО "Кирпич-комплект"</div>
+                <div className="fz20 color-grey">{cityName}</div>
+                <div className="fw600 fz20">{task.name}</div>
+              </div>
+              <div>
+                <img className="cursor" src={img251} alt="" width={40}></img>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="App">
         <Modal isShowing={modal}>
           <div className="modal" id="id01">
