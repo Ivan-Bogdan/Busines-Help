@@ -85,7 +85,19 @@ const Task = ({ task, deleteTask }) => {
         <div>
           <div className="flex-task">
             <div className="block1">
-              <div className="price color-green">{`${task.price.price} ${task.price.currency}`}</div>
+              {task.status === 0 && (
+                <div className="price color-blue">{`${task.price.price} ${task.price.currency}`}</div>
+              )}
+              {task.status === 1 && (
+                <div className="price color-blue">{`${task.price.price} ${task.price.currency}`}</div>
+              )}
+              {task.status === 2 && (
+                <div className="price color-green">{`${task.price.price} ${task.price.currency}`}</div>
+              )}
+              {task.status === 3 && (
+                <div className="price color-red">{`${task.price.price} ${task.price.currency}`}</div>
+              )}
+
               <div>
                 <div className="paid">Оплачено/Долг</div>
                 <div className="price-debt">
