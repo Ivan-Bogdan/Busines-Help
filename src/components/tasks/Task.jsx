@@ -49,43 +49,9 @@ const Task = ({ task, deleteTask }) => {
     setIsReadTask(!isReadTask);
   };
   return (
-    <div
-      className={
-        task.status === 3
-          ? "task_container background_grey"
-          : task.status === 2 && task.paid === 1
-          ? "task_container background_green"
-          : task.status === 2 && task.paid === 0
-          ? "task_container background_orange"
-          : (task.status === 1 && task.paid === 1) ||
-            (task.status === 0 && task.paid === 1)
-          ? "task_container background_blue"
-          : (task.status === 1 && task.paid === 0) ||
-            (task.status === 0 && task.paid === 0)
-          ? "task_container background_yellow"
-          : null
-      }
-    >
-      <div className="content_task" onClick={toogleReadTask}>
-        <div className="task_date">
-          {new Date(task.date).toLocaleString().substr(0, 10)}
-        </div>
-        <div className="task_name">{task.name}</div>
-        <div className="task_price">{task.price.price} BYN</div>
-
-        {task.status === 0 && <div className="task_status">К выполнению</div>}
-        {task.status === 1 && <div className="task_status">В работе</div>}
-        {task.status === 2 && <div className="task_status">Завершен</div>}
-        {task.status === 3 && <div className="task_status">Отменен</div>}
-        {(Boolean(task.paid) && <div className="task_paid"> Опл</div>) || (
-          <div className="task_paid"> Не опл</div>
-        )}
-        <div className="task_route">{cityName}</div>
-      </div>
-      <button className="editing" onClick={toggleModal} />
-
+    <div>
       <div className="main container_task">
-        <div className="greenlight">
+        <div className="greenlight" onClick={toogleReadTask}>
           <div className="title">
             <div className="color-grey">
               {new Date(task.date).toLocaleString().substr(0, 10)}
@@ -119,7 +85,13 @@ const Task = ({ task, deleteTask }) => {
                 <div className="fw600 fz20">{task.name}</div>
               </div>
               <div>
-                <img className="cursor" src={img251} alt="" width={40}></img>
+                <img
+                  className="cursor"
+                  src={img251}
+                  onClick={toggleModal}
+                  alt=""
+                  width={40}
+                ></img>
               </div>
             </div>
           </div>
@@ -170,10 +142,6 @@ const Task = ({ task, deleteTask }) => {
           </div>
         </Modal>
       </div>
-      {modal2 && (
-        <UpdateTask onClose={toggleModal2} task={task.id}></UpdateTask>
-      )}
-      {isReadTask && <ReadTask onClose={toogleReadTask} task={task.id} />}
     </div>
   );
 };
