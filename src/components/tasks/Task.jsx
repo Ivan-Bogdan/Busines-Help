@@ -53,9 +53,9 @@ const Task = ({ task, deleteTask }) => {
       <div className="main container_task">
         <div
           className={
-            (task.status === 0 && "greenlight") ||
-            (task.status === 1 && "greenlight") ||
-            (task.status === 2 && "bluelight") ||
+            (task.status === 0 && "bluelight") ||
+            (task.status === 1 && "bluelight") ||
+            (task.status === 2 && "greenlight") ||
             (task.status === 3 && "redlight")
           }
           onClick={toogleReadTask}
