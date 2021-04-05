@@ -42,7 +42,7 @@ export default class CreateTask extends Component {
 
   updateDoc = (docsType, number, date) => {
     this.setState({
-      docs: [...this.state.docs, { docsType, number, date }],
+      docs: [...this.state.docs, { docs_type: docsType, number, date }],
     });
     this.setState({ countDoc: this.state.countDoc + 1 });
   };
