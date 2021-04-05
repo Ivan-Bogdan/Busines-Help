@@ -38,7 +38,7 @@ const Task = ({ task, deleteTask }) => {
       }
       if (task.client) {
         const clientCurrent = await get_client({
-          get_id: tast.client,
+          get_id: task.client,
         });
         setClientCurrent(clientCurrent.client.name);
       }
