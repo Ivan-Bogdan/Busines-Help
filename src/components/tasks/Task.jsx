@@ -12,23 +12,21 @@ const Task = ({ task, deleteTask }) => {
 
   useEffect(() => {
     async function func() {
-      if (task.additional_task.route.length === 1) {
+      if (task.route.length === 1) {
         const result = await city__name({
-          id: task.additional_task.route[0].city,
+          id: task.route[0].city,
         });
         if (result.message) {
           setCityName("Unknown");
         } else {
           setCityName(result.city);
         }
-      } else if (task.additional_task.route.length > 1) {
+      } else if (task.route.length > 1) {
         const cityOne = await city__name({
-          id: task.additional_task.route[0].city,
+          id: task.route[0].city,
         });
         const cityTwo = await city__name({
-          id:
-            task.additional_task.route[task.additional_task.route.length - 1]
-              .city,
+          id: task.route[task.route.length - 1].city,
         });
         if (cityOne.message || cityTwo.message) {
           setCityName("Unknown");
