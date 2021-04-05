@@ -36,7 +36,7 @@ const Task = ({ task, deleteTask }) => {
           setCityName(cityOne.city + "-" + cityTwo.city);
         }
       }
-      if (tast.client) {
+      if (task.client) {
         const clientCurrent = await get_client({
           get_id: tast.client,
         });
