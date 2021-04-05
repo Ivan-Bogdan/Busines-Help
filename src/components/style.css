@@ -649,7 +649,6 @@ select:active {
 
 .task_item {
   width: 100%;
-  margin-bottom: 10px;
   font-size: 23px;
   font-weight: 800;
 }

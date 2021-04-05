@@ -51,7 +51,15 @@ const Task = ({ task, deleteTask }) => {
   return (
     <div>
       <div className="main container_task">
-        <div className="greenlight" onClick={toogleReadTask}>
+        <div
+          className={
+            (task.status === 0 && "greenlight") ||
+            (task.status === 1 && "greenlight") ||
+            (task.status === 2 && "bluelight") ||
+            (task.status === 3 && "redlight")
+          }
+          onClick={toogleReadTask}
+        >
           <div className="title">
             <div className="color-grey">
               {new Date(task.date).toLocaleString().substr(0, 10)}
