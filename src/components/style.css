@@ -154,16 +154,15 @@ ul {
   flex-wrap: wrap;
 }
 
-.content_client {
-  /*  display: flex;
+/* .content_client {
+  display: flex;
   width: 90%;
-  flex-wrap: wrap; */
-
-  /*   display: flex;
+  flex-wrap: wrap; 
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center; */
-}
+  align-items: center; 
+} */
 
 .task_container {
   display: flex;

@@ -3,6 +3,7 @@ import Autosuggest from "react-autosuggest";
 import { create_task } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
+import Payment from "./Payment";
 
 const renderSuggestion = (clients) => <span>{clients.name}</span>;
 
@@ -30,6 +31,7 @@ export default class CreateTask extends Component {
       clients: [],
       countRoute: 0,
       countDoc: 0,
+      countPayments: 0,
     };
   }
 
@@ -47,6 +49,16 @@ export default class CreateTask extends Component {
     this.setState({ countDoc: this.state.countDoc + 1 });
   };
 
+  updatePayments = (payments_type, price, payment_number, date_pay) => {
+    this.setState({
+      payments: [
+        ...this.state.payments,
+        { payments_type, price, payment_number, date_pay },
+      ],
+    });
+    this.setState({ countPayments: this.state.countPayments + 1 });
+  };
+
   Create_Task = (event) => {
     event.preventDefault();
     let payload = {
@@ -58,6 +70,7 @@ export default class CreateTask extends Component {
         currency: this.state.price.currency,
       },
       performer: "8adac476-098d-4622-bce3-8bcfeae7f8c0",
+      customer_id: null,
       status: Number(this.state.status),
       type: Number(this.state.type),
       paid: Number(this.state.paid),
@@ -313,42 +326,23 @@ export default class CreateTask extends Component {
             </select>
             {this.state.paid === "1" && (
               <div>
-                <p className="black">Вид оплаты</p>
-                <select
-                  className="select1"
-                  style={{ border: "1px solid lightgrey" }}
-                  value={this.state.typepaid}
-                  onChange={(data) => {
-                    this.setState({ typepaid: data.target.value });
-                  }}
-                >
-                  <option type="number" value={Number(0)}>
-                    Платежное поручение (банк)
-                  </option>
-                  <option type="number" value={Number(1)}>
-                    Квитанция (наличные)
-                  </option>
-                  <option type="number" value={Number(2)}>
-                    Чек КСА (наличные)
-                  </option>
-                  <option type="number" value={Number(3)}>
-                    Терминал (по карте)
-                  </option>
-                  <option type="number" value={Number(4)}>
-                    Иной платеж
-                  </option>
-                </select>
-
-                <p className="black">Номер платежа</p>
-                <input
-                  type="text"
-                  placeholder="154"
-                  value={this.state.number_paid}
-                  name="price"
-                  onChange={(data) => {
-                    this.setState({ number_paid: data.target.value });
-                  }}
+                <Payment
+                  index={-1}
+                  key={-1}
+                  count={this.state.countPayments}
+                  updatePayment={this.updatePayments}
                 />
+
+                {[...Array(this.state.countPayments)].map((item, index) => (
+                  <div key={index}>
+                    <Payment
+                      index={index}
+                      key={index}
+                      count={this.state.countPayments}
+                      updatePayment={this.updatePayments}
+                    />
+                  </div>
+                ))}
               </div>
             )}
 
