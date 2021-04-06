@@ -30,7 +30,7 @@ export default class Doc extends Component {
                   this.state.date
                 );
                 this.props.updateObjDoc(
-                  this.state.docs_type,
+                  target.value,
                   this.state.number,
                   this.state.date
                 );
@@ -56,7 +56,7 @@ export default class Doc extends Component {
               if (this.state.number && this.state.date) {
                 this.props.updateObjDoc(
                   this.state.docs_type,
-                  this.state.number,
+                  target.value,
                   this.state.date
                 );
               }
@@ -73,7 +73,7 @@ export default class Doc extends Component {
                 this.props.updateObjDoc(
                   this.state.docs_type,
                   this.state.number,
-                  this.state.date
+                  target.value
                 );
               }
             }}

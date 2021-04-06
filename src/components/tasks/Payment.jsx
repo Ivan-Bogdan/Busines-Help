@@ -34,7 +34,7 @@ export default class Payment extends Component {
               this.state.date_pay
             )
               this.props.updateObjPayment(
-                this.state.payments_type,
+                data.target.value,
                 this.state.price,
                 this.state.payment_number,
                 this.state.date_pay
@@ -65,7 +65,7 @@ export default class Payment extends Component {
                   this.props.updateObjPayment(
                     this.state.payments_type,
                     this.state.price,
-                    this.state.payment_number,
+                    data.target.value,
                     this.state.date_pay
                   );
               }}
@@ -123,7 +123,6 @@ export default class Payment extends Component {
                 this.state.date_pay &&
                 this.state.price.price &&
                 this.state.price.currency &&
-                this.state.payment_number &&
                 this.state.date_pay
               )
                 this.props.updateObjPayment(
@@ -156,14 +155,13 @@ export default class Payment extends Component {
               this.state.date_pay &&
               this.state.price.price &&
               this.state.price.currency &&
-              this.state.payment_number &&
               this.state.date_pay
             )
               this.props.updateObjPayment(
                 this.state.payments_type,
                 this.state.price,
                 this.state.payment_number,
-                this.state.date_pay
+                target.value
               );
           }}
         />
