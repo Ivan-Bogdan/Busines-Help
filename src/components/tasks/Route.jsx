@@ -31,7 +31,7 @@ export default class Route extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.updateObjRoute(this.state.address, this.state.city_id);
   }
 
