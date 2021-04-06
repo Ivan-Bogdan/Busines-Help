@@ -31,10 +31,14 @@ export default class Route extends Component {
     };
   }
 
-  componentDidMount() {
+  updateasdf = () => {
     if (this.state.address && this.state.city_id) {
       this.props.updateObjRoute(this.state.address, this.state.city_id);
     }
+  };
+
+  componentDidMount() {
+    updateasdf();
   }
 
   getSuggestionValue = (suggestion) => {
