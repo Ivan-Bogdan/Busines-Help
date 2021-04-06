@@ -32,10 +32,16 @@ export default class CreateTask extends Component {
       countRoute: 0,
       countDoc: 0,
       countPayments: 0,
+      objRoute: {},
+      objDoc: {},
+      objPayment: {},
     };
   }
 
   updateData = (address, city) => {
+    this.setState({
+      objRoute: { address, city, point: this.state.countRoute },
+    });
     this.setState({
       route: [
         ...this.state.route,
@@ -60,6 +66,24 @@ export default class CreateTask extends Component {
       ],
     });
     this.setState({ countPayments: this.state.countPayments + 1 });
+  };
+
+  updateObjRoute = (address, city) => {
+    this.setState({
+      objPayment: { address, city, point: this.state.countRoute },
+    });
+  };
+
+  updateObjDoc = (docsType, number, date) => {
+    this.setState({
+      objDoc: { docs_type: docsType, number, date },
+    });
+  };
+
+  updateObjPayment = (payments_type, price, payment_number, date_pay) => {
+    this.setState({
+      objPayment: { payments_type, price, payment_number, date_pay },
+    });
   };
 
   Create_Task = (event) => {
@@ -264,6 +288,7 @@ export default class CreateTask extends Component {
                     number={-1}
                     count={this.state.countRoute}
                     updateData={this.updateData}
+                    updateObjRoute={this.updateObjRoute}
                   />
 
                   <div className="routelist">
@@ -274,6 +299,7 @@ export default class CreateTask extends Component {
                           updateData={this.updateData}
                           number={index}
                           count={this.state.countRoute}
+                          updateObjRoute={this.updateObjRoute}
                         />
                       </div>
                     ))}
@@ -334,6 +360,7 @@ export default class CreateTask extends Component {
                   key={-1}
                   count={this.state.countPayments}
                   updatePayment={this.updatePayments}
+                  updateObjPayment={this.updateObjPayment}
                 />
 
                 {[...Array(this.state.countPayments)].map((item, index) => (
@@ -343,6 +370,7 @@ export default class CreateTask extends Component {
                       key={index}
                       count={this.state.countPayments}
                       updatePayment={this.updatePayments}
+                      updateObjPayment={this.updateObjPayment}
                     />
                   </div>
                 ))}
@@ -352,6 +380,7 @@ export default class CreateTask extends Component {
             <Doc
               count={this.state.countDoc}
               updateDoc={this.updateDoc}
+              updateObjDoc={this.updateObjDoc}
               index={-1}
               key={-1}
             />
@@ -363,6 +392,7 @@ export default class CreateTask extends Component {
                   key={index}
                   count={this.state.countDoc}
                   updateDoc={this.updateDoc}
+                  updateObjDoc={this.updateObjDoc}
                 />
               </div>
             ))}

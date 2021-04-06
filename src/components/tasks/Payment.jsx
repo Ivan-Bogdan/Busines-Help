@@ -15,6 +15,21 @@ export default class Payment extends Component {
     };
   }
 
+  componentDidMount() {
+    if (
+      this.state.payments_type &&
+      this.state.date_pay &&
+      this.state.price.price &&
+      this.state.price.currency
+    )
+      this.props.updateObjPayment(
+        this.state.payments_type,
+        this.state.price,
+        this.state.payment_number,
+        this.state.date_pay
+      );
+  }
+
   render() {
     return (
       <div>
