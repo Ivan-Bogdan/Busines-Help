@@ -91,9 +91,9 @@ export default class Route extends Component {
             name="Adress"
             onChange={(data) => {
               this.setState({ address: data.target.value });
-              if (this.state.address && this.state.city_id)
+              if (data.target.value && this.state.city_id)
                 this.props.updateObjRoute(
-                  this.state.address,
+                  data.target.value,
                   this.state.city_id
                 );
             }}
