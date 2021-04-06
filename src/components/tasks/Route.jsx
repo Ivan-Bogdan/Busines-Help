@@ -33,6 +33,8 @@ export default class Route extends Component {
 
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
+    if (this.state.address && this.state.city_id)
+      this.props.updateObjRoute(this.state.address, this.state.city_id);
     return suggestion.city;
   };
 
@@ -40,8 +42,6 @@ export default class Route extends Component {
     this.setState({
       city: newValue,
     });
-    if (this.state.address && this.state.city_id)
-      this.props.updateObjRoute(this.state.address, this.state.city_id);
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
