@@ -13,12 +13,13 @@ export default class Doc extends Component {
   }
 
   componentDidMount() {
-    if (this.state.number && this.state.date)
+    if (this.state.number && this.state.date) {
       this.props.updateObjDoc(
         this.state.docs_type,
         this.state.number,
         this.state.date
       );
+    }
   }
 
   render() {
