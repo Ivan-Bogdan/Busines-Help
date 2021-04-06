@@ -32,7 +32,8 @@ export default class Route extends Component {
   }
 
   componentDidUpdate() {
-    this.props.updateObjRoute(this.state.address, this.state.city_id);
+    if (this.state.address && this.state.city_id)
+      this.props.updateObjRoute(this.state.address, this.state.city_id);
   }
 
   getSuggestionValue = (suggestion) => {
