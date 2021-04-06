@@ -101,7 +101,12 @@ const Task = ({ task, deleteTask }) => {
               <div>
                 <div className="paid">Оплачено/Долг</div>
                 <div className="price-debt">
-                  <span className="color-green">2000,00 </span>/ 0
+                  <span className="color-green">
+                    {task.paid === 0 && "0"}
+                    {task.paid === 1 && task.price.price}
+                  </span>
+                  / {task.paid === 0 && task.price.price}
+                  {task.paid === 1 && "0"}
                 </div>
               </div>
             </div>
