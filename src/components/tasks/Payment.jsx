@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import icon_delete from "../../assets/img/удалить.png";
 
 export default class Payment extends Component {
   constructor(props) {
