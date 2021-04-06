@@ -31,11 +31,6 @@ export default class Route extends Component {
     };
   }
 
-  componentDidUpdate() {
-    if (this.state.address && this.state.city_id)
-      this.props.updateObjRoute(this.state.address, this.state.city_id);
-  }
-
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
     return suggestion.city;
@@ -45,6 +40,8 @@ export default class Route extends Component {
     this.setState({
       city: newValue,
     });
+    if (this.state.address && this.state.city_id)
+      this.props.updateObjRoute(this.state.address, this.state.city_id);
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
@@ -94,6 +91,11 @@ export default class Route extends Component {
             name="Adress"
             onChange={(data) => {
               this.setState({ address: data.target.value });
+              if (this.state.address && this.state.city_id)
+                this.props.updateObjRoute(
+                  this.state.address,
+                  this.state.city_id
+                );
             }}
           />
           {this.props.count <= this.props.number + 1 && (
