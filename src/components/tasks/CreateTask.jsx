@@ -98,7 +98,10 @@ export default class CreateTask extends Component {
       status: Number(this.state.status),
       type: Number(this.state.type),
       paid: Number(this.state.paid),
-      route: this.state.route,
+      route:
+        this.state.objRoute.point === this.state.countRoute
+          ? [...this.state.route, this.state.objRoute]
+          : this.state.route,
       payments: this.state.payments,
       docs: this.state.docs,
     };
