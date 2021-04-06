@@ -37,7 +37,10 @@ export default class CreateTask extends Component {
 
   updateData = (address, city) => {
     this.setState({
-      route: [...this.state.route, { address, city, point: this.state.count }],
+      route: [
+        ...this.state.route,
+        { address, city, point: this.state.countRoute },
+      ],
     });
     this.setState({ countRoute: this.state.countRoute + 1 });
   };

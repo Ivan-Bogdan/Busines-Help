@@ -149,9 +149,6 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            {/* <TestTask></TestTask> */}
-
-            {/*new layout */}
             {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task task={task} deleteTask={deleteTask}></Task>
