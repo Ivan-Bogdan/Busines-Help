@@ -102,8 +102,12 @@ export default class CreateTask extends Component {
         this.state.objRoute.point === this.state.countRoute
           ? [...this.state.route, this.state.objRoute]
           : this.state.route,
-      payments: this.state.payments,
-      docs: this.state.docs,
+      payments: this.state.objPayment.payments_type
+        ? [...this.state.payments, this.state.objPayment]
+        : this.state.payments,
+      docs: this.state.objDoc.date
+        ? [...this.state.docs, this.state.objDoc]
+        : this.state.docs,
     };
     create_task(payload).then((data) => {
       if (data.message) {

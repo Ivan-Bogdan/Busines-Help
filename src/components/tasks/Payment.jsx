@@ -15,21 +15,6 @@ export default class Payment extends Component {
     };
   }
 
-  componentDidMount() {
-    if (
-      this.state.payments_type &&
-      this.state.date_pay &&
-      this.state.price.price &&
-      this.state.price.currency
-    )
-      this.props.updateObjPayment(
-        this.state.payments_type,
-        this.state.price,
-        this.state.payment_number,
-        this.state.date_pay
-      );
-  }
-
   render() {
     return (
       <div>
@@ -40,6 +25,20 @@ export default class Payment extends Component {
           value={this.state.payments_type}
           onChange={(data) => {
             this.setState({ payments_type: data.target.value });
+            if (
+              this.state.payments_type &&
+              this.state.date_pay &&
+              this.state.price.price &&
+              this.state.price.currency &&
+              this.state.payment_number &&
+              this.state.date_pay
+            )
+              this.props.updateObjPayment(
+                this.state.payments_type,
+                this.state.price,
+                this.state.payment_number,
+                this.state.date_pay
+              );
           }}
         >
           <option value={`CASH`}>CASH</option>
@@ -55,6 +54,20 @@ export default class Payment extends Component {
               value={this.state.payment_number}
               onChange={(data) => {
                 this.setState({ payment_number: data.target.value });
+                if (
+                  this.state.payments_type &&
+                  this.state.date_pay &&
+                  this.state.price.price &&
+                  this.state.price.currency &&
+                  this.state.payment_number &&
+                  this.state.date_pay
+                )
+                  this.props.updateObjPayment(
+                    this.state.payments_type,
+                    this.state.price,
+                    this.state.payment_number,
+                    this.state.date_pay
+                  );
               }}
             />
           </div>
@@ -79,6 +92,20 @@ export default class Payment extends Component {
                   price: target.value,
                 },
               }));
+              if (
+                this.state.payments_type &&
+                this.state.date_pay &&
+                this.state.price.price &&
+                this.state.price.currency &&
+                this.state.payment_number &&
+                this.state.date_pay
+              )
+                this.props.updateObjPayment(
+                  this.state.payments_type,
+                  this.state.price,
+                  this.state.payment_number,
+                  this.state.date_pay
+                );
             }}
           />
           <select
@@ -91,6 +118,20 @@ export default class Payment extends Component {
                   currency: target.value,
                 },
               }));
+              if (
+                this.state.payments_type &&
+                this.state.date_pay &&
+                this.state.price.price &&
+                this.state.price.currency &&
+                this.state.payment_number &&
+                this.state.date_pay
+              )
+                this.props.updateObjPayment(
+                  this.state.payments_type,
+                  this.state.price,
+                  this.state.payment_number,
+                  this.state.date_pay
+                );
             }}
             style={{ border: "1px solid lightgrey" }}
           >
@@ -110,6 +151,20 @@ export default class Payment extends Component {
           name="date"
           onChange={({ target }) => {
             this.setState({ date_pay: target.value });
+            if (
+              this.state.payments_type &&
+              this.state.date_pay &&
+              this.state.price.price &&
+              this.state.price.currency &&
+              this.state.payment_number &&
+              this.state.date_pay
+            )
+              this.props.updateObjPayment(
+                this.state.payments_type,
+                this.state.price,
+                this.state.payment_number,
+                this.state.date_pay
+              );
           }}
         />
         <div>

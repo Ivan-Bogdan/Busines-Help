@@ -12,16 +12,6 @@ export default class Doc extends Component {
     };
   }
 
-  componentDidMount() {
-    if (this.state.number && this.state.date) {
-      this.props.updateObjDoc(
-        this.state.docs_type,
-        this.state.number,
-        this.state.date
-      );
-    }
-  }
-
   render() {
     return (
       <div>
@@ -33,12 +23,18 @@ export default class Doc extends Component {
             value={this.state.docs_type}
             onChange={({ target }) => {
               this.setState({ docs_type: target.value });
-              if (this.state.number && this.state.date)
+              if (this.state.number && this.state.date) {
                 this.props.updateDoc(
                   this.state.docs_type,
                   this.state.number,
                   this.state.date
                 );
+                this.props.updateObjDoc(
+                  this.state.docs_type,
+                  this.state.number,
+                  this.state.date
+                );
+              }
             }}
           >
             <option value="" disabled selected>
@@ -57,6 +53,13 @@ export default class Doc extends Component {
             placeholder="Номер"
             onChange={({ target }) => {
               this.setState({ number: target.value });
+              if (this.state.number && this.state.date) {
+                this.props.updateObjDoc(
+                  this.state.docs_type,
+                  this.state.number,
+                  this.state.date
+                );
+              }
             }}
           />
           <input
@@ -66,6 +69,13 @@ export default class Doc extends Component {
             placeholder="Дата"
             onChange={({ target }) => {
               this.setState({ date: target.value });
+              if (this.state.number && this.state.date) {
+                this.props.updateObjDoc(
+                  this.state.docs_type,
+                  this.state.number,
+                  this.state.date
+                );
+              }
             }}
           />
           <img
