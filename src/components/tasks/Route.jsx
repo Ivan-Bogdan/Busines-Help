@@ -38,7 +38,7 @@ export default class Route extends Component {
   };
 
   componentDidMount() {
-    updateasdf();
+    this.updateasdf();
   }
 
   getSuggestionValue = (suggestion) => {
