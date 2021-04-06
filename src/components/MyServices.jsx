@@ -44,7 +44,6 @@ const MyServ = () => {
           let pay = { fingerprint: fingerprint };
           update_token(pay).then((data) => {
             if (data.message) {
-              console.log(data.message);
             } else {
               authenticate(data, () => {});
             }
