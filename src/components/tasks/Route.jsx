@@ -74,7 +74,7 @@ export default class Route extends Component {
       onChange: this.onChange,
     };
     return (
-      <div className="flex" id="route">
+      <div className="flex p5-background" id="route">
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

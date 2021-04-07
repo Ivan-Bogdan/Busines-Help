@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import icon_delete from "../../assets/img/удалить.png";
 
 export default class Payment extends Component {
   constructor(props) {
@@ -17,33 +18,53 @@ export default class Payment extends Component {
 
   render() {
     return (
-      <div>
+      <div className="p5-background">
         <p className="black">Вид оплаты</p>
-        <select
-          className="select1"
-          style={{ border: "1px solid lightgrey" }}
-          value={this.state.payments_type}
-          onChange={(data) => {
-            this.setState({ payments_type: data.target.value });
-            if (
-              this.state.payments_type &&
-              this.state.date_pay &&
-              this.state.price.price &&
-              this.state.price.currency &&
-              this.state.payment_number &&
-              this.state.date_pay
-            )
-              this.props.updateObjPayment(
-                data.target.value,
-                this.state.price,
-                this.state.payment_number,
+        <div className="flex m25-0">
+          <select
+            className="select1"
+            style={{ border: "1px solid lightgrey" }}
+            value={this.state.payments_type}
+            onChange={(data) => {
+              this.setState({ payments_type: data.target.value });
+              if (
+                data.target.value &&
+                this.state.date_pay &&
+                this.state.price.price &&
+                this.state.price.currency &&
                 this.state.date_pay
-              );
-          }}
-        >
-          <option value={`CASH`}>CASH</option>
-          <option value={`REMITTANCE`}>REMITTANCE</option>
-        </select>
+              )
+                this.props.updateObjPayment(
+                  data.target.value,
+                  {
+                    price: this.state.price.price,
+                    currency: this.state.price.currency,
+                  },
+                  this.state.payment_number,
+                  this.state.date_pay
+                );
+            }}
+          >
+            <option value={`CASH`}>Наличные</option>
+            <option value={`REMITTANCE`}>Денежный перевод</option>
+          </select>
+          <img
+            src={icon_delete}
+            className="delete_icon"
+            height={34}
+            onClick={() => {
+              this.setState({ payment_number: "", date_pay: "" });
+              this.setState((prevState) => ({
+                price: {
+                  ...prevState.price,
+                  price: 0,
+                  currency: "BYN",
+                },
+              }));
+            }}
+            alt="delete"
+          />
+        </div>
 
         {this.state.payments_type === "REMITTANCE" && (
           <div>
@@ -59,12 +80,14 @@ export default class Payment extends Component {
                   this.state.date_pay &&
                   this.state.price.price &&
                   this.state.price.currency &&
-                  this.state.payment_number &&
                   this.state.date_pay
                 )
                   this.props.updateObjPayment(
                     this.state.payments_type,
-                    this.state.price,
+                    {
+                      price: this.state.price.price,
+                      currency: this.state.price.currency,
+                    },
                     data.target.value,
                     this.state.date_pay
                   );
@@ -95,14 +118,13 @@ export default class Payment extends Component {
               if (
                 this.state.payments_type &&
                 this.state.date_pay &&
-                this.state.price.price &&
+                target.value &&
                 this.state.price.currency &&
-                this.state.payment_number &&
                 this.state.date_pay
               )
                 this.props.updateObjPayment(
                   this.state.payments_type,
-                  this.state.price,
+                  { price: target.value, currency: this.state.price.currency },
                   this.state.payment_number,
                   this.state.date_pay
                 );
@@ -122,12 +144,11 @@ export default class Payment extends Component {
                 this.state.payments_type &&
                 this.state.date_pay &&
                 this.state.price.price &&
-                this.state.price.currency &&
-                this.state.date_pay
+                target.value
               )
                 this.props.updateObjPayment(
                   this.state.payments_type,
-                  this.state.price,
+                  { price: this.state.price.price, currency: target.value },
                   this.state.payment_number,
                   this.state.date_pay
                 );
@@ -152,14 +173,16 @@ export default class Payment extends Component {
             this.setState({ date_pay: target.value });
             if (
               this.state.payments_type &&
-              this.state.date_pay &&
+              target.value &&
               this.state.price.price &&
-              this.state.price.currency &&
-              this.state.date_pay
+              this.state.price.currency
             )
               this.props.updateObjPayment(
                 this.state.payments_type,
-                this.state.price,
+                {
+                  price: this.state.price.price,
+                  currency: this.state.price.currency,
+                },
                 this.state.payment_number,
                 target.value
               );
@@ -192,8 +215,8 @@ export default class Payment extends Component {
             <option value="" disabled selected>
               Добавить оплату
             </option>
-            <option value={`CASH`}>CASH</option>
-            <option value={`REMITTANCE`}>REMITTANCE</option>
+            <option value={`CASH`}>Наличные</option>
+            <option value={`REMITTANCE`}>Денежный перевод</option>
           </select>
         </div>
       </div>

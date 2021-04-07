@@ -136,6 +136,11 @@ ul {
   justify-content: space-between;
 }
 
+.p5-background {
+  padding: 5px;
+  background-color: #1111112e;
+}
+
 .mobile-container {
   width: 100%;
   display: flex;

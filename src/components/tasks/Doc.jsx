@@ -14,7 +14,7 @@ export default class Doc extends Component {
 
   render() {
     return (
-      <div>
+      <div className="p5-background">
         <div>
           {this.props.index === -1 && <p className="black">Документы</p>}
           <select
@@ -40,10 +40,10 @@ export default class Doc extends Component {
             <option value="" disabled selected>
               Добавить документ
             </option>
-            <option value={`TTN`}>TTN</option>
-            <option value={`TN`}>TN</option>
-            <option value={`WAYBILL`}>WAYBILL</option>
-            <option value={`CONTRACT`}>CONTRACT</option>
+            <option value={`TTN`}>ТТН</option>
+            <option value={`TN`}>ТН</option>
+            <option value={`WAYBILL`}>Акт</option>
+            <option value={`CONTRACT`}>Договор</option>
           </select>
         </div>
         <div className="flex m25-0">
@@ -69,7 +69,7 @@ export default class Doc extends Component {
             placeholder="Дата"
             onChange={({ target }) => {
               this.setState({ date: target.value });
-              if (this.state.number && this.state.date) {
+              if (this.state.number && target.value) {
                 this.props.updateObjDoc(
                   this.state.docs_type,
                   this.state.number,
@@ -109,10 +109,10 @@ export default class Doc extends Component {
             <option value="" disabled selected>
               Добавить документ
             </option>
-            <option value={`TTN`}>TTN</option>
-            <option value={`TN`}>TN</option>
-            <option value={`WAYBILL`}>WAYBILL</option>
-            <option value={`CONTRACT`}>CONTRACT</option>
+            <option value={`TTN`}>ТТН</option>
+            <option value={`TN`}>ТН</option>
+            <option value={`WAYBILL`}>Акт</option>
+            <option value={`CONTRACT`}>Договор</option>
           </select>
         </div>
       </div>
