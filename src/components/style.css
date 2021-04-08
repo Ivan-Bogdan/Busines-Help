@@ -905,7 +905,6 @@ span.psw {
   padding-left: 20px;
   margin: 8px 0;
   line-height: 1;
-  border-radius: 2px;
   height: 47px;
   background: url(../assets/img/strelka.png) no-repeat right #ffffff;
 }
@@ -1008,10 +1007,10 @@ span.psw {
 
   .select_price {
     font-size: 13px;
-    padding-left: 4px;
+    padding-left: 9px;
     width: 126px;
-    height: 30px;
-    background-size: 30px;
+    height: 35px;
+    background-size: 35px;
   }
   input[type="text"],
   input[type="password"],
@@ -1026,11 +1025,11 @@ span.psw {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    height: 30px;
+    height: 35px;
   }
   .select1 {
-    background-size: 30px;
-    height: 30px;
+    background-size: 35px;
+    height: 35px;
     font-size: 13px;
   }
   .delete_icon {
