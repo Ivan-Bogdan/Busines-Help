@@ -368,14 +368,15 @@ export default class SignUp extends React.Component {
               }}
               required
             />
-
-            <button
-              type="button"
-              className="button5"
-              onClick={this.handleSubmit}
-            >
-              Регистрация
-            </button>
+            <div style={{ textAlign: "center" }}>
+              <button
+                type="button"
+                className="button5"
+                onClick={this.handleSubmit}
+              >
+                Регистрация
+              </button>
+            </div>
           </div>
         </form>
       </div>
