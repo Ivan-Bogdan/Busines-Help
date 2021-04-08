@@ -192,12 +192,8 @@ ul {
   justify-content: space-between;
   margin: auto;
   height: auto;
-  padding: 10px 25px;
+  padding: 30px;
 }
-
-/* .width_28{
-  width: 28%;
-} */
 
 .task_price {
   text-align: left;
@@ -1058,7 +1054,7 @@ span.psw {
     border-top: 1px solid grey;
   }
 
-  .client_container:last-of-type::after {
+  .client_container:nth-last-of-type() {
     border-bottom: 1px solid grey;
   }
 
