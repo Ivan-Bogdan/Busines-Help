@@ -1034,7 +1034,7 @@ span.psw {
   }
 
   .select_price {
-    font-size: 13px;
+    font-size: 16px;
     padding-left: 9px;
     width: 126px;
     height: 35px;
@@ -1047,7 +1047,7 @@ span.psw {
   input[type="email"],
   input[type="tel"] {
     width: 100%;
-    font-size: 13px;
+    font-size: 17px;
     padding: 12px 20px;
     margin: 4px 0;
     display: inline-block;
@@ -1058,7 +1058,7 @@ span.psw {
   .select1 {
     background-size: 35px;
     height: 35px;
-    font-size: 13px;
+    font-size: 17px;
   }
   .delete_icon {
     height: 28px;
