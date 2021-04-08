@@ -920,7 +920,9 @@ span.psw {
   .ml10 {
     margin-left: 0;
   }
-
+  .container3 {
+    padding: 10px 15px;
+  }
   .main-section {
     background: url(../assets/img/Прямоугольник56.png);
     height: 360px;
