@@ -401,11 +401,10 @@ export default class CreateTask extends Component {
               </div>
             ))}
 
-            <div className="services">
+            <div style={{ textAlign: "center" }}>
               <button
-                style={{ padding: "15px 50px" }}
                 type="submit"
-                className="button_create"
+                className="button5"
                 onClick={this.Create_Task}
               >
                 СОЗДАТЬ
