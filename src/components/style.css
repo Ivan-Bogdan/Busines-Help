@@ -619,6 +619,17 @@ input:invalid:not(:placeholder-shown) + .form__error {
   font-size: 18px;
 }
 
+.button6 {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 35px;
+  margin: 8px 0;
+  border: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+}
+
 .button_create {
   background-color: #4caf50;
   color: white;

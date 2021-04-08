@@ -148,7 +148,7 @@ const Task = ({ task, deleteTask }) => {
               <div className="container3" style={{ display: "block" }}>
                 <button
                   type="submit"
-                  className="button5"
+                  className="button6"
                   onClick={(event) => {
                     event.preventDefault();
                     setModal(false);
@@ -160,7 +160,7 @@ const Task = ({ task, deleteTask }) => {
 
                 <button
                   type="submit"
-                  className="button5"
+                  className="button6"
                   onClick={(event) => {
                     event.preventDefault();
                     deleteTask(task.id);

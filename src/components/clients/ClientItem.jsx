@@ -61,7 +61,7 @@ const ClientItem = ({ item, deleteClient }) => {
               <div className="container3" style={{ display: "block" }}>
                 <button
                   type="submit"
-                  className="button5"
+                  className="button6"
                   onClick={(event) => {
                     event.preventDefault();
                     setModal(false);
@@ -73,7 +73,7 @@ const ClientItem = ({ item, deleteClient }) => {
 
                 <button
                   type="submit"
-                  className="button5"
+                  className="button6"
                   onClick={(event) => {
                     event.preventDefault();
                     deleteClient(item.id);
