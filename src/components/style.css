@@ -1054,9 +1054,14 @@ span.psw {
   }
   .client_container {
     border: none;
-    border-bottom: 1px solid grey;
+    /* border-bottom: 1px solid grey; */
     border-top: 1px solid grey;
   }
+
+  .client_container:last-of-type::after {
+    border-bottom: 1px solid grey;
+  }
+
   .client_name {
     font-size: 18px;
   }
