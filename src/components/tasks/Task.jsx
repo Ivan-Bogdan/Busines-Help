@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import UpdateTask from "./UpdateTask";
 import ReadTask from "./ReadTask";
 import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
+import ReadT from "./ReadT";
 
 const Task = ({ task, deleteTask }) => {
   const [modal, setModal] = useState(false);
@@ -174,6 +175,7 @@ const Task = ({ task, deleteTask }) => {
           </div>
         </Modal>
       </div>
+      {isReadTask && <ReadT onClose={toogleReadTask} task={task} />}
     </div>
   );
 };
