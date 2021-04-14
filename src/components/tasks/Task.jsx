@@ -85,7 +85,7 @@ const Task = ({ task, deleteTask }) => {
         </div>
         <div>
           <div className="flex-task">
-            <div className="block1">
+            <div className="block1" onClick={toogleReadTask}>
               {task.status === 0 && (
                 <div className="price color-blue">{`${task.price.price} ${task.price.currency}`}</div>
               )}
@@ -112,7 +112,7 @@ const Task = ({ task, deleteTask }) => {
               </div>
             </div>
             <div className="block3">
-              <div className="w407">
+              <div className="w407" onClick={toogleReadTask}>
                 <div className="task_name">{clientCurrent}</div>
                 <div className="fz20 color-grey">{cityName}</div>
                 <div className="fw600 fz20">{task.name}</div>
