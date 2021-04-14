@@ -5,11 +5,15 @@ const ReadT = ({ onClose, task }) => {
   const [client, setClient] = useState("");
 
   useEffect(() => {
-    const clientCurrent = await get_client({
-      get_id: task.client,
-    });
-    setClient(clientCurrent.client.name);
-  }, [task])
+    async function func() {
+      if (task.client)
+        const clientCurrent = await get_client({
+          get_id: task.client,
+        });
+      setClient(clientCurrent.client.name);
+    }
+    func();
+  }, [task]);
 
   return (
     <div className="modal" id="id01">
@@ -23,15 +27,9 @@ const ReadT = ({ onClose, task }) => {
 
         <div className="container3">
           <p className="black">Наименование услуги</p>
-          <input
-            value={task.name}
-            disabled
-          />
+          <input value={task.name} disabled />
           <p className="black">Клиент</p>
-          <input
-            value={client}
-            disabled
-          />
+          <input value={client} disabled />
           <p className="black">Дата</p>
           <input
             type="date"
