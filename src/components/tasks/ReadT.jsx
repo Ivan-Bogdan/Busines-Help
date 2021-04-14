@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get_client } from "../../API/http";
+import RouteRead from "./RouteRead";
 
 const ReadT = ({ onClose, task }) => {
   const [client, setClient] = useState("");
@@ -89,7 +90,7 @@ const ReadT = ({ onClose, task }) => {
             </option>
           </select>
 
-          {/* {task.type === "0" && (
+          {task.type === "0" && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div
@@ -98,29 +99,12 @@ const ReadT = ({ onClose, task }) => {
                   flexDirection: "column",
                 }}
               >
-                <Route
-                  number={-1}
-                  count={this.state.countRoute}
-                  updateData={this.updateData}
-                  updateObjRoute={this.updateObjRoute}
-                />
-
-                <div className="routelist">
-                  {[...Array(this.state.countRoute)].map((item, index) => (
-                    <div>
-                      <Route
-                        key={index}
-                        updateData={this.updateData}
-                        number={index}
-                        count={this.state.countRoute}
-                        updateObjRoute={this.updateObjRoute}
-                      />
-                    </div>
-                  ))}
-                </div>
+                {task.route.map((route) => (
+                  <RouteRead city={route.city} address={route.address} />
+                ))}
               </div>
             </div>
-          )} */}
+          )}
           <p className="black">Статус услуги</p>
           <select
             style={{ border: "1px solid lightgrey" }}
