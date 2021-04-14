@@ -56,7 +56,8 @@ const ReadT = ({ onClose, task }) => {
               disabled
             />
             <select
-              className="select_price2"
+              style={{ background: "none" }}
+              className="select_price"
               value={task.price.currency}
               style={{ border: "1px solid lightgrey" }}
               disabled
@@ -77,9 +78,9 @@ const ReadT = ({ onClose, task }) => {
           />
           <p className="black">Тип услуги</p>
           <select
-            style={{ border: "1px solid lightgrey" }}
+            style={{ border: "1px solid lightgrey", background: "none" }}
             required
-            className="select2"
+            className="select1"
             value={task.type}
             disabled
           >
@@ -108,8 +109,8 @@ const ReadT = ({ onClose, task }) => {
           )}
           <p className="black">Статус услуги</p>
           <select
-            style={{ border: "1px solid lightgrey" }}
-            className="select2"
+            style={{ border: "1px solid lightgrey", background: "none" }}
+            className="select1"
             value={task.status}
             disabled
           >
@@ -128,8 +129,8 @@ const ReadT = ({ onClose, task }) => {
           </select>
           <p className="black">Оплата услуги</p>
           <select
-            style={{ border: "1px solid lightgrey" }}
-            className="select2"
+            style={{ border: "1px solid lightgrey", background: "none" }}
+            className="select1"
             value={task.paid}
             disabled
           >

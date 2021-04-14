@@ -923,15 +923,6 @@ span.psw {
   height: 47px;
   background: url(../assets/img/strelka.png) no-repeat right #ffffff;
 }
-.select2 {
-  font-size: 20px;
-  width: 100%;
-  padding-left: 20px;
-  margin: 8px 0;
-  line-height: 1;
-  border-radius: 2px;
-  height: 47px;
-}
 
 .select_price {
   font-size: 18px;
@@ -942,14 +933,7 @@ span.psw {
   height: 47px;
   background: url(../assets/img/strelka.png) no-repeat right #ffffff;
 }
-.select_price2 {
-  font-size: 18px;
-  width: 164px;
-  padding-left: 20px;
-  margin: 8px 0;
-  line-height: 1;
-  height: 47px;
-}
+
 @media screen and (max-width: 587px) {
   .modal-content {
     margin: auto;
