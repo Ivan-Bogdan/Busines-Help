@@ -29,7 +29,12 @@ const ReadT = ({ onClose, task }) => {
             inputProps={inputProps}
           /> */}
           <p className="black">Дата</p>
-          <input type="date" value={task.date} name="date" disabled />
+          <input
+            type="date"
+            value={task.date.substr(0, 10)}
+            name="date"
+            disabled
+          />
           <p className="black">Сумма</p>
           <div
             style={{
