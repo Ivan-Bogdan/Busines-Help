@@ -56,10 +56,9 @@ const ReadT = ({ onClose, task }) => {
               disabled
             />
             <select
-              style={{ background: "none" }}
               className="select_price"
               value={task.price.currency}
-              style={{ border: "1px solid lightgrey" }}
+              style={{ border: "1px solid lightgrey", background: "none" }}
               disabled
             >
               <option value="BYN" defaultValue>
