@@ -28,9 +28,9 @@ const ReadT = ({ onClose, task }) => {
 
         <div className="container3">
           <p className="black">Наименование услуги</p>
-          <input value={task.name} disabled />
+          <input type="text" value={task.name} disabled />
           <p className="black">Клиент</p>
-          <input value={client} disabled />
+          <input type="text" value={client} disabled />
           <p className="black">Дата</p>
           <input
             type="date"
