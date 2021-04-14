@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ReadT = ({ onClose, task }) => {
+  const [client, setClient] = useState("");
+
+  useEffect(() => {
+    const clientCurrent = await get_client({
+      get_id: task.client,
+    });
+    setClient(clientCurrent.client.name);
+  }, [task])
+
   return (
     <div className="modal" id="id01">
       <form className="modal-content2 animate">
@@ -14,20 +23,14 @@ const ReadT = ({ onClose, task }) => {
         <div className="container3">
           <p className="black">Наименование услуги</p>
           <input
-            type="text"
-            placeholder="Создание сервиса поиска"
             value={task.name}
-            name="name"
+            disabled
           />
           <p className="black">Клиент</p>
-          {/* <Autosuggest
-            suggestions={clients}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={this.getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={inputProps}
-          /> */}
+          <input
+            value={client}
+            disabled
+          />
           <p className="black">Дата</p>
           <input
             type="date"
