@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { get_client } from "../../API/http";
 import RouteRead from "./RouteRead";
+import "./styleTask.css";
 
 const ReadT = ({ onClose, task }) => {
   const [client, setClient] = useState("");
@@ -90,7 +91,7 @@ const ReadT = ({ onClose, task }) => {
             </option>
           </select>
 
-          {task.type === "0" && (
+          {task.route > 0 && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div

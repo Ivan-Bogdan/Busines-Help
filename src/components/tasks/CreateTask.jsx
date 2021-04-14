@@ -4,6 +4,7 @@ import { create_task } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
+import "./styleTask.css";
 
 const renderSuggestion = (clients) => <span>{clients.name}</span>;
 

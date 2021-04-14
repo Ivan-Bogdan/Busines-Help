@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import icon_delete from "../../assets/img/удалить.png";
+import "./styleTask.css";
 
 export default class Doc extends Component {
   constructor(props) {
