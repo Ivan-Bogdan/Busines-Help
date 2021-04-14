@@ -6,11 +6,12 @@ const ReadT = ({ onClose, task }) => {
 
   useEffect(() => {
     async function func() {
-      if (task.client)
+      if (task.client) {
         const clientCurrent = await get_client({
           get_id: task.client,
         });
-      setClient(clientCurrent.client.name);
+        setClient(clientCurrent.client.name);
+      }
     }
     func();
   }, [task]);
