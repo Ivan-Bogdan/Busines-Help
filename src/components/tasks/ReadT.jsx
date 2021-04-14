@@ -91,7 +91,7 @@ const ReadT = ({ onClose, task }) => {
             </option>
           </select>
 
-          {task.route > 0 && (
+          {task.route.length > 0 && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div
