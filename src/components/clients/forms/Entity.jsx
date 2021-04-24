@@ -7,14 +7,16 @@ const Entity = () => {
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
   const [additional, setAdditional] = useState("");
-  let svedeniya = [
-    "Директор",
-    "Главный бухгалтер",
-    "Адрес регистрации",
-    "Адрес склада и др.",
-    "Учредительные документы",
-    "Банковские реквизиты",
-  ];
+  const  [svedeniya,setSvedenia] = useState([
+    {label:"Директор",value:0},
+    {label:"Главный бухгалтер",value:1},
+    {label:"Адрес регистрации",value:2},
+    {label:"Адрес склада и др.",value:3},
+    {label:"Учредительные документы",value:4},
+    {label:"Банковские реквизиты",value:5},
+  ])
+  console.log(svedeniya);
+
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
@@ -78,7 +80,7 @@ const Entity = () => {
         value={additional}
         onChange={({ target: { value } }) => {
           setAdditional(value);
-          svedeniya.filter();
+          setSvedenia(svedeniya.filter(item=>item.value!==Number(value)));
         }}
       >
         <option
@@ -88,7 +90,7 @@ const Entity = () => {
           style={{ display: "none" }}
         ></option>
         {svedeniya.map((item, acc) => (
-          <option value={Number(acc)}>{item}</option>
+          <option key={item.value} value={Number(acc)}>{item.label}</option>
         ))}
       </select>
       <div style={{ textAlign: "center" }}>
