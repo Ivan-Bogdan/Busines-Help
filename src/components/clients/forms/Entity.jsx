@@ -7,6 +7,14 @@ const Entity = () => {
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
   const [additional, setAdditional] = useState("");
+  let svedeniya = [
+    "Директор",
+    "Главный бухгалтер",
+    "Адрес регистрации",
+    "Адрес склада и др.",
+    "Учредительные документы",
+    "Банковские реквизиты",
+  ];
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
@@ -68,7 +76,10 @@ const Entity = () => {
         required
         className="select1"
         value={additional}
-        onChange={({ target: { value } }) => setAdditional(value)}
+        onChange={({ target: { value } }) => {
+          setAdditional(value);
+          svedeniya.filter();
+        }}
       >
         <option
           value=""
@@ -76,12 +87,9 @@ const Entity = () => {
           defaultValue
           style={{ display: "none" }}
         ></option>
-        <option value={Number(0)}>Директор</option>
-        <option value={Number(1)}>Главный бухгалтер</option>
-        <option value={Number(2)}>Адрес регистрации</option>
-        <option value={Number(3)}>Адрес склада и др.</option>
-        <option value={Number(4)}>Учредительные документы</option>
-        <option value={Number(5)}>Банковские реквизиты</option>
+        {svedeniya.map((item, acc) => (
+          <option value={Number(acc)}>{item}</option>
+        ))}
       </select>
       <div style={{ textAlign: "center" }}>
         <button type="submit" className="button5">
