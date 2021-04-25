@@ -1,6 +1,6 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import { cityList, Reg } from "../API/http";
+import { Reg } from "../API/http";
 import * as Fingerprint2 from "fingerprintjs2";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 

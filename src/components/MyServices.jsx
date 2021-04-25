@@ -14,7 +14,6 @@ import Task from "./tasks/Task";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
-import TestTask from "./tasks/TestTask";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -26,7 +25,7 @@ const MyServ = () => {
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [limit] = useState(10);
-  const [offset, setOffset] = useState(0);
+  const [offset] = useState(0);
 
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { city__name, delete_client } from "../../API/http";
+import { city__name } from "../../API/http";
 import Modal from "../Modal";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";

@@ -4,7 +4,6 @@ import {
   create_client,
   delete_client,
   get_client_list,
-  update_client,
   update_token,
 } from "../API/http";
 import Footer from "../Footer";
@@ -12,7 +11,6 @@ import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 import ClientItem from "./clients/ClientItem";
-import TestClient from "./clients/TestClient";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -26,7 +24,6 @@ const MyClients = () => {
   const [clients, setClients] = useState([]);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [limit] = useState(10);
-  const [offset] = useState(0);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 

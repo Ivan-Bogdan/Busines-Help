@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Additional from "./Additional";
 
 const Entity = () => {
   const [unp, setUnp] = useState("");
@@ -6,15 +7,16 @@ const Entity = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
-  const [additional, setAdditional] = useState("");
-  const  [svedeniya,setSvedenia] = useState([
-    {label:"Директор",value:0},
-    {label:"Главный бухгалтер",value:1},
-    {label:"Адрес регистрации",value:2},
-    {label:"Адрес склада и др.",value:3},
-    {label:"Учредительные документы",value:4},
-    {label:"Банковские реквизиты",value:5},
-  ])
+  const [newSelect, setNewSelect] = useState([]);
+  const [count, setCount] = useState(0);
+  const [svedeniya, setSvedenia] = useState([
+    { label: "Директор", value: 0 },
+    { label: "Главный бухгалтер", value: 1 },
+    { label: "Адрес регистрации", value: 2 },
+    { label: "Адрес склада и др.", value: 3 },
+    { label: "Учредительные документы", value: 4 },
+    { label: "Банковские реквизиты", value: 5 },
+  ]);
   console.log(svedeniya);
 
   return (
@@ -51,7 +53,7 @@ const Entity = () => {
         <option value={Number(7)}>КФХ</option>
         <option value={Number(7)}>ИНОЕ</option>
       </select>
-      <p className="black">Наименоание организации</p>
+      <p className="black">Наименование организации</p>
       <input
         type="text"
         placeholder=""
@@ -73,14 +75,34 @@ const Entity = () => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
-      <select
+      <Additional
+        select={svedeniya}
+        setSelect={setSvedenia}
+        setNewSelect={setNewSelect}
+      />
+      {Array(count)}
+      {/* <select
         style={{ border: "1px solid #ccc" }}
         required
         className="select1"
         value={additional}
         onChange={({ target: { value } }) => {
           setAdditional(value);
-          setSvedenia(svedeniya.filter(item=>item.value!==Number(value)));
+          // setSvedenia(svedeniya.filter((item) => item.value !== Number(value)));
+          setSvedenia(
+            svedeniya
+              .filter((item) => item.value !== Number(value))
+              .map((item, acc) => {
+                return { ...item, value: acc };
+              })
+          );
+          setAdditional([
+            ...additional,
+            {
+              label: svedeniya.filter((item) => item.value === Number(value))[0]
+                .label,
+            },
+          ]);
         }}
       >
         <option
@@ -90,9 +112,19 @@ const Entity = () => {
           style={{ display: "none" }}
         ></option>
         {svedeniya.map((item, acc) => (
-          <option key={item.value} value={Number(acc)}>{item.label}</option>
+          <option key={item.value} value={Number(acc)}>
+            {item.label}
+          </option>
         ))}
-      </select>
+      </select> */}
+      {/* {additional.find((item) => item.label === "Директор") && (
+        <Director
+          data={svedeniya}
+          setData={setSvedenia}
+          select={additional}
+          setSelect={setAdditional}
+        />
+      )} */}
       <div style={{ textAlign: "center" }}>
         <button type="submit" className="button5">
           Создать

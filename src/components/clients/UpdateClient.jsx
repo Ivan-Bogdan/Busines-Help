@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { update_client, get_client } from "../../API/http";
 
 import Autosuggest from "react-autosuggest";
-import { cityList, cityName } from "../../API/http";
+import { cityName } from "../../API/http";
 
 import "../style.css";
 import "../Modal.css";
