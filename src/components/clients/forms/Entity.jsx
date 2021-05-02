@@ -17,7 +17,6 @@ const Entity = () => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
-  console.log(svedeniya);
 
   return (
     <div style={{ marginTop: 15 }}>
@@ -79,8 +78,19 @@ const Entity = () => {
         select={svedeniya}
         setSelect={setSvedenia}
         setNewSelect={setNewSelect}
+        setCount={() => setCount(count + 1)}
       />
-      {Array(count)}
+      {[...Array(count)].map((item, index) => (
+        <div key={`sx2djsxhasdx${index}`}>
+          <Additional
+            key={`sahascjkdx${index}`}
+            select={svedeniya}
+            setSelect={setSvedenia}
+            setNewSelect={setNewSelect}
+            setCount={() => setCount(count + 1)}
+          />
+        </div>
+      ))}
       {/* <select
         style={{ border: "1px solid #ccc" }}
         required

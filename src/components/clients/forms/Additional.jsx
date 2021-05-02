@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Director,
   Booker,
@@ -7,25 +7,31 @@ import {
   ConsDocuments,
   BankDetails,
 } from "../additional";
-const Additional = ({ select, setSelect, setNewSelect }) => {
+const Additional = ({ select, setSelect, setNewSelect, setCount }) => {
+  const [mainSelect, setMainSelect] = useState([]);
   const [current, setCurrent] = useState("");
-  console.log(select.filter((item) => item.label === current));
+
+  useEffect(() => {
+    if (mainSelect.length <= 0) setMainSelect(select);
+    if (mainSelect.length === 1) setCurrent(mainSelect[0].label);
+  }, [mainSelect]);
+
   return (
     <div>
       <select
         style={{ border: "1px solid #ccc" }}
-        required
         className="select1"
         value={current}
         onChange={({ target: { value } }) => {
           setCurrent(value);
-          setNewSelect(
+          setSelect(
             select
-              .filter((item) => item.value !== Number(value))
+              .filter((item) => item.label !== value)
               .map((item, acc) => {
                 return { ...item, value: acc };
               })
           );
+          if (!current) setCount();
         }}
       >
         <option
@@ -34,7 +40,7 @@ const Additional = ({ select, setSelect, setNewSelect }) => {
           defaultValue
           style={{ display: "none" }}
         ></option>
-        {select.map((item) => (
+        {mainSelect.map((item) => (
           <option key={item.value} value={item.label}>
             {item.label}
           </option>
