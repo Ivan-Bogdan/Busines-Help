@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Director,
   Booker,
@@ -7,14 +7,38 @@ import {
   ConsDocuments,
   BankDetails,
 } from "../additional";
-const Additional = ({ select, setSelect, setNewSelect, setCount }) => {
+const Additional = ({ select, setSelect, setAddData, setCount }) => {
   const [mainSelect, setMainSelect] = useState([]);
   const [current, setCurrent] = useState("");
 
+  const [director, setDirector] = useState(null);
+  const [booker, setBooker] = useState(null);
+  const [regAddress, setRegAddress] = useState(null);
+  const [warehouse, setWarehouse] = useState(null);
+  const [consDocuments, setConsDocuments] = useState(null);
+  const [bankDetails, setBankDetails] = useState(null);
+  Booker;
+
   useEffect(() => {
     if (mainSelect.length <= 0) setMainSelect(select);
-    if (mainSelect.length === 1) setCurrent(mainSelect[0].label);
-  }, [mainSelect]);
+    if ((director, booker, regAddress, warehouse, consDocuments, bankDetails))
+      setAddData(
+        director,
+        booker,
+        regAddress,
+        warehouse,
+        consDocuments,
+        bankDetails
+      );
+  }, [
+    mainSelect,
+    director,
+    booker,
+    regAddress,
+    warehouse,
+    consDocuments,
+    bankDetails,
+  ]);
 
   return (
     <div>
@@ -31,7 +55,7 @@ const Additional = ({ select, setSelect, setNewSelect, setCount }) => {
                 return { ...item, value: acc };
               })
           );
-          if (!current) setCount();
+          if (!current && mainSelect.length !== 1) setCount();
         }}
       >
         <option
@@ -46,12 +70,18 @@ const Additional = ({ select, setSelect, setNewSelect, setCount }) => {
           </option>
         ))}
       </select>
-      {current === "Директор" && <Director />}
-      {current === "Главный бухгалтер" && <Booker />}
-      {current === "Адрес регистрации" && <RegAddress />}
-      {current === "Адрес склада и др." && <Warehouse />}
-      {current === "Учредительные документы" && <ConsDocuments />}
-      {current === "Банковские реквизиты" && <BankDetails />}
+      {current === "Директор" && <Director setData={setDirector} />}
+      {current === "Главный бухгалтер" && <Booker setData={setBooker} />}
+      {current === "Адрес регистрации" && (
+        <RegAddress setData={setRegAddress} />
+      )}
+      {current === "Адрес склада и др." && <Warehouse setData={setWarehouse} />}
+      {current === "Учредительные документы" && (
+        <ConsDocuments setData={setConsDocuments} />
+      )}
+      {current === "Банковские реквизиты" && (
+        <BankDetails setData={setBankDetails} />
+      )}
     </div>
   );
 };

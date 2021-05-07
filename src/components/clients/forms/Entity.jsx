@@ -7,7 +7,7 @@ const Entity = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
-  const [newSelect, setNewSelect] = useState([]);
+  const [addData, setAddData] = useState(null);
   const [count, setCount] = useState(0);
   const [svedeniya, setSvedenia] = useState([
     { label: "Директор", value: 0 },
@@ -77,7 +77,7 @@ const Entity = () => {
       <Additional
         select={svedeniya}
         setSelect={setSvedenia}
-        setNewSelect={setNewSelect}
+        setAddData={setAddData}
         setCount={() => setCount(count + 1)}
       />
       {[...Array(count)].map((item, index) => (
@@ -86,7 +86,7 @@ const Entity = () => {
             key={`sahascjkdx${index}`}
             select={svedeniya}
             setSelect={setSvedenia}
-            setNewSelect={setNewSelect}
+            setAddData={setAddData}
             setCount={() => setCount(count + 1)}
           />
         </div>

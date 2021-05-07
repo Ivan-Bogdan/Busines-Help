@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ConsDocuments = () => {
+const ConsDocuments = ({ setData }) => {
   const [number, setNumber] = useState("");
   const [date, setDate] = useState(""); //дата регистрации
   const [regName, setRegName] = useState(""); //имя организации зарегестрировавший

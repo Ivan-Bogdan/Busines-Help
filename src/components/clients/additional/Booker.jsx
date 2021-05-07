@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Booker = () => {
+const Booker = ({ setData }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [patronymic, setPatronymic] = useState("");

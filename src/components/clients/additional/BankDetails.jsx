@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const BankDetails = () => {
+const BankDetails = ({ setData }) => {
   const [checkAccount, setCheckAccount] = useState(""); //расчётный счёт
   const [bikBank, setBikBank] = useState(""); //БИК
   const [unpBank, setUnpBank] = useState(""); //унп

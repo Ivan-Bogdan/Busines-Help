@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Director = () => {
+const Director = ({ setData }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (firstName && lastName && patronymic && phone)
+      setData({ firstName, lastName, patronymic, phone });
+  }, [firstName, lastName, patronymic, phone]);
+
   return (
     <div>
       <p className="black">Фамилия</p>

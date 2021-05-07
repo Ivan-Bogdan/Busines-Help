@@ -91,7 +91,7 @@ export default class Warehouse extends Component {
             onChange={(data) => {
               this.setState({ address: data.target.value });
               // if (data.target.value && this.state.city_id)
-              //   this.props.updateObjRoute(
+              //   this.props.setData(
               //     data.target.value,
               //     this.state.city_id
               //   );
