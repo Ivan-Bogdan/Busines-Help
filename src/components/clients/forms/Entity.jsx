@@ -31,10 +31,10 @@ const Entity = () => {
       if (data.message) {
         console.log(data.message);
       } else {
-        // window.location.reload();
+        console.log(payload);
       }
     });
-  }, []);
+  }, [name, phone, otype, unp, addData]);
 
   useEffect(() => {
     console.log(addData);
