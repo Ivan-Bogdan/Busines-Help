@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
 
 const renderSuggestion = (suggestion) => (
@@ -18,32 +18,22 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-export default class RegAddress extends Component {
-  constructor(props) {
-    super(props);
+const RegAddress = ({ setData }) => {
+  const [city, setCity] = useState("");
+  const [city_id, setCity_id] = useState("");
+  const [address, setAddress] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-    this.state = {
-      suggestions: [],
-      city: "",
-      city_id: "",
-      address: "",
-    };
-  }
+  const onChange = (event, { newValue, method }) => {
+    setCity(newValue);
+  };
 
-  getSuggestionValue = (suggestion) => {
-    this.setState({ city_id: suggestion.id });
-    // if (this.state.address && this.state.city_id)
-    //   this.props.updateObjRoute(this.state.address, this.state.city_id);
+  const getSuggestionValue = (suggestion) => {
+    setCity_id(suggestion.id);
     return suggestion.city;
   };
 
-  onChange = (event, { newValue, method }) => {
-    this.setState({
-      city: newValue,
-    });
-  };
-
-  onSuggestionsFetchRequested = ({ value }) => {
+  const onSuggestionsFetchRequested = ({ value }) => {
     fetch(`http://altproduction.ru:8080/rest/v1/city/`, {
       method: "POST",
       body: JSON.stringify({
@@ -53,52 +43,49 @@ export default class RegAddress extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ suggestions: data.city });
+        setSuggestions(data.city);
       });
   };
 
-  onSuggestionsClearRequested = () => {
-    this.setState({ suggestions: [] });
+  const onSuggestionsClearRequested = () => {
+    setSuggestions([]);
   };
 
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  const inputProps = {
+    placeholder: "Населеный пункт",
+    value: city,
+    onChange: onChange,
   };
 
-  render() {
-    const { suggestions, city } = this.state;
-    const inputProps = {
-      placeholder: "Населеный пункт",
-      value: city,
-      onChange: this.onChange,
-    };
-    return (
-      <div className="" id="route">
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
+  useEffect(() => {
+    if (city_id && address)
+      setData({
+        city: city_id,
+        address,
+      });
+  }, [city_id, address]);
+
+  return (
+    <div className="" id="route">
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        inputProps={inputProps}
+      />
+      <div className="">
+        <input
+          type="text"
+          placeholder="Улица, дом"
+          value={address}
+          name="Adress"
+          onChange={({ target: { value } }) => setAddress(value)}
         />
-        <div className="">
-          <input
-            type="text"
-            placeholder="Улица, дом"
-            value={this.state.address}
-            name="Adress"
-            onChange={(data) => {
-              this.setState({ address: data.target.value });
-              // if (data.target.value && this.state.city_id)
-              //   this.props.updateObjRoute(
-              //     data.target.value,
-              //     this.state.city_id
-              //   );
-            }}
-          />
-        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default RegAddress;

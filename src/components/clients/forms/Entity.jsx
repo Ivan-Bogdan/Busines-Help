@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { create_client } from "../../../API/http";
 import Additional from "./Additional";
 
 const Entity = () => {
@@ -17,6 +18,27 @@ const Entity = () => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
+
+  const createClient = useCallback(() => {
+    let payload = {
+      name,
+      phone,
+      otype: Number(otype),
+      unp,
+      ...addData,
+    };
+    create_client(payload).then((data) => {
+      if (data.message) {
+        console.log(data.message);
+      } else {
+        // window.location.reload();
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(addData);
+  }, [addData]);
 
   return (
     <div style={{ marginTop: 15 }}>
@@ -42,15 +64,14 @@ const Entity = () => {
           defaultValue
           style={{ display: "none" }}
         ></option>
-        <option value={Number(0)}>ОАО</option>
         <option value={Number(1)}>ООО</option>
-        <option value={Number(2)}>COOO</option>
-        <option value={Number(3)}>ЧП</option>
-        <option value={Number(4)}>УП</option>
-        <option value={Number(5)}>ГП</option>
-        <option value={Number(6)}>УО</option>
-        <option value={Number(7)}>КФХ</option>
-        <option value={Number(7)}>ИНОЕ</option>
+        <option value={Number(2)}>ОАО</option>
+        <option value={Number(3)}>ЧУП</option>
+        <option value={Number(4)}>ЧТУП</option>
+        <option value={Number(7)}>СООО</option>
+        <option value={Number(8)}>ЧП</option>
+        <option value={Number(9)}>УП</option>
+        <option value={Number(5)}>ИНОЕ</option>
       </select>
       <p className="black">Наименование организации</p>
       <input
@@ -77,15 +98,17 @@ const Entity = () => {
       <Additional
         select={svedeniya}
         setSelect={setSvedenia}
+        addData={addData}
         setAddData={setAddData}
         setCount={() => setCount(count + 1)}
       />
       {[...Array(count)].map((item, index) => (
-        <div key={`sx2djsxhasdx${index}`}>
+        <div key={index}>
           <Additional
-            key={`sahascjkdx${index}`}
+            key={index}
             select={svedeniya}
             setSelect={setSvedenia}
+            addData={addData}
             setAddData={setAddData}
             setCount={() => setCount(count + 1)}
           />
@@ -136,7 +159,7 @@ const Entity = () => {
         />
       )} */}
       <div style={{ textAlign: "center" }}>
-        <button type="submit" className="button5">
+        <button className="button5" onClick={createClient}>
           Создать
         </button>
       </div>

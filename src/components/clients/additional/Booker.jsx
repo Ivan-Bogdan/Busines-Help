@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Booker = ({ setData }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (firstName && lastName && patronymic && phone)
+      setData({
+        full_name: { name: firstName, family: lastName, patronymic },
+        phone,
+      });
+  }, [firstName, lastName, patronymic, phone]);
+
   return (
     <div>
       <p className="black">Фамилия</p>

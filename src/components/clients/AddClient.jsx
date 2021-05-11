@@ -10,15 +10,6 @@ export default class AddClient extends React.Component {
     super(props);
 
     this.state = {
-      name: "",
-      unp: "",
-      phone: "",
-      otype: "",
-      city: "",
-      city_id: "",
-      address: "",
-      suggestions: [],
-      error: "",
       selectType: "entity",
     };
   }
@@ -78,8 +69,10 @@ export default class AddClient extends React.Component {
             </div>
 
             {this.state.selectType === "entity" && <Entity />}
-            {this.state.selectType === "entrepreneur" && <Entrepreneur />}
-            {this.state.selectType === "individual" && <Individual />}
+            {this.state.selectType === "entrepreneur" && (
+              <Entrepreneur key={0} />
+            )}
+            {this.state.selectType === "individual" && <Individual key={6} />}
           </div>
         </form>
       </div>

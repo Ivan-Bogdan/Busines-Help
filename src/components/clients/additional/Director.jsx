@@ -8,7 +8,10 @@ const Director = ({ setData }) => {
 
   useEffect(() => {
     if (firstName && lastName && patronymic && phone)
-      setData({ firstName, lastName, patronymic, phone });
+      setData({
+        full_name: { name: firstName, family: lastName, patronymic },
+        phone,
+      });
   }, [firstName, lastName, patronymic, phone]);
 
   return (

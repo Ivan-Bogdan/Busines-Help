@@ -7,7 +7,7 @@ import {
   ConsDocuments,
   BankDetails,
 } from "../additional";
-const Additional = ({ select, setSelect, setAddData, setCount }) => {
+const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
   const [mainSelect, setMainSelect] = useState([]);
   const [current, setCurrent] = useState("");
 
@@ -21,15 +21,13 @@ const Additional = ({ select, setSelect, setAddData, setCount }) => {
 
   useEffect(() => {
     if (mainSelect.length <= 0) setMainSelect(select);
-    if ((director, booker, regAddress, warehouse, consDocuments, bankDetails))
-      setAddData(
-        director,
-        booker,
-        regAddress,
-        warehouse,
-        consDocuments,
-        bankDetails
-      );
+    if (director) setAddData({ ...addData, director_data: director });
+    if (booker) setAddData({ ...addData, chief_accountant: booker });
+    if (regAddress) setAddData({ ...addData, reg_address: regAddress });
+    if (warehouse) setAddData({ ...addData, warehouse_address: warehouse });
+    if (consDocuments)
+      setAddData({ ...addData, constituent_doc: consDocuments });
+    if (bankDetails) setAddData({ ...addData, bank_details: bankDetails });
   }, [
     mainSelect,
     director,
