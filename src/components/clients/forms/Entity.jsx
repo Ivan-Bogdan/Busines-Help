@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { create_client } from "../../../API/http";
 import Additional from "./Additional";
 
@@ -27,18 +27,10 @@ const Entity = () => {
       unp,
       ...addData,
     };
-    create_client(payload).then((data) => {
-      if (data.message) {
-        console.log(data.message);
-      } else {
-        console.log(payload);
-      }
-    });
+    const result = await create_client(payload);
+    if (result.message) console.log(result.message);
+    else console.log(result);
   }, [name, phone, otype, unp, addData]);
-
-  useEffect(() => {
-    console.log(addData);
-  }, [addData]);
 
   return (
     <div style={{ marginTop: 15 }}>
