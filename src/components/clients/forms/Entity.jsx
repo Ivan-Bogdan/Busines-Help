@@ -19,7 +19,7 @@ const Entity = () => {
     { label: "Банковские реквизиты", value: 5 },
   ]);
 
-  const createClient = useCallback(() => {
+  const createClient = useCallback(async () => {
     let payload = {
       name,
       phone,
