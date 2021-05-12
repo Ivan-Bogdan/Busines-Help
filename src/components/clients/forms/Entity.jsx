@@ -110,50 +110,6 @@ const Entity = () => {
           />
         </div>
       ))}
-      {/* <select
-        style={{ border: "1px solid #ccc" }}
-        required
-        className="select1"
-        value={additional}
-        onChange={({ target: { value } }) => {
-          setAdditional(value);
-          // setSvedenia(svedeniya.filter((item) => item.value !== Number(value)));
-          setSvedenia(
-            svedeniya
-              .filter((item) => item.value !== Number(value))
-              .map((item, acc) => {
-                return { ...item, value: acc };
-              })
-          );
-          setAdditional([
-            ...additional,
-            {
-              label: svedeniya.filter((item) => item.value === Number(value))[0]
-                .label,
-            },
-          ]);
-        }}
-      >
-        <option
-          value=""
-          disabled
-          defaultValue
-          style={{ display: "none" }}
-        ></option>
-        {svedeniya.map((item, acc) => (
-          <option key={item.value} value={Number(acc)}>
-            {item.label}
-          </option>
-        ))}
-      </select> */}
-      {/* {additional.find((item) => item.label === "Директор") && (
-        <Director
-          data={svedeniya}
-          setData={setSvedenia}
-          select={additional}
-          setSelect={setAdditional}
-        />
-      )} */}
       <div style={{ textAlign: "center" }}>
         <button className="button5" onClick={createClient}>
           Создать

@@ -6,6 +6,7 @@ import {
   Warehouse,
   ConsDocuments,
   BankDetails,
+  Passport,
 } from "../additional";
 const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
   const [mainSelect, setMainSelect] = useState([]);
@@ -17,6 +18,7 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
   const [warehouse, setWarehouse] = useState(null);
   const [consDocuments, setConsDocuments] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
+  const [passport, setPassport] = useState(null);
   Booker;
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
     if (consDocuments)
       setAddData({ ...addData, constituent_doc: consDocuments });
     if (bankDetails) setAddData({ ...addData, bank_details: bankDetails });
+    if (passport) setAddData({ ...addData, passport_data: passport });
   }, [
     mainSelect,
     director,
@@ -80,6 +83,8 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
       {current === "Банковские реквизиты" && (
         <BankDetails setData={setBankDetails} />
       )}
+      {current === "Паспорт" && <Passport setData={setPassport} />}
+      {current === "Адрес" && <RegAddress setData={setRegAddress} />}
     </div>
   );
 };

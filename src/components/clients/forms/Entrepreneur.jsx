@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { create_client } from "../../../API/http";
+import Additional from "./Additional";
 
 const Entrepreneur = () => {
   const [unp, setUnp] = useState("");
@@ -7,7 +9,32 @@ const Entrepreneur = () => {
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
-  const [additional, setAdditional] = useState("");
+  const [addData, setAddData] = useState(null);
+  const [count, setCount] = useState(0);
+  const [svedeniya, setSvedenia] = useState([
+    { label: "Адрес регистрации", value: 0 },
+    { label: "Адрес склада и др.", value: 1 },
+    { label: "Учредительные документы", value: 2 },
+    { label: "Банковские реквизиты", value: 3 },
+  ]);
+
+  const createClient = useCallback(
+    async (e) => {
+      e.preventDefault();
+      let payload = {
+        full_name: { name: firstName, family: lastName, patronymic },
+        phone,
+        otype: 0,
+        unp,
+        ...addData,
+      };
+      const result = await create_client(payload);
+      if (result.message) console.log(result.message);
+      else console.log(result);
+    },
+    [phone, unp, addData]
+  );
+
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
@@ -51,26 +78,27 @@ const Entrepreneur = () => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
-      <select
-        style={{ border: "1px solid #ccc" }}
-        required
-        className="select1"
-        value={additional}
-        onChange={({ target: { value } }) => setAdditional(value)}
-      >
-        <option
-          value=""
-          disabled
-          defaultValue
-          style={{ display: "none" }}
-        ></option>
-        <option value={Number(2)}>Адрес регистрации</option>
-        <option value={Number(3)}>Адрес склада, офиса</option>
-        <option value={Number(4)}>Учредительные документы</option>
-        <option value={Number(5)}>Банковские реквизиты</option>
-      </select>
+      <Additional
+        select={svedeniya}
+        setSelect={setSvedenia}
+        addData={addData}
+        setAddData={setAddData}
+        setCount={() => setCount(count + 1)}
+      />
+      {[...Array(count)].map((item, index) => (
+        <div key={index}>
+          <Additional
+            key={index}
+            select={svedeniya}
+            setSelect={setSvedenia}
+            addData={addData}
+            setAddData={setAddData}
+            setCount={() => setCount(count + 1)}
+          />
+        </div>
+      ))}
       <div style={{ textAlign: "center" }}>
-        <button type="submit" className="button5">
+        <button type="submit" className="button5" onClick={createClient}>
           Создать
         </button>
       </div>

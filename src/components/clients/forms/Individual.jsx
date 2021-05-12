@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { create_client } from "../../../API/http";
+import Additional from "./Additional";
 
 const Individual = () => {
   const [lastName, setLastName] = useState("");
@@ -6,7 +8,28 @@ const Individual = () => {
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
-  const [additional, setAdditional] = useState("");
+  const [addData, setAddData] = useState(null);
+  const [count, setCount] = useState(0);
+  const [svedeniya, setSvedenia] = useState([
+    { label: "Паспорт", value: 0 },
+    { label: "Адрес", value: 1 },
+  ]);
+
+  const createClient = useCallback(
+    async (e) => {
+      e.preventDefault();
+      let payload = {
+        full_name: { name: firstName, family: lastName, patronymic },
+        phone,
+        otype: 6,
+        ...addData,
+      };
+      const result = await create_client(payload);
+      if (result.message) console.log(result.message);
+      else console.log(result);
+    },
+    [phone, addData]
+  );
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">Фамилия</p>
@@ -42,24 +65,27 @@ const Individual = () => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
-      <select
-        style={{ border: "1px solid #ccc" }}
-        required
-        className="select1"
-        value={additional}
-        onChange={({ target: { value } }) => setAdditional(value)}
-      >
-        <option
-          value=""
-          disabled
-          defaultValue
-          style={{ display: "none" }}
-        ></option>
-        <option value={Number(0)}>Паспорт</option>
-        <option value={Number(1)}>Адрес</option>
-      </select>
+      <Additional
+        select={svedeniya}
+        setSelect={setSvedenia}
+        addData={addData}
+        setAddData={setAddData}
+        setCount={() => setCount(count + 1)}
+      />
+      {[...Array(count)].map((item, index) => (
+        <div key={index}>
+          <Additional
+            key={index}
+            select={svedeniya}
+            setSelect={setSvedenia}
+            addData={addData}
+            setAddData={setAddData}
+            setCount={() => setCount(count + 1)}
+          />
+        </div>
+      ))}
       <div style={{ textAlign: "center" }}>
-        <button type="submit" className="button5">
+        <button type="submit" className="button5" onClick={createClient}>
           Создать
         </button>
       </div>
