@@ -19,7 +19,7 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
   const [consDocuments, setConsDocuments] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [passport, setPassport] = useState(null);
-  Booker;
+  console.log(passport);
 
   useEffect(() => {
     if (mainSelect.length <= 0) setMainSelect(select);
@@ -39,6 +39,7 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
     warehouse,
     consDocuments,
     bankDetails,
+    passport,
   ]);
 
   return (

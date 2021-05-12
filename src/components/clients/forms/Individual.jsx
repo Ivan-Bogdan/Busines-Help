@@ -28,7 +28,7 @@ const Individual = () => {
       if (result.message) console.log(result.message);
       else console.log(result);
     },
-    [phone, addData]
+    [phone, addData, lastName, patronymic, firstName]
   );
   return (
     <div style={{ marginTop: 15 }}>

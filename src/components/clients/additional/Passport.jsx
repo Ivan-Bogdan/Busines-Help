@@ -6,12 +6,14 @@ const Passport = ({ setData }) => {
   const [passport_issued, setPassport_issued] = useState(""); //кто выдал
 
   useEffect(() => {
-    if (serial_number && date_issue && passport_issued)
+    if (serial_number && date_issue && passport_issued) {
+      console.log(215125);
       setData({
         serial_number,
         date_issue,
         passport_issued,
       });
+    }
   }, [serial_number, date_issue, passport_issued]);
 
   return (
