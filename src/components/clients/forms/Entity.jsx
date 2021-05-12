@@ -19,18 +19,22 @@ const Entity = () => {
     { label: "Банковские реквизиты", value: 5 },
   ]);
 
-  const createClient = useCallback(async () => {
-    let payload = {
-      name,
-      phone,
-      otype: Number(otype),
-      unp,
-      ...addData,
-    };
-    const result = await create_client(payload);
-    if (result.message) console.log(result.message);
-    else console.log(result);
-  }, [name, phone, otype, unp, addData]);
+  const createClient = useCallback(
+    async (e) => {
+      e.preventDefault();
+      let payload = {
+        name,
+        phone,
+        otype: Number(otype),
+        unp,
+        ...addData,
+      };
+      const result = await create_client(payload);
+      if (result.message) console.log(result.message);
+      else console.log(result);
+    },
+    [name, phone, otype, unp, addData]
+  );
 
   return (
     <div style={{ marginTop: 15 }}>
