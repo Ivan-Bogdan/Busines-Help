@@ -21,12 +21,18 @@ const BankDetails = ({ setData }) => {
   return (
     <div>
       <p className="black">Расчётный счёт</p>
-      <input
-        type="text"
-        placeholder=""
-        value={checkAccount}
-        onChange={({ target: { value } }) => setCheckAccount(value)}
-      />
+      <div className="form__field">
+        <input
+          type="text"
+          pattern="(\d{2})BAPB(\d{4})(\d{4})(\d{4})(\d{4})"
+          placeholder=""
+          value={checkAccount}
+          onChange={({ target: { value } }) => setCheckAccount(value)}
+        />{" "}
+        <span className="form__error">
+          Неверном формат. Пример: XX BAPB ХХХХ ХХХХ ХХХХ ХХХХ ХХХХ
+        </span>
+      </div>
       <p className="black">БИК</p>
       <input
         type="text"
