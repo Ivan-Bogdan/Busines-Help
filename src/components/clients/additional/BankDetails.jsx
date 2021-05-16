@@ -56,7 +56,7 @@ const BankDetails = ({ setData }) => {
       <p className="black">БИК</p>
       <input
         type="text"
-        placeholder="Иван"
+        placeholder="BAPBBY2X"
         value={bikBank}
         onChange={({ target: { value } }) => setBikBank(value)}
       />

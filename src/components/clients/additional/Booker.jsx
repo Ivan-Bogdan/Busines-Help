@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MaskedInput from "react-text-mask";
 
 const Booker = ({ setData }) => {
   const [firstName, setFirstName] = useState("");
@@ -38,11 +39,31 @@ const Booker = ({ setData }) => {
         onChange={({ target: { value } }) => setPatronymic(value)}
       />
       <p className="black">Контактный номер</p>
-      <input
+      <MaskedInput
         type="text"
-        placeholder="+375 (xx) xxx-xx-xx"
         value={phone}
         onChange={({ target: { value } }) => setPhone(value)}
+        mask={[
+          "+",
+          "3",
+          "7",
+          "5",
+          " ",
+          "(",
+          /\d/,
+          /\d/,
+          ")",
+          " ",
+          /\d/,
+          /\d/,
+          /\d/,
+          "-",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+        ]}
+        showMask
       />
     </div>
   );
