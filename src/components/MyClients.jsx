@@ -37,7 +37,6 @@ const MyClients = () => {
     const result = await get_client_list(payload);
     if (result.message) {
       setError(result.message);
-      localStorage.clear();
     } else {
       setCount(result.count);
       setClients(result.clients);
