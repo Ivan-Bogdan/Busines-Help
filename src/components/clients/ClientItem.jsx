@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { city__name } from "../../API/http";
+import React, { useState } from "react";
 import Modal from "../Modal";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
@@ -8,21 +7,6 @@ const ClientItem = ({ item, deleteClient }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadСlient, setIsReadСlient] = useState(false);
-  const [cityName, setCityName] = useState("");
-
-  useEffect(() => {
-    (async function () {
-      const result = await city__name({
-        id: item.city_id,
-      });
-      if (result.message) {
-        setCityName("Unknown");
-      } else {
-        const fullCity = result.type_abbr + ". " + result.city;
-        setCityName(fullCity);
-      }
-    })();
-  }, [item]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -39,9 +23,6 @@ const ClientItem = ({ item, deleteClient }) => {
       <div className="content_client" onClick={toogleReadClient}>
         <div className="client_name">{item.name}</div>
         <div className="client_unp">{item.unp}</div>
-        <div className="client_address">
-          {cityName} {item.address}
-        </div>
       </div>
       <div className="App">
         <Modal isShowing={modal}>
