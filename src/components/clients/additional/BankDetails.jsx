@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MaskedInput from "react-text-mask";
 
 const BankDetails = ({ setData }) => {
   const [checkAccount, setCheckAccount] = useState(""); //расчётный счёт
@@ -21,18 +22,37 @@ const BankDetails = ({ setData }) => {
   return (
     <div>
       <p className="black">Расчётный счёт</p>
-      <div className="form__field">
-        <input
-          type="text"
-          pattern="(\d{2})BAPB(\d{4})(\d{4})(\d{4})(\d{4})"
-          placeholder=""
-          value={checkAccount}
-          onChange={({ target: { value } }) => setCheckAccount(value)}
-        />{" "}
-        <span className="form__error">
-          Неверном формат. Пример: XX BAPB ХХХХ ХХХХ ХХХХ ХХХХ ХХХХ
-        </span>
-      </div>
+
+      <MaskedInput
+        type="text"
+        placeholder="XX BAPB ХХХХ ХХХХ ХХХХ ХХХХ ХХХХ"
+        value={checkAccount}
+        onChange={({ target: { value } }) => setCheckAccount(value)}
+        mask={[
+          /\d/,
+          /\d/,
+          "B",
+          "A",
+          "P",
+          "B",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+        ]}
+      />
       <p className="black">БИК</p>
       <input
         type="text"
@@ -41,12 +61,14 @@ const BankDetails = ({ setData }) => {
         onChange={({ target: { value } }) => setBikBank(value)}
       />
       <p className="black">УНП</p>
-      <input
+      <MaskedInput
         type="text"
-        placeholder="180 023 521"
+        placeholder="180 106 245"
         value={unpBank}
         onChange={({ target: { value } }) => setUnpBank(value)}
+        mask={[/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
       />
+
       <p className="black">Имя банка</p>
       <input
         type="text"

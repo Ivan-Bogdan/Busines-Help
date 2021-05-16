@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import MaskedInput from "react-text-mask";
 import { create_client } from "../../../API/http";
 import Additional from "./Additional";
 
@@ -38,12 +39,13 @@ const Entrepreneur = () => {
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
-      <input
+      <MaskedInput
         type="text"
         placeholder="180 106 245"
         value={unp}
         onChange={({ target: { value } }) => setUnp(value)}
         required
+        mask={[/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
       />
       <p className="black">Фамилия</p>
       <input
@@ -64,11 +66,31 @@ const Entrepreneur = () => {
         onChange={({ target: { value } }) => setPatronymic(value)}
       />
       <p className="black">Телефон</p>
-      <input
+      <MaskedInput
         type="text"
-        placeholder="+375 (xx) xxx-xx-xx"
         value={phone}
         onChange={({ target: { value } }) => setPhone(value)}
+        mask={[
+          "+",
+          "3",
+          "7",
+          "5",
+          " ",
+          "(",
+          /\d/,
+          /\d/,
+          ")",
+          " ",
+          /\d/,
+          /\d/,
+          /\d/,
+          "-",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+        ]}
+        showMask
       />
       <p className="black">Примечание</p>
       <input
