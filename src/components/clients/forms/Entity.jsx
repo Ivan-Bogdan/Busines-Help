@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { create_client } from "../../../API/http";
 import Additional from "./Additional";
-import MaskedInput from "react-text-mask";
+// import MaskedInput from "react-text-mask";
 
 const Entity = () => {
   const [unp, setUnp] = useState("");
@@ -19,9 +19,6 @@ const Entity = () => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
-  // let phoneMask = new IMask(document.getElementById("phone-mask"), {
-  //   mask: "+{7}(000)000-00-00",
-  // });
   const createClient = useCallback(
     async (e) => {
       e.preventDefault();
@@ -80,7 +77,7 @@ const Entity = () => {
         onChange={({ target: { value } }) => setName(value)}
       />
       <p className="black">Телефон</p>
-      <div>
+      {/* <div>
         <MaskedInput
           type="text"
           value={phone}
@@ -106,8 +103,8 @@ const Entity = () => {
             /\d/,
           ]}
         />
-      </div>
-      {/* <div className="form__field">
+      </div> */}
+      <div className="form__field">
         <input
           type="text"
           pattern="(\+375|80|375)(29|25|44|33)(\d{3})(\d{2})(\d{2})"
@@ -118,7 +115,7 @@ const Entity = () => {
         <span className="form__error">
           Это поле содержит телефон в неверном формате
         </span>
-      </div> */}
+      </div>
       <p className="black">Примечание</p>
       <input
         type="text"
