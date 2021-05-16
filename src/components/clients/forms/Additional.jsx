@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Director,
   Booker,
@@ -19,7 +19,6 @@ const Additional = ({ select, setSelect, setAddData, setCount, addData }) => {
   const [consDocuments, setConsDocuments] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [passport, setPassport] = useState(null);
-  console.log(passport);
 
   useEffect(() => {
     if (mainSelect.length <= 0) setMainSelect(select);

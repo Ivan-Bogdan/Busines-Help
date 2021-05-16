@@ -39,12 +39,12 @@ const Entity = () => {
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
-      <input
+      <MaskedInput
         type="text"
         placeholder="180 106 245"
         value={unp}
         onChange={({ target: { value } }) => setUnp(value)}
-        required
+        mask={[/\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/]}
       />
       <p className="black">Форма собственности</p>
       <select
@@ -102,6 +102,7 @@ const Entity = () => {
             /\d/,
             /\d/,
           ]}
+          showMask
         />
       </div>
       {/* <div className="form__field">
