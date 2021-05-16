@@ -44,7 +44,7 @@ const Entity = () => {
         placeholder="180 106 245"
         value={unp}
         onChange={({ target: { value } }) => setUnp(value)}
-        mask={[/\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/]}
+        mask={[/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
       />
       <p className="black">Форма собственности</p>
       <select
