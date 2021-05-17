@@ -10,11 +10,11 @@ const renderSuggestion = (suggestion) => (
     </span>{" "}
     <div>
       {suggestion.city !== suggestion.district && (
-        <span style={{ color: "#aaa", fontSize: 10 }}>
+        <span style={{ color: "#aaa", fontSize: 12 }}>
           {suggestion.district} р-н,
         </span>
       )}{" "}
-      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
+      <span style={{ color: "#aaa", fontSize: 12 }}>{suggestion.region} </span>
     </div>
   </div>
 );

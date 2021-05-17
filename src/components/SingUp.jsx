@@ -14,11 +14,11 @@ const renderSuggestion = (suggestion) => (
     </span>{" "}
     <div>
       {suggestion.city !== suggestion.district && (
-        <span style={{ color: "#aaa", fontSize: 10 }}>
+        <span style={{ color: "#aaa", fontSize: 12 }}>
           {suggestion.district} р-н,
         </span>
       )}{" "}
-      <span style={{ color: "#aaa", fontSize: 10 }}>{suggestion.region} </span>
+      <span style={{ color: "#aaa", fontSize: 12 }}>{suggestion.region} </span>
     </div>
   </div>
 );
@@ -251,6 +251,7 @@ export default class SignUp extends React.Component {
             <select
               required
               className="select1"
+              style={{ border: "1px solid rgb(204, 204, 204)" }}
               value={this.state.data.otype}
               onChange={(prevState) => {
                 this.setState({
