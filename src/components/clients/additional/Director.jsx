@@ -60,6 +60,7 @@ const Director = ({ setData }) => {
           "-",
           /\d/,
           /\d/,
+          "-",
           /\d/,
           /\d/,
         ]}

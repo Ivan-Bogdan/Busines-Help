@@ -66,7 +66,7 @@ const BankDetails = ({ setData }) => {
         placeholder="180 106 245"
         value={unpBank}
         onChange={({ target: { value } }) => setUnpBank(value)}
-        mask={[/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+        mask={[/\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/]}
       />
 
       <p className="black">Имя банка</p>

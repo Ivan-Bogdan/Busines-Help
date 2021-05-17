@@ -21,8 +21,11 @@ const ClientItem = ({ item, deleteClient }) => {
   return (
     <div className="client_container">
       <div className="content_client" onClick={toogleReadClient}>
-        <div className="client_name">{item.name}</div>
-        <div className="client_unp">{item.unp}</div>
+        {item.name && <div className="client_name">{item.name}</div>}
+        {item.full_name && (
+          <div className="client_name">{`${item.full_name.family} ${item.full_name.name} ${item.full_name.patronymic}`}</div>
+        )}
+        {item.unp && <div className="client_unp">{item.unp}</div>}
       </div>
       <div className="App">
         <Modal isShowing={modal}>
