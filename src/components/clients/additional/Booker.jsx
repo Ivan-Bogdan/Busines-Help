@@ -60,6 +60,7 @@ const Booker = ({ setData }) => {
           "-",
           /\d/,
           /\d/,
+          "-",
           /\d/,
           /\d/,
         ]}

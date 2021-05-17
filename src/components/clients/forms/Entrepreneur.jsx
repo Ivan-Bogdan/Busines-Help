@@ -87,6 +87,7 @@ const Entrepreneur = () => {
           "-",
           /\d/,
           /\d/,
+          "-",
           /\d/,
           /\d/,
         ]}
