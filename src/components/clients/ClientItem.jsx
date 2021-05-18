@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
+import AddClient from "./AddClient";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
 
@@ -73,11 +74,10 @@ const ClientItem = ({ item, deleteClient }) => {
       </div>
       <button className="editing" onClick={toggleModal} />
       {modal2 && (
-        <UpdateClient
+        <AddClient
           onClose={toggleModal2}
           client={item.id}
-          city={item.city_id}
-        ></UpdateClient>
+        ></AddClient>
       )}
       {isReadСlient && <ReadClient onClose={toogleReadClient} client={item} />}
     </div>
