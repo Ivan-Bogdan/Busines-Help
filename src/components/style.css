@@ -676,6 +676,11 @@ select:active {
   padding: 10px 70px;
 }
 
+.help_to_updateclient{
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .task_item {
   width: 100%;
   font-size: 23px;
