@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Modal from "../Modal";
 import AddClient from "./AddClient";
 import ReadClient from "./ReadClient";
-import UpdateClient from "./UpdateClient";
+import "../style.css";
+import "../Modal.css";
 
 const ClientItem = ({ item, deleteClient }) => {
   const [modal, setModal] = useState(false);
