@@ -30,7 +30,7 @@ export default class UpdateClient extends React.Component {
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
 
-          <div className="container3">
+          <div style={{fontWeight:"normal", fontSize: '18px'}}>
             {this.props.children}
             <div className="flex ">
               <div
