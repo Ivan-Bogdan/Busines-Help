@@ -6,7 +6,7 @@ import Entrepreneur from "./forms/Entrepreneur";
 import Individual from "./forms/Individual";
 import { get_client } from "../../API/http";
 
-const UpdateClient = ({ client, deleteClient }) => {
+const UpdateClient = ({ client, onClose }) => {
   const [currentClient, setCurrentClient] = useState(false);
 
   useEffect(() => {
@@ -25,15 +25,10 @@ const UpdateClient = ({ client, deleteClient }) => {
     <div className="modal" id="id01">
       <form className="modal-content animate">
         <div className="imgcontainer">
-          <span
-            className="close"
-            onClick={this.props.onClose}
-            title="Close Modal"
-          >
+          <span className="close" onClick={onClose} title="Close Modal">
             ×
           </span>
           <p className="reg">Новый клиент</p>
-          <p style={{ color: "red" }}>{this.state.error}</p>
         </div>
 
         {currentClient &&
