@@ -4,6 +4,7 @@ import "../style.css";
 import "../Modal.css";
 import Entrepreneur from "./forms/Entrepreneur";
 import Individual from "./forms/Individual";
+import { get_client } from "../../API/http";
 
 export default class UpdateClient extends React.Component {
   constructor(props) {
@@ -11,7 +12,20 @@ export default class UpdateClient extends React.Component {
 
     this.state = {
       selectType: "entity",
+      currentClient: null,
     };
+  }
+
+  componentDidMount() {
+    const func = async () => {
+      if (this.props.client) {
+        const clientCurrent = await get_client({
+          id: this.props.client,
+        });
+        this.setState({ currentClient: clientCurrent });
+      }
+    };
+    func();
   }
 
   render() {
