@@ -73,12 +73,7 @@ const ClientItem = ({ item, deleteClient }) => {
         </Modal>
       </div>
       <button className="editing" onClick={toggleModal} />
-      {modal2 && (
-        <UpdateClient
-          onClose={toggleModal2}
-          client={item.id}
-        />
-      )}
+      {modal2 && <UpdateClient onClose={toggleModal2} client={item.id} />}
       {isReadСlient && <ReadClient onClose={toogleReadClient} client={item} />}
     </div>
   );
