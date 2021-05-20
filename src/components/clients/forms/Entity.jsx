@@ -40,7 +40,7 @@ const Entity = ({ client }) => {
     async (e) => {
       e.preventDefault();
       let payload = {
-        id: client,
+        id: client.id,
         name,
         phone,
         otype: Number(otype),

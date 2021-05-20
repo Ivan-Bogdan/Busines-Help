@@ -36,7 +36,7 @@ const Individual = ({ client }) => {
     async (e) => {
       e.preventDefault();
       let payload = {
-        id: client,
+        id: client.id,
         full_name: { name: firstName, family: lastName, patronymic },
         phone,
         otype: 6,
