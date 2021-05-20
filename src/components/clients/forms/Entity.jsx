@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { create_client } from "../../../API/http";
 import Additional from "./Additional";
 import MaskedInput from "react-text-mask";
 
-const Entity = () => {
+const Entity = ({ client }) => {
   const [unp, setUnp] = useState("");
   const [otype, setOtype] = useState("");
   const [name, setName] = useState("");
@@ -35,6 +35,15 @@ const Entity = () => {
     },
     [name, phone, otype, unp, addData]
   );
+
+  useEffect(() => {
+    if (client) {
+      setPhone(client.phone);
+      setOtype(client.otype);
+      setUnp(client.unp);
+      setName(client.name);
+    }
+  }, [client]);
 
   return (
     <div style={{ marginTop: 15 }}>
