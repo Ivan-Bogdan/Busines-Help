@@ -22,7 +22,7 @@ export default class UpdateClient extends React.Component {
         const clientCurrent = await get_client({
           id: this.props.client,
         });
-        this.setState({ currentClient: clientCurrent });
+        this.setState({ currentClient: clientCurrent.client });
       }
     };
     func();
@@ -44,50 +44,16 @@ export default class UpdateClient extends React.Component {
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
 
-          <div className="container3 help_to_updateclient">
-            {this.props.children}
-            <div className="flex ">
-              <div
-                className={
-                  this.state.selectType === "entity" ? "grey green" : "grey"
-                }
-                id="entity"
-                onClick={() => {
-                  this.setState({ selectType: "entity" });
-                }}
-              >
-                ЮР. ЛИЦО
-              </div>
-              <div
-                className={
-                  this.state.selectType === "entrepreneur"
-                    ? "grey green"
-                    : "grey"
-                }
-                onClick={() => {
-                  this.setState({ selectType: "entrepreneur" });
-                }}
-              >
-                ИП
-              </div>
-              <div
-                className={
-                  this.state.selectType === "individual" ? "grey green" : "grey"
-                }
-                onClick={() => {
-                  this.setState({ selectType: "individual" });
-                }}
-              >
-                ФИЗ. ЛИЦО
-              </div>
-            </div>
-
-            {this.state.selectType === "entity" && <Entity />}
-            {this.state.selectType === "entrepreneur" && (
-              <Entrepreneur key={0} />
+          {this.state.currentClient.otype !== 0 &&
+            this.state.currentClient.otype !== 6 && (
+              <Entity client={this.state.currentClient} />
             )}
-            {this.state.selectType === "individual" && <Individual key={6} />}
-          </div>
+          {this.statecurrentClient.otype === 0 && (
+            <Entrepreneur client={this.state.currentClient} />
+          )}
+          {this.statecurrentClient.otype === 6 && (
+            <Individual client={this.state.currentClient} />
+          )}
         </form>
       </div>
     );
