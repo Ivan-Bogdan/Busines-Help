@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { create_client } from "../../../API/http";
+import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 import MaskedInput from "react-text-mask";
 
@@ -30,6 +30,24 @@ const Entity = ({ client }) => {
         ...addData,
       };
       const result = await create_client(payload);
+      if (result.message) console.log(result.message);
+      else console.log(result);
+    },
+    [name, phone, otype, unp, addData]
+  );
+
+  const updateClient = useCallback(
+    async (e) => {
+      e.preventDefault();
+      let payload = {
+        id: client,
+        name,
+        phone,
+        otype: Number(otype),
+        unp,
+        ...addData,
+      };
+      const result = await update_client(payload);
       if (result.message) console.log(result.message);
       else console.log(result);
     },
@@ -115,18 +133,6 @@ const Entity = ({ client }) => {
           showMask
         />
       </div>
-      {/* <div className="form__field">
-        <input
-          type="text"
-          pattern="(\+375|80|375)(29|25|44|33)(\d{3})(\d{2})(\d{2})"
-          placeholder="+375 (xx) xxx-xx-xx"
-          value={phone}
-          onChange={({ target: { value } }) => setPhone(value)}
-        />
-        <span className="form__error">
-          Это поле содержит телефон в неверном формате
-        </span>
-      </div> */}
       <p className="black">Примечание</p>
       <input
         type="text"
@@ -155,9 +161,15 @@ const Entity = ({ client }) => {
         </div>
       ))}
       <div style={{ textAlign: "center" }}>
-        <button className="button5" onClick={createClient}>
-          Создать
-        </button>
+        {client ? (
+          <button className="button5" onClick={updateClient}>
+            Обновить
+          </button>
+        ) : (
+          <button className="button5" onClick={createClient}>
+            Создать
+          </button>
+        )}
       </div>
     </div>
   );

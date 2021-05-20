@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import MaskedInput from "react-text-mask";
 import { create_client } from "../../../API/http";
 import Additional from "./Additional";
 
-const Individual = () => {
+const Individual = ({ client }) => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [patronymic, setPatronymic] = useState("");
@@ -31,6 +31,34 @@ const Individual = () => {
     },
     [phone, addData, lastName, patronymic, firstName]
   );
+
+  const updateClient = useCallback(
+    async (e) => {
+      e.preventDefault();
+      let payload = {
+        id: client,
+        full_name: { name: firstName, family: lastName, patronymic },
+        phone,
+        otype: 6,
+        ...addData,
+      };
+      const result = await create_client(payload);
+      if (result.message) console.log(result.message);
+      else console.log(result);
+    },
+    [phone, addData, lastName, patronymic, firstName, client]
+  );
+
+  useEffect(() => {
+    if (client) {
+      setPhone(client.phone);
+      if (client.full_name) {
+        setFirstName(client.full_name.name);
+        setLastName(client.full_name.family);
+        setPatronymic(client.full_name.patronymic);
+      }
+    }
+  }, [client]);
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">Фамилия</p>
@@ -107,9 +135,15 @@ const Individual = () => {
         </div>
       ))}
       <div style={{ textAlign: "center" }}>
-        <button type="submit" className="button5" onClick={createClient}>
-          Создать
-        </button>
+        {client ? (
+          <button className="button5" onClick={updateClient}>
+            Обновить
+          </button>
+        ) : (
+          <button className="button5" onClick={createClient}>
+            Создать
+          </button>
+        )}
       </div>
     </div>
   );
