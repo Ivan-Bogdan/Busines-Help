@@ -136,7 +136,8 @@ const Entrepreneur = ({ client }) => {
         setSelect={setSvedenia}
         addData={addData}
         setAddData={setAddData}
-        setCount={() => setCount(count + 1)}
+        setCount={setCount}
+        count={count}
       />
       {[...Array(count)].map((item, index) => (
         <div key={index}>
@@ -146,7 +147,8 @@ const Entrepreneur = ({ client }) => {
             setSelect={setSvedenia}
             addData={addData}
             setAddData={setAddData}
-            setCount={() => setCount(count + 1)}
+            setCount={setCount}
+            count={count}
           />
         </div>
       ))}

@@ -19,6 +19,7 @@ const Entity = ({ client }) => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
+  const [newSvedeniya, setNewSvedenia] = useState([]);
   const createClient = useCallback(
     async (e) => {
       e.preventDefault();
@@ -62,6 +63,8 @@ const Entity = ({ client }) => {
       setName(client.name);
     }
   }, [client]);
+
+  console.log(svedeniya);
 
   return (
     <div style={{ marginTop: 15 }}>
@@ -146,7 +149,8 @@ const Entity = ({ client }) => {
         setSelect={setSvedenia}
         addData={addData}
         setAddData={setAddData}
-        setCount={() => setCount(count + 1)}
+        setCount={setCount}
+        count={count}
       />
       {[...Array(count)].map((item, index) => (
         <div key={index}>
@@ -156,7 +160,8 @@ const Entity = ({ client }) => {
             setSelect={setSvedenia}
             addData={addData}
             setAddData={setAddData}
-            setCount={() => setCount(count + 1)}
+            setCount={setCount}
+            count={count}
           />
         </div>
       ))}
