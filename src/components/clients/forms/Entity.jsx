@@ -64,8 +64,6 @@ const Entity = ({ client }) => {
     }
   }, [client]);
 
-  console.log(svedeniya);
-
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>

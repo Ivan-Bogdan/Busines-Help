@@ -28,18 +28,19 @@ const UpdateClient = ({ client, onClose }) => {
           <span className="close" onClick={onClose} title="Close Modal">
             ×
           </span>
-          <p className="reg">Новый клиент</p>
+          <p className="reg">Редактирование клиента</p>
         </div>
-
-        {currentClient &&
-          currentClient.otype !== 0 &&
-          currentClient.otype !== 6 && <Entity client={currentClient} />}
-        {currentClient && currentClient.otype === 0 && (
-          <Entrepreneur client={currentClient} />
-        )}
-        {currentClient && currentClient.otype === 6 && (
-          <Individual client={currentClient} />
-        )}
+        <div className="container3">
+          {currentClient &&
+            currentClient.otype !== 0 &&
+            currentClient.otype !== 6 && <Entity client={currentClient} />}
+          {currentClient && currentClient.otype === 0 && (
+            <Entrepreneur client={currentClient} />
+          )}
+          {currentClient && currentClient.otype === 6 && (
+            <Individual client={currentClient} />
+          )}
+        </div>
       </form>
     </div>
   );
