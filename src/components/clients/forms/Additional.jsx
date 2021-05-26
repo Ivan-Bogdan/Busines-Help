@@ -21,7 +21,6 @@ const Additional = ({
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
   const [current, setCurrent] = useState("");
-  const [nameAddData, setNameAddData] = useState("");
 
   const [director, setDirector] = useState(null);
   const [booker, setBooker] = useState(null);

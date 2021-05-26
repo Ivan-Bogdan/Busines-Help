@@ -65,7 +65,9 @@ const BankDetails = ({ setData }) => {
         type="text"
         placeholder="180 106 245"
         value={unpBank}
-        onChange={({ target: { value } }) => setUnpBank(value)}
+        onChange={({ target: { value } }) =>
+          setUnpBank(value.replace(/\s/g, ""))
+        }
         mask={[/\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/]}
       />
 
