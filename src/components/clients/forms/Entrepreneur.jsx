@@ -66,6 +66,68 @@ const Entrepreneur = ({ client }) => {
     }
   }, [client]);
 
+  useEffect(() => {
+    if (client) {
+      if (
+        Boolean(
+          client.reg_address &&
+            svedeniya.find((i) => i.label === "Адрес регистрации")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Адрес регистрации")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+
+      if (
+        Boolean(
+          client.warehouse_address &&
+            svedeniya.find((i) => i.label === "Адрес склада и др.")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Адрес склада и др.")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (
+        Boolean(
+          client.bank_details &&
+            svedeniya.find((i) => i.label === "Банковские реквизиты")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Банковские реквизиты")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (
+        Boolean(
+          client.constituent_doc &&
+            svedeniya.find((i) => i.label === "Учредительные документы")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Учредительные документы")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+    }
+  }, [client, svedeniya]);
+
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>

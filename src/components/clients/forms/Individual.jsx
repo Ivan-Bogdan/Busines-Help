@@ -59,6 +59,39 @@ const Individual = ({ client }) => {
       }
     }
   }, [client]);
+
+  useEffect(() => {
+    if (client) {
+      if (
+        Boolean(
+          client.reg_address && svedeniya.find((i) => i.label === "Адрес")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Адрес")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+
+      if (
+        Boolean(
+          client.passport_data && svedeniya.find((i) => i.label === "Паспорт")
+        )
+      ) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Паспорт")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+    }
+  }, [client, svedeniya]);
+
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">Фамилия</p>
