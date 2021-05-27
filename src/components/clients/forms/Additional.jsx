@@ -159,9 +159,11 @@ const Additional = ({
                 reg_address ||
                 chief ||
                 director_data
-              )
+              ) {
                 deleteOne();
-              else deleteItem();
+              } else {
+                deleteItem();
+              }
             }}
             alt="delete"
           />
