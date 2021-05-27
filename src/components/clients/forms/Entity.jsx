@@ -64,6 +64,57 @@ const Entity = ({ client }) => {
     }
   }, [client]);
 
+  useEffect(() => {
+    if (client.reg_address)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Адрес регистрации")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+    if (client.chief_accountant)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Главный бухгалтер")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+    if (client.director_data)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Директор")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+    if (client.warehouse_address)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Адрес склада и др.")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+    if (client.bank_details)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Банковские реквизиты")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+    if (client.constituent_doc)
+      setSvedenia(
+        svedeniya
+          .filter((item) => item.label !== "Учредительные документы")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+  }, [client]);
+
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
