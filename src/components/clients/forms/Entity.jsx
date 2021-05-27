@@ -90,7 +90,7 @@ const Entity = ({ client }) => {
         );
       }
     }
-  }, [client]);
+  }, [client, svedeniya]);
   useEffect(() => {
     if (client) {
       if (Boolean(client.director_data)) {
@@ -104,7 +104,7 @@ const Entity = ({ client }) => {
         );
       }
     }
-  }, [client]);
+  }, [client, svedeniya]);
   useEffect(() => {
     if (client) {
       if (Boolean(client.warehouse_address)) {
@@ -118,7 +118,7 @@ const Entity = ({ client }) => {
         );
       }
     }
-  }, [client]);
+  }, [client, svedeniya]);
   useEffect(() => {
     if (client) {
       if (Boolean(client.bank_details)) {
@@ -132,7 +132,7 @@ const Entity = ({ client }) => {
         );
       }
     }
-  }, [client]);
+  }, [client, svedeniya]);
   useEffect(() => {
     if (client) {
       if (Boolean(client.constituent_doc)) {
@@ -145,7 +145,7 @@ const Entity = ({ client }) => {
         );
       }
     }
-  }, [client]);
+  }, [client, svedeniya]);
 
   console.log(svedeniya);
 
