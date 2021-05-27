@@ -71,7 +71,6 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Адрес регистрации")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес регистрации")
@@ -86,7 +85,6 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Главный бухгалтер")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Главный бухгалтер")
@@ -100,7 +98,6 @@ const Entity = ({ client }) => {
           client.director_data && svedeniya.find((i) => i.label === "Директор")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Директор")
@@ -115,7 +112,6 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Адрес склада и др.")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес склада и др.")
@@ -130,7 +126,6 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Банковские реквизиты")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Банковские реквизиты")
@@ -145,7 +140,6 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Учредительные документы")
         )
       ) {
-        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Учредительные документы")
