@@ -64,7 +64,7 @@ const Entity = ({ client }) => {
   }, [client]);
 
   useEffect(() => {
-    if (client.reg_address) {
+    if (Boolean(client.reg_address)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Адрес регистрации")
@@ -73,7 +73,7 @@ const Entity = ({ client }) => {
           })
       );
     }
-    if (client.chief_accountant) {
+    if (Boolean(client.chief_accountant)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Главный бухгалтер")
@@ -81,16 +81,8 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-      console.log(
-        svedeniya
-          .filter((item) => item.label !== "Главный бухгалтер")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-      console.log(client.chief_accountant);
     }
-    if (client.director_data)
+    if (Boolean(client.director_data)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Директор")
@@ -98,7 +90,8 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-    if (client.warehouse_address)
+    }
+    if (Boolean(client.warehouse_address)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Адрес склада и др.")
@@ -106,7 +99,8 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-    if (client.bank_details)
+    }
+    if (Boolean(client.bank_details)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Банковские реквизиты")
@@ -114,7 +108,8 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-    if (client.constituent_doc)
+    }
+    if (Boolean(client.constituent_doc)) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Учредительные документы")
@@ -122,6 +117,7 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
+    }
   }, [client]);
 
   console.log(svedeniya);
