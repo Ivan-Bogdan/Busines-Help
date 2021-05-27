@@ -19,6 +19,8 @@ const Entity = ({ client }) => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
+
+  const [clientCopy, setClientCopy] = useState(client);
   const createClient = useCallback(
     async (e) => {
       e.preventDefault();
@@ -53,6 +55,24 @@ const Entity = ({ client }) => {
     },
     [name, phone, otype, unp, addData]
   );
+
+  useEffect(() => {
+    if (director) setClientCopy({ ...clientCopy, director_data: null });
+    if (booker) setClientCopy({ ...clientCopy, chief_accountant: null });
+    if (regAddress) setClientCopy({ ...clientCopy, reg_address: null });
+    if (warehouse) setClientCopy({ ...clientCopy, warehouse_address: null });
+    if (consDocuments) setClientCopy({ ...clientCopy, constituent_doc: null });
+    if (bankDetails) setClientCopy({ ...clientCopy, bank_details: null });
+    if (passport) setClientCopy({ ...clientCopy, passport_data: null });
+  }, [
+    director,
+    booker,
+    regAddress,
+    warehouse,
+    consDocuments,
+    bankDetails,
+    passport,
+  ]);
 
   useEffect(() => {
     if (client) {
@@ -231,7 +251,7 @@ const Entity = ({ client }) => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
-      {client && client.director_data && (
+      {clientCopy && clientCopy.director_data && (
         <Additional
           director_data={client.director_data}
           select={svedeniya}
@@ -242,7 +262,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client && client.chief_accountant && (
+      {clientCopy && clientCopy.chief_accountant && (
         <Additional
           chief={client.chief_accountant}
           select={svedeniya}
@@ -253,7 +273,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client && client.reg_address && (
+      {clientCopy && clientCopy.reg_address && (
         <Additional
           reg_address={client.reg_address}
           select={svedeniya}
@@ -264,7 +284,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client && client.warehouse_address && (
+      {clientCopy && clientCopy.warehouse_address && (
         <Additional
           warehouse_address={client.warehouse_address}
           select={svedeniya}
@@ -275,7 +295,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client && client.constituent_doc && (
+      {clientCopy && clientCopy.constituent_doc && (
         <Additional
           constituent={client.constituent_doc}
           select={svedeniya}
@@ -286,7 +306,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client && client.bank_details && (
+      {clientCopy && clientCopy.bank_details && (
         <Additional
           bank_details={client.bank_details}
           select={svedeniya}
