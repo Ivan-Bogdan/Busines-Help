@@ -18,7 +18,7 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-const RegAddress = ({ setData }) => {
+const RegAddress = ({ setData, data }) => {
   const [city, setCity] = useState("");
   const [city_id, setCity_id] = useState("");
   const [address, setAddress] = useState("");
@@ -64,6 +64,27 @@ const RegAddress = ({ setData }) => {
         address,
       });
   }, [city_id, address]);
+
+  useEffect(() => {
+    if (data !== null) {
+      setCity_id(data.city);
+      setAddress(data.address);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (city_id && !city) {
+      async function func() {
+        if (city_id) {
+          const result = await cityName({
+            id: city_id,
+          });
+          setCity(result.city);
+        }
+      }
+      func();
+    }
+  }, [city_id, city]);
 
   return (
     <div className="" id="route">
