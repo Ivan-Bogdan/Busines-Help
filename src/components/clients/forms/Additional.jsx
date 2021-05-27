@@ -153,12 +153,13 @@ const Additional = ({
               setCurrent("");
               if (count > 0) setCount(count - 1);
               if (
-                bank_details ||
-                constituent ||
-                warehouse_address ||
-                reg_address ||
-                chief ||
-                director_data
+                director ||
+                booker ||
+                regAddress ||
+                warehouse ||
+                consDocuments ||
+                bankDetails ||
+                passport
               ) {
                 deleteOne();
               } else {
