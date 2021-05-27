@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import MaskedInput from "react-text-mask";
-import { create_client } from "../../../API/http";
+import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 
 const Entrepreneur = ({ client }) => {
@@ -47,7 +47,7 @@ const Entrepreneur = ({ client }) => {
         unp,
         ...addData,
       };
-      const result = await create_client(payload);
+      const result = await update_client(payload);
       if (result.message) console.log(result.message);
       else console.log(result);
     },
