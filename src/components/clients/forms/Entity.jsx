@@ -64,59 +64,61 @@ const Entity = ({ client }) => {
   }, [client]);
 
   useEffect(() => {
-    if (Boolean(client.reg_address)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Адрес регистрации")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-    }
-    if (Boolean(client.chief_accountant)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Главный бухгалтер")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-    }
-    if (Boolean(client.director_data)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Директор")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-    }
-    if (Boolean(client.warehouse_address)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Адрес склада и др.")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-    }
-    if (Boolean(client.bank_details)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Банковские реквизиты")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
-    }
-    if (Boolean(client.constituent_doc)) {
-      setSvedenia(
-        svedeniya
-          .filter((item) => item.label !== "Учредительные документы")
-          .map((item, acc) => {
-            return { ...item, value: acc };
-          })
-      );
+    if (client) {
+      if (Boolean(client.reg_address)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Адрес регистрации")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (Boolean(client.chief_accountant)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Главный бухгалтер")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (Boolean(client.director_data)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Директор")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (Boolean(client.warehouse_address)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Адрес склада и др.")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (Boolean(client.bank_details)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Банковские реквизиты")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
+      if (Boolean(client.constituent_doc)) {
+        setSvedenia(
+          svedeniya
+            .filter((item) => item.label !== "Учредительные документы")
+            .map((item, acc) => {
+              return { ...item, value: acc };
+            })
+        );
+      }
     }
   }, [client]);
 
