@@ -23,6 +23,7 @@ const Additional = ({
   reg_address,
   chief,
   director_data,
+  deleteOne,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -151,7 +152,16 @@ const Additional = ({
               setSelect(constSelect);
               setCurrent("");
               if (count > 0) setCount(count - 1);
-              deleteItem();
+              if (
+                bank_details ||
+                constituent ||
+                warehouse_address ||
+                reg_address ||
+                chief ||
+                director_data
+              )
+                deleteOne();
+              else deleteItem();
             }}
             alt="delete"
           />
