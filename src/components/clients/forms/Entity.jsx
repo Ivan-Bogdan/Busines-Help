@@ -72,10 +72,8 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-      console.log(client.reg_address);
     }
-
-    if (client.chief_accountant)
+    if (client.chief_accountant) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Главный бухгалтер")
@@ -83,6 +81,15 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
+      console.log(
+        svedeniya
+          .filter((item) => item.label !== "Главный бухгалтер")
+          .map((item, acc) => {
+            return { ...item, value: acc };
+          })
+      );
+      console.log(client.chief_accountant);
+    }
     if (client.director_data)
       setSvedenia(
         svedeniya
