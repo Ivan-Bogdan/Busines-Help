@@ -75,6 +75,10 @@ const Entity = ({ client }) => {
             })
         );
       }
+    }
+  }, [client]);
+  useEffect(() => {
+    if (client) {
       if (Boolean(client.chief_accountant)) {
         console.log(123);
         setSvedenia(
@@ -85,6 +89,10 @@ const Entity = ({ client }) => {
             })
         );
       }
+    }
+  }, [client]);
+  useEffect(() => {
+    if (client) {
       if (Boolean(client.director_data)) {
         console.log(123);
         setSvedenia(
@@ -95,6 +103,10 @@ const Entity = ({ client }) => {
             })
         );
       }
+    }
+  }, [client]);
+  useEffect(() => {
+    if (client) {
       if (Boolean(client.warehouse_address)) {
         console.log(123);
         setSvedenia(
@@ -105,6 +117,10 @@ const Entity = ({ client }) => {
             })
         );
       }
+    }
+  }, [client]);
+  useEffect(() => {
+    if (client) {
       if (Boolean(client.bank_details)) {
         console.log(123);
         setSvedenia(
@@ -115,8 +131,11 @@ const Entity = ({ client }) => {
             })
         );
       }
+    }
+  }, [client]);
+  useEffect(() => {
+    if (client) {
       if (Boolean(client.constituent_doc)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Учредительные документы")
