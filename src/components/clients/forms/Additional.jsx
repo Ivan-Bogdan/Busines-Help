@@ -23,7 +23,7 @@ const Additional = ({
   reg_address,
   chief,
   director_data,
-  deleteOne,
+  client,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -54,6 +54,18 @@ const Additional = ({
     bankDetails,
     passport,
   ]);
+
+  const deleteItemClient = useCallback(() => {
+    if (client) {
+      if (client.director_data) setDirector(null);
+      if (client.chief_accountant) setBooker(null);
+      if (client.reg_address) setRegAddress(null);
+      if (client.warehouse_address) setWarehouse(null);
+      if (client.constituent_doc) setConsDocuments(null);
+      if (client.bank_details) setBankDetails(null);
+      if (client.passport_data) setPassport(null);
+    }
+  }, [client]);
 
   useEffect(() => {
     if (director) setAddData({ ...addData, director_data: director });
@@ -161,7 +173,7 @@ const Additional = ({
                 bankDetails ||
                 passport
               ) {
-                deleteOne();
+                deleteItemClient();
               } else {
                 deleteItem();
               }

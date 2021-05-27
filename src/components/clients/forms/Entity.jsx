@@ -56,25 +56,6 @@ const Entity = ({ client }) => {
     [name, phone, otype, unp, addData]
   );
 
-  const deleteItem = useCallback(() => {
-    if (clientCopy) {
-      if (clientCopy.director_data)
-        setClientCopy({ ...clientCopy, director_data: null });
-      if (clientCopy.chief_accountant)
-        setClientCopy({ ...clientCopy, chief_accountant: null });
-      if (clientCopy.reg_address)
-        setClientCopy({ ...clientCopy, reg_address: null });
-      if (clientCopy.warehouse_address)
-        setClientCopy({ ...clientCopy, warehouse_address: null });
-      if (clientCopy.constituent_doc)
-        setClientCopy({ ...clientCopy, constituent_doc: null });
-      if (clientCopy.bank_details)
-        setClientCopy({ ...clientCopy, bank_details: null });
-      if (clientCopy.passport_data)
-        setClientCopy({ ...clientCopy, passport_data: null });
-    }
-  }, [clientCopy]);
-
   useEffect(() => {
     if (client) {
       setPhone(client.phone);
@@ -261,7 +242,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       {clientCopy && clientCopy.chief_accountant && (
@@ -273,7 +254,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       {clientCopy && clientCopy.reg_address && (
@@ -285,7 +266,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       {clientCopy && clientCopy.warehouse_address && (
@@ -297,7 +278,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       {clientCopy && clientCopy.constituent_doc && (
@@ -309,7 +290,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       {clientCopy && clientCopy.bank_details && (
@@ -321,7 +302,7 @@ const Entity = ({ client }) => {
           setAddData={setAddData}
           setCount={setCount}
           count={count}
-          deleteOne={deleteItem}
+          client={client}
         />
       )}
       <Additional
