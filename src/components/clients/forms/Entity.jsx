@@ -57,21 +57,23 @@ const Entity = ({ client }) => {
   );
 
   const deleteItem = useCallback(() => {
-    if (client) {
-      if (client.director_data)
-        setClientCopy({ ...client, director_data: null });
-      if (client.chief_accountant)
-        setClientCopy({ ...client, chief_accountant: null });
-      if (client.reg_address) setClientCopy({ ...client, reg_address: null });
-      if (client.warehouse_address)
-        setClientCopy({ ...client, warehouse_address: null });
-      if (client.constituent_doc)
-        setClientCopy({ ...client, constituent_doc: null });
-      if (client.bank_details) setClientCopy({ ...client, bank_details: null });
-      if (client.passport_data)
-        setClientCopy({ ...client, passport_data: null });
+    if (clientCopy) {
+      if (clientCopy.director_data)
+        setClientCopy({ ...clientCopy, director_data: null });
+      if (clientCopy.chief_accountant)
+        setClientCopy({ ...clientCopy, chief_accountant: null });
+      if (clientCopy.reg_address)
+        setClientCopy({ ...clientCopy, reg_address: null });
+      if (clientCopy.warehouse_address)
+        setClientCopy({ ...clientCopy, warehouse_address: null });
+      if (clientCopy.constituent_doc)
+        setClientCopy({ ...clientCopy, constituent_doc: null });
+      if (clientCopy.bank_details)
+        setClientCopy({ ...clientCopy, bank_details: null });
+      if (clientCopy.passport_data)
+        setClientCopy({ ...clientCopy, passport_data: null });
     }
-  }, [client]);
+  }, [clientCopy]);
 
   useEffect(() => {
     if (client) {
