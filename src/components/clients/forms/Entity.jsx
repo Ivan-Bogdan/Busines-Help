@@ -115,7 +115,7 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-  }, [client, svedeniya]);
+  }, [client]);
 
   console.log(svedeniya);
 
