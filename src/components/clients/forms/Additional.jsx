@@ -150,7 +150,7 @@ const Additional = ({
             onClick={() => {
               setSelect(constSelect);
               setCurrent("");
-              setCount(count - 1);
+              if (count > 0) setCount(count - 1);
               deleteItem();
             }}
             alt="delete"
