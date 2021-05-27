@@ -69,76 +69,80 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Адрес регистрации")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Адрес регистрации") &&
+                item.label !== "Адрес регистрации"
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-    }
-  }, [client]);
-  useEffect(() => {
-    if (client) {
       if (Boolean(client.chief_accountant)) {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Главный бухгалтер")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Главный бухгалтер") &&
+                item.label !== "Главный бухгалтер"
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-    }
-  }, [client, svedeniya]);
-  useEffect(() => {
-    if (client) {
       if (Boolean(client.director_data)) {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Директор")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Директор") &&
+                item.label !== "Директор"
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-    }
-  }, [client, svedeniya]);
-  useEffect(() => {
-    if (client) {
       if (Boolean(client.warehouse_address)) {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Адрес склада и др.")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Адрес склада и др.") &&
+                item.label !== "Адрес склада и др."
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-    }
-  }, [client, svedeniya]);
-  useEffect(() => {
-    if (client) {
       if (Boolean(client.bank_details)) {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Банковские реквизиты")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Банковские реквизиты") &&
+                item.label !== "Банковские реквизиты"
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-    }
-  }, [client, svedeniya]);
-  useEffect(() => {
-    if (client) {
       if (Boolean(client.constituent_doc)) {
         setSvedenia(
           svedeniya
-            .filter((item) => item.label !== "Учредительные документы")
+            .filter(
+              (item) =>
+                svedeniya.find((i) => i.label === "Учредительные документы") &&
+                item.label !== "Учредительные документы"
+            )
             .map((item, acc) => {
               return { ...item, value: acc };
             })
