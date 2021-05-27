@@ -65,9 +65,7 @@ const Entity = ({ client }) => {
 
   useEffect(() => {
     if (client) {
-      console.log(svedeniya.find((i) => i.label === "Адрес регистрации"));
       if (Boolean(client.reg_address)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) =>
@@ -81,7 +79,6 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.chief_accountant)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) =>
@@ -95,7 +92,6 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.director_data)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) =>
@@ -109,7 +105,6 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.warehouse_address)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) =>
@@ -123,7 +118,6 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.bank_details)) {
-        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) =>
