@@ -65,7 +65,7 @@ const Entity = ({ client }) => {
   }, [client]);
 
   useEffect(() => {
-    if (client.reg_address)
+    if (client.reg_address) {
       setSvedenia(
         svedeniya
           .filter((item) => item.label !== "Адрес регистрации")
@@ -73,6 +73,9 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
+      console.log(client.reg_address);
+    }
+
     if (client.chief_accountant)
       setSvedenia(
         svedeniya
