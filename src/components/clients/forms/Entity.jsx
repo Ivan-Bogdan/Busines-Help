@@ -70,10 +70,10 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Адрес регистрации") &&
-                item.label !== "Адрес регистрации"
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Адрес регистрации")
+                ? item.label !== "Адрес регистрации"
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
@@ -84,10 +84,10 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Главный бухгалтер") &&
-                item.label !== "Главный бухгалтер"
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Главный бухгалтер")
+                ? item.label !== "Главный бухгалтер"
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
@@ -98,10 +98,10 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Директор") &&
-                item.label !== "Директор"
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Директор")
+                ? item.label !== "Директор"
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
@@ -112,10 +112,10 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Адрес склада и др.") &&
-                item.label !== "Адрес склада и др."
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Адрес склада и др.")
+                ? item.label !== "Адрес склада и др."
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
@@ -126,10 +126,10 @@ const Entity = ({ client }) => {
         console.log(123);
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Банковские реквизиты") &&
-                item.label !== "Банковские реквизиты"
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Банковские реквизиты")
+                ? item.label !== "Банковские реквизиты"
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
@@ -139,10 +139,10 @@ const Entity = ({ client }) => {
       if (Boolean(client.constituent_doc)) {
         setSvedenia(
           svedeniya
-            .filter(
-              (item) =>
-                svedeniya.find((i) => i.label === "Учредительные документы") &&
-                item.label !== "Учредительные документы"
+            .filter((item) =>
+              svedeniya.find((i) => i.label === "Учредительные документы")
+                ? item.label !== "Учредительные документы"
+                : item.label
             )
             .map((item, acc) => {
               return { ...item, value: acc };
