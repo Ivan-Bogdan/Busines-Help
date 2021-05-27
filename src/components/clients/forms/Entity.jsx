@@ -71,6 +71,7 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Адрес регистрации")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес регистрации")
@@ -85,6 +86,7 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Главный бухгалтер")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Главный бухгалтер")
@@ -98,6 +100,7 @@ const Entity = ({ client }) => {
           client.director_data && svedeniya.find((i) => i.label === "Директор")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Директор")
@@ -112,6 +115,7 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Адрес склада и др.")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес склада и др.")
@@ -126,6 +130,7 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Банковские реквизиты")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Банковские реквизиты")
@@ -140,6 +145,7 @@ const Entity = ({ client }) => {
             svedeniya.find((i) => i.label === "Учредительные документы")
         )
       ) {
+        setCount(count + 1);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Учредительные документы")
@@ -231,6 +237,72 @@ const Entity = ({ client }) => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
+      {client.director_data && (
+        <Additional
+          director_data={client.director_data}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
+      {client.chief_accountant && (
+        <Additional
+          chief={client.chief_accountant}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
+      {client.reg_address && (
+        <Additional
+          reg_address={client.reg_address}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
+      {client.warehouse_address && (
+        <Additional
+          warehouse_address={client.warehouse_address}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
+      {client.constituent_doc && (
+        <Additional
+          constituent={client.constituent_doc}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
+      {client.bank_details && (
+        <Additional
+          bank_details={client.bank_details}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+        />
+      )}
       <Additional
         select={svedeniya}
         setSelect={setSvedenia}

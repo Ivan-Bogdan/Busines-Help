@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaskedInput from "react-text-mask";
 
-const Director = ({ setData }) => {
+const Director = ({ setData, data }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [patronymic, setPatronymic] = useState("");
@@ -14,6 +14,15 @@ const Director = ({ setData }) => {
         phone,
       });
   }, [firstName, lastName, patronymic, phone]);
+
+  useEffect(() => {
+    if (data !== null) {
+      setFirstName(data.full_name.name);
+      setLastName(data.full_name.family);
+      setPatronymic(data.full_name.patronymic);
+      setPhone(data.phone);
+    }
+  }, [data]);
 
   return (
     <div>

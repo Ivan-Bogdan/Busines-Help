@@ -17,6 +17,12 @@ const Additional = ({
   setCount,
   count,
   addData,
+  bank_details,
+  constituent,
+  warehouse_address,
+  reg_address,
+  chief,
+  director_data,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -72,6 +78,37 @@ const Additional = ({
     if (mainSelect.length > 0) setSelect(mainSelect);
   }, [constSelect, select, mainSelect]);
 
+  useEffect(() => {
+    if (director_data) {
+      setCurrent("Директор");
+    }
+    if (chief) {
+      setCurrent("Главный бухгалтер");
+    }
+    if (reg_address) {
+      setCurrent("Адрес регистрации");
+    }
+    if (warehouse_address) {
+      setCurrent("Адрес склада и др.");
+    }
+    if (constituent) {
+      setCurrent("Учредительные документы");
+    }
+    if (bank_details) {
+      setCurrent("Банковские реквизиты");
+    }
+    if (passport) {
+      setCurrent("Паспорт");
+    }
+  }, [
+    bank_details,
+    constituent,
+    warehouse_address,
+    reg_address,
+    chief,
+    director_data,
+  ]);
+
   return (
     <div>
       <div className="flex">
@@ -121,20 +158,26 @@ const Additional = ({
         )}
       </div>
 
-      {current === "Директор" && <Director setData={setDirector} />}
-      {current === "Главный бухгалтер" && <Booker setData={setBooker} />}
-      {current === "Адрес регистрации" && (
-        <RegAddress setData={setRegAddress} />
+      {current === "Директор" && (
+        <Director setData={setDirector} data={director_data || null} />
       )}
-      {current === "Адрес склада и др." && <Warehouse setData={setWarehouse} />}
+      {current === "Главный бухгалтер" && (
+        <Booker setData={setBooker} data={chief || null} />
+      )}
+      {current === "Адрес регистрации" && (
+        <RegAddress setData={setRegAddress} data={reg_address || null} />
+      )}
+      {current === "Адрес склада и др." && (
+        <Warehouse setData={setWarehouse} data={warehouse_address || null} />
+      )}
       {current === "Учредительные документы" && (
-        <ConsDocuments setData={setConsDocuments} />
+        <ConsDocuments setData={setConsDocuments} data={constituent || null} />
       )}
       {current === "Банковские реквизиты" && (
-        <BankDetails setData={setBankDetails} />
+        <BankDetails setData={setBankDetails} data={bank_details || null} />
       )}
-      {current === "Паспорт" && <Passport setData={setPassport} />}
-      {current === "Адрес" && <RegAddress setData={setRegAddress} />}
+      {current === "Паспорт" && <Passport setData={setPassport || null} />}
+      {current === "Адрес" && <RegAddress setData={setRegAddress || null} />}
     </div>
   );
 };

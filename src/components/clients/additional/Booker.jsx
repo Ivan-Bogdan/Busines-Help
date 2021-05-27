@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import MaskedInput from "react-text-mask";
 
-const Booker = ({ setData }) => {
+const Booker = ({ setData, data }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (data !== null) {
+      setFirstName(data.full_name.name);
+      setLastName(data.full_name.family);
+      setPatronymic(data.full_name.patronymic);
+      setPhone(data.phone);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (firstName && lastName && patronymic && phone)
