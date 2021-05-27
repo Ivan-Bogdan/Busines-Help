@@ -65,7 +65,7 @@ const Entity = ({ client }) => {
 
   useEffect(() => {
     if (client) {
-      console.log(svedeniya.find((i) => i.label === "Адрес склада и др."));
+      console.log(svedeniya.find((i) => i.label === "Адрес регистрации"));
       if (Boolean(client.reg_address)) {
         console.log(123);
         setSvedenia(
