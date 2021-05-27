@@ -59,7 +59,7 @@ const Entity = ({ client }) => {
   const deleteItem = useCallback(() => {
     if (client) {
       if (client.director_data)
-        setClientCopy({ ...clieclientntCopy, director_data: null });
+        setClientCopy({ ...client, director_data: null });
       if (client.chief_accountant)
         setClientCopy({ ...client, chief_accountant: null });
       if (client.reg_address) setClientCopy({ ...client, reg_address: null });
