@@ -66,6 +66,7 @@ const Entity = ({ client }) => {
   useEffect(() => {
     if (client) {
       if (Boolean(client.reg_address)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес регистрации")
@@ -75,6 +76,7 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.chief_accountant)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Главный бухгалтер")
@@ -84,6 +86,7 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.director_data)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Директор")
@@ -93,6 +96,7 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.warehouse_address)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Адрес склада и др.")
@@ -102,6 +106,7 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.bank_details)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Банковские реквизиты")
@@ -111,6 +116,7 @@ const Entity = ({ client }) => {
         );
       }
       if (Boolean(client.constituent_doc)) {
+        console.log(123);
         setSvedenia(
           svedeniya
             .filter((item) => item.label !== "Учредительные документы")
