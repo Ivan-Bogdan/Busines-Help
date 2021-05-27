@@ -231,7 +231,7 @@ const Entity = ({ client }) => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
-      {client.director_data && (
+      {client && client.director_data && (
         <Additional
           director_data={client.director_data}
           select={svedeniya}
@@ -242,7 +242,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client.chief_accountant && (
+      {client && client.chief_accountant && (
         <Additional
           chief={client.chief_accountant}
           select={svedeniya}
@@ -253,7 +253,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client.reg_address && (
+      {client && client.reg_address && (
         <Additional
           reg_address={client.reg_address}
           select={svedeniya}
@@ -264,7 +264,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client.warehouse_address && (
+      {client && client.warehouse_address && (
         <Additional
           warehouse_address={client.warehouse_address}
           select={svedeniya}
@@ -275,7 +275,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client.constituent_doc && (
+      {client && client.constituent_doc && (
         <Additional
           constituent={client.constituent_doc}
           select={svedeniya}
@@ -286,7 +286,7 @@ const Entity = ({ client }) => {
           count={count}
         />
       )}
-      {client.bank_details && (
+      {client && client.bank_details && (
         <Additional
           bank_details={client.bank_details}
           select={svedeniya}
