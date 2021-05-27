@@ -57,22 +57,23 @@ const Entity = ({ client }) => {
   );
 
   useEffect(() => {
-    if (director) setClientCopy({ ...clientCopy, director_data: null });
-    if (booker) setClientCopy({ ...clientCopy, chief_accountant: null });
-    if (regAddress) setClientCopy({ ...clientCopy, reg_address: null });
-    if (warehouse) setClientCopy({ ...clientCopy, warehouse_address: null });
-    if (consDocuments) setClientCopy({ ...clientCopy, constituent_doc: null });
-    if (bankDetails) setClientCopy({ ...clientCopy, bank_details: null });
-    if (passport) setClientCopy({ ...clientCopy, passport_data: null });
-  }, [
-    director,
-    booker,
-    regAddress,
-    warehouse,
-    consDocuments,
-    bankDetails,
-    passport,
-  ]);
+    if (clientCopy) {
+      if (clientCopy.director_data)
+        setClientCopy({ ...clientCopy, director_data: null });
+      if (clientCopy.chief_accountant)
+        setClientCopy({ ...clientCopy, chief_accountant: null });
+      if (clientCopy.reg_address)
+        setClientCopy({ ...clientCopy, reg_address: null });
+      if (clientCopy.warehouse_address)
+        setClientCopy({ ...clientCopy, warehouse_address: null });
+      if (clientCopy.constituent_doc)
+        setClientCopy({ ...clientCopy, constituent_doc: null });
+      if (clientCopy.bank_details)
+        setClientCopy({ ...clientCopy, bank_details: null });
+      if (clientCopy.passport_data)
+        setClientCopy({ ...clientCopy, passport_data: null });
+    }
+  }, [clientCopy]);
 
   useEffect(() => {
     if (client) {
