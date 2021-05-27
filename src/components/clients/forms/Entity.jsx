@@ -19,7 +19,6 @@ const Entity = ({ client }) => {
     { label: "Учредительные документы", value: 4 },
     { label: "Банковские реквизиты", value: 5 },
   ]);
-  const [newSvedeniya, setNewSvedenia] = useState([]);
   const createClient = useCallback(
     async (e) => {
       e.preventDefault();
@@ -116,7 +115,9 @@ const Entity = ({ client }) => {
             return { ...item, value: acc };
           })
       );
-  }, [client]);
+  }, [client, svedeniya]);
+
+  console.log(svedeniya);
 
   return (
     <div style={{ marginTop: 15 }}>
