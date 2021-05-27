@@ -65,79 +65,84 @@ const Entity = ({ client }) => {
 
   useEffect(() => {
     if (client) {
-      if (Boolean(client.reg_address)) {
+      if (
+        Boolean(
+          client.reg_address &&
+            svedeniya.find((i) => i.label === "Адрес регистрации")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Адрес регистрации")
-                ? item.label !== "Адрес регистрации"
-                : item.label
-            )
+            .filter((item) => item.label !== "Адрес регистрации")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-      if (Boolean(client.chief_accountant)) {
+      if (
+        Boolean(
+          client.chief_accountant &&
+            svedeniya.find((i) => i.label === "Главный бухгалтер")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Главный бухгалтер")
-                ? item.label !== "Главный бухгалтер"
-                : item.label
-            )
+            .filter((item) => item.label !== "Главный бухгалтер")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-      if (Boolean(client.director_data)) {
+      if (
+        Boolean(
+          client.director_data && svedeniya.find((i) => i.label === "Директор")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Директор")
-                ? item.label !== "Директор"
-                : item.label
-            )
+            .filter((item) => item.label !== "Директор")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-      if (Boolean(client.warehouse_address)) {
+      if (
+        Boolean(
+          client.warehouse_address &&
+            svedeniya.find((i) => i.label === "Адрес склада и др.")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Адрес склада и др.")
-                ? item.label !== "Адрес склада и др."
-                : item.label
-            )
+            .filter((item) => item.label !== "Адрес склада и др.")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-      if (Boolean(client.bank_details)) {
+      if (
+        Boolean(
+          client.bank_details &&
+            svedeniya.find((i) => i.label === "Банковские реквизиты")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Банковские реквизиты")
-                ? item.label !== "Банковские реквизиты"
-                : item.label
-            )
+            .filter((item) => item.label !== "Банковские реквизиты")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
         );
       }
-      if (Boolean(client.constituent_doc)) {
+      if (
+        Boolean(
+          client.constituent_doc &&
+            svedeniya.find((i) => i.label === "Учредительные документы")
+        )
+      ) {
         setSvedenia(
           svedeniya
-            .filter((item) =>
-              svedeniya.find((i) => i.label === "Учредительные документы")
-                ? item.label !== "Учредительные документы"
-                : item.label
-            )
+            .filter((item) => item.label !== "Учредительные документы")
             .map((item, acc) => {
               return { ...item, value: acc };
             })
