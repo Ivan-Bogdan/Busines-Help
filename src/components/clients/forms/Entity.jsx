@@ -239,7 +239,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
@@ -251,7 +251,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
@@ -263,7 +263,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
@@ -275,7 +275,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
@@ -287,7 +287,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
@@ -299,7 +299,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setAddData}
+          setAddData={setClientCopy}
           setCount={setCount}
           count={count}
           client={client}
