@@ -37,14 +37,14 @@ const Additional = ({
   const [bankDetails, setBankDetails] = useState(null);
   const [passport, setPassport] = useState(null);
 
-  const deleteItem = useCallback(() => {
-    if (director) setAddData({ ...addData, director_data: null });
-    if (booker) setAddData({ ...addData, chief_accountant: null });
-    if (regAddress) setAddData({ ...addData, reg_address: null });
-    if (warehouse) setAddData({ ...addData, warehouse_address: null });
-    if (consDocuments) setAddData({ ...addData, constituent_doc: null });
-    if (bankDetails) setAddData({ ...addData, bank_details: null });
-    if (passport) setAddData({ ...addData, passport_data: null });
+  useEffect(() => {
+    if (!director) setAddData({ ...addData, director_data: null });
+    if (!booker) setAddData({ ...addData, chief_accountant: null });
+    if (!regAddress) setAddData({ ...addData, reg_address: null });
+    if (!warehouse) setAddData({ ...addData, warehouse_address: null });
+    if (!consDocuments) setAddData({ ...addData, constituent_doc: null });
+    if (!bankDetails) setAddData({ ...addData, bank_details: null });
+    if (!passport) setAddData({ ...addData, passport_data: null });
   }, [
     director,
     booker,
