@@ -153,10 +153,6 @@ const Entity = ({ client }) => {
     }
   }, [client, svedeniya]);
 
-  useEffect(() => {
-    if (clientCopy) setClientCopy({ ...clientCopy, ...addData });
-  }, [clientCopy, addData]);
-
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
