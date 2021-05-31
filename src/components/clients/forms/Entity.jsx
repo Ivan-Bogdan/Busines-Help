@@ -9,7 +9,7 @@ const Entity = ({ client }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
-  const [deleteState, setDeleteState] = useState({});
+  const [deleteState, setDeleteState] = useState(null);
   const [addData, setAddData] = useState(null);
   const [count, setCount] = useState(0);
   const [svedeniya, setSvedenia] = useState([
@@ -155,7 +155,8 @@ const Entity = ({ client }) => {
   }, [client, svedeniya]);
 
   useEffect(() => {
-    setDeleteState(...deleteState, ...addData);
+    if (deleteState) setDeleteState(...deleteState, ...addData);
+    else setDeleteState(...addData);
   }, [addData]);
 
   return (
