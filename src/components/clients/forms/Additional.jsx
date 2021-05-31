@@ -23,7 +23,7 @@ const Additional = ({
   reg_address,
   chief,
   director_data,
-  client,
+  // client,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -55,20 +55,20 @@ const Additional = ({
     passport,
   ]);
 
-  const deleteItemClient = useCallback(() => {
-    if (client) {
-      if (client.director_data) setAddData({ ...addData, director_data: null });
-      if (client.chief_accountant)
-        setAddData({ ...addData, chief_accountant: null });
-      if (client.reg_address) setAddData({ ...addData, reg_address: null });
-      if (client.warehouse_address)
-        setAddData({ ...addData, warehouse_address: null });
-      if (client.constituent_doc)
-        setAddData({ ...addData, constituent_doc: null });
-      if (client.bank_details) setAddData({ ...addData, bank_details: null });
-      if (client.passport_data) setAddData({ ...addData, passport_data: null });
-    }
-  }, [client]);
+  // const deleteItemClient = useCallback(() => {
+  //   if (client) {
+  //     if (client.director_data) setAddData({ ...addData, director_data: null });
+  //     if (client.chief_accountant)
+  //       setAddData({ ...addData, chief_accountant: null });
+  //     if (client.reg_address) setAddData({ ...addData, reg_address: null });
+  //     if (client.warehouse_address)
+  //       setAddData({ ...addData, warehouse_address: null });
+  //     if (client.constituent_doc)
+  //       setAddData({ ...addData, constituent_doc: null });
+  //     if (client.bank_details) setAddData({ ...addData, bank_details: null });
+  //     if (client.passport_data) setAddData({ ...addData, passport_data: null });
+  //   }
+  // }, [client]);
 
   useEffect(() => {
     if (director) setAddData({ ...addData, director_data: director });
