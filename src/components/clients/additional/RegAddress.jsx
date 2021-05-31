@@ -67,7 +67,7 @@ const RegAddress = ({ setData, data }) => {
   }, [city_id, address]);
 
   useEffect(() => {
-    if (data !== null) {
+    if (data) {
       setCity_id(data.city);
       setAddress(data.address);
     }
