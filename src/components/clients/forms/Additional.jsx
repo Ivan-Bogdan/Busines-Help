@@ -87,7 +87,6 @@ const Additional = ({
     consDocuments,
     bankDetails,
     passport,
-    addData,
   ]);
 
   useEffect(() => {
