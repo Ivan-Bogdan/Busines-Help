@@ -148,7 +148,7 @@ const Additional = ({
             disabled
             defaultValue
             style={{ display: "none" }}
-          ></option>
+          >{current}</option>
           {constSelect.map((item) => (
             <option key={item.value} value={item.label}>
               {item.label}
