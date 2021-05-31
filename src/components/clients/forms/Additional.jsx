@@ -125,6 +125,8 @@ const Additional = ({
     director_data,
   ]);
 
+  console.log(addData);
+
   return (
     <div>
       <div className="flex">
