@@ -155,8 +155,8 @@ const Entity = ({ client }) => {
   }, [client, svedeniya]);
 
   useEffect(() => {
-    if (deleteState) setDeleteState(...deleteState, ...addData);
-    else setDeleteState(...addData);
+    if (deleteState) setDeleteState({ ...deleteState, ...addData });
+    else setDeleteState({ ...addData });
   }, [addData]);
 
   return (
