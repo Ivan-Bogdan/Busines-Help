@@ -153,8 +153,6 @@ const Entity = ({ client }) => {
     }
   }, [client, svedeniya]);
 
-  console.log(svedeniya);
-
   return (
     <div style={{ marginTop: 15 }}>
       <p className="black">УНП</p>
@@ -239,7 +237,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
@@ -251,7 +249,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
@@ -263,7 +261,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
@@ -275,7 +273,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
@@ -287,7 +285,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
@@ -299,7 +297,7 @@ const Entity = ({ client }) => {
           select={svedeniya}
           setSelect={setSvedenia}
           addData={addData}
-          setAddData={setClientCopy}
+          setAddData={setAddData}
           setCount={setCount}
           count={count}
           client={client}
