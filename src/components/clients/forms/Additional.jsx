@@ -170,21 +170,8 @@ const Additional = ({
               setSelect(constSelect);
               setCurrent("");
               if (count > 0) setCount(count - 1);
-              if (
-                director ||
-                booker ||
-                regAddress ||
-                warehouse ||
-                consDocuments ||
-                bankDetails ||
-                passport
-              ) {
-                console.log(1);
-                deleteItemClient();
-              } else {
-                console.log(2);
-                deleteItem();
-              }
+
+              deleteItem();
             }}
             alt="delete"
           />
