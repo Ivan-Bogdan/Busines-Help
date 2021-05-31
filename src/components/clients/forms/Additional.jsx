@@ -154,7 +154,9 @@ const Additional = ({
               {item.label}
             </option>
           ))}
-          <option value={current}>{current}</option>
+          {constSelect.length === 0 && current && (
+            <option value={current}>{current}</option>
+          )}
         </select>
         {current && (
           <img
