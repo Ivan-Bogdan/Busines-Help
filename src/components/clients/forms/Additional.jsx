@@ -71,29 +71,14 @@ const Additional = ({
   }, [client]);
 
   useEffect(() => {
-    if (client)
-      setAddData({
-        ...addData,
-        director_data: client.director_data,
-        chief_accountant: client.chief_accountant,
-        reg_address: client.reg_address,
-        warehouse_address: client.warehouse_address,
-        constituent_doc: client.constituent_doc,
-        bank_details: client.bank_details,
-        passport_data: client.passport_data,
-      });
-    else {
-      setAddData({
-        ...addData,
-        director_data: director,
-        chief_accountant: booker,
-        reg_address: regAddress,
-        warehouse_address: warehouse,
-        constituent_doc: consDocuments,
-        bank_details: bankDetails,
-        passport_data: passport,
-      });
-    }
+    if (director) setAddData({ ...addData, director_data: director });
+    if (booker) setAddData({ ...addData, chief_accountant: booker });
+    if (regAddress) setAddData({ ...addData, reg_address: regAddress });
+    if (warehouse) setAddData({ ...addData, warehouse_address: warehouse });
+    if (consDocuments)
+      setAddData({ ...addData, constituent_doc: consDocuments });
+    if (bankDetails) setAddData({ ...addData, bank_details: bankDetails });
+    if (passport) setAddData({ ...addData, passport_data: passport });
   }, [
     director,
     booker,
