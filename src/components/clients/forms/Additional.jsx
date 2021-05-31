@@ -37,7 +37,7 @@ const Additional = ({
   const [bankDetails, setBankDetails] = useState(null);
   const [passport, setPassport] = useState(null);
 
-  useEffect(() => {
+  const deleteItem = useCallback(() => {
     if (!director) setAddData({ ...addData, director_data: null });
     if (!booker) setAddData({ ...addData, chief_accountant: null });
     if (!regAddress) setAddData({ ...addData, reg_address: null });
@@ -57,13 +57,16 @@ const Additional = ({
 
   const deleteItemClient = useCallback(() => {
     if (client) {
-      if (client.director_data) setDirector(null);
-      if (client.chief_accountant) setBooker(null);
-      if (client.reg_address) setRegAddress(null);
-      if (client.warehouse_address) setWarehouse(null);
-      if (client.constituent_doc) setConsDocuments(null);
-      if (client.bank_details) setBankDetails(null);
-      if (client.passport_data) setPassport(null);
+      if (client.director_data) setAddData({ ...addData, director_data: null });
+      if (client.chief_accountant)
+        setAddData({ ...addData, chief_accountant: null });
+      if (client.reg_address) setAddData({ ...addData, reg_address: null });
+      if (client.warehouse_address)
+        setAddData({ ...addData, warehouse_address: null });
+      if (client.constituent_doc)
+        setAddData({ ...addData, constituent_doc: null });
+      if (client.bank_details) setAddData({ ...addData, bank_details: null });
+      if (client.passport_data) setAddData({ ...addData, passport_data: null });
     }
   }, [client]);
 
