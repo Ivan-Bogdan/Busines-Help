@@ -18,7 +18,7 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-const Warehouse = ({ setData }) => {
+const Warehouse = ({ setData, data }) => {
   const [city, setCity] = useState("");
   const [city_id, setCity_id] = useState("");
   const [address, setAddress] = useState("");
@@ -58,6 +58,27 @@ const Warehouse = ({ setData }) => {
         address,
       });
   }, [city_id, address]);
+
+  useEffect(() => {
+    if (data) {
+      setCity_id(data.city);
+      setAddress(data.address);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (city_id && !city) {
+      async function func() {
+        if (city_id) {
+          const result = await cityName({
+            id: city_id,
+          });
+          setCity(result.city);
+        }
+      }
+      func();
+    }
+  }, [city_id, city]);
 
   const inputProps = {
     placeholder: "Населеный пункт",
