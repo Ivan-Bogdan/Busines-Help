@@ -176,8 +176,10 @@ const Additional = ({
                 bankDetails ||
                 passport
               ) {
+                console.log(1);
                 deleteItemClient();
               } else {
+                console.log(2);
                 deleteItem();
               }
             }}
