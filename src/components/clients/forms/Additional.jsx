@@ -186,7 +186,7 @@ const Additional = ({
               setCurrent("");
               if (count > 0) setCount(count - 1);
 
-              deleteItemClient();
+              deleteItem();
             }}
             alt="delete"
           />
