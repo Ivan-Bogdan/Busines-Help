@@ -67,7 +67,6 @@ const Entity = ({ client }) => {
 
   useEffect(() => {
     if (client) {
-      setAddData(client)
       if (
         Boolean(
           client.reg_address &&
