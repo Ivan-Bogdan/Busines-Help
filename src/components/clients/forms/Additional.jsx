@@ -148,12 +148,13 @@ const Additional = ({
             disabled
             defaultValue
             style={{ display: "none" }}
-          >{current}</option>
+          ></option>
           {constSelect.map((item) => (
             <option key={item.value} value={item.label}>
               {item.label}
             </option>
           ))}
+          <option value={current}>{current}</option>
         </select>
         {current && (
           <img
