@@ -34,7 +34,7 @@ const Entity = ({ client, onClose }) => {
       };
       const result = await create_client(payload);
       if (result.message) console.log(result.message);
-      else console.log(result);
+      else onClose();
     },
     [name, phone, otype, unp, addData]
   );
