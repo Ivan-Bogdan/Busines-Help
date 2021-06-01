@@ -33,8 +33,8 @@ const Entity = ({ client, onClose }) => {
         ...addData,
       };
       const result = await create_client(payload);
-      if (result.message) console.log(result.message);
-      else onClose();
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
     },
     [name, phone, otype, unp, addData]
   );
@@ -51,8 +51,8 @@ const Entity = ({ client, onClose }) => {
         ...deleteState,
       };
       const result = await update_client(payload);
-      if (result.message) console.log(result.message);
-      else onClose();
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
     },
     [name, phone, otype, unp, addData, deleteState]
   );
