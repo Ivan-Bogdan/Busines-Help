@@ -54,7 +54,7 @@ const Entity = ({ client }) => {
       if (result.message) console.log(result.message);
       else console.log(result);
     },
-    [name, phone, otype, unp, addData]
+    [name, phone, otype, unp, addData, deleteState]
   );
 
   useEffect(() => {

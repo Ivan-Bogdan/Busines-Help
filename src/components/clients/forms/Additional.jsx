@@ -36,6 +36,8 @@ const Additional = ({
   const [consDocuments, setConsDocuments] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [passport, setPassport] = useState(null);
+  chief_accountant;
+  chief_accountant;
 
   const deleteItem = useCallback(() => {
     if (director) setAddData({ ...addData, director_data: null });
