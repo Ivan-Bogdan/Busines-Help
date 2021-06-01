@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const ConsDocuments = ({ setData }) => {
+const ConsDocuments = ({ setData, data }) => {
   const [number, setNumber] = useState("");
-  const [date, setDate] = useState(""); //дата регистрации
-  const [regName, setRegName] = useState(""); //имя организации зарегестрировавший
-  const [regNumber, setRegNumber] = useState(""); //Номер регистрации
-  const [regDate, setRegDate] = useState(""); //дата принятия решения о регистрации
-  /* "constituent_doc": [         #учередительные документы 
+  const [date, setDate] = useState("");
+  const [regName, setRegName] = useState("");
+  const [regNumber, setRegNumber] = useState("");
+  const [regDate, setRegDate] = useState("");
 
-       "number": str             #Номер  
-
-       "date": "10.10.1999"      #дата регистрации 
-
-       "registration_name": "str"   #имя организации зарегестрировавший  
-
-       "registration_number": "str" #Номер регистрации 
-
-       "registration_date": "str"   #дата регистрации 
-
-    },  */
   useEffect(() => {
     if (number && date && regName && regNumber && regDate)
       setData({
@@ -29,6 +17,16 @@ const ConsDocuments = ({ setData }) => {
         registration_date: regDate,
       });
   }, [number, date, regName, regNumber, regDate]);
+
+  useEffect(() => {
+    if (data) {
+      setNumber(data.number);
+      setDate(data.date);
+      setRegName(data.registration_name);
+      setRegNumber(data.registration_name);
+      setRegDate(data.registration_date);
+    }
+  }, [data]);
 
   return (
     <div>

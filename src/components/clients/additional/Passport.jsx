@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Passport = ({ setData }) => {
+const Passport = ({ setData, data }) => {
   const [serial_number, setSerial_number] = useState(""); //серия номер
   const [date_issue, setDate_issue] = useState(""); //дата выдачи
   const [passport_issued, setPassport_issued] = useState(""); //кто выдал
@@ -15,6 +15,14 @@ const Passport = ({ setData }) => {
       });
     }
   }, [serial_number, date_issue, passport_issued]);
+
+  useEffect(() => {
+    if (data) {
+      setSerial_number(data.serial_number);
+      setDate_issue(data.date_issue);
+      setPassport_issued(data.passport_issued);
+    }
+  }, [data]);
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaskedInput from "react-text-mask";
 
-const BankDetails = ({ setData }) => {
+const BankDetails = ({ setData, data }) => {
   const [checkAccount, setCheckAccount] = useState(""); //расчётный счёт
   const [bikBank, setBikBank] = useState(""); //БИК
   const [unpBank, setUnpBank] = useState(""); //унп
@@ -18,6 +18,16 @@ const BankDetails = ({ setData }) => {
         address_bank: addressBank,
       });
   }, [checkAccount, bikBank, unpBank, nameBank, addressBank]);
+
+  useEffect(() => {
+    if (data) {
+      setCheckAccount(data.checking_account);
+      setBikBank(data.bik_bank);
+      setUnpBank(data.unp_bank);
+      setNameBank(data.name_bank);
+      setAddressBank(data.address_bank);
+    }
+  }, [data]);
 
   return (
     <div>

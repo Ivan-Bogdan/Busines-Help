@@ -48,7 +48,7 @@ const Entity = ({ client }) => {
         phone,
         otype: Number(otype),
         unp,
-        ...addData,
+        ...deleteState,
       };
       const result = await update_client(payload);
       if (result.message) console.log(result.message);

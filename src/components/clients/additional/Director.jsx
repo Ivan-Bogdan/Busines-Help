@@ -16,7 +16,7 @@ const Director = ({ setData, data }) => {
   }, [firstName, lastName, patronymic, phone]);
 
   useEffect(() => {
-    if (data !== null) {
+    if (data) {
       setFirstName(data.full_name.name);
       setLastName(data.full_name.family);
       setPatronymic(data.full_name.patronymic);

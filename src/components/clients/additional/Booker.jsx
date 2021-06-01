@@ -8,7 +8,7 @@ const Booker = ({ setData, data }) => {
   const [phone, setPhone] = useState("");
 
   useEffect(() => {
-    if (data !== null) {
+    if (data) {
       setFirstName(data.full_name.name);
       setLastName(data.full_name.family);
       setPatronymic(data.full_name.patronymic);
