@@ -54,7 +54,7 @@ const Entity = ({ client, onClose }) => {
       if (result.message === "OK") onClose();
       else console.log(result.message);
     },
-    [name, phone, otype, unp, addData, deleteState]
+    [name, phone, otype, unp, deleteState]
   );
 
   useEffect(() => {
