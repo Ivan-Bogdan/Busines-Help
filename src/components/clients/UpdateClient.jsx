@@ -33,7 +33,9 @@ const UpdateClient = ({ client, onClose }) => {
         <div className="container3">
           {currentClient &&
             currentClient.otype !== 0 &&
-            currentClient.otype !== 6 && <Entity client={currentClient} />}
+            currentClient.otype !== 6 && (
+              <Entity client={currentClient} onClose={onClose} />
+            )}
           {currentClient && currentClient.otype === 0 && (
             <Entrepreneur client={currentClient} />
           )}

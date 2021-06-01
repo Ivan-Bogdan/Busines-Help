@@ -3,7 +3,7 @@ import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 import MaskedInput from "react-text-mask";
 
-const Entity = ({ client }) => {
+const Entity = ({ client, onClose }) => {
   const [unp, setUnp] = useState("");
   const [otype, setOtype] = useState("");
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const Entity = ({ client }) => {
       };
       const result = await update_client(payload);
       if (result.message) console.log(result.message);
-      else console.log(result);
+      else onClose();
     },
     [name, phone, otype, unp, addData, deleteState]
   );
