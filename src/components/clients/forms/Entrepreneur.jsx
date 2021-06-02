@@ -35,7 +35,7 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
       else console.log(result.message);
       FetchData();
     },
-    [phone, unp, addData, FetchData]
+    [phone, unp, addData, firstName, lastName, patronymic, FetchData]
   );
 
   const updateClient = useCallback(
@@ -54,7 +54,16 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
       else console.log(result.message);
       FetchData();
     },
-    [phone, unp, deleteState, client, FetchData]
+    [
+      phone,
+      unp,
+      deleteState,
+      client,
+      firstName,
+      lastName,
+      patronymic,
+      FetchData,
+    ]
   );
 
   useEffect(() => {
