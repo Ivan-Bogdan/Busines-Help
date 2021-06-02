@@ -148,6 +148,30 @@ const Individual = ({ client }) => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
+      {client && client.reg_address && (
+        <Additional
+          reg_address={client.reg_address}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
+      {client && client.passport_data && (
+        <Additional
+          passport_data={client.passport_data}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
       <Additional
         select={svedeniya}
         setSelect={setSvedenia}

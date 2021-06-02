@@ -23,7 +23,7 @@ const Additional = ({
   reg_address,
   chief,
   director_data,
-  notSelect,
+  passport_data,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -98,7 +98,7 @@ const Additional = ({
     if (bank_details) {
       setCurrent("Банковские реквизиты");
     }
-    if (passport) {
+    if (passport_data) {
       setCurrent("Паспорт");
     }
   }, [
@@ -108,9 +108,8 @@ const Additional = ({
     reg_address,
     chief,
     director_data,
+    passport_data,
   ]);
-
-  console.log(addData);
 
   return (
     <div>

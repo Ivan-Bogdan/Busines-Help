@@ -3,7 +3,7 @@ import MaskedInput from "react-text-mask";
 import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 
-const Entrepreneur = ({ client }) => {
+const Entrepreneur = ({ client, onClose, FetchData }) => {
   const [unp, setUnp] = useState("");
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -32,8 +32,9 @@ const Entrepreneur = ({ client }) => {
       const result = await create_client(payload);
       if (result.message) console.log(result.message);
       else console.log(result);
+      FetchData();
     },
-    [phone, unp, addData]
+    [phone, unp, addData, FetchData]
   );
 
   const updateClient = useCallback(
@@ -50,8 +51,9 @@ const Entrepreneur = ({ client }) => {
       const result = await update_client(payload);
       if (result.message) console.log(result.message);
       else console.log(result);
+      FetchData();
     },
-    [phone, unp, addData, client]
+    [phone, unp, addData, client, FetchData]
   );
 
   useEffect(() => {
@@ -193,6 +195,54 @@ const Entrepreneur = ({ client }) => {
         onChange={({ target: { value } }) => setDescription(value)}
       />
       <p className="black">Дополнительные сведения</p>
+      {client && client.reg_address && (
+        <Additional
+          reg_address={client.reg_address}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
+      {client && client.warehouse_address && (
+        <Additional
+          warehouse_address={client.warehouse_address}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
+      {client && client.constituent_doc && (
+        <Additional
+          constituent={client.constituent_doc}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
+      {client && client.bank_details && (
+        <Additional
+          bank_details={client.bank_details}
+          select={svedeniya}
+          setSelect={setSvedenia}
+          addData={addData}
+          setAddData={setAddData}
+          setCount={setCount}
+          count={count}
+          client={client}
+        />
+      )}
       <Additional
         select={svedeniya}
         setSelect={setSvedenia}
