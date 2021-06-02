@@ -23,7 +23,7 @@ const Additional = ({
   reg_address,
   chief,
   director_data,
-  // client,
+  notSelect,
 }) => {
   const [constSelect, setConstSelect] = useState([]);
   const [mainSelect, setMainSelect] = useState([]);
@@ -115,39 +115,43 @@ const Additional = ({
   return (
     <div>
       <div className="flex">
-        <select
-          style={{ border: "1px solid #ccc" }}
-          className="select1"
-          value={current}
-          onChange={({ target: { value } }) => {
-            setCurrent(value);
+        {!notSelect ? (
+          <select
+            style={{ border: "1px solid #ccc" }}
+            className="select1"
+            value={current}
+            onChange={({ target: { value } }) => {
+              setCurrent(value);
 
-            setMainSelect(
-              constSelect
-                .filter((item) => item.label !== value)
-                .map((item, acc) => {
-                  return { ...item, value: acc };
-                })
-            );
+              setMainSelect(
+                constSelect
+                  .filter((item) => item.label !== value)
+                  .map((item, acc) => {
+                    return { ...item, value: acc };
+                  })
+              );
 
-            if (!current && select.length !== 1) setCount(count + 1);
-          }}
-        >
-          <option
-            value=""
-            disabled
-            defaultValue
-            style={{ display: "none" }}
-          ></option>
-          {constSelect.map((item) => (
-            <option key={item.value} value={item.label}>
-              {item.label}
-            </option>
-          ))}
-          {constSelect.length === 0 && current && (
-            <option value={current}>{current}</option>
-          )}
-        </select>
+              if (!current && select.length !== 1) setCount(count + 1);
+            }}
+          >
+            <option
+              value=""
+              disabled
+              defaultValue
+              style={{ display: "none" }}
+            ></option>
+            {constSelect.map((item) => (
+              <option key={item.value} value={item.label}>
+                {item.label}
+              </option>
+            ))}
+            {constSelect.length === 0 && current && (
+              <option value={current}>{current}</option>
+            )}
+          </select>
+        ) : (
+          <div>{current}</div>
+        )}
         {current && (
           <img
             src={icon_delete}

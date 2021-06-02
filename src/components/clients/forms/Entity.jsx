@@ -249,6 +249,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       {clientCopy && clientCopy.chief_accountant && (
@@ -261,6 +262,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       {clientCopy && clientCopy.reg_address && (
@@ -273,6 +275,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       {clientCopy && clientCopy.warehouse_address && (
@@ -285,6 +288,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       {clientCopy && clientCopy.constituent_doc && (
@@ -297,6 +301,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       {clientCopy && clientCopy.bank_details && (
@@ -309,6 +314,7 @@ const Entity = ({ client, onClose, FetchData }) => {
           setCount={setCount}
           count={count}
           client={client}
+          notSelect
         />
       )}
       <Additional
