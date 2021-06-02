@@ -3,7 +3,7 @@ import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 import MaskedInput from "react-text-mask";
 
-const Entity = ({ client, onClose }) => {
+const Entity = ({ client, onClose, FetchData }) => {
   const [unp, setUnp] = useState("");
   const [otype, setOtype] = useState("");
   const [name, setName] = useState("");
@@ -35,8 +35,9 @@ const Entity = ({ client, onClose }) => {
       const result = await create_client(payload);
       if (result.message === "OK") onClose();
       else console.log(result.message);
+      FetchData();
     },
-    [name, phone, otype, unp, addData]
+    [name, phone, otype, unp, addData, FetchData]
   );
 
   const updateClient = useCallback(
@@ -53,8 +54,9 @@ const Entity = ({ client, onClose }) => {
       const result = await update_client(payload);
       if (result.message === "OK") onClose();
       else console.log(result.message);
+      FetchData();
     },
-    [name, phone, otype, unp, deleteState]
+    [name, phone, otype, unp, deleteState, FetchData]
   );
 
   useEffect(() => {

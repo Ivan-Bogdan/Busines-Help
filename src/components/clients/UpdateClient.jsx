@@ -6,7 +6,7 @@ import Entrepreneur from "./forms/Entrepreneur";
 import Individual from "./forms/Individual";
 import { get_client } from "../../API/http";
 
-const UpdateClient = ({ client, onClose }) => {
+const UpdateClient = ({ client, onClose, FetchData }) => {
   const [currentClient, setCurrentClient] = useState(false);
 
   useEffect(() => {
@@ -34,13 +34,25 @@ const UpdateClient = ({ client, onClose }) => {
           {currentClient &&
             currentClient.otype !== 0 &&
             currentClient.otype !== 6 && (
-              <Entity client={currentClient} onClose={onClose} />
+              <Entity
+                client={currentClient}
+                onClose={onClose}
+                FetchData={FetchData}
+              />
             )}
           {currentClient && currentClient.otype === 0 && (
-            <Entrepreneur client={currentClient} />
+            <Entrepreneur
+              client={currentClient}
+              onClose={onClose}
+              FetchData={FetchData}
+            />
           )}
           {currentClient && currentClient.otype === 6 && (
-            <Individual client={currentClient} />
+            <Individual
+              client={currentClient}
+              onClose={onClose}
+              FetchData={FetchData}
+            />
           )}
         </div>
       </form>

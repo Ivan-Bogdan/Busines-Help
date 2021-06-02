@@ -130,7 +130,11 @@ const MyClients = () => {
           </div>
           {clients.map((item, index) => (
             <div key={index} className="client_item">
-              <ClientItem item={item} deleteClient={deleteClient} />
+              <ClientItem
+                item={item}
+                deleteClient={deleteClient}
+                FetchData={FetchData}
+              />
             </div>
           ))}
         </div>

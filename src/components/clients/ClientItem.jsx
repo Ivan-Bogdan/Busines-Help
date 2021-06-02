@@ -4,7 +4,7 @@ import AddClient from "./AddClient";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
 
-const ClientItem = ({ item, deleteClient }) => {
+const ClientItem = ({ item, deleteClient, FetchData }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadСlient, setIsReadСlient] = useState(false);
@@ -73,7 +73,13 @@ const ClientItem = ({ item, deleteClient }) => {
         </Modal>
       </div>
       <button className="editing" onClick={toggleModal} />
-      {modal2 && <UpdateClient onClose={toggleModal2} client={item.id} />}
+      {modal2 && (
+        <UpdateClient
+          onClose={toggleModal2}
+          client={item.id}
+          FetchData={FetchData}
+        />
+      )}
       {isReadСlient && <ReadClient onClose={toogleReadClient} client={item} />}
     </div>
   );
