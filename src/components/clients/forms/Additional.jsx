@@ -115,43 +115,38 @@ const Additional = ({
   return (
     <div>
       <div className="flex">
-        {!notSelect ? (
-          <select
-            style={{ border: "1px solid #ccc" }}
-            className="select1"
-            value={current}
-            onChange={({ target: { value } }) => {
-              setCurrent(value);
+        <select
+          style={{ border: "1px solid #ccc" }}
+          className="select1"
+          value={current}
+          onChange={({ target: { value } }) => {
+            setCurrent(value);
 
-              setMainSelect(
-                constSelect
-                  .filter((item) => item.label !== value)
-                  .map((item, acc) => {
-                    return { ...item, value: acc };
-                  })
-              );
+            setMainSelect(
+              constSelect
+                .filter((item) => item.label !== value)
+                .map((item, acc) => {
+                  return { ...item, value: acc };
+                })
+            );
 
-              if (!current && select.length !== 1) setCount(count + 1);
-            }}
-          >
-            <option
-              value=""
-              disabled
-              defaultValue
-              style={{ display: "none" }}
-            ></option>
-            {constSelect.map((item) => (
-              <option key={item.value} value={item.label}>
-                {item.label}
-              </option>
-            ))}
-            {constSelect.length === 0 && current && (
-              <option value={current}>{current}</option>
-            )}
-          </select>
-        ) : (
-          <div>{current}</div>
-        )}
+            if (!current && select.length !== 1) setCount(count + 1);
+          }}
+        >
+          <option
+            value=""
+            disabled
+            defaultValue
+            style={{ display: "none" }}
+          ></option>
+          {current && <option value={current}>{current}</option>}
+          {constSelect.map((item) => (
+            <option key={item.value} value={item.label}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+        )
         {current && (
           <img
             src={icon_delete}
