@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const Passport = ({ setData, data }) => {
-  const [serial_number, setSerial_number] = useState(""); //серия номер
-  const [date_issue, setDate_issue] = useState(""); //дата выдачи
-  const [passport_issued, setPassport_issued] = useState(""); //кто выдал
+  const [serial_number, setSerial_number] = useState("");
+  const [date_issue, setDate_issue] = useState("");
+  const [passport_issued, setPassport_issued] = useState("");
 
   useEffect(() => {
     if (serial_number && date_issue && passport_issued) {

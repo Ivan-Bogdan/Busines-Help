@@ -144,7 +144,7 @@ const MyClients = () => {
         {isCreateClient && (
           <AddClient
             onClose={toggleCreateClient}
-            create={createClient}
+            FetchData={FetchData}
           ></AddClient>
         )}
       </div>

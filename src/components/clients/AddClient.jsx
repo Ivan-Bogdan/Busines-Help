@@ -68,11 +68,26 @@ export default class AddClient extends React.Component {
               </div>
             </div>
 
-            {this.state.selectType === "entity" && <Entity />}
-            {this.state.selectType === "entrepreneur" && (
-              <Entrepreneur key={0} />
+            {this.state.selectType === "entity" && (
+              <Entity
+                onClose={this.props.onClose}
+                FetchData={this.props.FetchData}
+              />
             )}
-            {this.state.selectType === "individual" && <Individual key={6} />}
+            {this.state.selectType === "entrepreneur" && (
+              <Entrepreneur
+                key={0}
+                onClose={this.props.onClose}
+                FetchData={this.props.FetchData}
+              />
+            )}
+            {this.state.selectType === "individual" && (
+              <Individual
+                key={6}
+                onClose={this.props.onClose}
+                FetchData={this.props.FetchData}
+              />
+            )}
           </div>
         </form>
       </div>
