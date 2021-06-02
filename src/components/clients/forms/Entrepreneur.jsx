@@ -10,6 +10,7 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
+  const [deleteState, setDeleteState] = useState(null);
   const [addData, setAddData] = useState(null);
   const [count, setCount] = useState(0);
   const [svedeniya, setSvedenia] = useState([
@@ -30,8 +31,8 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
         ...addData,
       };
       const result = await create_client(payload);
-      if (result.message) console.log(result.message);
-      else console.log(result);
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
       FetchData();
     },
     [phone, unp, addData, FetchData]
@@ -46,14 +47,14 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
         phone,
         otype: 0,
         unp,
-        ...addData,
+        ...deleteState,
       };
       const result = await update_client(payload);
-      if (result.message) console.log(result.message);
-      else console.log(result);
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
       FetchData();
     },
-    [phone, unp, addData, client, FetchData]
+    [phone, unp, deleteState, client, FetchData]
   );
 
   useEffect(() => {
@@ -67,6 +68,11 @@ const Entrepreneur = ({ client, onClose, FetchData }) => {
       }
     }
   }, [client]);
+
+  useEffect(() => {
+    if (deleteState) setDeleteState({ ...deleteState, ...addData });
+    else setDeleteState({ ...addData });
+  }, [addData]);
 
   useEffect(() => {
     if (client) {

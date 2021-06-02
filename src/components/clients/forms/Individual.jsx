@@ -3,12 +3,13 @@ import MaskedInput from "react-text-mask";
 import { create_client, update_client } from "../../../API/http";
 import Additional from "./Additional";
 
-const Individual = ({ client }) => {
+const Individual = ({ client, onClose, FetchData }) => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [patronymic, setPatronymic] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
+  const [deleteState, setDeleteState] = useState(null);
   const [addData, setAddData] = useState(null);
   const [count, setCount] = useState(0);
   const [svedeniya, setSvedenia] = useState([
@@ -26,10 +27,11 @@ const Individual = ({ client }) => {
         ...addData,
       };
       const result = await create_client(payload);
-      if (result.message) console.log(result.message);
-      else console.log(result);
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
+      FetchData();
     },
-    [phone, addData, lastName, patronymic, firstName]
+    [phone, addData, lastName, patronymic, firstName, FetchData]
   );
 
   const updateClient = useCallback(
@@ -40,13 +42,14 @@ const Individual = ({ client }) => {
         full_name: { name: firstName, family: lastName, patronymic },
         phone,
         otype: 6,
-        ...addData,
+        ...deleteState,
       };
       const result = await update_client(payload);
-      if (result.message) console.log(result.message);
-      else console.log(result);
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
+      FetchData();
     },
-    [phone, addData, lastName, patronymic, firstName, client]
+    [phone, deleteState, lastName, patronymic, firstName, client, FetchData]
   );
 
   useEffect(() => {
@@ -59,6 +62,11 @@ const Individual = ({ client }) => {
       }
     }
   }, [client]);
+
+  useEffect(() => {
+    if (deleteState) setDeleteState({ ...deleteState, ...addData });
+    else setDeleteState({ ...addData });
+  }, [addData]);
 
   useEffect(() => {
     if (client) {

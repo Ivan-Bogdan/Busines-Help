@@ -181,8 +181,15 @@ const Additional = ({
       {current === "Банковские реквизиты" && (
         <BankDetails setData={setBankDetails} data={bank_details || null} />
       )}
-      {current === "Паспорт" && <Passport setData={setPassport || null} />}
-      {current === "Адрес" && <RegAddress setData={setRegAddress || null} />}
+      {current === "Паспорт" && (
+        <Passport setData={setPassport || null} data={passport_data || null} />
+      )}
+      {current === "Адрес" && (
+        <RegAddress
+          setData={setRegAddress || null}
+          data={reg_address || null}
+        />
+      )}
     </div>
   );
 };
