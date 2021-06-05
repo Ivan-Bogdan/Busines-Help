@@ -10,7 +10,7 @@ const ReadT = ({ onClose, task }) => {
     async function func() {
       if (task.client) {
         const clientCurrent = await get_client({
-          get_id: task.client,
+          id: task.client,
         });
         setClient(clientCurrent.client.name);
       }
