@@ -60,7 +60,9 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
           {item.unp && <div className="client_unp">{item.unp}</div>}
         </div>
       </div>
-      <button className="editing" onClick={toggleModal} />
+      <div style={{ padding: "30px" }}>
+        <button className="editing" onClick={toggleModal} />
+      </div>
       <Modal isShowing={modal}>
         <div className="modal" id="id01">
           <form className="modal-signin animate">
