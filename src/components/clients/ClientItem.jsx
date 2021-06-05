@@ -48,9 +48,9 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
     <div className="client_container">
       <div className="content_client" onClick={toogleReadClient}>
         {item.name && (
-          <div className="client_name">{`${getNameOtype(item.otype)} ${
+          <div className="client_name">{`${getNameOtype(item.otype)} "${
             item.name
-          }`}</div>
+          }"`}</div>
         )}
         {item.full_name && (
           <div className="client_name">{`${item.full_name.family} ${item.full_name.name} ${item.full_name.patronymic}`}</div>
