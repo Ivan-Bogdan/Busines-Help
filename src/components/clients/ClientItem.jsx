@@ -46,64 +46,60 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
 
   return (
     <div className="client_container">
-      <div className="content_client" onClick={toogleReadClient}>
-        {item.name && (
-          <div className="client_name">{`${getNameOtype(item.otype)} "${
-            item.name
-          }"`}</div>
-        )}
-        {item.full_name && (
-          <div className="client_name">{`${getNameOtype(item.otype)} "${
-            item.full_name.family
-          } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
-        )}
-        {item.unp && <div className="client_unp">{item.unp}</div>}
+      <div>
+        <div className="content_client" onClick={toogleReadClient}>
+          {item.name && (
+            <div className="client_name">{`${getNameOtype(item.otype)} "${
+              item.name
+            }"`}</div>
+          )}
+          {item.full_name && (
+            <div className="client_name">{`${getNameOtype(item.otype)} "${
+              item.full_name.family
+            } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
+          )}
+          {item.unp && <div className="client_unp">{item.unp}</div>}
+        </div>
+        <button className="editing" onClick={toggleModal} />
       </div>
-      <div className="App">
-        <Modal isShowing={modal}>
-          <div className="modal" id="id01">
-            <form className="modal-signin animate">
-              <div className="imgcontainer">
-                <span
-                  className="close"
-                  onClick={toggleModal}
-                  title="Close Modal"
-                >
-                  ×
-                </span>
-                <p className="reg"></p>
-              </div>
+      <Modal isShowing={modal}>
+        <div className="modal" id="id01">
+          <form className="modal-signin animate">
+            <div className="imgcontainer">
+              <span className="close" onClick={toggleModal} title="Close Modal">
+                ×
+              </span>
+              <p className="reg"></p>
+            </div>
 
-              <div className="container3" style={{ display: "block" }}>
-                <button
-                  type="submit"
-                  className="button6"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setModal(false);
-                    setModal2(true);
-                  }}
-                >
-                  Редактировать
-                </button>
+            <div className="container3" style={{ display: "block" }}>
+              <button
+                type="submit"
+                className="button6"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setModal(false);
+                  setModal2(true);
+                }}
+              >
+                Редактировать
+              </button>
 
-                <button
-                  type="submit"
-                  className="button6"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    deleteClient(item.id);
-                    setModal(false);
-                  }}
-                >
-                  Удалить
-                </button>
-              </div>
-            </form>
-          </div>
-        </Modal>
-      </div>
-      <button className="editing" onClick={toggleModal} />
+              <button
+                type="submit"
+                className="button6"
+                onClick={(event) => {
+                  event.preventDefault();
+                  deleteClient(item.id);
+                  setModal(false);
+                }}
+              >
+                Удалить
+              </button>
+            </div>
+          </form>
+        </div>
+      </Modal>
       {modal2 && (
         <UpdateClient
           onClose={toggleModal2}
