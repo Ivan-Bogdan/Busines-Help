@@ -45,12 +45,8 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
 
   return (
     <div className="client_container">
-      <div className="additional">
-        <div
-          className="content_client"
-          style={{ width: "100%" }}
-          onClick={toogleReadClient}
-        >
+      <div className="additional" onClick={toogleReadClient}>
+        <div className="content_client normclick" style={{ width: "100%" }}>
           {item.name && (
             <div className="client_name">{`${getNameOtype(item.otype)} "${
               item.name
@@ -63,8 +59,8 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
           )}
           {item.unp && <div className="client_unp">{item.unp}</div>}
         </div>
-        <button className="editing" onClick={toggleModal} />
       </div>
+      <button className="editing" onClick={toggleModal} />
       <Modal isShowing={modal}>
         <div className="modal" id="id01">
           <form className="modal-signin animate">
