@@ -46,7 +46,11 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
   return (
     <div className="client_container">
       <div className="additional">
-        <div className="content_client" onClick={toogleReadClient}>
+        <div
+          className="content_client"
+          style={{ width: "100%" }}
+          onClick={toogleReadClient}
+        >
           {item.name && (
             <div className="client_name">{`${getNameOtype(item.otype)} "${
               item.name
