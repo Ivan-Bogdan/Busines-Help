@@ -53,9 +53,9 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
           }"`}</div>
         )}
         {item.full_name && (
-          <div className="client_name">{`${getNameOtype(item.otype)} ${
+          <div className="client_name">{`${getNameOtype(item.otype)} "${
             item.full_name.family
-          } ${item.full_name.name} ${item.full_name.patronymic}`}</div>
+          } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
         )}
         {item.unp && <div className="client_unp">{item.unp}</div>}
       </div>
