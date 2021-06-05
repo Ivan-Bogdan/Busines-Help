@@ -44,8 +44,6 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
     }
   }, []);
 
-  console.log(getNameOtype(item.otype));
-
   return (
     <div className="client_container">
       <div className="content_client" onClick={toogleReadClient}>
