@@ -33,10 +33,8 @@ const Entity = ({ client, onClose, FetchData }) => {
         ...addData,
       };
       const result = await create_client(payload);
-      if (result.id) {
-        console.log(result.id);
-        onClose();
-      } else console.log(result.message);
+      if (result.id) onClose();
+      else console.log(result.message);
       FetchData();
     },
     [name, phone, otype, unp, addData, FetchData]

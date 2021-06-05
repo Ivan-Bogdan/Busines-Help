@@ -27,7 +27,7 @@ const Individual = ({ client, onClose, FetchData }) => {
         ...addData,
       };
       const result = await create_client(payload);
-      if (result.message === "OK") onClose();
+      if (result.id) onClose();
       else console.log(result.message);
       FetchData();
     },
