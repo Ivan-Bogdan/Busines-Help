@@ -34,7 +34,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
       case 5:
         return "ИНОЕ";
       case 6:
-        return "ФИЗ.ЛИЦО";
+        return "ФИЗ ЛИЦО";
       case 7:
         return "СООО";
       case 8:
