@@ -60,7 +60,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
           {item.unp && <div className="client_unp">{item.unp}</div>}
         </div>
       </div>
-      <div style={{ padding: "30px" }}>
+      <div style={{ paddingRight: "30px" }}>
         <button className="editing" onClick={toggleModal} />
       </div>
       <Modal isShowing={modal}>
