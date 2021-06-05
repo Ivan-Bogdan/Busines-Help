@@ -34,7 +34,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
       case 5:
         return "ИНОЕ";
       case 6:
-        return "ФИЗ ЛИЦО";
+        return "ФИЗ.ЛИЦО";
       case 7:
         return "СООО";
       case 8:
@@ -43,6 +43,8 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
         return "УП";
     }
   }, []);
+
+  console.log(getNameOtype(item.otype));
 
   return (
     <div className="client_container">
