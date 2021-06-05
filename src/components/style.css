@@ -1034,6 +1034,7 @@ span.psw {
   }
   .content_client {
     font-family: "Open Sans" sans-serif;
+    width: 100%;
   }
   section {
     padding: 100px 1px;
