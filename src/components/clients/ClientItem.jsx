@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import Modal from "../Modal";
-import AddClient from "./AddClient";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
 
@@ -46,7 +45,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
 
   return (
     <div className="client_container">
-      <div>
+      <div className="mobile-container">
         <div className="content_client" onClick={toogleReadClient}>
           {item.name && (
             <div className="client_name">{`${getNameOtype(item.otype)} "${
