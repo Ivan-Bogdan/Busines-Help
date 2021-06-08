@@ -24,7 +24,7 @@ const renderSuggestion = (suggestion) => (
 );
 
 const UpdateTask = ({ task, onClose }) => {
-  const [fullTask, setFullTask] = useState({});
+  const [fullTask, setFullTask] = useState(null);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [price, setPrice] = useState("");
@@ -93,6 +93,19 @@ const UpdateTask = ({ task, onClose }) => {
     }
     func();
   }, [task]);
+
+  useEffect(() => {
+    if (fullTask) {
+      setName(fullTask.name);
+      setDate(fullTask.date);
+      setPrice(fullTask.price.price);
+      setCurrency(fullTask.price.currency);
+      setPerformer(fullTask.performer);
+      setType(fullTask.type);
+      setStatus(fullTask.status);
+      setPaid(fullTask.paid);
+    }
+  }, [fullTask]);
 
   return (
     <div className="modal" id="id01">
