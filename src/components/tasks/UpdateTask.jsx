@@ -88,7 +88,7 @@ const UpdateTask = ({ task, onClose }) => {
         const result = await get_task({
           task_id: task,
         });
-        setFullTask(result);
+        setFullTask(result.task);
       }
     }
     func();
@@ -101,7 +101,7 @@ const UpdateTask = ({ task, onClose }) => {
           <span className="close" onClick={onClose} title="Close Modal">
             ×
           </span>
-          <p className="reg">Изменение</p>
+          <p className="reg">Изменение услуги</p>
         </div>
         <div className="container3">
           <p className="black">Наименование услуги</p>
