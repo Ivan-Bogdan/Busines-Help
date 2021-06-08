@@ -97,7 +97,7 @@ const UpdateTask = ({ task, onClose }) => {
   useEffect(() => {
     if (fullTask) {
       setName(fullTask.name);
-      setDate(fullTask.date);
+      if (fullTask.date) setDate(fullTask.date.slice(0, 10));
       setPrice(fullTask.price.price);
       setCurrency(fullTask.price.currency);
       setPerformer(fullTask.performer);
