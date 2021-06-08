@@ -39,7 +39,15 @@ const UpdateTask = ({ task, onClose }) => {
 
   const updateTask = useCallback((e) => {
     e.preventDefault();
-    let payload = {};
+    let payload = {
+      name,
+      date,
+      price: { price, currency },
+      performer,
+      type,
+      status,
+      paid,
+    };
     update_task(payload).then((data) => {
       if (data.message) {
         this.setState({ error: data.message });
