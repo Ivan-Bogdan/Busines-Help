@@ -174,7 +174,7 @@ const Task = ({ task, deleteTask }) => {
           </div>
         </Modal>
       </div>
-      {modal2 && <UpdateTask task={task} onClose={toggleModal2} />}
+      {modal2 && <UpdateTask task={task.id} onClose={toggleModal2} />}
       {isReadTask && <ReadT onClose={toogleReadTask} task={task} />}
     </div>
   );

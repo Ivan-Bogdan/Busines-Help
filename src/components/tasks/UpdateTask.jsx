@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Autosuggest from "react-autosuggest";
-import { update_task } from "../../API/http";
+import { update_task, get_task } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
@@ -24,10 +24,11 @@ const renderSuggestion = (suggestion) => (
 );
 
 const UpdateTask = ({ task, onClose }) => {
+  const [fullTask, setFullTask] = useState({});
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [price, setPrice] = useState("");
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState("BYN");
   const [performer, setPerformer] = useState("");
   const [type, setType] = useState("");
   const [status, setStatus] = useState("");
@@ -81,7 +82,18 @@ const UpdateTask = ({ task, onClose }) => {
     onChange: onChange,
   };
 
-  console.log(task);
+  useEffect(() => {
+    async function func() {
+      if (task) {
+        const result = await get_task({
+          task_id: task,
+        });
+        setFullTask(result);
+      }
+    }
+    func();
+  }, [task]);
+
   return (
     <div className="modal" id="id01">
       <form className="modal-content2 animate">
@@ -89,7 +101,7 @@ const UpdateTask = ({ task, onClose }) => {
           <span className="close" onClick={onClose} title="Close Modal">
             ×
           </span>
-          <p className="reg">СОЗДАНИЕ УСЛУГИ</p>
+          <p className="reg">Изменение</p>
         </div>
         <div className="container3">
           <p className="black">Наименование услуги</p>
