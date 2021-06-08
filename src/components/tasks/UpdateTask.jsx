@@ -25,7 +25,7 @@ const renderSuggestion = (suggestion) => (
 
 const UpdateTask = ({ task, onClose }) => {
   const [name, setName] = useState("");
-  const [date, setDate] = useState(initialState);
+  const [date, setDate] = useState("");
   const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState("");
   const [performer, setPerformer] = useState("");
