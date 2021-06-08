@@ -173,10 +173,7 @@ export default class CreateTask extends Component {
 
             <p style={{ color: "red" }}>{this.state.error}</p>
           </div>
-          {this.props.children}
-
           <div className="container3">
-            {this.props.children}
             <p className="black">Наименование услуги</p>
             <input
               type="text"
