@@ -38,7 +38,7 @@ const UpdateTask = ({ task, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const updateTask = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       let payload = {
         task_id: task,
