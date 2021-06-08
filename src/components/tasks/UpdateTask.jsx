@@ -23,7 +23,7 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-const UpdateTask = ({ task, onClose }) => {
+const UpdateTask = ({ task, FetchData, onClose }) => {
   const [fullTask, setFullTask] = useState(null);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");

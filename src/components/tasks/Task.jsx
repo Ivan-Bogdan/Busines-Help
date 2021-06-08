@@ -5,7 +5,7 @@ import UpdateTask from "./UpdateTask";
 import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
 import ReadT from "./ReadT";
 
-const Task = ({ task, deleteTask }) => {
+const Task = ({ task, deleteTask, FetchData }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadTask, setIsReadTask] = useState(false);
@@ -174,7 +174,13 @@ const Task = ({ task, deleteTask }) => {
           </div>
         </Modal>
       </div>
-      {modal2 && <UpdateTask task={task.id} onClose={toggleModal2} />}
+      {modal2 && (
+        <UpdateTask
+          task={task.id}
+          onClose={toggleModal2}
+          FetchData={FetchData}
+        />
+      )}
       {isReadTask && <ReadT onClose={toogleReadTask} task={task} />}
     </div>
   );
