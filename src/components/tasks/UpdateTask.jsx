@@ -24,6 +24,12 @@ const renderSuggestion = (suggestion) => (
 );
 
 const UpdateTask = ({ task, onClose }) => {
+  const [name, setName] = useState("");
+  const [date, setDate] = useState(initialState);
+  const [price, setPrice] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [performer, setPerformer] = useState("");
+  const [type, setType] = useState("");
   const [city, setCity] = useState("");
   const [city_id, setCity_id] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -88,10 +94,10 @@ const UpdateTask = ({ task, onClose }) => {
           <input
             type="text"
             placeholder="Создание сервиса поиска"
-            value={this.state.name}
+            value={name}
             name="name"
-            onChange={(data) => {
-              this.setState({ name: data.target.value });
+            onChange={({ target: { value } }) => {
+              setName(value);
             }}
           />
           <p className="black">Клиент</p>
@@ -107,10 +113,10 @@ const UpdateTask = ({ task, onClose }) => {
           <input
             type="date"
             placeholder="18.10.2021"
-            value={this.state.date}
+            value={date}
             name="date"
-            onChange={(data) => {
-              this.setState({ date: data.target.value });
+            onChange={({ target: { value } }) => {
+              setDate(value);
             }}
           />
           <p className="black">Сумма</p>
@@ -124,29 +130,17 @@ const UpdateTask = ({ task, onClose }) => {
             <input
               type="number"
               placeholder="Сумма"
-              value={this.state.price.price}
+              value={price}
               name="price"
-              onChange={(data) => {
-                const newValue = data.target.value;
-                this.setState((prevState) => ({
-                  price: {
-                    ...prevState.price,
-                    price: newValue,
-                  },
-                }));
+              onChange={({ target: { value } }) => {
+                setPrice(value);
               }}
             />
             <select
               className="select_price"
-              value={this.state.price.currency}
-              onChange={(data) => {
-                const newValue = data.target.value;
-                this.setState((prevState) => ({
-                  price: {
-                    ...prevState.price,
-                    currency: newValue,
-                  },
-                }));
+              value={currency}
+              onChange={({ target: { value } }) => {
+                setCurrency(value);
               }}
               style={{ border: "1px solid lightgrey" }}
             >
@@ -162,21 +156,17 @@ const UpdateTask = ({ task, onClose }) => {
           <input
             type="text"
             placeholder="Исполнитель (ТУТ БУДЕТ АВТОКОМПЛИТ)"
-            value={this.state.performer}
+            value={performer}
             name="performer"
-            onChange={(data) => {
-              this.setState({ performer: data.target.value });
-            }}
+            onChange={({ target: { value } }) => setPerformer(value)}
           />
           <p className="black">Тип услуги</p>
           <select
             style={{ border: "1px solid lightgrey" }}
             required
             className="select1"
-            value={this.state.type}
-            onChange={(data) => {
-              this.setState({ type: data.target.value });
-            }}
+            value={type}
+            onChange={({ target: { value } }) => setType(value)}
           >
             <option value="" disabled selected>
               Грузоперевозка
@@ -186,7 +176,7 @@ const UpdateTask = ({ task, onClose }) => {
             </option>
           </select>
 
-          {this.state.type === "0" && (
+          {/* {type === "0" && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div
@@ -217,15 +207,13 @@ const UpdateTask = ({ task, onClose }) => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
           <p className="black">Статус услуги</p>
           <select
             style={{ border: "1px solid lightgrey" }}
             className="select1"
-            value={this.state.status}
-            onChange={(data) => {
-              this.setState({ status: data.target.value });
-            }}
+            value={status}
+            onChange={({ target: { value } }) => setStatus(value)}
           >
             <option type="number" defaultValue value={Number(0)}>
               К выполнению
@@ -244,10 +232,8 @@ const UpdateTask = ({ task, onClose }) => {
           <select
             style={{ border: "1px solid lightgrey" }}
             className="select1"
-            value={this.state.paid}
-            onChange={(data) => {
-              this.setState({ paid: data.target.value });
-            }}
+            value={paid}
+            onChange={({ target: { value } }) => setPaid(value)}
           >
             <option value="" disabled defaultValue style={{ display: "none" }}>
               Оплачено/Неоплачено
@@ -259,7 +245,7 @@ const UpdateTask = ({ task, onClose }) => {
               Оплачено
             </option>
           </select>
-          {this.state.paid === "1" && (
+          {/* {paid === "1" && (
             <div>
               <Payment
                 index={-1}
@@ -281,16 +267,16 @@ const UpdateTask = ({ task, onClose }) => {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
 
-          <Doc
+          {/* <Doc
             count={this.state.countDoc}
             updateDoc={this.updateDoc}
             updateObjDoc={this.updateObjDoc}
             index={-1}
             key={-1}
-          />
-
+          /> */}
+          {/* 
           {[...Array(this.state.countDoc)].map((item, index) => (
             <div key={index}>
               <Doc
@@ -301,10 +287,10 @@ const UpdateTask = ({ task, onClose }) => {
                 updateObjDoc={this.updateObjDoc}
               />
             </div>
-          ))}
+          ))} */}
 
           <div style={{ textAlign: "center" }}>
-            <button type="submit" className="button5" onClick={() => null}>
+            <button type="submit" className="button5" onClick={updateTask}>
               Обновить
             </button>
           </div>
