@@ -44,7 +44,6 @@ const UpdateTask = ({ task, onClose }) => {
         task_id: task,
         date,
         price: { price, currency },
-        performer,
         type,
         status,
         paid,
@@ -54,7 +53,7 @@ const UpdateTask = ({ task, onClose }) => {
       else console.log(result.message);
       FetchData();
     },
-    [task, date, price, currency, performer, type, status, paid, onClose]
+    [task, date, price, currency, type, status, paid, onClose]
   );
 
   const onChange = (event, { newValue, method }) => {
