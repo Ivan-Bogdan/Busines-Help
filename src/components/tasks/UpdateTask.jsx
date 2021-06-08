@@ -37,25 +37,25 @@ const UpdateTask = ({ task, onClose }) => {
   const [city_id, setCity_id] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const updateTask = useCallback((e) => {
-    e.preventDefault();
-    let payload = {
-      name,
-      date,
-      price: { price, currency },
-      performer,
-      type,
-      status,
-      paid,
-    };
-    update_task(payload).then((data) => {
-      if (data.message) {
-        this.setState({ error: data.message });
-      } else {
-        window.location.reload();
-      }
-    });
-  }, []);
+  const updateTask = useCallback(
+    (e) => {
+      e.preventDefault();
+      let payload = {
+        task_id: task,
+        date,
+        price: { price, currency },
+        performer,
+        type,
+        status,
+        paid,
+      };
+      const result = await update_task(payload);
+      if (result.message === "OK") onClose();
+      else console.log(result.message);
+      FetchData();
+    },
+    [task, date, price, currency, performer, type, status, paid, onClose]
+  );
 
   const onChange = (event, { newValue, method }) => {
     setCity(newValue);
