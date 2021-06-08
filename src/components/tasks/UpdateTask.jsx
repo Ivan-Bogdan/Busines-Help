@@ -30,6 +30,8 @@ const UpdateTask = ({ task, onClose }) => {
   const [currency, setCurrency] = useState("");
   const [performer, setPerformer] = useState("");
   const [type, setType] = useState("");
+  const [status, setStatus] = useState("");
+  const [paid, setPaid] = useState("");
   const [city, setCity] = useState("");
   const [city_id, setCity_id] = useState("");
   const [suggestions, setSuggestions] = useState([]);
