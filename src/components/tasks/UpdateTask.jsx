@@ -160,7 +160,7 @@ const UpdateTask = ({ task, onClose }) => {
               value={price}
               name="price"
               onChange={({ target: { value } }) => {
-                setPrice(value);
+                setPrice(Number(value));
               }}
             />
             <select
