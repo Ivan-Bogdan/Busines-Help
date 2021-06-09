@@ -33,8 +33,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [type, setType] = useState("");
   const [status, setStatus] = useState("");
   const [paid, setPaid] = useState("");
-  const [city, setCity] = useState("");
-  const [city_id, setCity_id] = useState("");
+
+  const [client, setClient] = useState("");
+  const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const updateTask = useCallback(
@@ -58,25 +59,29 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   );
 
   const onChange = (event, { newValue, method }) => {
-    setCity(newValue);
+    setClient(newValue);
   };
 
   const getSuggestionValue = (suggestion) => {
-    setCity_id(suggestion.id);
+    setClientId(suggestion.id);
     return suggestion.city;
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru:8080/rest/v1/city/`, {
+    fetch(`http://altproduction.ru/rest/client/find_client/`, {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
       body: JSON.stringify({
-        city: value,
-        limit: 10,
+        limit: 5,
+        offset: 0,
+        name: value,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        setSuggestions(data.city);
+        setSuggestions(data.clients);
       });
   };
 
@@ -86,7 +91,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   const inputProps = {
     placeholder: "Населеный пункт",
-    value: city,
+    value: client,
     onChange: onChange,
   };
 
