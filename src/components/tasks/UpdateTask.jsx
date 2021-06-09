@@ -6,22 +6,7 @@ import Doc from "./Doc";
 import Payment from "./Payment";
 import "./styleTask.css";
 
-const renderSuggestion = (suggestion) => (
-  <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
-    <span>
-      {" "}
-      {suggestion.type_abbr}. {suggestion.city}{" "}
-    </span>{" "}
-    <div>
-      {suggestion.city !== suggestion.district && (
-        <span style={{ color: "#aaa", fontSize: 12 }}>
-          {suggestion.district} р-н,
-        </span>
-      )}{" "}
-      <span style={{ color: "#aaa", fontSize: 12 }}>{suggestion.region} </span>
-    </div>
-  </div>
-);
+const renderSuggestion = (clients) => <span>{clients.name}</span>;
 
 const UpdateTask = ({ task, FetchData, onClose }) => {
   const [fullTask, setFullTask] = useState(null);
