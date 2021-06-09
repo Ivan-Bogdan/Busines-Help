@@ -6,7 +6,7 @@ import Doc from "./Doc";
 import Payment from "./Payment";
 import "./styleTask.css";
 
-const renderSuggestion = (clients) => <span>{clients.name}</span>;
+const renderSuggestion = (client) => <span>{client.name}</span>;
 
 const UpdateTask = ({ task, FetchData, onClose }) => {
   const [fullTask, setFullTask] = useState(null);
