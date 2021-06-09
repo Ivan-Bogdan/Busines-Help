@@ -64,7 +64,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   const getSuggestionValue = (suggestion) => {
     setClientId(suggestion.id);
-    return suggestion.city;
+    return suggestion.name;
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
