@@ -75,7 +75,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   };
 
   const inputProps = {
-    placeholder: "Населеный пункт",
+    placeholder: "Клиент",
     value: client,
     onChange: onChange,
   };
