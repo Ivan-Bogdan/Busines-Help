@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Autosuggest from "react-autosuggest";
-import { update_task, get_task } from "../../API/http";
+import { update_task, get_task, get_client } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
@@ -93,8 +93,21 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   }, [task]);
 
   useEffect(() => {
+    async function func() {
+      if (fullTask.client) {
+        const result = await get_client({
+          id: fullTask.client,
+        });
+        setClient(result.client.name);
+      }
+    }
+    func();
+  }, [fullTask]);
+
+  useEffect(() => {
     if (fullTask) {
       setName(fullTask.name);
+      setClient(fullTask.client);
       if (fullTask.date) setDate(fullTask.date.slice(0, 10));
       setPrice(fullTask.price.price);
       setCurrency(fullTask.price.currency);
@@ -104,6 +117,18 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setPaid(fullTask.paid);
     }
   }, [fullTask]);
+
+  useEffect(() => {
+    const func = async () => {
+      if (client) {
+        const clientCurrent = await get_client({
+          id: client,
+        });
+        setCurrentClient(clientCurrent.client);
+      }
+    };
+    func();
+  }, [client]);
 
   return (
     <div className="modal" id="id01">
