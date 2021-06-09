@@ -42,6 +42,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       e.preventDefault();
       let payload = {
         task_id: task,
+        name,
         date,
         price: { price, currency },
         type,
@@ -53,7 +54,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       else console.log(result.message);
       FetchData();
     },
-    [task, date, price, currency, type, status, paid, onClose]
+    [task, name, date, price, currency, type, status, paid, onClose]
   );
 
   const onChange = (event, { newValue, method }) => {
