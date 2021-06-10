@@ -121,18 +121,6 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
     }
   }, [fullTask]);
 
-  useEffect(() => {
-    const func = async () => {
-      if (client) {
-        const clientCurrent = await get_client({
-          id: client,
-        });
-        setCurrentClient(clientCurrent.client);
-      }
-    };
-    func();
-  }, [client]);
-
   return (
     <div className="modal" id="id01">
       <form className="modal-content2 animate">
