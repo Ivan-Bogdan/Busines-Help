@@ -226,13 +226,12 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                   flexDirection: "column",
                 }}
               >
-                {routes.length && (
-                  <div className="routelist">
-                    {routes.map((item) => (
-                      <Route data={item} />
-                    ))}
-                  </div>
-                )}
+                <div className="routelist">
+                  {routes.map((item) => (
+                    <Route data={item} />
+                  ))}
+                </div>
+
                 {/* <Route
                   number={-1}
                   count={this.state.countRoute}
