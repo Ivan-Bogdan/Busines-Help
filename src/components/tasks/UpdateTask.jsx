@@ -260,7 +260,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             style={{ border: "1px solid lightgrey" }}
             className="select1"
             value={status}
-            onChange={({ target: { value } }) => setStatus(value)}
+            onChange={({ target: { value } }) => setStatus(Number(value))}
           >
             <option type="number" defaultValue value={Number(0)}>
               К выполнению
@@ -280,7 +280,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             style={{ border: "1px solid lightgrey" }}
             className="select1"
             value={paid}
-            onChange={({ target: { value } }) => setPaid(value)}
+            onChange={({ target: { value } }) => setPaid(Number(value))}
           >
             <option value="" disabled defaultValue style={{ display: "none" }}>
               Оплачено/Неоплачено
