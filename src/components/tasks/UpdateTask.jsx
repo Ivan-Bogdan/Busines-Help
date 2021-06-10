@@ -217,7 +217,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             </option>
           </select>
 
-          {type === "0" && (
+          {type === 0 && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div
