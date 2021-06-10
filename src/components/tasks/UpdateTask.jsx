@@ -19,6 +19,8 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [status, setStatus] = useState("");
   const [paid, setPaid] = useState("");
 
+  const [route, setRoute] = useState(null);
+
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -115,6 +117,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setType(fullTask.type);
       setStatus(fullTask.status);
       setPaid(fullTask.paid);
+      setRoute(fullTask.route);
     }
   }, [fullTask]);
 
