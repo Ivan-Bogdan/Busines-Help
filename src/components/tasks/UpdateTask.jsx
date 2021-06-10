@@ -19,7 +19,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [status, setStatus] = useState("");
   const [paid, setPaid] = useState("");
 
-  const [route, setRoute] = useState(null);
+  const [routes, setRoutes] = useState(null);
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
@@ -117,7 +117,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setType(fullTask.type);
       setStatus(fullTask.status);
       setPaid(fullTask.paid);
-      setRoute(fullTask.route);
+      setRoutes(fullTask.route);
     }
   }, [fullTask]);
 
@@ -229,7 +229,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             </option>
           </select>
 
-          {/* {type === "0" && (
+          {type === "0" && (
             <div>
               <p className="black">Маршрут погрузки</p>
               <div
@@ -238,7 +238,14 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                   flexDirection: "column",
                 }}
               >
-                <Route
+                {routes.length && (
+                  <div className="routelist">
+                    {routes.map((item) => (
+                      <Route data={item} />
+                    ))}
+                  </div>
+                )}
+                {/* <Route
                   number={-1}
                   count={this.state.countRoute}
                   updateData={this.updateData}
@@ -257,10 +264,10 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                       />
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
-          )} */}
+          )}
           <p className="black">Статус услуги</p>
           <select
             style={{ border: "1px solid lightgrey" }}
