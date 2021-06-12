@@ -38,12 +38,10 @@ export default class Route extends Component {
 
     if (data.city) {
       async function func() {
-        if (city_id) {
-          const result = await cityName({
-            id: data.city,
-          });
-          this.setState({ city: result.city });
-        }
+        const result = await cityName({
+          id: data.city,
+        });
+        this.setState({ city: result.city });
       }
       func();
     }
