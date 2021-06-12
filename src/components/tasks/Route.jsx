@@ -42,10 +42,9 @@ export default class Route extends Component {
   componentDidMount() {
     const data = this.props.data
     if (data) {
-      this.setState({ city_id: data.city, address: data.address })
+      this.setState({ city_id: data.city, address: data.address });
+      getCityName();
     }
-    getCityName()
-
   }
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
