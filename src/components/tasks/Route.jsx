@@ -35,6 +35,18 @@ export default class Route extends Component {
     if (data) {
       this.setState({ city_id: data.city, address: data.address })
     }
+
+    if (data.city) {
+      async function func() {
+        if (city_id) {
+          const result = await cityName({
+            id: data.city,
+          });
+          this.setState({ city: result.city });
+        }
+      }
+      func();
+    }
   }
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
