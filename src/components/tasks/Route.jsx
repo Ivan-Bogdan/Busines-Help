@@ -41,9 +41,9 @@ export default class Route extends Component {
       });
       this.setState({ city: result.city })
     }
+    func();
     if (data) {
       this.setState({ city_id: data.city, address: data.address });
-      func();
     }
   }
   getSuggestionValue = (suggestion) => {
