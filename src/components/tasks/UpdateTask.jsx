@@ -228,7 +228,11 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               >
                 <div className="routelist">
                   {routes.map((item) => (
-                    <Route data={item} />
+                    <Route
+                      data={item}
+                      number={item.point}
+                      count={routes.length}
+                    />
                   ))}
                 </div>
 
