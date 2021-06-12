@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
+import { cityName } from "../../API/http";
 import PLUS_icon from "../../assets/img/PLUS_icon.png";
 
 const renderSuggestion = (suggestion) => (
