@@ -30,7 +30,12 @@ export default class Route extends Component {
       address: "",
     };
   }
-
+  componentDidMount() {
+    const data = this.props.data
+    if (data) {
+      this.setState({ city_id: data.city, address: data.address })
+    }
+  }
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
     if (this.state.address && this.state.city_id)
@@ -89,13 +94,17 @@ export default class Route extends Component {
             placeholder="Улица, дом"
             value={this.state.address}
             name="Adress"
-            onChange={(data) => {
-              this.setState({ address: data.target.value });
-              if (data.target.value && this.state.city_id)
-                this.props.updateObjRoute(
-                  data.target.value,
-                  this.state.city_id
-                );
+            onChange={({ target: { value } }) => {
+              if (this.props.data) {
+
+              } else {
+                this.setState({ address: value });
+                if (value && this.state.city_id)
+                  this.props.updateObjRoute(
+                    value,
+                    this.state.city_id
+                  );
+              }
             }}
           />
           {this.props.count <= this.props.number + 1 && (
