@@ -20,10 +20,21 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [paid, setPaid] = useState("");
 
   const [routes, setRoutes] = useState(null);
+  const [countRoute, setCountRoute] = useState("")
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  const updateData = useCallback((address, city) => {
+    this.setState({
+      route: [
+        ...routes,
+        { address, city, point: countRoute },
+      ],
+    });
+    setCountRoute(countRoute + 1)
+  }, []);
 
   const updateTask = useCallback(
     async (e) => {
@@ -118,6 +129,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setStatus(fullTask.status);
       setPaid(fullTask.paid);
       setRoutes(fullTask.route);
+      setCountRoute(fullTask.route.length)
     }
   }, [fullTask]);
 
@@ -232,6 +244,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                       data={item}
                       number={item.point}
                       count={routes.length}
+                      updateData={updateData}
                     />
                   ))}
                 </div>
