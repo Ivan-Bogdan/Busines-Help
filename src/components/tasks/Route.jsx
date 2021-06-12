@@ -33,6 +33,7 @@ export default class Route extends Component {
   }
 
   getCityName = async () => {
+    const data = this.props.data
     const result = await cityName({
       id: data.city,
     });
@@ -43,10 +44,8 @@ export default class Route extends Component {
     if (data) {
       this.setState({ city_id: data.city, address: data.address })
     }
+    getCityName()
 
-    if (data.city) {
-      getCityName()
-    }
   }
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
