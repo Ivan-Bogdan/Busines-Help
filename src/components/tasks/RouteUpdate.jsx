@@ -108,13 +108,14 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
           onChange={({ target: { value } }) => setAddress(value)}
         />
 
-        <img
+        {count > number + 1 && (<img
           src={icon_delete}
           className="delete_icon"
           height={34}
           onClick={() => null}
           alt="delete"
-        />
+        />)
+        }
 
         {count <= number + 1 && (
           <img
