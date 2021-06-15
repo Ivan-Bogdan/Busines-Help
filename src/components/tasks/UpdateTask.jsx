@@ -239,7 +239,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                     <RouteUpdate
                       data={item}
                       number={item.point}
-                      count={routes.length}
+                      count={routes.length - 1}
                       updateData={updateData}
                     />
                   ))}
