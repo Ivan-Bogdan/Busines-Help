@@ -27,12 +27,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const updateData = useCallback((address, city) => {
-    this.setState({
-      route: [
-        ...routes,
-        { address, city, point: countRoute },
-      ],
-    });
+    setRoutes([...routes, { address, city, point: countRoute }]);
     setCountRoute(countRoute + 1)
   }, [routes, countRoute]);
 
