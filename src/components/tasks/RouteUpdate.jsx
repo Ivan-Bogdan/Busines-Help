@@ -115,18 +115,6 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
           onClick={() => null}
           alt="delete"
         />
-
-        {count <= number + 1 && (
-          <img
-            src={PLUS_icon}
-            onClick={() =>
-              updateData(address, city_id)
-            }
-            className="plus_icon"
-            alt="plus"
-            height={47}
-          />
-        )}
       </div>
     </div>
   );
