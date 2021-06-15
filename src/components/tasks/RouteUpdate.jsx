@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
 import { cityName } from "../../API/http";
+import PLUS_icon from "../../assets/img/PLUS_icon.png";
 import icon_delete from "../../assets/img/удалить.png";
 
 const renderSuggestion = (suggestion) => (
