@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
-import { cityName } from "../../API/http";
+import { cityName } from "../../../API/http";
 
 const renderSuggestion = (suggestion) => (
   <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
@@ -19,40 +19,22 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-export default class RouteUpdate extends Component {
-  componentDidMount() {
-    cityName({ id: this.state.city_id }).then((data) => {
-      if (data.message) {
-        console.log(data.message);
-      } else {
-        this.setState({ city: data.city });
-      }
-    });
-  }
+const RouteUpdate = ({ data, updateData, number, count }) => {
+  const [city, setCity] = useState("");
+  const [city_id, setCity_id] = useState("");
+  const [address, setAddress] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-  constructor(props) {
-    super(props);
+  const onChange = (event, { newValue, method }) => {
+    setCity(newValue);
+  };
 
-    this.state = {
-      suggestions: [],
-      city: "",
-      city_id: this.props.city,
-      address: this.props.address,
-    };
-  }
-
-  getSuggestionValue = (suggestion) => {
-    this.setState({ city_id: suggestion.id });
+  const getSuggestionValue = (suggestion) => {
+    setCity_id(suggestion.id);
     return suggestion.city;
   };
 
-  onChange = (event, { newValue, method }) => {
-    this.setState({
-      city: newValue,
-    });
-  };
-
-  onSuggestionsFetchRequested = ({ value }) => {
+  const onSuggestionsFetchRequested = ({ value }) => {
     fetch(`http://altproduction.ru:8080/rest/v1/city/`, {
       method: "POST",
       body: JSON.stringify({
@@ -62,59 +44,90 @@ export default class RouteUpdate extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ suggestions: data.city });
+        setSuggestions(data.city);
       });
   };
 
-  onSuggestionsClearRequested = () => {
-    this.setState({ suggestions: [] });
+  const onSuggestionsClearRequested = () => {
+    setSuggestions([]);
   };
 
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  const inputProps = {
+    placeholder: "Населеный пункт",
+    value: city,
+    onChange: onChange,
   };
 
-  render() {
-    const { suggestions, city } = this.state;
-    const inputProps = {
-      placeholder: "Населеный пункт",
-      value: city,
-      onChange: this.onChange,
-    };
-    return (
-      <div style={{ marginLeft: "20px" }}>
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />
+  useEffect(() => {
+    if (city_id && address)
+      setData({
+        city: city_id,
+        address,
+      });
+  }, [city_id, address]);
+
+  useEffect(() => {
+    if (data) {
+      setCity_id(data.city);
+      setAddress(data.address);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (city_id && !city) {
+      async function func() {
+        if (city_id) {
+          const result = await cityName({
+            id: city_id,
+          });
+          setCity(result.city);
+        }
+      }
+      func();
+    }
+  }, [city_id, city]);
+
+  return (
+    <div className="flex p5-background" id="route">
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        inputProps={inputProps}
+      />
+      <div className="flex ml10">
         <input
           type="text"
-          placeholder="Адрес"
-          value={this.state.address}
+          placeholder="Улица, дом"
+          value={address}
           name="Adress"
-          onChange={(data) => {
-            this.setState({ address: data.target.value });
-            this.props.updateData(
-              data.target.value,
-              this.state.city_id,
-              this.props.point,
-              this.props.id
-            );
-          }}
-          disabled={this.props.disabled}
+          onChange={({ target: { value } }) => setAddress(value)}
         />
-        {(this.state.address.length === 0 ||
-          this.state.city_id.length === 0) && (
-          <p style={{ color: "red" }}>
-            Пока не заполнишь поля, плюс не нажмётся
-          </p>
+
+        <img
+          src={icon_delete}
+          className="delete_icon"
+          height={34}
+          onClick={() => null}
+          alt="delete"
+        />
+
+        {count <= number + 1 && (
+          <img
+            src={PLUS_icon}
+            onClick={() =>
+              updateData(address, city_id)
+            }
+            className="plus_icon"
+            alt="plus"
+            height={47}
+          />
         )}
-        <div style={{ marginLeft: "20px" }}></div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default RouteUpdate;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Autosuggest from "react-autosuggest";
 import { update_task, get_task, get_client } from "../../API/http";
-import Route from "./Route";
+import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
 import Payment from "./Payment";
 import "./styleTask.css";
@@ -240,7 +240,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               >
                 <div className="routelist">
                   {routes.map((item) => (
-                    <Route
+                    <RouteUpdate
                       data={item}
                       number={item.point}
                       count={routes.length}
