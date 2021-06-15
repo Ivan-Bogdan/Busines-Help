@@ -248,7 +248,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                       updateData={updateData}
                     />
                   ))}
-                  {[...Array(countRoute)].map((item, index) => (
+                  {[...Array(countRoute)].map(() => (
                     <div>
                       <RouteUpdate
                         key={countRoute}
