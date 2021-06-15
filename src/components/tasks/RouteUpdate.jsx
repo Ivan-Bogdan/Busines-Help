@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
-import { cityName } from "../../../API/http";
+import { cityName } from "../../API/http";
 
 const renderSuggestion = (suggestion) => (
   <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
