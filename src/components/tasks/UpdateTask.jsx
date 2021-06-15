@@ -107,7 +107,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   useEffect(() => {
     async function func() {
-      if (fullTask.client) {
+      if (fullTask && fullTask.client) {
         const result = await get_client({
           id: fullTask.client,
         });

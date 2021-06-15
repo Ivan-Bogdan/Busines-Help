@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
 import { cityName } from "../../API/http";
+import icon_delete from "../../assets/img/удалить.png";
 
 const renderSuggestion = (suggestion) => (
   <div style={{ display: "flex", flexDirection: "column", lineHeight: 0.8 }}>
