@@ -119,9 +119,10 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
         {count <= number + 1 && (
           <img
             src={PLUS_icon}
-            onClick={() =>
-              updateData(address, city_id)
-            }
+            onClick={() => {
+              if (!city_id || !address) alert("Заполните все поля")
+              return city_id && address && updateData(address, city_id)
+            }}
             className="plus_icon"
             alt="plus"
             height={47}
