@@ -41,6 +41,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       e.preventDefault();
       let payload = {
         task_id: task,
+        client: clientId,
         name,
         date,
         price: { price, currency },
@@ -53,7 +54,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       else console.log(result.message);
       FetchData();
     },
-    [task, name, date, price, currency, type, status, paid, onClose]
+    [task, clientId, name, date, price, currency, type, status, paid, onClose]
   );
 
   const onChange = (event, { newValue, method }) => {
@@ -247,28 +248,17 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                       updateData={updateData}
                     />
                   ))}
-                </div>
-
-                {/* <Route
-                  number={-1}
-                  count={this.state.countRoute}
-                  updateData={this.updateData}
-                  updateObjRoute={this.updateObjRoute}
-                />
-
-                <div className="routelist">
-                  {[...Array(this.state.countRoute)].map((item, index) => (
+                  {[...Array(countRoute)].map((item, index) => (
                     <div>
-                      <Route
-                        key={index}
-                        updateData={this.updateData}
-                        number={index}
-                        count={this.state.countRoute}
-                        updateObjRoute={this.updateObjRoute}
+                      <RouteUpdate
+                        key={countRoute}
+                        updateData={updateData}
+                        number={countRoute}
+                        count={countRoute}
                       />
                     </div>
                   ))}
-                </div> */}
+                </div>
               </div>
             </div>
           )}
