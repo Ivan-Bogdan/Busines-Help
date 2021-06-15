@@ -20,7 +20,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [paid, setPaid] = useState("");
 
   const [routes, setRoutes] = useState(null);
-  const [countRoute, setCountRoute] = useState("")
+  const [countRoute, setCountRoute] = useState(0)
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
