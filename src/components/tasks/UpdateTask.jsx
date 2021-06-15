@@ -34,7 +34,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       ],
     });
     setCountRoute(countRoute + 1)
-  }, []);
+  }, [routes, countRoute]);
 
   const updateTask = useCallback(
     async (e) => {
