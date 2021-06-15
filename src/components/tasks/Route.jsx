@@ -32,20 +32,6 @@ export default class Route extends Component {
     };
   }
 
-
-  componentDidMount() {
-    const data = this.props.data
-    func = async () => {
-      const result = await cityName({
-        id: data.city,
-      });
-      this.setState({ city: result.city })
-    }
-    func();
-    if (data) {
-      this.setState({ city_id: data.city, address: data.address });
-    }
-  }
   getSuggestionValue = (suggestion) => {
     this.setState({ city_id: suggestion.id });
     if (this.state.address && this.state.city_id)
