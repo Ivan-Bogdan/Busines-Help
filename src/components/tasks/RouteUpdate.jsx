@@ -21,7 +21,7 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
-const RouteUpdate = ({ data, updateData, number, count }) => {
+const RouteUpdate = ({ data, updateData, number, count, routes, setRoutes }) => {
   const [city, setCity] = useState("");
   const [city_id, setCity_id] = useState("");
   const [address, setAddress] = useState("");
@@ -105,7 +105,7 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
             src={icon_delete}
             className="delete_icon"
             height={34}
-            onClick={() => null}
+            onClick={() => console.log(routes.filter(item => item.point === number))}
             alt="delete"
           />
         )}
