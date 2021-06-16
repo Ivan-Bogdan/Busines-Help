@@ -89,6 +89,10 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
     }
   }, [city_id, city]);
 
+  useEffect(() => {
+    if (city_id && address) updateData(address, city_id)
+  }, [address, city_id])
+
   return (
     <div className="flex p5-background" id="route">
       <Autosuggest
