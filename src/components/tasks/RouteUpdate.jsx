@@ -60,14 +60,6 @@ const RouteUpdate = ({ data, updateData, number, count }) => {
     onChange: onChange,
   };
 
-  // useEffect(() => {
-  //   if (city_id && address)
-  //     setData({
-  //       city: city_id,
-  //       address,
-  //     });
-  // }, [city_id, address]);
-
   useEffect(() => {
     if (data) {
       setCity_id(data.city);
