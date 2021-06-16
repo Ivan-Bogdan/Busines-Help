@@ -105,7 +105,7 @@ const RouteUpdate = ({ data, updateData, number, count, routes, setRoutes }) => 
             src={icon_delete}
             className="delete_icon"
             height={34}
-            onClick={() => console.log(routes.filter(item => item.point === number))}
+            onClick={() => setRoutes(routes.filter(item => item.point !== number))}
             alt="delete"
           />
         )}
