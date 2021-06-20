@@ -7,6 +7,22 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [isReadСlient, setIsReadСlient] = useState(false);
+  const [currentCity, setCurrentCity] = useState("");
+
+  useEffect(() => {
+    if (item && item.reg_address && item.reg_address.city) {
+      async function func() {
+        if (item.reg_address.city) {
+          const result = await cityName({
+            id: item.reg_address.city,
+          });
+          setCurrentCity(`${result.type_abbr}. ${result.city}, ${item.reg_address.address}`);
+        }
+      }
+      func();
+    }
+  }, [item.reg_address.city]);
+
 
   const toggleModal = () => {
     setModal(!modal);
@@ -48,16 +64,15 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
       <div className="additional" onClick={toogleReadClient}>
         <div className="content_client normclick" style={{ width: "100%" }}>
           {item.name && (
-            <div className="client_name">{`${getNameOtype(item.otype)} "${
-              item.name
-            }"`}</div>
+            <div className="client_name">{`${getNameOtype(item.otype)} "${item.name
+              }"`}</div>
           )}
           {item.full_name && (
-            <div className="client_name">{`${getNameOtype(item.otype)} "${
-              item.full_name.family
-            } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
+            <div className="client_name">{`${getNameOtype(item.otype)} "${item.full_name.family
+              } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
           )}
           {item.unp && <div className="client_unp">{item.unp}</div>}
+          {item.reg_address && <div className="client_address">{currentCity}</div>}
         </div>
       </div>
       <div style={{ paddingRight: "30px" }}>
