@@ -98,7 +98,7 @@ const Task = ({ task, deleteTask, FetchData }) => {
                 <div className="price color-red">{`${task.price.price} ${task.price.currency}`}</div>
               )}
 
-              <div>
+              <div className="flex-end">
                 <div className="paid">Оплачено/Долг</div>
                 <div className="price-debt">
                   <span className="color-green">
