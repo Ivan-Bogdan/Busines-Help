@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { city__name } from "../../API/http";
 import Modal from "../Modal";
 import ReadClient from "./ReadClient";
 import UpdateClient from "./UpdateClient";
@@ -13,7 +14,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
     if (item && item.reg_address && item.reg_address.city) {
       async function func() {
         if (item.reg_address.city) {
-          const result = await cityName({
+          const result = await city__name({
             id: item.reg_address.city,
           });
           setCurrentCity(`${result.type_abbr}. ${result.city}, ${item.reg_address.address}`);
