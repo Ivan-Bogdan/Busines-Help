@@ -21,7 +21,7 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
       }
       func();
     }
-  }, [item.reg_address.city]);
+  }, [item]);
 
 
   const toggleModal = () => {
