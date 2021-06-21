@@ -1,6 +1,4 @@
-import { useCallback } from "react";
-
-export const getNameOtype = useCallback((otype) => {
+export const getNameOtype = ((otype) => {
   switch (otype) {
     case 0:
       return "ИП";
@@ -23,4 +21,4 @@ export const getNameOtype = useCallback((otype) => {
     case 9:
       return "УП";
   }
-}, []);
+});
