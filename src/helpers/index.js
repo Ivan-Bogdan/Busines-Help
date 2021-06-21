@@ -13,7 +13,7 @@ export const getNameOtype = ((otype) => {
     case 5:
       return "ИНОЕ";
     case 6:
-      return "ФИЗ ЛИЦО";
+      return "Ф/Л";
     case 7:
       return "СООО";
     case 8:
