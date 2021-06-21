@@ -4,6 +4,7 @@ import { create_task } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
+import { getNameOtype } from "../../helpers";
 
 const renderSuggestion = (clients) => <span>{clients.name}</span>;
 
@@ -121,7 +122,7 @@ export default class CreateTask extends Component {
   getSuggestionValue = (suggestion) => {
     console.log(suggestion);
     this.setState({ client_id: suggestion.id });
-    return suggestion.name;
+    return `${getNameOtype(suggestion.otype)} "${suggestion.name || `${suggestion.full_name.family} ${suggestion.full_name.name} ${suggestion.full_name.patronymic}`}"`;
   };
 
   onChange = (event, { newValue, method }) => {
