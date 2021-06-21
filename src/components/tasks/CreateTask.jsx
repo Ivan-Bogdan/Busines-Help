@@ -119,6 +119,7 @@ export default class CreateTask extends Component {
   };
 
   getSuggestionValue = (suggestion) => {
+    console.log(suggestion);
     this.setState({ client_id: suggestion.id });
     return suggestion.name;
   };
