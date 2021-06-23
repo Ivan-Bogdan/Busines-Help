@@ -95,23 +95,23 @@ const MyClients = () => {
     [clients]
   );
 
-  useEffect(() => {
-    _getFingerprint();
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        if (fingerprint) {
-          let pay = { fingerprint: fingerprint };
-          update_token(pay).then((data) => {
-            if (data.message) {
-            } else {
-              authenticate(data, () => {});
-            }
-          });
-        }
-        FetchData();
-      }
-    }, 300);
-  }, [FetchData]);
+  // useEffect(() => {
+  //   _getFingerprint();
+  //   setTimeout(() => {
+  //     if (localStorage.getItem("token")) {
+  //       if (fingerprint) {
+  //         let pay = { fingerprint: fingerprint };
+  //         update_token(pay).then((data) => {
+  //           if (data.message) {
+  //           } else {
+  //             authenticate(data, () => {});
+  //           }
+  //         });
+  //       }
+  //       FetchData();
+  //     }
+  //   }, 300);
+  // }, [FetchData]);
 
   return (
     <div>

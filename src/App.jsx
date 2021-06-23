@@ -21,22 +21,22 @@ const getHashable = (components) => {
 };
 
 export default class App extends Component {
-  componentDidMount() {
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        update_token(this.state).then((data) => {
-          if (data.message) {
-          } else {
-            authenticate(data, () => {
-              this.setState({
-                ...this.state,
-              });
-            });
-          }
-        });
-      }
-    }, 200);
-  }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     if (localStorage.getItem("token")) {
+  //       update_token(this.state).then((data) => {
+  //         if (data.message) {
+  //         } else {
+  //           authenticate(data, () => {
+  //             this.setState({
+  //               ...this.state,
+  //             });
+  //           });
+  //         }
+  //       });
+  //     }
+  //   }, 200);
+  // }
 
   constructor(props) {
     super(props);

@@ -299,3 +299,20 @@ export async function delete_client(payload) {
   );
   return await response.json();
 }
+
+axios.interceptors.response.use((config) => {
+  return config;
+},async (error) => {
+  const originalRequest = error.config;
+  if (error.response.status == 403 && error.config && !error.config._isRetry) {
+      originalRequest._isRetry = true;
+      try {
+          const response = await axios.post(`http://altproduction.ru/rest/account/update`)
+          localStorage.setItem('token', response.data.token);
+          return axios.request(originalRequest);
+      } catch (e) {
+          console.error('НЕ АВТОРИЗОВАН')
+      }
+  }
+  throw error;
+})
