@@ -63,23 +63,23 @@ const MyClients = () => {
     }
   };
 
-  const _getFingerprint = () => {
-    if (window.requestIdleCallback) {
-      requestIdleCallback(() => {
-        FPJS.get((components) => {
-          const hash = FPJS.x64hash128(getHashable(components));
-          setFingerprint(hash);
-        });
-      });
-    } else {
-      setTimeout(() => {
-        FPJS.get((components) => {
-          const hash = FPJS.x64hash128(getHashable(components));
-          setFingerprint(hash);
-        });
-      }, 500);
-    }
-  };
+  // const _getFingerprint = () => {
+  //   if (window.requestIdleCallback) {
+  //     requestIdleCallback(() => {
+  //       FPJS.get((components) => {
+  //         const hash = FPJS.x64hash128(getHashable(components));
+  //         setFingerprint(hash);
+  //       });
+  //     });
+  //   } else {
+  //     setTimeout(() => {
+  //       FPJS.get((components) => {
+  //         const hash = FPJS.x64hash128(getHashable(components));
+  //         setFingerprint(hash);
+  //       });
+  //     }, 500);
+  //   }
+  // };
 
   const toggleCreateClient = () => {
     setCreateClient(!isCreateClient);
@@ -95,23 +95,9 @@ const MyClients = () => {
     [clients]
   );
 
-  // useEffect(() => {
-  //   _getFingerprint();
-  //   setTimeout(() => {
-  //     if (localStorage.getItem("token")) {
-  //       if (fingerprint) {
-  //         let pay = { fingerprint: fingerprint };
-  //         update_token(pay).then((data) => {
-  //           if (data.message) {
-  //           } else {
-  //             authenticate(data, () => {});
-  //           }
-  //         });
-  //       }
-  //       FetchData();
-  //     }
-  //   }, 300);
-  // }, [FetchData]);
+  useEffect(() => {
+    FetchData();
+  }, []);
 
   return (
     <div>
