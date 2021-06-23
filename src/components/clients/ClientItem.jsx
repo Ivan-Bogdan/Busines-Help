@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { city__name } from "../../API/http";
 import { getNameOtype } from "../../helpers";
 import Modal from "../Modal";
