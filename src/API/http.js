@@ -155,15 +155,15 @@ const getHashable = (components) => {
 	return components.map((component) => component.value).join('');
 };
 
-const _getFingerprint = () => {
+const _getFingerprint = () =>
 	FPJS.get((components) => {
 		localStorage.setItem(
 			'fingerprint',
 			FPJS.x64hash128(getHashable(components))
 		);
 	});
-};
-_getFingerprint()
+
+_getFingerprint();
 
 export async function update_token(payload) {
 	return axios
