@@ -8,9 +8,9 @@ const $api = axios.create({
 });
 
 $api.interceptors.request.use((config) => {
-  config.headers.Authorization = `${localStorage.getItem('token')}`
-  return config;
-})
+	config.headers.Authorization = localStorage.getItem('token') || '';
+	return config;
+});
 
 export const cityName = (payload) => {
 	return axios
