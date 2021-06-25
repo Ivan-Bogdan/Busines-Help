@@ -43,12 +43,13 @@ export default class SignIn extends Component {
         this.setState({ error: "Неверные данные" });
       } else {
         this.setState({ error: null });
-        this.props.onClose();
+
         authenticate(data, () => {
           this.setState({
             ...this.state,
           });
         });
+        this.props.onClose();
         // window.location.reload();
       }
     });
