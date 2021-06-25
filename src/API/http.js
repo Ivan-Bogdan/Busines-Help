@@ -7,10 +7,10 @@ const $api = axios.create({
     baseURL: API_URL
 })
 
-$api.interceptors.request.use((config) => {
-  config.headers.Authorization = `${localStorage.getItem('token')}`
-  return config;
-})
+// $api.interceptors.request.use((config) => {
+//   config.headers.Authorization = `${localStorage.getItem('token')}`
+//   return config;
+// })
 
 export const cityName = (payload) => {
 	return axios
@@ -301,30 +301,30 @@ export async function delete_client(payload) {
 	return await response.json();
 }
 
-$api.interceptors.response.use(
-	(config) => {
-		return config;
-	},
-	async (error) => {
-    console.log(error);
-		const originalRequest = error.config;
-		if (
-			error.response.status === 403 &&
-			error.config &&
-			!error.config._isRetry
-		) {
-			originalRequest._isRetry = true;
-			try {
-				const response = await $api.post(
-					`/account/update`,
-					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
-				);
-				localStorage.setItem('token', response.data.token);
-				return $api.request(originalRequest);
-			} catch (e) {
-				console.error('НЕ АВТОРИЗОВАН');
-			}
-		}
-		throw error;
-	}
-);
+// $api.interceptors.response.use(
+// 	(config) => {
+// 		return config;
+// 	},
+// 	async (error) => {
+//     console.log(error);
+// 		const originalRequest = error.config;
+// 		if (
+// 			error.response.status === 403 &&
+// 			error.config &&
+// 			!error.config._isRetry
+// 		) {
+// 			originalRequest._isRetry = true;
+// 			try {
+// 				const response = await $api.post(
+// 					`/account/update`,
+// 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
+// 				);
+// 				localStorage.setItem('token', response.data.token);
+// 				return $api.request(originalRequest);
+// 			} catch (e) {
+// 				console.error('НЕ АВТОРИЗОВАН');
+// 			}
+// 		}
+// 		throw error;
+// 	}
+// );

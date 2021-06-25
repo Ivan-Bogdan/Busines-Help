@@ -11,7 +11,6 @@ import SignUp from "./components/SingUp";
 import "./jq";
 import SignIn from "./components/SignIn";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
-import { authenticate, update_token } from "./API/http";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";

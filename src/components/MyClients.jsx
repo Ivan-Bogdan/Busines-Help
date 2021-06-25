@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  authenticate,
   create_client,
   delete_client,
   get_client_list,

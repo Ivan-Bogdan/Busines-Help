@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   get_task_list,
-  authenticate,
   delete_task,
 } from "../API/http";
 import FPJS from "@fingerprintjs/fingerprintjs";

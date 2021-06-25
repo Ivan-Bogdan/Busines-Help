@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import {
-  Login,
-  authenticate /* isAuthenticated, getUser  */,
-} from "../API/http";
+import { Login } from "../API/http";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 
 import "./style.css";
@@ -46,11 +43,12 @@ export default class SignIn extends Component {
         this.setState({ error: "Неверные данные" });
       } else {
         this.setState({ error: null });
-        authenticate(data, () => {
-          this.setState({
-            ...this.state,
-          });
-        });
+        this.props.onClose();
+        // authenticate(data, () => {
+        //   this.setState({
+        //     ...this.state,
+        //   });
+        // });
         window.location.reload();
       }
     });
