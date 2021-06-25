@@ -329,7 +329,7 @@ $api.interceptors.response.use(
 			originalRequest._isRetry = true;
 			try {
 				const response = await $api.post(
-					`/account/update`,
+					`/account/update/`,
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
 				);
 				localStorage.setItem('token', response.data.token);
