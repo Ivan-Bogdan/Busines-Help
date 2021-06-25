@@ -61,7 +61,7 @@ const MyServ = () => {
     const result = await get_task_list(payload);
     if (result.message) {
       setError(result.message);
-      localStorage.clear();
+      // localStorage.clear();
     } else {
       setCount(result.count);
       setTasks(result.tasks);
