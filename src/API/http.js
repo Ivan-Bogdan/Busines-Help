@@ -171,7 +171,7 @@ export const get_task_list = (payload) => {
 					Authorization: localStorage.getItem('token'),
 				},
 			},
-			JSON.stringify(payload)
+			payload
 		)
 		.then((response) => {
 			return response.json();
