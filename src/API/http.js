@@ -294,6 +294,7 @@ axios.interceptors.response.use(
 		return config;
 	},
 	async (error) => {
+    console.log(error);
 		const originalRequest = error.config;
 		if (
 			error.response.status === 403 &&
