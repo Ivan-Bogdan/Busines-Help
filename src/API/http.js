@@ -282,19 +282,34 @@ export async function update_client(payload) {
 	return await response.json();
 }
 
-export async function get_client(payload) {
-	let response = await fetch(
-		'http://altproduction.ru/rest/client/get_client/',
-		{
-			method: 'POST',
+// export async function get_client(payload) {
+// 	let response = await fetch(
+// 		'http://altproduction.ru/rest/client/get_client/',
+// 		{
+// 			method: 'POST',
+// 			headers: {
+// 				Authorization: localStorage.getItem('token'),
+// 			},
+// 			body: JSON.stringify(payload),
+// 		}
+// 	);
+// 	return await response.json();
+// }
+
+export const get_client = (payload) => {
+	return $api
+		.post('/client/get_client/', JSON.stringify(payload), {
 			headers: {
 				Authorization: localStorage.getItem('token'),
 			},
-			body: JSON.stringify(payload),
-		}
-	);
-	return await response.json();
-}
+		})
+		.then((response) => {
+			return response.data;
+		})
+		.catch((error) => {
+			return error;
+		});
+};
 
 export async function delete_client(payload) {
 	let response = await fetch(
