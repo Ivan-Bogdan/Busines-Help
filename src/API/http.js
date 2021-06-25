@@ -158,15 +158,11 @@ export const get_Task = (payload) => {
 
 export const get_task_list = (payload) => {
 	return $api
-		.post(
-			'/task/get_task_list/',
-			JSON.stringify(payload),
-			{
-				headers: {
-					Authorization: localStorage.getItem('token'),
-				},
-			}
-		)
+		.post('/task/get_task_list/', JSON.stringify(payload), {
+			headers: {
+				Authorization: localStorage.getItem('token'),
+			},
+		})
 		.then((response) => {
 			return response.data;
 		})
@@ -330,7 +326,8 @@ $api.interceptors.response.use(
 			try {
 				const response = await $api.post(
 					`/account/update/`,
-					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
+					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
+					{ withCredentials: true }
 				);
 				localStorage.setItem('token', response.data.token);
 				return $api.request(originalRequest);
