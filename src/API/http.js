@@ -1,5 +1,17 @@
 import axios from 'axios';
 
+export const API_URL = `http://altproduction.ru/rest`
+
+const $api = axios.create({
+    withCredentials: true,
+    baseURL: API_URL
+})
+
+$api.interceptors.request.use((config) => {
+  config.headers.Authorization = `${localStorage.getItem('token')}`
+  return config;
+})
+
 export const cityName = (payload) => {
 	return axios
 		.post(
@@ -26,9 +38,9 @@ export const cityList = (payload) => {
 };
 
 export const Reg = (payload) => {
-	return axios
+	return $api
 		.post(
-			'http://altproduction.ru/rest/account/create/',
+			'/account/create/',
 			JSON.stringify(payload)
 		)
 		.then((response) => {
@@ -40,9 +52,9 @@ export const Reg = (payload) => {
 };
 
 export const Login = (payload) => {
-	return axios
+	return $api
 		.post(
-			'http://altproduction.ru/rest/account/login/',
+			'/account/login/',
 			JSON.stringify(payload)
 		)
 		.then((response) => {
@@ -84,8 +96,8 @@ export const signout = (next) => {
 };
 
 export const getUser = () => {
-	return axios
-		.get('http://altproduction.ru/rest/account/get-user/', {
+	return $api
+		.get('/account/get-user/', {
 			headers: {
 				Authorization: localStorage.getItem('token'),
 			},
@@ -99,9 +111,9 @@ export const getUser = () => {
 };
 
 export const DeleteTask = (payload) => {
-	return axios
+	return $api
 		.post(
-			'http://altproduction.ru/rest/task/delete_task/',
+			'/task/delete_task/',
 			{
 				headers: {
 					Authorization: localStorage.getItem('token'),
@@ -150,19 +162,19 @@ export async function get_task_list(payload) {
 	return await response.json();
 }
 
-export async function update_token(payload) {
-	return axios
-		.post(
-			'http://altproduction.ru/rest/account/update/',
-			JSON.stringify(payload)
-		)
-		.then((response) => {
-			return response;
-		})
-		.catch((error) => {
-			return error;
-		});
-}
+// export async function update_token(payload) {
+// 	return $api
+// 		.post(
+// 			'http://altproduction.ru/rest/account/update/',
+// 			JSON.stringify(payload)
+// 		)
+// 		.then((response) => {
+// 			return response;
+// 		})
+// 		.catch((error) => {
+// 			return error;
+// 		});
+// }
 
 export async function create_task(payload) {
 	let response = await fetch('http://altproduction.ru/rest/task/create_task/', {
@@ -289,7 +301,7 @@ export async function delete_client(payload) {
 	return await response.json();
 }
 
-axios.interceptors.response.use(
+$api.interceptors.response.use(
 	(config) => {
 		return config;
 	},
@@ -303,12 +315,12 @@ axios.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true;
 			try {
-				const response = await axios.post(
-					`http://altproduction.ru/rest/account/update`,
+				const response = await $api.post(
+					`/account/update`,
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
 				);
 				localStorage.setItem('token', response.data.token);
-				return axios.request(originalRequest);
+				return $api.request(originalRequest);
 			} catch (e) {
 				console.error('НЕ АВТОРИЗОВАН');
 			}

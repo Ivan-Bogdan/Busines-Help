@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   get_task_list,
-  update_token,
   authenticate,
   delete_task,
 } from "../API/http";

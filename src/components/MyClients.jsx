@@ -4,7 +4,6 @@ import {
   create_client,
   delete_client,
   get_client_list,
-  update_token,
 } from "../API/http";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
