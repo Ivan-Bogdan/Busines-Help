@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Login } from "../API/http";
+import { authenticate, Login } from "../API/http";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 
 import "./style.css";
@@ -44,11 +44,11 @@ export default class SignIn extends Component {
       } else {
         this.setState({ error: null });
         this.props.onClose();
-        // authenticate(data, () => {
-        //   this.setState({
-        //     ...this.state,
-        //   });
-        // });
+        authenticate(data, () => {
+          this.setState({
+            ...this.state,
+          });
+        });
         // window.location.reload();
       }
     });
