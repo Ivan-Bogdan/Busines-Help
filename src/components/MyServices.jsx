@@ -98,6 +98,7 @@ const MyServ = () => {
       requestIdleCallback(() => {
         FPJS.get((components) => {
           const hash = FPJS.x64hash128(getHashable(components));
+          setFingerprint(hash);
           localStorage.setItem("fingerprint", hash);
         });
       });
