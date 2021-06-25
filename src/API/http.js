@@ -148,19 +148,38 @@ export const get_Task = (payload) => {
 		});
 };
 
-export async function get_task_list(payload) {
-	let response = await fetch(
-		'http://altproduction.ru/rest/task/get_task_list/',
-		{
-			method: 'POST',
-			headers: {
-				Authorization: localStorage.getItem('token'),
+// export async function get_task_list(payload) {
+// 	let response = await fetch(
+// 		'http://altproduction.ru/rest/task/get_task_list/',
+// 		{
+// 			method: 'POST',
+// 			headers: {
+// 				Authorization: localStorage.getItem('token'),
+// 			},
+// 			body: JSON.stringify(payload),
+// 		}
+// 	);
+// 	return await response.json();
+// }
+
+export const get_task_list = (payload) => {
+	return $api
+		.post(
+			'/task/get_task_list/',
+			{
+				headers: {
+					Authorization: localStorage.getItem('token'),
+				},
 			},
-			body: JSON.stringify(payload),
-		}
-	);
-	return await response.json();
-}
+			JSON.stringify(payload)
+		)
+		.then((response) => {
+			return response.json();
+		})
+		.catch((error) => {
+			return error;
+		});
+};
 
 // export async function update_token(payload) {
 // 	return $api
