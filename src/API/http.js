@@ -168,7 +168,7 @@ export const get_task_list = (payload) => {
 			}
 		)
 		.then((response) => {
-			return response.json();
+			return response.data;
 		})
 		.catch((error) => {
 			return error;
