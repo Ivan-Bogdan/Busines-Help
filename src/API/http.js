@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const API_URL = `http://altproduction.ru/rest`
+export const API_URL = `http://altproduction.ru/rest`;
 
 const $api = axios.create({
-    withCredentials: true,
-    baseURL: API_URL
-})
+	withCredentials: true,
+	baseURL: API_URL,
+});
 
 // $api.interceptors.request.use((config) => {
 //   config.headers.Authorization = `${localStorage.getItem('token')}`
@@ -39,10 +39,7 @@ export const cityList = (payload) => {
 
 export const Reg = (payload) => {
 	return $api
-		.post(
-			'/account/create/',
-			JSON.stringify(payload)
-		)
+		.post('/account/create/', JSON.stringify(payload))
 		.then((response) => {
 			return response;
 		})
@@ -53,10 +50,7 @@ export const Reg = (payload) => {
 
 export const Login = (payload) => {
 	return $api
-		.post(
-			'/account/login/',
-			JSON.stringify(payload)
-		)
+		.post('/account/login/', JSON.stringify(payload))
 		.then((response) => {
 			return response;
 		})
@@ -166,12 +160,12 @@ export const get_task_list = (payload) => {
 	return $api
 		.post(
 			'/task/get_task_list/',
+			JSON.stringify(payload),
 			{
 				headers: {
 					Authorization: localStorage.getItem('token'),
 				},
-			},
-			payload
+			}
 		)
 		.then((response) => {
 			return response.json();
@@ -325,7 +319,7 @@ $api.interceptors.response.use(
 		return config;
 	},
 	async (error) => {
-    console.log(error);
+		console.log(error);
 		const originalRequest = error.config;
 		if (
 			error.response.status === 403 &&
