@@ -44,7 +44,7 @@ const MyServ = () => {
           update_token(pay).then((data) => {
             if (data.message) {
             } else {
-              authenticate(data, () => {});
+              authenticate(data, () => { });
             }
           });
         }
@@ -98,7 +98,7 @@ const MyServ = () => {
       requestIdleCallback(() => {
         FPJS.get((components) => {
           const hash = FPJS.x64hash128(getHashable(components));
-          setFingerprint(hash);
+          localStorage.setItem("fingerprint", hash);
         });
       });
     } else {
