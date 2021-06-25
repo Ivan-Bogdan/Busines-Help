@@ -49,7 +49,7 @@ export default class SignIn extends Component {
         //     ...this.state,
         //   });
         // });
-        window.location.reload();
+        // window.location.reload();
       }
     });
   };
