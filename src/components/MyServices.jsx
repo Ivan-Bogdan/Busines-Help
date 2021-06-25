@@ -5,7 +5,7 @@ import {
   authenticate,
   delete_task,
 } from "../API/http";
-import * as FPJS from "@fingerprintjs/fingerprintjs";
+import FPJS from "@fingerprintjs/fingerprintjs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/style.css";
 import "../components/Modal.css";
