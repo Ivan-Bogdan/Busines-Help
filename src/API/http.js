@@ -341,7 +341,8 @@ $api.interceptors.response.use(
 			try {
 				const response = await axios.post(
 					`/rest/account/update/`,
-					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
+					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
+					{ withCredentials: true }
 				);
 				localStorage.setItem('token', response.data.token);
 				return $api.request(originalRequest);
