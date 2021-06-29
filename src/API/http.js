@@ -345,7 +345,7 @@ $api.interceptors.response.use(
 					{
 						transformRequest: (data, headers) => {
 							delete headers.Authorization;
-							console.log(data);
+							return data;
 						},
 					}
 				);
