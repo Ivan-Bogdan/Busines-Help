@@ -7,11 +7,6 @@ const $api = axios.create({
 	baseURL: API_URL,
 });
 
-$api.interceptors.request.use((config) => {
-	config.headers.Authorization = localStorage.getItem('token') || '';
-	return config;
-});
-
 export const cityName = (payload) => {
 	return axios
 		.post(
@@ -324,6 +319,11 @@ export async function delete_client(payload) {
 	);
 	return await response.json();
 }
+
+$api.interceptors.request.use((config) => {
+	config.headers.Authorization = localStorage.getItem('token') || '';
+	return config;
+});
 
 $api.interceptors.response.use(
 	(config) => {
