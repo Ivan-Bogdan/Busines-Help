@@ -339,7 +339,7 @@ $api.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true;
 			try {
-				const response = await axios.post(
+				const response = await $api.post(
 					`/account/update/`,
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
 					{ withCredentials: true }
