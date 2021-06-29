@@ -344,9 +344,8 @@ $api.interceptors.response.use(
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
 					{
 						transformRequest: (data, headers) => {
-							console.log(headers);
-							delete headers.Authorization
-              console.log(headers);
+							delete headers.Authorization;
+							console.log(data);
 						},
 					}
 				);
