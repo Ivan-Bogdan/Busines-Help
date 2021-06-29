@@ -339,12 +339,9 @@ $api.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true;
 			try {
-				const response = await $api.post(
+				const response = await axios.post(
 					`/account/update/`,
-					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
-					{
-						headers: { Authorization: '' },
-					}
+					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
 				);
 				localStorage.setItem('token', response.data.token);
 				return $api.request(originalRequest);
