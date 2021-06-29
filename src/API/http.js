@@ -343,7 +343,9 @@ $api.interceptors.response.use(
 					`/account/update/`,
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
 					{
-						headers: { Authorization: '' },
+						transformRequest: (data, headers) => {
+							delete headers.common['Authorization'];
+						},
 					}
 				);
 				localStorage.setItem('token', response.data.token);
