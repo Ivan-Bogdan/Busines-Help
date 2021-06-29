@@ -153,11 +153,7 @@ export const get_Task = (payload) => {
 
 export const get_task_list = (payload) => {
 	return $api
-		.post('/task/get_task_list/', JSON.stringify(payload), {
-			headers: {
-				Authorization: localStorage.getItem('token'),
-			},
-		})
+		.post('/task/get_task_list/', JSON.stringify(payload))
 		.then((response) => {
 			return response.data;
 		})
@@ -165,6 +161,31 @@ export const get_task_list = (payload) => {
 			return error;
 		});
 };
+
+export const get_client_list = (payload) => {
+	return $api
+		.post('/client/get_client_list/', JSON.stringify(payload))
+		.then((response) => {
+			return response.data;
+		})
+		.catch((error) => {
+			return error;
+		});
+};
+
+// export async function get_client_list(payload) {
+// 	let response = await fetch(
+// 		'http://altproduction.ru/rest/client/get_client_list/',
+// 		{
+// 			method: 'POST',
+// 			headers: {
+// 				Authorization: localStorage.getItem('token'),
+// 			},
+// 			body: JSON.stringify(payload),
+// 		}
+// 	);
+// 	return await response.json();
+// }
 
 // export async function update_token(payload) {
 // 	return $api
