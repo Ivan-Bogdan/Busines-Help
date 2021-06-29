@@ -270,19 +270,19 @@ export async function create_client(payload) {
 	return await response.json();
 }
 
-export async function get_client_list(payload) {
-	let response = await fetch(
-		'http://altproduction.ru/rest/client/get_client_list/',
-		{
-			method: 'POST',
-			headers: {
-				Authorization: localStorage.getItem('token'),
-			},
-			body: JSON.stringify(payload),
-		}
-	);
-	return await response.json();
-}
+// export async function get_client_list(payload) {
+// 	let response = await fetch(
+// 		'http://altproduction.ru/rest/client/get_client_list/',
+// 		{
+// 			method: 'POST',
+// 			headers: {
+// 				Authorization: localStorage.getItem('token'),
+// 			},
+// 			body: JSON.stringify(payload),
+// 		}
+// 	);
+// 	return await response.json();
+// }
 
 export async function update_client(payload) {
 	let response = await fetch(
