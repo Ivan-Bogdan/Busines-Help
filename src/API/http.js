@@ -342,7 +342,9 @@ $api.interceptors.response.use(
 				const response = await $api.post(
 					`/account/update/`,
 					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
-					{ withCredentials: true }
+					{
+						headers: {},
+					}
 				);
 				localStorage.setItem('token', response.data.token);
 				return $api.request(originalRequest);
