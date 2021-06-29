@@ -339,10 +339,17 @@ $api.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true;
 			try {
-				delete $api.defaults.headers.common['Authorization'];
 				const response = await $api.post(
 					`/account/update/`,
-					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') })
+					JSON.stringify({ fingerprint: localStorage.getItem('fingerprint') }),
+					{
+						transformRequest: [
+							(data, headers) => {
+								delete headers.common['Authorization'];
+								return data;
+							},
+						],
+					}
 				);
 				localStorage.setItem('token', response.data.token);
 				return $api.request(originalRequest);
