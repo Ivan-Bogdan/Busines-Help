@@ -41,12 +41,11 @@ const ClientItem = ({ item, deleteClient, FetchData }) => {
       <div className="additional" onClick={toogleReadClient}>
         <div className="content_client normclick" style={{ width: "100%" }}>
           {item.name && (
-            <div className="client_name">{`${getNameOtype(item.otype)} "${item.name
-              }"`}</div>
+            <div className="client_name">{`${getNameOtype(item.otype, item.name)} `}</div>
           )}
           {item.full_name && (
-            <div className="client_name">{`${getNameOtype(item.otype)} "${item.full_name.family
-              } ${item.full_name.name} ${item.full_name.patronymic}"`}</div>
+            <div className="client_name">{`${getNameOtype(item.otype)} ${item.full_name.family
+              } ${item.full_name.name} ${item.full_name.patronymic}`}</div>
           )}
           {item.unp && <div className="client_unp">{item.unp}</div>}
           {item.reg_address && <div className="client_address">{currentCity}</div>}
