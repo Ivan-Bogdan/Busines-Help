@@ -23,12 +23,10 @@ const MyServ = () => {
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [limit] = useState(10);
-  const [offset] = useState(0);
 
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  const [fingerprint, setFingerprint] = useState("");
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
