@@ -201,17 +201,6 @@ export const get_client_list = (payload) => {
 // 		});
 // }
 
-export async function create_task(payload) {
-	let response = await fetch('http://altproduction.ru/rest/task/create_task/', {
-		method: 'POST',
-		headers: {
-			Authorization: localStorage.getItem('token'),
-		},
-		body: JSON.stringify(payload),
-	});
-	return await response.json();
-}
-
 export async function delete_task(payload) {
 	let response = await fetch('http://altproduction.ru/rest/task/delete_task/', {
 		method: 'POST',
@@ -326,6 +315,28 @@ export const get_client = (payload) => {
 			return error;
 		});
 };
+
+export const create_task = (payload) => {
+	return $api
+		.post('/task/create_task/', JSON.stringify(payload))
+		.then((response) => {
+			return response.data;
+		})
+		.catch((error) => {
+			return error;
+		});
+};
+
+// export async function create_task(payload) {
+// 	let response = await fetch('http://altproduction.ru/rest/task/create_task/', {
+// 		method: 'POST',
+// 		headers: {
+// 			Authorization: localStorage.getItem('token'),
+// 		},
+// 		body: JSON.stringify(payload),
+// 	});
+// 	return await response.json();
+// }
 
 export async function delete_client(payload) {
 	let response = await fetch(
