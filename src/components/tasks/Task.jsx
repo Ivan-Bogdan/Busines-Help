@@ -42,8 +42,10 @@ const Task = ({ task, deleteTask, FetchData }) => {
           id: task.client,
         });
         if (clientCurrent.client.name) {
+          console.log(1);
           setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.name));
         } else if (clientCurrent.client.full_name) {
+          console.log(2);
           setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.full_name.name, clientCurrent.client.full_name.patronomic, clientCurrent.client.full_name.family));
         }
       }
