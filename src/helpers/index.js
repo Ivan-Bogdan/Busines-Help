@@ -1,8 +1,8 @@
-export const getNameOtype = (otype, name, patronomic, family) => {
+export const getNameOtype = (otype, name, patronymic, family) => {
 	switch (otype) {
 		case 0:
 			return `ИП ${
-				name && patronomic && family ? `${family} ${name} ${patronomic}` : ''
+				name && patronymic && family ? `${family} ${name} ${patronymic}` : ''
 			}`;
 		case 1:
 			return `ООО ${name ? `"${name}"` : ''}`;
@@ -16,7 +16,7 @@ export const getNameOtype = (otype, name, patronomic, family) => {
 			return `ИНОЕ ${name ? `"${name}"` : ''}`;
 		case 6:
 			return `Ф/Л ${
-				name && patronomic && family ? `${family} ${name} ${patronomic}` : ''
+				name && patronymic && family ? `${family} ${name} ${patronymic}` : ''
 			}`;
 		case 7:
 			return `СООО ${name ? `"${name}"` : ''}`;
