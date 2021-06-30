@@ -41,7 +41,11 @@ const Task = ({ task, deleteTask, FetchData }) => {
         const clientCurrent = await get_client({
           id: task.client,
         });
-        setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.name));
+        if (clientCurrent.client.name) {
+          setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.name));
+        } else if (clientCurrent.client.full_name) {
+          setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.full_name.name, clientCurrent.client.full_name.patronomic, clientCurrent.client.full_name.family));
+        }
       }
     }
     func();
