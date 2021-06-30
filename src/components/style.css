@@ -952,6 +952,9 @@ span.psw {
 }
 
 @media screen and (max-width: 587px) {
+	.footer {
+		position: relative;
+	}
 	.modal-content {
 		margin: auto;
 	}

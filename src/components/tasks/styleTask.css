@@ -116,9 +116,15 @@
 		font-size: 15px;
 	}
 	.task_name {
-		font-size: 25px;
+		font-size: 18px;
 	}
 	.price {
-		font-size: 35px;
+		font-size: 27px;
+	}
+	.title {
+		font-size: 17px;
+	}
+	.flex-end {
+		font-size: 15px;
 	}
 }

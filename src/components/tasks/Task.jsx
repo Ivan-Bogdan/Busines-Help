@@ -42,10 +42,8 @@ const Task = ({ task, deleteTask, FetchData }) => {
           id: task.client,
         });
         if (clientCurrent.client.name) {
-          console.log(1);
           setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.name));
         } else if (clientCurrent.client.full_name) {
-          console.log(2);
           setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.full_name.name, clientCurrent.client.full_name.patronymic, clientCurrent.client.full_name.family));
         }
       }
@@ -93,16 +91,16 @@ const Task = ({ task, deleteTask, FetchData }) => {
           <div className="flex-task">
             <div className="block1" onClick={toogleReadTask}>
               {task.status === 0 && (
-                <div className="price color-blue">{`${task.price.price} ${task.price.currency}`}</div>
+                <div className="price color-blue">{`${task.price.price.toFixed(2)} ${task.price.currency}`}</div>
               )}
               {task.status === 1 && (
-                <div className="price color-blue">{`${task.price.price} ${task.price.currency}`}</div>
+                <div className="price color-blue">{`${task.price.price.toFixed(2)} ${task.price.currency}`}</div>
               )}
               {task.status === 2 && (
-                <div className="price color-green">{`${task.price.price} ${task.price.currency}`}</div>
+                <div className="price color-green">{`${task.price.price.toFixed(2)} ${task.price.currency}`}</div>
               )}
               {task.status === 3 && (
-                <div className="price color-red">{`${task.price.price} ${task.price.currency}`}</div>
+                <div className="price color-red">{`${task.price.price.toFixed(2)} ${task.price.currency}`}</div>
               )}
 
               <div className="flex-end">
