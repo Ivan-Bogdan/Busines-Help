@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import UpdateTask from "./UpdateTask";
 import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
 import ReadT from "./ReadT";
+import { getNameOtype } from "../../helpers";
 
 const Task = ({ task, deleteTask, FetchData }) => {
   const [modal, setModal] = useState(false);
@@ -40,7 +41,7 @@ const Task = ({ task, deleteTask, FetchData }) => {
         const clientCurrent = await get_client({
           id: task.client,
         });
-        setClientCurrent(clientCurrent.client.name);
+        setClientCurrent(getNameOtype(clientCurrent.client.otype, clientCurrent.client.name));
       }
     }
     func();
