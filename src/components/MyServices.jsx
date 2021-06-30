@@ -130,7 +130,10 @@ const MyServ = () => {
                 ></Task>
               </div>
             ))}
-            <div className={isVisible ? "block3" : "block1"} align="right">
+            <div className={isVisible ? "block3" : "block1"} style={{
+              right: 0,
+              position: 'absolute',
+            }}>
               {!isVisible && (
                 <div
                   className="page_list"

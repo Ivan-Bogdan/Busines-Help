@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="footer" id="footer">
+      <footer className={localStorage.getItem("token") ? "footer" : "footer footer2"} id="footer">
         <div className="container container2">
           <div className="row">
             <div className="col footer_text">

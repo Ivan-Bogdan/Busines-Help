@@ -4,6 +4,9 @@
 .app {
 	overflow: hidden;
 }
+.footer2 {
+	position: relative;
+}
 p {
 	margin-bottom: 0;
 }
@@ -952,9 +955,6 @@ span.psw {
 }
 
 @media screen and (max-width: 587px) {
-	.footer {
-		position: relative;
-	}
 	.modal-content {
 		margin: auto;
 	}
