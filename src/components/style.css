@@ -5,6 +5,10 @@
 	overflow: hidden;
 }
 .footer2 {
+	width: 100%;
+	padding: 15px 0;
+	background: #4f5a4d;
+	display: flex;
 	position: relative;
 }
 p {
