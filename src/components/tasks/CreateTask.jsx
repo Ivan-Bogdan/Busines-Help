@@ -6,7 +6,7 @@ import Doc from "./Doc";
 import Payment from "./Payment";
 import { getNameOtype } from "../../helpers";
 
-const renderSuggestion = (client) => <span>{`${getNameOtype(client.otype)} "${client.name || `${client.full_name.family} ${client.full_name.name} ${client.full_name.patronymic}`}"`}</span>;
+const renderSuggestion = (client) => <span>{`${client.name ? getNameOtype(client.otype, client.name) : getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family)} `}</span>;
 
 export default class CreateTask extends Component {
   constructor(props) {
