@@ -1,7 +1,7 @@
 export const getNameOtype = (otype, name) => {
 	switch (otype) {
 		case 0:
-			return `ИП ${name}`;
+			return `ИП ${name ? `"${name}"` : ''}`;
 		case 1:
 			return `ООО ${name ? `"${name}"` : ''}`;
 		case 2:
