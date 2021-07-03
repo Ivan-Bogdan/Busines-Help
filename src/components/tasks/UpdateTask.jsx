@@ -64,9 +64,8 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   const onSuggestionsFetchRequested = ({ value }) => {
     find_client(value)
-      .then((response) => response.json())
-      .then((data) => {
-        setSuggestions(data.clients);
+      .then((responce) => {
+        setSuggestions(responce.data.clients);
       });
   };
 

@@ -133,9 +133,8 @@ export default class CreateTask extends Component {
 
   onSuggestionsFetchRequested = ({ value }) => {
     find_client(value)
-      .then((data) => {
-        console.log(data);
-        this.setState({ clients: data.clients });
+      .then((responce) => {
+        this.setState({ clients: responce.data.clients });
       });
   };
 
