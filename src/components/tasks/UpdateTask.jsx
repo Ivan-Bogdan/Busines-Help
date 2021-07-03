@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Autosuggest from "react-autosuggest";
-import { update_task, get_task, get_client } from "../../API/http";
+import { update_task, get_task, get_client, find_client } from "../../API/http";
 import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
 import Payment from "./Payment";
@@ -63,17 +63,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru/rest/client/find_client/`, {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        limit: 5,
-        offset: 0,
-        name: value,
-      }),
-    })
+    find_client(value)
       .then((response) => response.json())
       .then((data) => {
         setSuggestions(data.clients);

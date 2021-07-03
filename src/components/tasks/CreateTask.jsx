@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
-import { create_task } from "../../API/http";
+import { create_task, find_client } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
@@ -132,17 +132,7 @@ export default class CreateTask extends Component {
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru/rest/client/find_client/`, {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        limit: 5,
-        offset: 0,
-        name: value,
-      }),
-    })
+    find_client(value)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ clients: data.clients });
