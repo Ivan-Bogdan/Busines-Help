@@ -120,7 +120,6 @@ export default class CreateTask extends Component {
   };
 
   getSuggestionValue = (suggestion) => {
-    console.log(suggestion);
     this.setState({ client_id: suggestion.id });
     return suggestion.full_name && getNameOtype(suggestion.otype,suggestion.full_name.name,suggestion.full_name.patronymic,suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype,suggestion.name)
   };

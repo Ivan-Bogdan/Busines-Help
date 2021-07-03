@@ -5,6 +5,7 @@ import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
 import Payment from "./Payment";
 import "./styleTask.css";
+import { getNameOtype } from "../../helpers";
 
 const renderSuggestion = (client) => <span>{client.name}</span>;
 
@@ -59,7 +60,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   const getSuggestionValue = (suggestion) => {
     setClientId(suggestion.id);
-    return suggestion.name;
+    return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
