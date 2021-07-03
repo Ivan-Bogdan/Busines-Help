@@ -98,7 +98,8 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
         const result = await get_client({
           id: fullTask.client,
         });
-        setClient(result.client.name);
+        const { client } = result;
+        setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
       }
     }
     func();
