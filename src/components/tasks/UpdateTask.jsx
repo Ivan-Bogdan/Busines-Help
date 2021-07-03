@@ -7,7 +7,7 @@ import Payment from "./Payment";
 import "./styleTask.css";
 import { getNameOtype } from "../../helpers";
 
-const renderSuggestion = (client) => <span>{client.name}</span>;
+const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
 const UpdateTask = ({ task, FetchData, onClose }) => {
   const [fullTask, setFullTask] = useState(null);
