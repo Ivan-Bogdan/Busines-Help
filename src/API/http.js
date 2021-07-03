@@ -99,6 +99,39 @@ export const getUser = () => {
     });
 };
 
+export const get_task = (payload) => {
+  return $api
+    .post('/task/get_task/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const delete_task = (payload) => {
+  return $api
+    .post('/task/delete_task/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const update_task = (payload) => {
+  return $api
+    .post('/task/update_task/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
 export const DeleteTask = (payload) => {
   return $api
     .post(
@@ -136,20 +169,6 @@ export const get_Task = (payload) => {
       return error;
     });
 };
-
-// export async function get_task_list(payload) {
-// 	let response = await fetch(
-// 		'http://altproduction.ru/rest/task/get_task_list/',
-// 		{
-// 			method: 'POST',
-// 			headers: {
-// 				Authorization: localStorage.getItem('token'),
-// 			},
-// 			body: JSON.stringify(payload),
-// 		}
-// 	);
-// 	return await response.json();
-// }
 
 export const get_task_list = (payload) => {
   return $api
@@ -209,38 +228,6 @@ export const find_client = (value) => $api.post(`client/find_client/`,
 // 		});
 // }
 
-export async function delete_task(payload) {
-  let response = await fetch('http://altproduction.ru/rest/task/delete_task/', {
-    method: 'POST',
-    headers: {
-      Authorization: localStorage.getItem('token'),
-    },
-    body: JSON.stringify(payload),
-  });
-  return await response.json();
-}
-
-export async function get_task(payload) {
-  let response = await fetch('http://altproduction.ru/rest/task/get_task/', {
-    method: 'POST',
-    headers: {
-      Authorization: localStorage.getItem('token'),
-    },
-    body: JSON.stringify(payload),
-  });
-  return await response.json();
-}
-
-export async function update_task(payload) {
-  let response = await fetch('http://altproduction.ru/rest/task/update_task/', {
-    method: 'POST',
-    headers: {
-      Authorization: localStorage.getItem('token'),
-    },
-    body: JSON.stringify(payload),
-  });
-  return await response.json();
-}
 
 export async function city__name(payload) {
   let response = await fetch(
