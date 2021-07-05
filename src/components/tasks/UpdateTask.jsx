@@ -1,12 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Autosuggest from "react-autosuggest";
-import { update_task, get_task, get_client } from "../../API/http";
+import { update_task, get_task, get_client, find_client } from "../../API/http";
 import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
 import Payment from "./Payment";
 import "./styleTask.css";
+import { getNameOtype } from "../../helpers";
 
-const renderSuggestion = (client) => <span>{client.name}</span>;
+const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
 const UpdateTask = ({ task, FetchData, onClose }) => {
   const [fullTask, setFullTask] = useState(null);
@@ -59,24 +60,13 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
   const getSuggestionValue = (suggestion) => {
     setClientId(suggestion.id);
-    return suggestion.name;
+    return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru/rest/client/find_client/`, {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        limit: 5,
-        offset: 0,
-        name: value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setSuggestions(data.clients);
+    find_client(value)
+      .then((responce) => {
+        setSuggestions(responce.data.clients);
       });
   };
 
@@ -108,7 +98,8 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
         const result = await get_client({
           id: fullTask.client,
         });
-        setClient(result.client.name);
+        const { client } = result;
+        setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
       }
     }
     func();

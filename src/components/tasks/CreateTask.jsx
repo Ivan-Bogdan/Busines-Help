@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
-import { create_task } from "../../API/http";
+import { create_task, find_client } from "../../API/http";
 import Route from "./Route";
 import Doc from "./Doc";
 import Payment from "./Payment";
 import { getNameOtype } from "../../helpers";
 
-const renderSuggestion = (client) => <span>{`${client.name ? getNameOtype(client.otype, client.name) : getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family)} `}</span>;
+const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
 export default class CreateTask extends Component {
   constructor(props) {
@@ -120,9 +120,8 @@ export default class CreateTask extends Component {
   };
 
   getSuggestionValue = (suggestion) => {
-    console.log(suggestion);
     this.setState({ client_id: suggestion.id });
-    return `${getNameOtype(suggestion.otype)} "${suggestion.name || `${suggestion.full_name.family} ${suggestion.full_name.name} ${suggestion.full_name.patronymic}`}"`;
+    return suggestion.full_name && getNameOtype(suggestion.otype,suggestion.full_name.name,suggestion.full_name.patronymic,suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype,suggestion.name)
   };
 
   onChange = (event, { newValue, method }) => {
@@ -132,20 +131,9 @@ export default class CreateTask extends Component {
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
-    fetch(`http://altproduction.ru/rest/client/find_client/`, {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        limit: 5,
-        offset: 0,
-        name: value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ clients: data.clients });
+    find_client(value)
+      .then((responce) => {
+        this.setState({ clients: responce.data.clients });
       });
   };
 
