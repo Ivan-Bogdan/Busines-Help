@@ -227,7 +227,6 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                 }}
               >
                 <div className="routelist">
-                  {console.log(routes.sort((a, b) => a.point + b.point))}
                   {routes.sort((a, b) => a.point - b.point).map((item) => (
                     <RouteUpdate
                       data={item}
