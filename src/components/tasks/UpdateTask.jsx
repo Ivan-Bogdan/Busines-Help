@@ -308,7 +308,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                 />
               ))}
               <Payment
-                index={-1}
+                index={countPayments - 1}
                 key={-1}
                 count={countPayments}
                 updatePayment={updatePayments}
