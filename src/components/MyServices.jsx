@@ -121,7 +121,7 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            {console.log(tasks.sort((a, b) => b.date.toDate() - a.date.toDate()))}
+            {tasks.length && console.log(tasks.sort((a, b) => b.date - a.date))}
             {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task
