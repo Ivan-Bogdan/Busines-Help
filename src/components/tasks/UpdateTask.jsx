@@ -23,9 +23,17 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [routes, setRoutes] = useState(null);
   const [countRoute, setCountRoute] = useState(0)
 
+  const [payments, setPayments] = useState(null)
+  const [countPayments, setCountPayments] = useState(0)
+
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  const updatePayments = (payments_type, price, payment_number, date_pay) => {
+    setPayments([...payments, { payments_type, price, payment_number, date_pay }])
+    setCountPayments(countPayments + 1)
+  };
 
   const updateData = useCallback((address, city) => {
     setRoutes([...routes, { address, city, point: countRoute }]);
@@ -117,7 +125,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setStatus(fullTask.status);
       setPaid(fullTask.paid);
       setRoutes(fullTask.route);
-      setCountRoute(fullTask.route.length)
+      setCountRoute(fullTask.route.length);
+      setPayments(fullTask.payments);
+      setCountPayments(fullTask.payments.length)
     }
   }, [fullTask]);
 
@@ -286,29 +296,19 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               Оплачено
             </option>
           </select>
-          {/* {paid === "1" && (
+          {paid === "1" && (
             <div>
-              <Payment
-                index={-1}
-                key={-1}
-                count={this.state.countPayments}
-                updatePayment={this.updatePayments}
-                updateObjPayment={this.updateObjPayment}
-              />
-
-              {[...Array(this.state.countPayments)].map((item, index) => (
-                <div key={index}>
-                  <Payment
-                    index={index}
-                    key={index}
-                    count={this.state.countPayments}
-                    updatePayment={this.updatePayments}
-                    updateObjPayment={this.updateObjPayment}
-                  />
-                </div>
+              {payments.map((item) => (
+                <Payment
+                  data={item}
+                  index={-1}
+                  key={-1}
+                  count={countPayments}
+                  updatePayment={updatePayments}
+                />
               ))}
             </div>
-          )} */}
+          )}
 
           {/* <Doc
             count={this.state.countDoc}
