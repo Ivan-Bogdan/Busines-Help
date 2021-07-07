@@ -121,7 +121,7 @@ const MyServ = () => {
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
-            {tasks.tasks.sort((a, b) => new Date(b.date) - new Date(a.date)).map((task, index) => (
+            {tasks.sort((a, b) => new Date(b.date) - new Date(a.date)).map((task, index) => (
               <div key={index} className="task_item">
                 <Task
                   task={task}
