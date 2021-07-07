@@ -307,6 +307,12 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                   updatePayment={updatePayments}
                 />
               ))}
+              {<Payment
+                index={countPayments}
+                key={countPayments}
+                count={countPayments}
+                updatePayment={updatePayments}
+              />}
             </div>
           )}
 
