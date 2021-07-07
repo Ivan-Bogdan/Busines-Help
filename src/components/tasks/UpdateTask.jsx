@@ -52,7 +52,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
         type,
         status,
         paid,
-        routes,
+        route: routes,
       };
       const result = await update_task(payload);
       if (result.message === "OK") onClose();
@@ -237,7 +237,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                 }}
               >
                 <div className="routelist">
-                  {routes.map((item) => (
+                  {routes.sort((a, b) => a.point - b.point).map((item) => (
                     <RouteUpdate
                       data={item}
                       number={item.point}

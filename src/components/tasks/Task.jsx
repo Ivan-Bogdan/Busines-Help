@@ -15,21 +15,22 @@ const Task = ({ task, deleteTask, FetchData }) => {
 
   useEffect(() => {
     async function func() {
-      if (task.route.length === 1) {
+      const resultRoutes = task.route.sort((a, b) => a.point - b.point)
+      if (resultRoutes.length === 1) {
         const result = await city__name({
-          id: task.route[0].city,
+          id: resultRoutes[0].city,
         });
         if (result.message) {
           setCityName("Unknown");
         } else {
           setCityName(result.city);
         }
-      } else if (task.route.length > 1) {
+      } else if (resultRoutes.length > 1) {
         const cityOne = await city__name({
-          id: task.route[0].city,
+          id: resultRoutes[0].city,
         });
         const cityTwo = await city__name({
-          id: task.route[task.route.length - 1].city,
+          id: resultRoutes[resultRoutes.length - 1].city,
         });
         if (cityOne.message || cityTwo.message) {
           setCityName("Unknown");
