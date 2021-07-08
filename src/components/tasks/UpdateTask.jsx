@@ -3,6 +3,7 @@ import Autosuggest from "react-autosuggest";
 import { update_task, get_task, get_client, find_client } from "../../API/http";
 import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
+import Doc2 from "./Doc2";
 import Payment from "./Payment";
 import Pay from "./Pay";
 import "./styleTask.css";
@@ -27,6 +28,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [payments, setPayments] = useState(null)
   const [countPayments, setCountPayments] = useState(0)
 
+  const [docs, setDocs] = useState(null)
+  const [countDocs, setCountDocs] = useState(0)
+
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -40,6 +44,11 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
     setRoutes([...routes, { address, city, point: countRoute }]);
     setCountRoute(countRoute + 1)
   }, [routes, countRoute]);
+
+  const updateDoc = (docs_type, number, date) => {
+    setDocs([...docs, { docs_type, number, date }])
+    setCountDocs(countDocs + 1)
+  };
 
   const updateTask = useCallback(
     async (e) => {
@@ -129,7 +138,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
       setRoutes(fullTask.route);
       setCountRoute(fullTask.route.length);
       setPayments(fullTask.payments);
-      setCountPayments(fullTask.payments.length)
+      setCountPayments(fullTask.payments.length);
+      setDocs(fullTask.docs);
+      setCountDocs(fullTask.docs.length);
     }
   }, [fullTask]);
 
@@ -320,14 +331,25 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             </div>
           )}
 
-          {/* <Doc
-            count={this.state.countDoc}
-            updateDoc={this.updateDoc}
-            updateObjDoc={this.updateObjDoc}
-            index={-1}
-            key={-1}
-          /> */}
-          {/* 
+          {docs.map((item, index) => (
+            <Doc2
+              data={item}
+              index={index}
+              count={countDocs}
+              updateDoc={updateDoc}
+              docs={docs}
+              setDocs={setDocs}
+            />
+          ))}
+
+          <Doc2
+            index={countDocs - 1}
+            count={countDocs}
+            updateDoc={updateDoc}
+            docs={docs}
+            setDocs={setDocs}
+          />
+
           {[...Array(this.state.countDoc)].map((item, index) => (
             <div key={index}>
               <Doc
@@ -338,7 +360,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                 updateObjDoc={this.updateObjDoc}
               />
             </div>
-          ))} */}
+          ))}
 
           <div style={{ textAlign: "center" }}>
             <button type="submit" className="button5" onClick={updateTask}>
