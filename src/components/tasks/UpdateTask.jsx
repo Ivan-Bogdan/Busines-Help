@@ -333,13 +333,6 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
 
           <p className="black">Документы</p>
           <div>
-            <Doc2
-              index={countDocs - 1}
-              count={countDocs}
-              updateDoc={updateDoc}
-              docs={docs}
-              setDocs={setDocs}
-            />
             {docs.map((item, index) => (
               <Doc2
                 data={item}
@@ -350,6 +343,13 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
                 setDocs={setDocs}
               />
             ))}
+            <Doc2
+              index={countDocs - 1}
+              count={countDocs}
+              updateDoc={updateDoc}
+              docs={docs}
+              setDocs={setDocs}
+            />
           </div>
 
           <div style={{ textAlign: "center" }}>

@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import icon_delete from "../../assets/img/удалить.png";
 
 const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
-  const [docs_type, setDocs_type] = useState('')
-  const [number, setNumber] = useState('')
-  const [date, setDate] = useState('')
+  const [docs_type, setDocs_type] = useState('');
+  const [number, setNumber] = useState('');
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    if (data) {
+      setDocs_type(data.docs_type)
+      setNumber(data.number)
+      setDate(data.date)
+    }
+  }, [data])
+
   return (
     <div className="p5-background">
       <div>
