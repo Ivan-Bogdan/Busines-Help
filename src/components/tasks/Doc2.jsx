@@ -4,7 +4,6 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
   const [docs_type, setDocs_type] = useState('')
   const [number, setNumber] = useState('')
   const [date, setDate] = useState('')
-  const [docs_type, setDocs_type] = useState('')
   return (
     <div className="p5-background">
       <div>
