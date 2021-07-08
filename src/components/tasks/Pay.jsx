@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import icon_delete from "../../assets/img/удалить.png";
 
 const Pay = ({ data, count, index, updatePayment }) => {
   const [payments_type, setPayment_type] = useState("CASH");
