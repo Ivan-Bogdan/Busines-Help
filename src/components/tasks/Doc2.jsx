@@ -32,13 +32,13 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
           <option value={`CONTRACT`}>Договор</option>
         </select>
       </div>
+      <input
+        type="text"
+        value={number}
+        placeholder="Номер"
+        onChange={({ target: { value } }) => setNumber(value)}
+      />
       <div className="flex m25-0">
-        <input
-          type="text"
-          value={number}
-          placeholder="Номер"
-          onChange={({ target: { value } }) => setNumber(value)}
-        />
         <input
           style={{ marginLeft: 10 }}
           type="date"
@@ -67,8 +67,12 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
           }
           style={{ border: "1px solid lightgrey" }}
           onChange={() => {
-            if (number && docs_type && date)
+            if (number && docs_type && date) {
               updateDoc(docs_type, number, date);
+              setDocs_type('');
+              setNumber('');
+              setDate('');
+            }
             else {
               alert("Заполните поля");
             }
