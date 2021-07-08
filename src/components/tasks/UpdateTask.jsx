@@ -4,6 +4,7 @@ import { update_task, get_task, get_client, find_client } from "../../API/http";
 import RouteUpdate from "./RouteUpdate";
 import Doc from "./Doc";
 import Payment from "./Payment";
+import Pay from "./Pay";
 import "./styleTask.css";
 import { getNameOtype } from "../../helpers";
 
