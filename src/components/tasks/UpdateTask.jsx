@@ -330,7 +330,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               />
             </div>
           )}
-
+          <p className="black">Документы</p>
           {docs.map((item, index) => (
             <Doc2
               data={item}

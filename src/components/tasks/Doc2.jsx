@@ -8,7 +8,6 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
   return (
     <div className="p5-background">
       <div>
-        {index === -1 && <p className="black">Документы</p>}
         <select
           className="select1"
           style={{ border: "1px solid lightgrey" }}
