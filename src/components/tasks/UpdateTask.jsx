@@ -302,11 +302,16 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               {payments.map((item, index) => (
                 <Pay
                   data={item}
-                  index={index}
+                  index={index + 2}
                   count={countPayments}
                   updatePayment={updatePayments}
                 />
               ))}
+              <Pay
+                index={countPayments - 1}
+                count={countPayments}
+                updatePayment={updatePayments}
+              />
             </div>
           )}
 
