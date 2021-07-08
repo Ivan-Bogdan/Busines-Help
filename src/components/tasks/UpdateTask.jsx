@@ -331,7 +331,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             </div>
           )}
 
-          {docs.map((item, index) => (
+          {/* {docs.map((item, index) => (
             <Doc2
               data={item}
               index={index}
@@ -348,7 +348,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             updateDoc={updateDoc}
             docs={docs}
             setDocs={setDocs}
-          />
+          /> */}
 
           <div style={{ textAlign: "center" }}>
             <button type="submit" className="button5" onClick={updateTask}>
