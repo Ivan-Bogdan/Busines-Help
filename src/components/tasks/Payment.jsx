@@ -18,7 +18,7 @@ export default class Payment extends Component {
   }
 
   render() {
-    const props = this.state.props;
+    const props = this.props;
     console.log(props);
     return (
       <div className="p5-background">
