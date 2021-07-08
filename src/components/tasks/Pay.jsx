@@ -9,8 +9,14 @@ const Pay = ({ data, count, index, updatePayment }) => {
   const [date_pay, setDate_pay] = useState("");
 
   useEffect(() => {
-
-  }, [])
+    if (data) {
+      setPayment_type(data.payments_type)
+      setPrice(data.price.price)
+      setCurrency(data.price.currency)
+      setPayment_number(data.payment_number)
+      setDate_pay(data.date_pay)
+    }
+  }, [data])
 
   return (
     <div className="p5-background">
