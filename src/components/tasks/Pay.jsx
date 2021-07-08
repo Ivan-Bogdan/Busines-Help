@@ -103,6 +103,11 @@ const Pay = ({ data, count, index, updatePayment }) => {
             if (payments_type && date_pay && price && currency) {
               const resultPrice = { price, currency };
               updatePayment(payments_type, resultPrice, payment_number, date_pay);
+              setPayment_type("CASH");
+              setPrice(0);
+              setCurrency("BYN");
+              setPayment_number("");
+              setDate_pay("");
             }
             else {
               alert("Заполните все поля");
