@@ -40,7 +40,6 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
       />
       <div className="flex m25-0">
         <input
-          style={{ marginLeft: 10 }}
           type="date"
           value={date}
           placeholder="Дата"
