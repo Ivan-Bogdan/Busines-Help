@@ -14,7 +14,7 @@ const Pay = ({ data, count, index, updatePayment }) => {
       setPrice(data.price.price)
       setCurrency(data.price.currency)
       setPayment_number(data.payment_number)
-      setDate_pay(data.date_pay)
+      setDate_pay(data.date_pay.substr(0, 10))
     }
   }, [data])
 
