@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import icon_delete from "../../assets/img/удалить.png";
 
 const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
   const [docs_type, setDocs_type] = useState('')
