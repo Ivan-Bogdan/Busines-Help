@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import icon_delete from "../../assets/img/удалить.png";
 
-const Pay = ({ data, count, index, updatePayment }) => {
+const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
   const [payments_type, setPayment_type] = useState("CASH");
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
@@ -36,10 +36,13 @@ const Pay = ({ data, count, index, updatePayment }) => {
           className="delete_icon"
           height={34}
           onClick={() => {
-            setPayment_number("");
-            setDate_pay("");
-            setPrice(0);
-            setCurrency("BYN");
+            if (data) setPayments(payments.filter(item => item.id !== data.id))
+            else {
+              setPayment_number("");
+              setDate_pay("");
+              setPrice(0);
+              setCurrency("BYN");
+            }
           }}
           alt="delete"
         />
