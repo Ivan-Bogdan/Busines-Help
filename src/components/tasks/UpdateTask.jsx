@@ -330,25 +330,27 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               />
             </div>
           )}
+
           <p className="black">Документы</p>
-          {docs.map((item, index) => (
+          <div>
+            {docs.map((item, index) => (
+              <Doc2
+                data={item}
+                index={index}
+                count={countDocs}
+                updateDoc={updateDoc}
+                docs={docs}
+                setDocs={setDocs}
+              />
+            ))}
             <Doc2
-              data={item}
-              index={index}
+              index={countDocs - 1}
               count={countDocs}
               updateDoc={updateDoc}
               docs={docs}
               setDocs={setDocs}
             />
-          ))}
-
-          <Doc2
-            index={countDocs - 1}
-            count={countDocs}
-            updateDoc={updateDoc}
-            docs={docs}
-            setDocs={setDocs}
-          />
+          </div>
 
           <div style={{ textAlign: "center" }}>
             <button type="submit" className="button5" onClick={updateTask}>
