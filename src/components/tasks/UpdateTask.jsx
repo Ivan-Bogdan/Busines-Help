@@ -23,13 +23,13 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
   const [paid, setPaid] = useState("");
 
   const [routes, setRoutes] = useState(null);
-  const [countRoute, setCountRoute] = useState(0)
+  const [countRoute, setCountRoute] = useState(0);
 
-  const [payments, setPayments] = useState(null)
-  const [countPayments, setCountPayments] = useState(0)
+  const [payments, setPayments] = useState(null);
+  const [countPayments, setCountPayments] = useState(0);
 
-  const [docs, setDocs] = useState(null)
-  const [countDocs, setCountDocs] = useState(0)
+  const [docs, setDocs] = useState([]);
+  const [countDocs, setCountDocs] = useState(0);
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
@@ -331,7 +331,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             </div>
           )}
 
-          {/* {docs.map((item, index) => (
+          {docs.map((item, index) => (
             <Doc2
               data={item}
               index={index}
@@ -348,7 +348,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             updateDoc={updateDoc}
             docs={docs}
             setDocs={setDocs}
-          /> */}
+          />
 
           <div style={{ textAlign: "center" }}>
             <button type="submit" className="button5" onClick={updateTask}>
