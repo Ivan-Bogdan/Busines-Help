@@ -299,10 +299,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
           {paid === 1 && (
             <div>
               {payments.map((item, index) => (
-                <Payment
+                <Pay
                   data={item}
                   index={index}
-                  key={index}
                   count={countPayments}
                   updatePayment={updatePayments}
                 />
