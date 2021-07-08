@@ -64,13 +64,14 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
         paid,
         route: routes,
         payments,
+        docs,
       };
       const result = await update_task(payload);
       if (result.message === "OK") onClose();
       else console.log(result.message);
       FetchData();
     },
-    [task, clientId, name, date, price, currency, type, status, paid, routes, payments, onClose]
+    [task, clientId, name, date, price, currency, type, status, paid, routes, payments, docs, onClose]
   );
 
   const onChange = (event, { newValue, method }) => {
