@@ -350,18 +350,6 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             setDocs={setDocs}
           />
 
-          {[...Array(this.state.countDoc)].map((item, index) => (
-            <div key={index}>
-              <Doc
-                index={index}
-                key={index}
-                count={this.state.countDoc}
-                updateDoc={this.updateDoc}
-                updateObjDoc={this.updateObjDoc}
-              />
-            </div>
-          ))}
-
           <div style={{ textAlign: "center" }}>
             <button type="submit" className="button5" onClick={updateTask}>
               Обновить
