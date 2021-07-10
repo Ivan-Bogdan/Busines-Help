@@ -68,7 +68,7 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
           value={select}
           style={{ border: "1px solid lightgrey" }}
           onChange={({ target: { value } }) => {
-            setSelect(value);
+            setSelect(value)
             if (number && docs_type && date) {
               updateDoc(docs_type, number, date);
               setDocs_type('');
