@@ -310,9 +310,9 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
               Оплачено
             </option>
           </select>
-          <p className="black">Вид оплаты</p>
           {paid === 1 && (
             <div>
+              <p className="black">Вид оплаты</p>
               {payments.map((item, index) => (
                 <Pay
                   data={item}
