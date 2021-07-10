@@ -63,7 +63,7 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
       <div>
         <select
           className={
-            count < index + 1 ? "select1" : "d-none"
+            count <= index + 1 ? "select1" : "d-none"
           }
           value={select}
           style={{ border: "1px solid lightgrey" }}
