@@ -20,7 +20,6 @@ const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
 
   return (
     <div className="p5-background">
-      <p className="black">Вид оплаты</p>
       <div className="flex m25-0">
         <select
           className="select1"

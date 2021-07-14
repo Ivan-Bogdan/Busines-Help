@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import icon_delete from "../../assets/img/удалить.png";
 
 const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
+  const [select, setSelect] = useState("")
   const [docs_type, setDocs_type] = useState('');
   const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
@@ -64,13 +65,16 @@ const Doc2 = ({ data, index, count, updateDoc, docs, setDocs }) => {
           className={
             count <= index + 1 ? "select1" : "d-none"
           }
+          value={select}
           style={{ border: "1px solid lightgrey" }}
-          onChange={() => {
+          onChange={({ target: { value } }) => {
+            setSelect(value)
             if (number && docs_type && date) {
               updateDoc(docs_type, number, date);
               setDocs_type('');
               setNumber('');
               setDate('');
+              setSelect('')
             }
             else {
               alert("Заполните поля");

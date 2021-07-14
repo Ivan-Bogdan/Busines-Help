@@ -312,6 +312,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
           </select>
           {paid === 1 && (
             <div>
+              <p className="black">Вид оплаты</p>
               {payments.map((item, index) => (
                 <Pay
                   data={item}
@@ -337,7 +338,7 @@ const UpdateTask = ({ task, FetchData, onClose }) => {
             {docs.map((item, index) => (
               <Doc2
                 data={item}
-                index={index}
+                index={index - 2}
                 count={countDocs}
                 updateDoc={updateDoc}
                 docs={docs}
