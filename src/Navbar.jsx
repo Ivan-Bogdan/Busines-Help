@@ -82,7 +82,7 @@ export default class Navbar extends Component {
                       <Link to="/">Персонал</Link>
                     </li>
                     <li>
-                      <Link to="/">Банк</Link>
+                      <Link to="/mypayments">Банк</Link>
                     </li>
                     <li>
                       <Link to="/">Авто</Link>

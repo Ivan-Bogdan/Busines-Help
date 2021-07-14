@@ -61,24 +61,6 @@ const MyClients = () => {
     }
   };
 
-  // const _getFingerprint = () => {
-  //   if (window.requestIdleCallback) {
-  //     requestIdleCallback(() => {
-  //       FPJS.get((components) => {
-  //         const hash = FPJS.x64hash128(getHashable(components));
-  //         setFingerprint(hash);
-  //       });
-  //     });
-  //   } else {
-  //     setTimeout(() => {
-  //       FPJS.get((components) => {
-  //         const hash = FPJS.x64hash128(getHashable(components));
-  //         setFingerprint(hash);
-  //       });
-  //     }, 500);
-  //   }
-  // };
-
   const toggleCreateClient = () => {
     setCreateClient(!isCreateClient);
   };

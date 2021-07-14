@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import App from "./App";
-import MyClients from "./components/MyClients";
-import MyServ from "./components/MyServices";
+import { MyServ, MyClients, MyPayments } from "./components";
 import UpdateTask from "./components/tasks/UpdateTask";
 const Routes = () => {
   return (
@@ -17,6 +16,7 @@ const Routes = () => {
             component={UpdateTask}
           />
           <Route path="/myclients" exact component={MyClients} />
+          <Route path="/mypayments" exact component={MyPayments} />
         </Switch>
       </BrowserRouter>
     </div>
