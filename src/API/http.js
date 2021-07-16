@@ -200,34 +200,61 @@ export const find_client = (value) => $api.post(`client/find_client/`,
   }),
 )
 
-// export async function get_client_list(payload) {
-// 	let response = await fetch(
-// 		'http://altproduction.ru/rest/client/get_client_list/',
-// 		{
-// 			method: 'POST',
-// 			headers: {
-// 				Authorization: localStorage.getItem('token'),
-// 			},
-// 			body: JSON.stringify(payload),
-// 		}
-// 	);
-// 	return await response.json();
-// }
+export const payments_create = (payload) => {
+  return $api
+    .post('/payments/create/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
 
-// export async function update_token(payload) {
-// 	return $api
-// 		.post(
-// 			'http://altproduction.ru/rest/account/update/',
-// 			JSON.stringify(payload)
-// 		)
-// 		.then((response) => {
-// 			return response;
-// 		})
-// 		.catch((error) => {
-// 			return error;
-// 		});
-// }
+export const get_payment = (payload) => {
+  return $api
+    .post('/payments/get_payment/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
 
+export const update_payment = (payload) => {
+  return $api
+    .post('/payments/update_payment/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const delete_payment = (payload) => {
+  return $api
+    .post('/payments/delete_payment/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+
+export const get_payments_list = (payload) => {
+  return $api
+    .post('/payments/get_payments_list/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
 
 export async function city__name(payload) {
   let response = await fetch(
@@ -254,20 +281,6 @@ export async function create_client(payload) {
   return await response.json();
 }
 
-// export async function get_client_list(payload) {
-// 	let response = await fetch(
-// 		'http://altproduction.ru/rest/client/get_client_list/',
-// 		{
-// 			method: 'POST',
-// 			headers: {
-// 				Authorization: localStorage.getItem('token'),
-// 			},
-// 			body: JSON.stringify(payload),
-// 		}
-// 	);
-// 	return await response.json();
-// }
-
 export async function update_client(payload) {
   let response = await fetch(
     'http://altproduction.ru/rest/client/update_client/',
@@ -281,20 +294,6 @@ export async function update_client(payload) {
   );
   return await response.json();
 }
-
-// export async function get_client(payload) {
-// 	let response = await fetch(
-// 		'http://altproduction.ru/rest/client/get_client/',
-// 		{
-// 			method: 'POST',
-// 			headers: {
-// 				Authorization: localStorage.getItem('token'),
-// 			},
-// 			body: JSON.stringify(payload),
-// 		}
-// 	);
-// 	return await response.json();
-// }
 
 export const get_client = (payload) => {
   return $api
@@ -321,17 +320,6 @@ export const create_task = (payload) => {
       return error;
     });
 };
-
-// export async function create_task(payload) {
-// 	let response = await fetch('http://altproduction.ru/rest/task/create_task/', {
-// 		method: 'POST',
-// 		headers: {
-// 			Authorization: localStorage.getItem('token'),
-// 		},
-// 		body: JSON.stringify(payload),
-// 	});
-// 	return await response.json();
-// }
 
 export async function delete_client(payload) {
   let response = await fetch(

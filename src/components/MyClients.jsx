@@ -69,8 +69,8 @@ const MyClients = () => {
     async (item) => {
       const result = await delete_client({ id: item });
       if (result.message) {
-      }
-      FetchData();
+      } else
+        FetchData();
     },
     [clients]
   );
