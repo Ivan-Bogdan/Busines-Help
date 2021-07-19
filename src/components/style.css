@@ -1169,6 +1169,12 @@ section:checked {
 	display: inline;
 }
 
+.block4 {
+	width: auto;
+	overflow: auto;
+	display: inline;
+}
+
 .block3 {
 	width: auto;
 	overflow: auto;
