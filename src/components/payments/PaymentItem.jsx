@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { city__name } from "../../API/http";
+import { get_client } from "../../API/http";
 import { getNameOtype } from "../../helpers";
 import Modal from "../Modal";
 import ReadClient from "../clients/ReadClient";
 import UpdateClient from "../clients/UpdateClient";
+import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
 
 const PaymentItem = ({ item, deleteItem, FetchData }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const [isReadСlient, setIsReadСlient] = useState(false);
-  const [currentCity, setCurrentCity] = useState("");
+  const [isReadPayment, setIsReadPayment] = useState(false);
+  const [client, setClient] = useState("");
 
   useEffect(() => {
-    if (item && item.reg_address && item.reg_address.city) {
-      async function func() {
-        if (item.reg_address.city) {
-          const result = await city__name({
-            id: item.reg_address.city,
-          });
-          setCurrentCity(`${result.type_abbr}. ${result.city}, ${item.reg_address.address}`);
-        }
+    const func = async () => {
+      if (item && item.client) {
+        const clientCurrent = await get_client({
+          id: item.client,
+        });
+        const { client } = clientCurrent;
+        setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
       }
-      func();
-    }
+    };
+    func();
   }, [item]);
 
 
@@ -32,26 +32,55 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
   const toggleModal2 = () => {
     setModal2(!modal2);
   };
-  const toogleReadClient = () => {
-    setIsReadСlient(!isReadСlient);
+  const toogleReadPayment = () => {
+    setIsReadPayment(!isReadPayment);
   };
 
   return (
     <div className="client_container">
-      <div className="additional" onClick={toogleReadClient}>
-        <div className="content_client normclick" style={{ width: "100%" }}>
-          {item.name && (
-            <div className="client_name">{`${getNameOtype(item.otype, item.name)} `}</div>
-          )}
-          {item.full_name && (
-            <div className="client_name">{`${getNameOtype(item.otype, item.full_name.name, item.full_name.patronymic, item.full_name.family)}`}</div>
-          )}
-          {item.unp && <div className="client_unp">{item.unp}</div>}
-          {item.reg_address && <div className="client_address">{currentCity}</div>}
+      <div className="main container_task">
+        <div
+          className={
+            (item.residue > 0 && item.residue === item.price.price && "bluelight") ||
+            (item.residue === 0 && "greenlight") ||
+            (item.residue === item.price.price && "redlight")
+          }
+          onClick={toogleReadPayment}
+        >
+          <div className="title">
+            <div>
+              {new Date(item.date_pay).toLocaleString().substr(0, 10)}
+            </div>
+            {item.residue > 0 && item.residue === item.price.price && (
+              <div className="color-lightblue">В работе</div>
+            )}
+            {item.residue === 0 && <div className="color-green">Разнесено</div>}
+            {item.residue === item.price.price && <div className="color-red">Создано</div>}
+          </div>
         </div>
-      </div>
-      <div style={{ paddingRight: "30px" }}>
-        <button className="editing" onClick={toggleModal} />
+        <div>
+          <div className="flex-task">
+            <div className="block1" onClick={toogleReadPayment}>
+
+              <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
+
+            </div>
+            <div className="block3">
+              <div className="w407" onClick={toogleReadPayment}>
+                <div className="task_name">{client}</div>
+              </div>
+              <div>
+                <img
+                  className="cursor"
+                  src={img251}
+                  onClick={toggleModal}
+                  alt=""
+                  width={40}
+                ></img>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Modal isShowing={modal}>
         <div className="modal" id="id01">
@@ -98,7 +127,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
           FetchData={FetchData}
         />
       )}
-      {isReadСlient && <ReadClient onClose={toogleReadClient} client={item} />}
+      {isReadPayment && <ReadClient onClose={toogleReadPayment} client={item} />}
     </div>
   );
 };
