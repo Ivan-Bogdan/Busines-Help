@@ -3,6 +3,7 @@ import { delete_payment, get_payments_list } from '../API/http';
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 import AddPayment from './payments/AddPayment';
+import PaymentItem from './payments/PaymentItem';
 
 const MyPayments = () => {
   const [isCreatePayment, setIsCreatePayment] = useState(false)
@@ -52,7 +53,15 @@ const MyPayments = () => {
               Создать
             </button>
           </div>
-
+          {payments.map((item, index) => (
+            <div key={index} className="client_item">
+              <PaymentItem
+                item={item}
+                deleteItem={deletePayment}
+                FetchData={FetchData}
+              />
+            </div>
+          ))}
         </div>
       </section>
       <Footer />
