@@ -75,13 +75,15 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
             <div className="block3">
 
             </div>
-            <img
-              className="cursor"
-              src={img251}
-              onClick={toggleModal}
-              alt=""
-              width={40}
-            ></img>
+            <div>
+              <img
+                className="cursor"
+                src={img251}
+                onClick={toggleModal}
+                alt=""
+                width={40}
+              />
+            </div>
           </div>
         </div>
       </div>
