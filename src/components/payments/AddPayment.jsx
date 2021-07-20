@@ -135,7 +135,8 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                   Обновить
                 </button>
               ) : (
-                <button className="button5" onClick={() => {
+                <button className="button5" onClick={(e) => {
+                  e.preventDefault();
                   const payload = {
                     payments_type: typeOfPayment,
                     client: clientId,
