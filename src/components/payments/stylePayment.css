@@ -43,6 +43,7 @@
   .container_payment{
     border-left: none;
     border-right: none;
+    border-bottom: none;
   }
 	.block4 {
 		display: block;
