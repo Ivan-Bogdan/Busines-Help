@@ -30,7 +30,7 @@ const MyPayments = () => {
       if (result.message === "OK") {
         setIsCreatePayment(false);
         FetchData();
-      }
+      } else alert(result.message)
     },
     [payments]
   );
