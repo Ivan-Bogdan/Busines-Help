@@ -16,6 +16,8 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
 
+  console.log(clientId);
+
 
   const onChange = (event, { newValue, method }) => {
     setClient(newValue);
