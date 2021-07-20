@@ -143,10 +143,8 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                     client: clientId,
                     price: { price, currency },
                     payment_number: numberOfPayment,
-                    date_pay: date,
-                    "tasks": [
-
-                    ]
+                    date_pay,
+                    tasks: []
                   }; createPayment();
                 }}>
                   Создать

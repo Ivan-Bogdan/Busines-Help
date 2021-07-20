@@ -82,7 +82,6 @@ const MyPayments = () => {
             onClose={() => setIsCreatePayment(false)}
             FetchData={FetchData}
             createPayment={createPayment}
-            updatePayment={ }
           />
         )}
       </div>
