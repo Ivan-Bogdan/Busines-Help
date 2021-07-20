@@ -3,13 +3,14 @@ import Autosuggest from 'react-autosuggest';
 import { find_client } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
-const renderSuggestion = (client) => <span>{client}</span>;
+const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
 const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
 
   const [suggestions, setSuggestions] = useState([]);
 
   const [client, setClient] = useState("")
+  const [clientId, setClientId] = useState("")
   const [typeOfPayment, setTypeOfPayment] = useState("")
   const [numberOfPayment, setNumberOfPayment] = useState("")
   const [price, setPrice] = useState(0);
@@ -21,7 +22,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   };
 
   const getSuggestionValue = (suggestion) => {
-    setClient(suggestion.id);
+    setClientId(suggestion.id);
     return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
 
