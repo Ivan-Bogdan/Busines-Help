@@ -62,10 +62,11 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
         <div>
           <div className="flex-task">
             <div className="block4" onClick={toogleReadPayment}>
-
-              <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
-              <div className="color-grey">
-                {item && item.payment_number}
+              <div>
+                <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
+                <div className="color-grey">
+                  {item && item.payment_number}
+                </div>
               </div>
               <div className="w407" onClick={toogleReadPayment}>
                 <div className="task_name">{client}</div>
