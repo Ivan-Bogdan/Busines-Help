@@ -143,7 +143,8 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                     payment_number: numberOfPayment,
                     date_pay,
                     tasks: []
-                  }; createPayment();
+                  };
+                  createPayment(payload);
                 }}>
                   Создать
                 </button>
