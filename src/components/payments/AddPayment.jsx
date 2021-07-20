@@ -108,6 +108,19 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                 name="price"
                 onChange={({ target: { value } }) => setPrice(value)}
               />
+              <select
+                className="select_price"
+                value={currency}
+                onChange={({ target: { value } }) => setCurrency(value)}
+                style={{ border: "1px solid lightgrey" }}
+              >
+                <option value="BYN" defaultValue>
+                  BYN
+                </option>
+                <option value="USD">USD</option>
+                <option value="RUB">RUB</option>
+                <option value="EUR">EUR</option>
+              </select>
             </div>
             <p className="black">Дата оплаты</p>
             <input
@@ -117,19 +130,6 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
-            <select
-              className="select_price"
-              value={currency}
-              onChange={({ target: { value } }) => setCurrency(value)}
-              style={{ border: "1px solid lightgrey" }}
-            >
-              <option value="BYN" defaultValue>
-                BYN
-              </option>
-              <option value="USD">USD</option>
-              <option value="RUB">RUB</option>
-              <option value="EUR">EUR</option>
-            </select>
 
             <div style={{ textAlign: "center" }}>
               {payment ? (
