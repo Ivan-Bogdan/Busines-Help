@@ -68,7 +68,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
                   {item && item.payment_number}
                 </div>
               </div>
-              <div className="block3 w407" onClick={toogleReadPayment}>
+              <div onClick={toogleReadPayment}>
                 <div className="pay_name">{client}</div>
               </div>
             </div>
