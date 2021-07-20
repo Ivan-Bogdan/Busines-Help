@@ -44,7 +44,7 @@
 
 @media screen and (max-width: 587px) {
   .flex-payment {
-		display: flex;
+    padding: 10px 15px;
 	}
   .container_payment{
     border-left: none;
