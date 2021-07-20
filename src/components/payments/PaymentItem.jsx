@@ -64,16 +64,13 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
             <div className="block4" onClick={toogleReadPayment}>
               <div style={{ paddingRight: 15 }}>
                 <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
-                <div className="color-grey">
+                <div className="color-grey fw500">
                   {item && item.payment_number}
                 </div>
               </div>
               <div onClick={toogleReadPayment}>
                 <div className="pay_name">{client}</div>
               </div>
-            </div>
-            <div className="block3">
-
             </div>
             <div>
               <img

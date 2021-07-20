@@ -31,6 +31,10 @@
 	padding: 10px 15px;
 }
 
+.fw500{
+  font-weight: 500;
+}
+
 @media screen and (max-width: 587px) {
   .flex-payment {
 		display: flex;
