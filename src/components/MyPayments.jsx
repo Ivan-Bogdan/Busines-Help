@@ -27,10 +27,10 @@ const MyPayments = () => {
   const createPayment = useCallback(
     async (data) => {
       const result = await payment_create(data);
-      if (result.message === "OK") {
+      if (result.id) {
         setIsCreatePayment(false);
         FetchData();
-      } else alert(result.message)
+      } else alert("Не удалось выполнить запрос")
     },
     [payments]
   );
