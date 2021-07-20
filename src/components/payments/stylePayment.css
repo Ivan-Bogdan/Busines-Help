@@ -38,4 +38,7 @@
 	.block4 {
 		display: block;
 	}
+  .pay_name {
+		font-size: 18px;
+	}
 }
