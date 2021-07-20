@@ -67,12 +67,12 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
               <div className="color-grey">
                 {item && item.payment_number}
               </div>
-
-            </div>
-            <div className="block3">
               <div className="w407" onClick={toogleReadPayment}>
                 <div className="task_name">{client}</div>
               </div>
+            </div>
+            <div className="block3">
+
             </div>
             <img
               className="cursor"

@@ -6,3 +6,17 @@
   margin: auto;
   display: flex;
 }
+
+.block4 {
+	width: auto;
+	overflow: auto;
+	display: flex;
+}
+
+@media screen and (max-width: 587px) {
+	.block4 {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+}
