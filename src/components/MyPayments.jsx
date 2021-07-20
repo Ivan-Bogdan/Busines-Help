@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { delete_payment, get_payments_list } from '../API/http';
+import { delete_payment, get_payments_list, payment_create } from '../API/http';
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 import AddPayment from './payments/AddPayment';
@@ -23,6 +23,17 @@ const MyPayments = () => {
       setPayments(result.payments);
     }
   }, []);
+
+  const createPayment = useCallback(
+    async (data) => {
+      const result = await payment_create(data);
+      if (result.message === "OK") {
+        setIsCreatePayment(false);
+        FetchData();
+      }
+    },
+    [payments]
+  );
 
   const deletePayment = useCallback(
     async (id) => {
@@ -70,6 +81,8 @@ const MyPayments = () => {
           <AddPayment
             onClose={() => setIsCreatePayment(false)}
             FetchData={FetchData}
+            createPayment={createPayment}
+            updatePayment={ }
           />
         )}
       </div>

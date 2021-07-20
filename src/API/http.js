@@ -200,7 +200,7 @@ export const find_client = (value) => $api.post(`client/find_client/`,
   }),
 )
 
-export const payments_create = (payload) => {
+export const payment_create = (payload) => {
   return $api
     .post('/payments/create/', JSON.stringify(payload))
     .then((response) => {

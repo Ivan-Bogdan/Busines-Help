@@ -15,6 +15,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [numberOfPayment, setNumberOfPayment] = useState("")
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
+  const [date_pay, SetDate_pay] = useState("");
 
   console.log(clientId);
 
@@ -107,6 +108,14 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                 name="price"
                 onChange={({ target: { value } }) => setPrice(value)}
               />
+              <p className="black">Дата оплаты</p>
+              <input
+                type="date"
+                placeholder="15.04.2021"
+                value={date_pay}
+                onChange={({ target: { value } }) => SetDate_pay(value)}
+              />
+              <p className="black">Прикрепить акт</p>
               <select
                 className="select_price"
                 value={currency}
@@ -128,7 +137,18 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                   Обновить
                 </button>
               ) : (
-                <button className="button5" onClick={createPayment}>
+                <button className="button5" onClick={() => {
+                  const payload = {
+                    payments_type: typeOfPayment,
+                    client: clientId,
+                    price: { price, currency },
+                    payment_number: numberOfPayment,
+                    date_pay: date,
+                    "tasks": [
+
+                    ]
+                  }; createPayment();
+                }}>
                   Создать
                 </button>
               )}
