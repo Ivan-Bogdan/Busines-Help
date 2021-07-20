@@ -44,7 +44,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
 
   return (
     <div className="modal" id="id01">
-      <form className="modal-content animate">
+      <form className="modal-content2 animate">
         <div className="imgcontainer">
           <span
             className="close"
@@ -75,28 +75,20 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               value={typeOfPayment}
               onChange={({ target: { value } }) => setTypeOfPayment(value)}
             >
-              <option
-                value=""
-                disabled
-                defaultValue
-                style={{ display: "none" }}
-              ></option>
-              <option value={Number(1)}>ООО</option>
-              <option value={Number(2)}>ОАО</option>
-              <option value={Number(3)}>ЧУП</option>
-              <option value={Number(4)}>ЧТУП</option>
-              <option value={Number(7)}>СООО</option>
-              <option value={Number(8)}>ЧП</option>
-              <option value={Number(9)}>УП</option>
-              <option value={Number(5)}>ИНОЕ</option>
+              <option value={`CASH`}>Наличные</option>
+              <option value={`REMITTANCE`}>Денежный перевод</option>
             </select>
-            <p className="black">Номер платежа</p>
-            <input
-              type="text"
-              placeholder="123"
-              value={numberOfPayment}
-              onChange={({ target: { value } }) => setNumberOfPayment(value)}
-            />
+            {typeOfPayment === "REMITTANCE" &&
+              <div>
+                <p className="black">Номер платежа</p>
+                <input
+                  type="text"
+                  placeholder="123"
+                  value={numberOfPayment}
+                  onChange={({ target: { value } }) => setNumberOfPayment(value)}
+                />
+              </div>
+            }
             <p className="black">Сумма</p>
             <div
               style={{
