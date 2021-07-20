@@ -5,6 +5,7 @@ import Modal from "../Modal";
 import ReadClient from "../clients/ReadClient";
 import UpdateClient from "../clients/UpdateClient";
 import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
+import './stylePayment.css'
 
 const PaymentItem = ({ item, deleteItem, FetchData }) => {
   const [modal, setModal] = useState(false);
@@ -37,7 +38,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
   };
 
   return (
-    <div className="client_container">
+    <div className="container_payment">
       <div className="main container_task">
         <div
           className={
@@ -64,7 +65,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
 
               <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
               <div className="color-grey">
-                {item.payment_number}
+                {item && item.payment_number}
               </div>
 
             </div>
