@@ -73,16 +73,14 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
               <div className="w407" onClick={toogleReadPayment}>
                 <div className="task_name">{client}</div>
               </div>
-              <div>
-                <img
-                  className="cursor"
-                  src={img251}
-                  onClick={toggleModal}
-                  alt=""
-                  width={40}
-                ></img>
-              </div>
             </div>
+            <img
+              className="cursor"
+              src={img251}
+              onClick={toggleModal}
+              alt=""
+              width={40}
+            ></img>
           </div>
         </div>
       </div>
