@@ -8,6 +8,8 @@
 }
 
 .block4 {
+  width: auto;
+	overflow: auto;
 	display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -20,7 +22,19 @@
   line-height: 1.3;
 }
 
+.flex-payment {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 760px;
+	margin: auto;
+	padding: 10px 15px;
+}
+
 @media screen and (max-width: 587px) {
+  .flex-payment {
+		display: flex;
+	}
 	.block4 {
 		display: block;
 	}

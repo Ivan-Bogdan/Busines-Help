@@ -60,7 +60,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
           </div>
         </div>
         <div>
-          <div className="flex-task">
+          <div className="flex-payment">
             <div className="block4" onClick={toogleReadPayment}>
               <div style={{ paddingRight: 15 }}>
                 <div className="price">{`${item.price.price.toFixed(2)} ${item.price.currency}`}</div>
