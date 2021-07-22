@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Autosuggest from 'react-autosuggest';
+import Select from 'react-select/src/Select';
 import { find_client, get_unpaid_task } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
@@ -50,7 +51,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      setUnpaidTask(result.tasks);
+      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name } }));
     } catch (e) {
       console.log(e);
     }
@@ -146,18 +147,25 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
-            <select
+            {/* <select
               style={{ border: "1px solid #ccc" }}
               required
               className="select1"
               multiple
               value={selectedTasks}
               onChange={(e) => {
-                setSelectedTasks(e.target.value);
+                setSelectedTasks(e.target.optio);
                 console.log(e);
               }}>
               {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
-            </select>
+            </select> */}
+            <Select
+              // defaultValue={[colourOptions[2], colourOptions[3]]}
+              isMulti
+              options={colourOptions}
+              className="basic-multi-select"
+              classNamePrefix="select"
+            />
             <div style={{ textAlign: "center" }}>
               {payment ? (
                 <button className="button5" onClick={updatePayment}>
