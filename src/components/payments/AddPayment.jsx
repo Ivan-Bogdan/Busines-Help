@@ -149,7 +149,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
             <select
               multiple
               value={selectedTasks}
-              onChange={({ option: { value } }) => setSelectedTask(value)}>
+              onChange={({ option: { value } }) => setSelectedTasks(value)}>
               <div>Всего</div>
               {unpaidTask.map((item) => item.name)}
             </select>
