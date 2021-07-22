@@ -256,6 +256,19 @@ export const get_payments_list = (payload) => {
     });
 };
 
+export const get_unpaid_task = (payload) => {
+  return $api
+    .post('/payments/get_unpaid_task/', JSON.stringify(payload))
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+
+
 export async function city__name(payload) {
   let response = await fetch(
     'http://altproduction.ru:8080/rest/v1/city_by_id/',

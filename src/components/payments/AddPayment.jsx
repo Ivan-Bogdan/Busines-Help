@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Autosuggest from 'react-autosuggest';
-import { find_client } from '../../API/http';
+import { find_client, get_unpaid_task } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
@@ -8,6 +8,8 @@ const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(c
 const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
 
   const [suggestions, setSuggestions] = useState([]);
+
+  const [unpaidTask, setUnpaidTask] = useState([])
 
   const [client, setClient] = useState("")
   const [clientId, setClientId] = useState("")
@@ -43,6 +45,21 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
     value: client,
     onChange: onChange,
   };
+
+  const getUnpaidTask = useCallback(async (clientId) => {
+    try {
+      const result = await get_unpaid_task({ client_id: clientId });
+      setUnpaidTask(result.tasks);
+    } catch (e) {
+      console.log(e);
+    }
+  }, [])
+
+  useEffect(() => {
+    if (clientId) {
+      getUnpaidTask(clientId)
+    }
+  }, [clientId])
 
   return (
     <div className="modal" id="id01">
