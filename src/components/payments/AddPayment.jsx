@@ -152,7 +152,10 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               className="select1"
               multiple
               value={selectedTasks}
-              onChange={({ option: { value } }) => setSelectedTasks(value)}>
+              onChange={(e) => {
+                setSelectedTasks(e.target.value);
+                console.log(e);
+              }}>
               {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
             </select>
             <div style={{ textAlign: "center" }}>
