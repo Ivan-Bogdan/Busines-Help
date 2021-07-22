@@ -10,6 +10,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const [unpaidTask, setUnpaidTask] = useState([])
+  const [selectedTasks, setSelectedTasks] = useState(null)
 
   const [client, setClient] = useState("")
   const [clientId, setClientId] = useState("")
@@ -145,7 +146,13 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
-
+            <select
+              multiple
+              value={selectedTasks}
+              onChange={({ option: { value } }) => setSelectedTask(value)}>
+              <div>Всего</div>
+              {unpaidTask.map((item) => item.name)}
+            </select>
             <div style={{ textAlign: "center" }}>
               {payment ? (
                 <button className="button5" onClick={updatePayment}>
