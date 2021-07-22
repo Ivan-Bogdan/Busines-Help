@@ -147,11 +147,14 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
             />
             <p className="black">Прикрепить акт</p>
             <select
+              style={{ border: "1px solid #ccc" }}
+              required
+              className="select1"
               multiple
               value={selectedTasks}
               onChange={({ option: { value } }) => setSelectedTasks(value)}>
               <div>Всего</div>
-              {unpaidTask.map((item) => <option value={item.id}>item.name</option>)}
+              {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
             </select>
             <div style={{ textAlign: "center" }}>
               {payment ? (
