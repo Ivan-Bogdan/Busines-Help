@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Autosuggest from 'react-autosuggest';
-import Select from 'react-select/src/Select';
+import Select from 'react-select';
 import { find_client, get_unpaid_task } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
@@ -162,7 +162,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
             <Select
               // defaultValue={[colourOptions[2], colourOptions[3]]}
               isMulti
-              options={colourOptions}
+              options={[]}
               className="basic-multi-select"
               classNamePrefix="select"
             />
