@@ -161,6 +161,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={(options) => {
                 setSelectedTasks(options);
               }}
+              placeholder="Выберите задачи"
               className="basic-multi-select dropDownSelector"
               classNamePrefix="select"
 
