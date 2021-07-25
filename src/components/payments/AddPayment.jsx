@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { find_client, get_payment, get_unpaid_task } from '../../API/http';
+import { find_client, get_payment, get_unpaid_task, get_client } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
 const animatedComponents = makeAnimated();
@@ -27,7 +27,6 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const [date_pay, SetDate_pay] = useState("");
 
   const tasks = useMemo(() => selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
-
 
   const onChange = (event, { newValue, method }) => {
     setClient(newValue);
@@ -84,6 +83,31 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       getPayment(paymentId)
     }
   }, [paymentId])
+
+  useEffect(() => {
+    if (payment) {
+      setClientId(payment.client)
+      setTypeOfPayment(payment.payments_type)
+      setNumberOfPayment(payment.payment_number)
+      setPrice(payment.price.price)
+      setCurrency(payment.price.currency)
+      SetDate_pay(payment.date_pay)
+      setSelectedTasks(payment.task.map((item) => { return { value: item.id, label: item.name } }))
+    }
+  }, [payment])
+
+  useEffect(() => {
+    const func = async () => {
+      if (payment && payment.client) {
+        const clientCurrent = await get_client({
+          id: payment.client,
+        });
+        const { client } = clientCurrent;
+        setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
+      }
+    };
+    func();
+  }, [payment]);
 
   return (
     <div className="modal" id="id01">
