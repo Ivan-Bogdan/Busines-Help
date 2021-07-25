@@ -14,7 +14,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const [unpaidTask, setUnpaidTask] = useState([])
-  const [selectedTasks, setSelectedTasks] = useState(null)
+  const [selectedTasks, setSelectedTasks] = useState([])
 
   const [client, setClient] = useState("")
   const [clientId, setClientId] = useState("")
