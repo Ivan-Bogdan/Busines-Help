@@ -15,7 +15,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
   const updatePayment = useCallback(
     async (data) => {
       const result = await update_payment(data);
-      if (result.id) {
+      if (result.message === "OK") {
         setModal2(false);
         FetchData();
       } else alert("Не удалось выполнить запрос")

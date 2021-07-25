@@ -212,6 +212,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
                 <button className="button5" onClick={(e) => {
                   e.preventDefault();
                   const payload = {
+                    id: paymentId,
                     payments_type: typeOfPayment,
                     client: clientId,
                     price: { price, currency },
