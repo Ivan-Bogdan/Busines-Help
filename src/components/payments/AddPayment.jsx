@@ -162,6 +162,11 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
             <Select
               isMulti
               options={unpaidTask}
+              value={selectedTasks}
+              onChange={(options) => {
+                console.log(options);
+                setSelectedTasks(options);
+              }}
               className="basic-multi-select"
               classNamePrefix="select"
             />
