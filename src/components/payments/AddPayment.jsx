@@ -154,7 +154,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               components={animatedComponents}
               closeMenuOnSelect={false}
               isMulti
-              options={[{ label: '2151', value: "125124" }, { label: "15125", value: "125124asaf" }]}
+              options={unpaidTask}
               value={selectedTasks}
               onChange={(options) => {
                 setSelectedTasks(options);
