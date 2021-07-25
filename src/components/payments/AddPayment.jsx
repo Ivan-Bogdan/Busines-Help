@@ -26,7 +26,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const [currency, setCurrency] = useState("BYN");
   const [date_pay, SetDate_pay] = useState("");
 
-  const tasks = useMemo(() => selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
+  const tasks = useMemo(() => selectedTasks && selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
 
   const onChange = (event, { newValue, method }) => {
     setClient(newValue);
