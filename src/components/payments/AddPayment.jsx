@@ -2,16 +2,18 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { find_client, get_unpaid_task } from '../../API/http';
+import { find_client, get_payment, get_unpaid_task } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
 const animatedComponents = makeAnimated();
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
+const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
 
   const [suggestions, setSuggestions] = useState([]);
+
+  const [payment, setPayment] = useState(null);
 
   const [unpaidTask, setUnpaidTask] = useState([])
   const [selectedTasks, setSelectedTasks] = useState([])
@@ -62,11 +64,26 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
     }
   }, [])
 
+  const getPayment = useCallback(async (id) => {
+    try {
+      const result = await get_payment({ id });
+      setPayment(result.task);
+    } catch (e) {
+      console.log(e);
+    }
+  }, [])
+
   useEffect(() => {
     if (clientId) {
       getUnpaidTask(clientId)
     }
   }, [clientId])
+
+  useEffect(() => {
+    if (paymentId) {
+      getPayment(paymentId)
+    }
+  }, [paymentId])
 
   return (
     <div className="modal" id="id01">
@@ -79,7 +96,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
           >
             ×
           </span>
-          <p className="reg">Новый платеж</p>
+          {paymentId ? <p className="reg">Изменение платежа</p> : <p className="reg">Новый платеж</p>}
         </div>
 
         <div className="container3">
@@ -167,7 +184,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
 
             />
             <div style={{ textAlign: "center" }}>
-              {payment ? (
+              {paymentId ? (
                 <button className="button5" onClick={updatePayment}>
                   Обновить
                 </button>

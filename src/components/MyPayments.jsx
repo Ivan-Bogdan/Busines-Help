@@ -32,7 +32,7 @@ const MyPayments = () => {
         FetchData();
       } else alert("Не удалось выполнить запрос")
     },
-    [payments]
+    []
   );
 
   const deletePayment = useCallback(
