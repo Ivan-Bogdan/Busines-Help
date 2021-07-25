@@ -147,18 +147,6 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
-            {/* <select
-              style={{ border: "1px solid #ccc" }}
-              required
-              className="select1"
-              multiple
-              value={selectedTasks}
-              onChange={(e) => {
-                setSelectedTasks(e.target.optio);
-                console.log(e);
-              }}>
-              {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
-            </select> */}
             <Select
               isMulti
               options={unpaidTask}
