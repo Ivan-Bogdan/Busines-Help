@@ -24,7 +24,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [currency, setCurrency] = useState("BYN");
   const [date_pay, SetDate_pay] = useState("");
 
-  const tasks = useMemo(() => selectedTasks.map((item) => { return { id: item.value } }), [])
+  const tasks = useMemo(() => selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
 
 
   const onChange = (event, { newValue, method }) => {
