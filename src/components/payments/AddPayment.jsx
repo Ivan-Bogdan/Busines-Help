@@ -91,7 +91,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       setNumberOfPayment(payment.payment_number)
       setPrice(payment.price.price)
       setCurrency(payment.price.currency)
-      SetDate_pay(payment.date_pay)
+      SetDate_pay(new Date(payment.date_pay).toLocaleString().substr(0, 10))
       setSelectedTasks(payment.task.map((item) => { return { value: item.id, label: item.name } }))
     }
   }, [payment])
