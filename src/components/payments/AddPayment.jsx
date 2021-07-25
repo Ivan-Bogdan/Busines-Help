@@ -209,7 +209,18 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
             />
             <div style={{ textAlign: "center" }}>
               {paymentId ? (
-                <button className="button5" onClick={updatePayment}>
+                <button className="button5" onClick={(e) => {
+                  e.preventDefault();
+                  const payload = {
+                    payments_type: typeOfPayment,
+                    client: clientId,
+                    price: { price, currency },
+                    payment_number: numberOfPayment,
+                    date_pay,
+                    tasks
+                  };
+                  updatePayment(payload);
+                }}>
                   Обновить
                 </button>
               ) : (
