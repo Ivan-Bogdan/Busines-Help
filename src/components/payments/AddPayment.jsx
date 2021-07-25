@@ -160,7 +160,6 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
             </select> */}
             <Select
-              // defaultValue={[colourOptions[2], colourOptions[3]]}
               isMulti
               options={[]}
               className="basic-multi-select"
