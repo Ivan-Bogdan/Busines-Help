@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import { find_client, get_unpaid_task } from '../../API/http';
 import { getNameOtype } from '../../helpers';
+
+const animatedComponents = makeAnimated();
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
@@ -148,15 +151,17 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
             />
             <p className="black">Прикрепить акт</p>
             <Select
+              components={animatedComponents}
+              closeMenuOnSelect={false}
               isMulti
-              options={unpaidTask}
+              options={[{ label: '2151', value: "125124" }, { label: "15125", value: "125124asaf" }]}
               value={selectedTasks}
               onChange={(options) => {
-                console.log(options);
                 setSelectedTasks(options);
               }}
-              className="basic-multi-select"
+              className="basic-multi-select dropDownSelector"
               classNamePrefix="select"
+
             />
             <div style={{ textAlign: "center" }}>
               {payment ? (
