@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -23,6 +23,8 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
   const [date_pay, SetDate_pay] = useState("");
+
+  const tasks = useMemo(() => selectedTasks.map((item) => { return { id: item.value } }), [])
 
 
   const onChange = (event, { newValue, method }) => {
@@ -177,7 +179,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                     price: { price, currency },
                     payment_number: numberOfPayment,
                     date_pay,
-                    tasks: []
+                    tasks
                   };
                   createPayment(payload);
                 }}>
