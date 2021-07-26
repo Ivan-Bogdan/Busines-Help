@@ -76,7 +76,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: Date(item.date_pay), price: `${item.price.price.toFixed(2)} ${item.price.currency}` } }));
+      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: Date(item.date_pay), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } }));
     } catch (e) {
       console.log(e);
     }
