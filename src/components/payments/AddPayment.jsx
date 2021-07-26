@@ -1,11 +1,30 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
 import { find_client, get_payment, get_unpaid_task, get_client } from '../../API/http';
 import { getNameOtype } from '../../helpers';
 
-const animatedComponents = makeAnimated();
+const CustomStyle = {
+  option: (base, state) => ({
+    ...base,
+    color: "black",
+    backgroundColor: state.isSelected ? 'lightblue' : "white",
+  })
+}
+
+// const options = [
+//   { value: "Abe", label: "Abe", date: "25.01.2021", price: "200.00 BYN" },
+//   { value: "John", label: "John", date: "18.06.2021", price: "20.00 BYN" },
+//   { value: "Dustin", label: "Dustin", date: "06.04.2021", price: "2000.00 BYN" }
+// ];
+
+const formatOptionLabel = ({ value, label, date, price }) => (
+  <div style={{ display: "flex", justifyContent: 'space-between', alignItems: 'center', cursor: "pointer" }}>
+    <div style={{ width: "100%" }}>{date}</div>
+    <div style={{ width: "100%" }}>{label}</div>
+    <div style={{ width: "100%" }}>{price}</div>
+  </div>
+);
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
@@ -57,7 +76,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name } }));
+      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: Date(item.date_pay), price: `${item.price.price.toFixed(2)} ${item.price.currency}` } }));
     } catch (e) {
       console.log(e);
     }
@@ -194,18 +213,21 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
             />
             <p className="black">Прикрепить акт</p>
             <Select
-              components={animatedComponents}
+              isOptionSelected
+              controlShouldRenderValue={false}
+              hideSelectedOptions={false}
               closeMenuOnSelect={false}
               isMulti
+              isLoading={clientId ? false : true}
               options={unpaidTask}
+              formatOptionLabel={formatOptionLabel}
               value={selectedTasks}
               onChange={(options) => {
                 setSelectedTasks(options);
               }}
-              placeholder="Выберите задачи"
-              className="basic-multi-select dropDownSelector"
-              classNamePrefix="select"
-
+              placeholder={selectedTasks.length > 0 ? "Некоторые задачи выбраны" : "Выберите задачи"}
+              removeSelected
+              styles={CustomStyle}
             />
             <div style={{ textAlign: "center" }}>
               {paymentId ? (
