@@ -225,7 +225,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               onChange={(options) => {
                 setSelectedTasks(options);
               }}
-              placeholder={selectedTasks.length > 0 ? "Некоторые задачи выбраны" : "Выберите задачи"}
+              placeholder={selectedTasks && selectedTasks.length > 0 ? "Некоторые задачи выбраны" : "Выберите задачи"}
               removeSelected
               styles={CustomStyle}
             />
