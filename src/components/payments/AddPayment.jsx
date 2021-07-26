@@ -21,7 +21,7 @@ const CustomStyle = {
 const formatOptionLabel = ({ value, label, date, price }) => (
   <div style={{ display: "flex", justifyContent: 'space-between', alignItems: 'center', cursor: "pointer" }}>
     <div style={{ width: "100%" }}>{date}</div>
-    <div style={{ width: "100%" }}>{label}</div>
+    <div style={{ width: "100%", whiteSpace: "nowrap", overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>
     <div style={{ width: "100%" }}>{price}</div>
   </div>
 );
