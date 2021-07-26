@@ -10,7 +10,7 @@ const CustomStyle = {
     color: "black",
     backgroundColor: state.isSelected ? 'lightblue' : "white",
     fontWeight: 500,
-    fontSize: 17
+    fontSize: 16
   }),
   placeholder: (base, state) => ({
     ...base,
