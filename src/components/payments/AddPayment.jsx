@@ -9,6 +9,10 @@ const CustomStyle = {
     ...base,
     color: "black",
     backgroundColor: state.isSelected ? 'lightblue' : "white",
+  }),
+  placeholder: (base, state) => ({
+    ...base,
+    fontWeight: 200
   })
 }
 
@@ -20,7 +24,7 @@ const CustomStyle = {
 
 const formatOptionLabel = ({ value, label, date, price }) => (
   <div style={{ display: "flex", justifyContent: 'space-between', alignItems: 'center', cursor: "pointer" }}>
-    <div style={{ width: "100%" }}>{date}</div>
+    <div style={{ width: "100%", }}>{date}</div>
     <div style={{ width: "100%", whiteSpace: "nowrap", overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>
     <div style={{ width: "100%", marginLeft: 15 }}>{price}</div>
   </div>
