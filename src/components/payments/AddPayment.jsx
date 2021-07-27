@@ -44,7 +44,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const [numberOfPayment, setNumberOfPayment] = useState("")
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
-  const [date_pay, SetDate_pay] = useState("");
+  const [date_pay, setDate_pay] = useState("");
 
   const tasks = useMemo(() => selectedTasks && selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
 
@@ -77,7 +77,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residзue.price } });
+      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residue.price } });
       setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
@@ -117,7 +117,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       setNumberOfPayment(payment.payment_number)
       setPrice(payment.price.price)
       setCurrency(payment.price.currency)
-      SetDate_pay(payment.date_pay.slice(0, 10))
+      setDate_pay(payment.date_pay.slice(0, 10))
       setSelectedTasks(payment.tasks.map((item) => { return { value: item.id, label: item.name, numberPrice: item.price.price } }))
     }
   }, [payment])
@@ -216,7 +216,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               type="date"
               placeholder="15.04.2021"
               value={date_pay}
-              onChange={({ target: { value } }) => SetDate_pay(value)}
+              onChange={({ target: { value } }) => setDate_pay(value)}
             />
             <p className="black" style={{ marginBottom: 10 }}>Прикрепить акт</p>
             <div className="flex">
