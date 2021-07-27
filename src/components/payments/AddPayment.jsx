@@ -224,7 +224,6 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               <p className="black">Остаток: {remains}</p>
             </div>
             <Select
-
               isMulti
               isLoading={clientId ? false : true}
               options={unpaidTask}
