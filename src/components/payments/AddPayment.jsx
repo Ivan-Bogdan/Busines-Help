@@ -77,7 +77,6 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-
       const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } });
       setUnpaidTask(tasks);
     } catch (e) {
@@ -93,6 +92,12 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       console.log(e);
     }
   }, [])
+
+  const allPriceTasks = useMemo(() => { }, [])
+  const remains = useMemo(() => price && selectedTasks.length && price - selectedTasks.reduce((accumulator, currentValue) => {
+    console.log(accumulator)
+    console.log(currentValue);
+  }), [price, selectedTasks])
 
   useEffect(() => {
     if (clientId) {
@@ -215,6 +220,10 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
+            <div className="flex">
+              <p className="black">Всего: {allPriceTasks}</p>
+              <p className="black">Остаток: {remains}</p>
+            </div>
             <Select
 
               isMulti
