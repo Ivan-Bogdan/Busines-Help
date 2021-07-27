@@ -246,7 +246,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
               isDisabled={isRead ? true : false}
             />
             <div style={{ textAlign: "center" }}>
-              {paymentId && !isRead ? (
+              {paymentId && !isRead && (
                 <button className="button5" onClick={(e) => {
                   e.preventDefault();
                   const payload = {
@@ -262,7 +262,8 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
                 }}>
                   Обновить
                 </button>
-              ) : (
+              )}
+              {!isRead && (
                 <button className="button5" onClick={(e) => {
                   e.preventDefault();
                   const payload = {

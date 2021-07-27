@@ -143,7 +143,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
       {isReadPayment && (
         <AddPayment
           paymentId={item.id}
-          onClose={toggleModal2}
+          onClose={toogleReadPayment}
           isRead
         />
       )}
