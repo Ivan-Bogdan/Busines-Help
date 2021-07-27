@@ -148,7 +148,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
             ×
           </span>
           {paymentId && !isRead && <p className="reg">Изменение платежа</p>}
-          {!paymentId && !isRead && <p className="reg">Новый платеж</p>}
+          {createPayment && !isRead && <p className="reg">Новый платеж</p>}
           {isRead && <p className="reg">Просмотр платежа</p>}
 
         </div>
