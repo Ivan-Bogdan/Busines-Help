@@ -95,7 +95,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
 
   const allPriceTasks = useMemo(() => selectedTasks.length && selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0), [selectedTasks])
 
-  const remains = useMemo(() => price && selectedTasks.length && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0
+  const remains = useMemo(() => price && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0
   ), [price, selectedTasks])
 
   useEffect(() => {
@@ -218,7 +218,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               value={date_pay}
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
-            <p className="black">Прикрепить акт</p>
+            <p className="black" style={{ marginBottom: 10 }}>Прикрепить акт</p>
             <div className="flex">
               <p className="black">Всего: {allPriceTasks}</p>
               <p className="black">Остаток: {remains}</p>
