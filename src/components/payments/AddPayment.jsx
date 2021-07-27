@@ -77,7 +77,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } });
+      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residue.price } });
       setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
@@ -93,11 +93,10 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
     }
   }, [])
 
-  const allPriceTasks = useMemo(() => { }, [])
-  const remains = useMemo(() => price && selectedTasks.length && price - selectedTasks.reduce((accumulator, currentValue) => {
-    console.log(accumulator)
-    console.log(currentValue);
-  }), [price, selectedTasks])
+  const allPriceTasks = useMemo(() => selectedTasks.length && selectedTasks.reduce((accumulator, currentValue) => accumulator.numberPrice + currentValue.numberPrice), [selectedTasks])
+
+  const remains = useMemo(() => price && selectedTasks.length && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator.numberPrice + currentValue.numberPrice
+  ), [price, selectedTasks])
 
   useEffect(() => {
     if (clientId) {
