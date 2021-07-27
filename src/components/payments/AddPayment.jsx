@@ -86,7 +86,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getPayment = useCallback(async (id) => {
     try {
       const result = await get_payment({ id });
-      setPayment(result.task);
+      setPayment(result.payment);
     } catch (e) {
       console.log(e);
     }
@@ -112,7 +112,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       setPrice(payment.price.price)
       setCurrency(payment.price.currency)
       SetDate_pay(payment.date_pay.slice(0, 10))
-      setSelectedTasks(payment.task.map((item) => { return { value: item.id, label: item.name } }))
+      setSelectedTasks(payment.tasks.map((item) => { return { value: item.id, label: item.name } }))
     }
   }, [payment])
 
