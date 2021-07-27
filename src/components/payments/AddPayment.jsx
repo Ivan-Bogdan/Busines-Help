@@ -1,17 +1,42 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Autosuggest from 'react-autosuggest';
 import Select from 'react-select';
-import { find_client, get_unpaid_task } from '../../API/http';
+import { find_client, get_payment, get_unpaid_task, get_client } from '../../API/http';
 import { getNameOtype } from '../../helpers';
+
+const CustomStyle = {
+  option: (base, state) => ({
+    ...base,
+    color: "black",
+    backgroundColor: state.isSelected ? 'lightblue' : "white",
+    fontWeight: 500,
+    fontSize: 15
+  }),
+  placeholder: (base, state) => ({
+    ...base,
+    fontWeight: 500,
+    fontSize: 15
+  })
+}
+
+const formatOptionLabel = ({ value, label, date, price }) => (
+  <div style={{ display: "flex", justifyContent: 'space-between', alignItems: 'center', cursor: "pointer" }}>
+    <div style={{ width: "100%", }}>{date}</div>
+    <div style={{ width: "100%", whiteSpace: "nowrap", overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>
+    <div style={{ width: "100%", marginLeft: 15 }}>{price}</div>
+  </div>
+);
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
+const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
 
   const [suggestions, setSuggestions] = useState([]);
 
+  const [payment, setPayment] = useState(null);
+
   const [unpaidTask, setUnpaidTask] = useState([])
-  const [selectedTasks, setSelectedTasks] = useState(null)
+  const [selectedTasks, setSelectedTasks] = useState([])
 
   const [client, setClient] = useState("")
   const [clientId, setClientId] = useState("")
@@ -21,6 +46,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const [currency, setCurrency] = useState("BYN");
   const [date_pay, SetDate_pay] = useState("");
 
+  const tasks = useMemo(() => selectedTasks && selectedTasks.map((item) => { return { id: item.value } }), [selectedTasks])
 
   const onChange = (event, { newValue, method }) => {
     setClient(newValue);
@@ -51,7 +77,16 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name } }));
+      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } }));
+    } catch (e) {
+      console.log(e);
+    }
+  }, [])
+
+  const getPayment = useCallback(async (id) => {
+    try {
+      const result = await get_payment({ id });
+      setPayment(result.task);
     } catch (e) {
       console.log(e);
     }
@@ -62,6 +97,37 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
       getUnpaidTask(clientId)
     }
   }, [clientId])
+
+  useEffect(() => {
+    if (paymentId) {
+      getPayment(paymentId)
+    }
+  }, [paymentId])
+
+  useEffect(() => {
+    if (payment) {
+      setClientId(payment.client)
+      setTypeOfPayment(payment.payments_type)
+      setNumberOfPayment(payment.payment_number)
+      setPrice(payment.price.price)
+      setCurrency(payment.price.currency)
+      SetDate_pay(payment.date_pay.slice(0, 10))
+      setSelectedTasks(payment.task.map((item) => { return { value: item.id, label: item.name } }))
+    }
+  }, [payment])
+
+  useEffect(() => {
+    const func = async () => {
+      if (payment && payment.client) {
+        const clientCurrent = await get_client({
+          id: payment.client,
+        });
+        const { client } = clientCurrent;
+        setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
+      }
+    };
+    func();
+  }, [payment]);
 
   return (
     <div className="modal" id="id01">
@@ -74,7 +140,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
           >
             ×
           </span>
-          <p className="reg">Новый платеж</p>
+          {paymentId ? <p className="reg">Изменение платежа</p> : <p className="reg">Новый платеж</p>}
         </div>
 
         <div className="container3">
@@ -147,28 +213,38 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
             <p className="black">Прикрепить акт</p>
-            {/* <select
-              style={{ border: "1px solid #ccc" }}
-              required
-              className="select1"
-              multiple
-              value={selectedTasks}
-              onChange={(e) => {
-                setSelectedTasks(e.target.optio);
-                console.log(e);
-              }}>
-              {unpaidTask.map((item) => <option value={item.id}>{item.name}</option>)}
-            </select> */}
             <Select
-              // defaultValue={[colourOptions[2], colourOptions[3]]}
+              isOptionSelected
+              controlShouldRenderValue={false}
+              hideSelectedOptions={false}
+              closeMenuOnSelect={false}
               isMulti
-              options={[]}
-              className="basic-multi-select"
-              classNamePrefix="select"
+              isLoading={clientId ? false : true}
+              options={unpaidTask}
+              formatOptionLabel={formatOptionLabel}
+              value={selectedTasks}
+              onChange={(options) => {
+                setSelectedTasks(options);
+              }}
+              placeholder={selectedTasks && selectedTasks.length > 0 ? "Некоторые задачи выбраны" : "Выберите задачи"}
+              removeSelected
+              styles={CustomStyle}
             />
             <div style={{ textAlign: "center" }}>
-              {payment ? (
-                <button className="button5" onClick={updatePayment}>
+              {paymentId ? (
+                <button className="button5" onClick={(e) => {
+                  e.preventDefault();
+                  const payload = {
+                    id: paymentId,
+                    payments_type: typeOfPayment,
+                    client: clientId,
+                    price: { price, currency },
+                    payment_number: numberOfPayment,
+                    date_pay,
+                    tasks
+                  };
+                  updatePayment(payload);
+                }}>
                   Обновить
                 </button>
               ) : (
@@ -180,7 +256,7 @@ const AddPayment = ({ payment, createPayment, updatePayment, onClose }) => {
                     price: { price, currency },
                     payment_number: numberOfPayment,
                     date_pay,
-                    tasks: []
+                    tasks
                   };
                   createPayment(payload);
                 }}>

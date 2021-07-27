@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { get_client } from "../../API/http";
+import React, { useState, useEffect, useCallback } from "react";
+import { get_client, update_payment } from "../../API/http";
 import { getNameOtype } from "../../helpers";
 import Modal from "../Modal";
-import ReadClient from "../clients/ReadClient";
-import UpdateClient from "../clients/UpdateClient";
+import AddPayment from './AddPayment'
 import img251 from "../../assets/img/kisspng-button-computer-icons-editing-encapsulated-postscr-5b3b488b1c1ac4.9135163415306118511151.png";
 import './stylePayment.css'
 
@@ -12,6 +11,17 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
   const [modal2, setModal2] = useState(false);
   const [isReadPayment, setIsReadPayment] = useState(false);
   const [client, setClient] = useState("");
+
+  const updatePayment = useCallback(
+    async (data) => {
+      const result = await update_payment(data);
+      if (result.message === "OK") {
+        setModal2(false);
+        FetchData();
+      } else alert("Не удалось выполнить запрос")
+    },
+    []
+  );
 
   useEffect(() => {
     const func = async () => {
@@ -123,13 +133,13 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
         </div>
       </Modal>
       {modal2 && (
-        <UpdateClient
+        <AddPayment
+          paymentId={item.id}
           onClose={toggleModal2}
-          client={item.id}
+          updatePayment={updatePayment}
           FetchData={FetchData}
         />
       )}
-      {isReadPayment && <ReadClient onClose={toogleReadPayment} client={item} />}
     </div>
   );
 };
