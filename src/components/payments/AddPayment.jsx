@@ -29,7 +29,7 @@ const formatOptionLabel = ({ value, label, date, price }) => (
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
+const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }) => {
 
   const [suggestions, setSuggestions] = useState([]);
 
@@ -72,6 +72,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
     placeholder: "Клиент",
     value: client,
     onChange: onChange,
+    disabled: isRead ? true : false,
   };
 
   const getUnpaidTask = useCallback(async (clientId) => {
@@ -167,6 +168,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               className="select1"
               value={typeOfPayment}
               onChange={({ target: { value } }) => setTypeOfPayment(value)}
+              disabled={isRead ? true : false}
             >
               <option value={`CASH`}>Наличные</option>
               <option value={`REMITTANCE`}>Денежный перевод</option>
@@ -179,6 +181,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
                   placeholder="123"
                   value={numberOfPayment}
                   onChange={({ target: { value } }) => setNumberOfPayment(value)}
+                  disabled={isRead ? true : false}
                 />
               </div>
             }
@@ -196,12 +199,14 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
                 value={price}
                 name="price"
                 onChange={({ target: { value } }) => setPrice(value)}
+                disabled={isRead ? true : false}
               />
               <select
                 className="select_price"
                 value={currency}
                 onChange={({ target: { value } }) => setCurrency(value)}
                 style={{ border: "1px solid lightgrey" }}
+                disabled={isRead ? true : false}
               >
                 <option value="BYN" defaultValue>
                   BYN
@@ -217,6 +222,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               placeholder="15.04.2021"
               value={date_pay}
               onChange={({ target: { value } }) => setDate_pay(value)}
+              disabled={isRead ? true : false}
             />
             <p className="black" style={{ marginBottom: 10 }}>Прикрепить акт</p>
             <div className="flex">
@@ -237,9 +243,10 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               hideSelectedOptions={false}
               closeMenuOnSelect={false}
               styles={CustomStyle}
+              isDisabled={isRead ? true : false}
             />
             <div style={{ textAlign: "center" }}>
-              {paymentId ? (
+              {paymentId && !isRead ? (
                 <button className="button5" onClick={(e) => {
                   e.preventDefault();
                   const payload = {
