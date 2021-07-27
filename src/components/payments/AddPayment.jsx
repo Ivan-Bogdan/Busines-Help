@@ -77,7 +77,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residue.price } });
+      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residзue.price } });
       setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
@@ -118,7 +118,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       setPrice(payment.price.price)
       setCurrency(payment.price.currency)
       SetDate_pay(payment.date_pay.slice(0, 10))
-      setSelectedTasks(payment.tasks.map((item) => { return { value: item.id, label: item.name } }))
+      setSelectedTasks(payment.tasks.map((item) => { return { value: item.id, label: item.name, numberPrice: item.price.price } }))
     }
   }, [payment])
 
