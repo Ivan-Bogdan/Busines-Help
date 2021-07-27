@@ -77,7 +77,8 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } }));
+      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}`, numberPrice: item.residue.price } });
+      setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
     }
@@ -91,6 +92,11 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       console.log(e);
     }
   }, [])
+
+  const allPriceTasks = useMemo(() => selectedTasks.length && selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0), [selectedTasks])
+
+  const remains = useMemo(() => price && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0
+  ), [price, selectedTasks])
 
   useEffect(() => {
     if (clientId) {
@@ -212,9 +218,12 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
               value={date_pay}
               onChange={({ target: { value } }) => SetDate_pay(value)}
             />
-            <p className="black">Прикрепить акт</p>
+            <p className="black" style={{ marginBottom: 10 }}>Прикрепить акт</p>
+            <div className="flex">
+              <p className="black">Всего: {allPriceTasks}</p>
+              <p className="black">Остаток: {remains}</p>
+            </div>
             <Select
-
               isMulti
               isLoading={clientId ? false : true}
               options={unpaidTask}
