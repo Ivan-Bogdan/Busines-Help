@@ -148,7 +148,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
             ×
           </span>
           {paymentId && !isRead && <p className="reg">Изменение платежа</p>}
-          {createPayment && !isRead && <p className="reg">Новый платеж</p>}
+          {!paymentId && !isRead && <p className="reg">Новый платеж</p>}
           {isRead && <p className="reg">Просмотр платежа</p>}
 
         </div>
@@ -266,7 +266,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
                   Обновить
                 </button>
               )}
-              {!isRead && (
+              {!isRead && createPayment && (
                 <button className="button5" onClick={(e) => {
                   e.preventDefault();
                   const payload = {
