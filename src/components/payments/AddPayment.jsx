@@ -93,9 +93,9 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
     }
   }, [])
 
-  const allPriceTasks = useMemo(() => selectedTasks.length && selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice), [selectedTasks])
+  const allPriceTasks = useMemo(() => selectedTasks.length && selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0), [selectedTasks])
 
-  const remains = useMemo(() => price && selectedTasks.length && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice
+  const remains = useMemo(() => price && selectedTasks.length && Number(price) - selectedTasks.reduce((accumulator, currentValue) => accumulator + currentValue.numberPrice, 0
   ), [price, selectedTasks])
 
   useEffect(() => {
