@@ -79,7 +79,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
       const result = await get_unpaid_task({ client_id: clientId });
 
       const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } });
-      tasks.unshift({ label: "Название", date: "Всего", price: "Остаток", disabled: true })
+      if (tasks.length > 0) tasks.unshift({ label: "Название", date: "Всего", price: "Остаток", disabled: true })
       setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
