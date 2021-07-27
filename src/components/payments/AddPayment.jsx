@@ -214,10 +214,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
             />
             <p className="black">Прикрепить акт</p>
             <Select
-              isOptionSelected
-              controlShouldRenderValue={false}
-              hideSelectedOptions={false}
-              closeMenuOnSelect={false}
+
               isMulti
               isLoading={clientId ? false : true}
               options={unpaidTask}
@@ -227,7 +224,9 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
                 setSelectedTasks(options);
               }}
               placeholder={selectedTasks && selectedTasks.length > 0 ? "Некоторые задачи выбраны" : "Выберите задачи"}
-              removeSelected
+              controlShouldRenderValue={false}
+              hideSelectedOptions={false}
+              closeMenuOnSelect={false}
               styles={CustomStyle}
             />
             <div style={{ textAlign: "center" }}>
