@@ -77,8 +77,10 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose }) => {
   const getUnpaidTask = useCallback(async (clientId) => {
     try {
       const result = await get_unpaid_task({ client_id: clientId });
-      result.tasks.unshift({ label: "Название", date: "Всего", price: "Остаток" })
-      setUnpaidTask(result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } }));
+
+      const tasks = result.tasks.map((item) => { return { value: item.id, label: item.name, date: new Date(item.date).toLocaleDateString(), price: `${item.residue.price.toFixed(2)} ${item.residue.currency}` } });
+      tasks.unshift({ label: "Название", date: "Всего", price: "Остаток" })
+      setUnpaidTask(tasks);
     } catch (e) {
       console.log(e);
     }
