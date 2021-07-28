@@ -1076,14 +1076,11 @@ span.psw {
 		box-sizing: border-box;
 		height: 35px;
 	}
-	/* input[type='date'] {
+	input[type='date'] {
 		width: 100%;
 		font-size: 17px;
-		display: inline-block;
-		border: 1px solid #ccc;
-		box-sizing: border-box;
 		height: 35px;
-	} */
+	}
 	.select1 {
 		background-size: 35px;
 		height: 35px;
