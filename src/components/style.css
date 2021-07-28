@@ -1077,8 +1077,13 @@ span.psw {
 		height: 35px;
 	}
 	input[type='date'] {
+		display: inline-block;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
 		width: 100%;
 		font-size: 17px;
+		padding: 12px 20px;
+		margin: 4px 0;
 		height: 35px;
 	}
 	.select1 {
