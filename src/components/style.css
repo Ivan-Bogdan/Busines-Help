@@ -594,6 +594,7 @@ input[type='number'],
 input[type='email'],
 input[type='tel'] {
 	width: 100%;
+	background: white;
 	font-size: 20px;
 	padding: 12px 20px;
 	margin: 8px 0;
