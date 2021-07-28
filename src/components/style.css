@@ -589,7 +589,6 @@ h2 {
 /* Full-width input fields */
 input[type='text'],
 input[type='password'],
-input[type='date'],
 input[type='number'],
 input[type='email'],
 input[type='tel'] {
@@ -597,6 +596,15 @@ input[type='tel'] {
 	font-size: 20px;
 	padding: 12px 20px;
 	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	height: 47px;
+}
+
+input[type='date'] {
+	width: 100%;
+	font-size: 20px;
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
