@@ -40,7 +40,7 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
 
   const [client, setClient] = useState("")
   const [clientId, setClientId] = useState("")
-  const [typeOfPayment, setTypeOfPayment] = useState("")
+  const [typeOfPayment, setTypeOfPayment] = useState("PAYMENT_ORDER")
   const [numberOfPayment, setNumberOfPayment] = useState("")
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
@@ -173,21 +173,27 @@ const AddPayment = ({ paymentId, createPayment, updatePayment, onClose, isRead }
               onChange={({ target: { value } }) => setTypeOfPayment(value)}
               disabled={isRead ? true : false}
             >
-              <option value={`CASH`}>Наличные</option>
-              <option value={`REMITTANCE`}>Денежный перевод</option>
+              <option value={`PAYMENT_ORDER`}>Платежное поручение (банк)</option>
+              <option value={`RECEIPT`}>Квитанция (наличные)</option>
+              <option value={`CHEQUE`}>Чек КСА (наличные)</option>
+              <option value={`POS`}>Терминал (по карте)</option>
+              <option value={`OTHER`}>Иное</option>
+
+
+              ''
+              'RECEIPT'
+              'CHEQUE'
+              'POS'
+              'OTHER'
             </select>
-            {typeOfPayment === "REMITTANCE" &&
-              <div>
-                <p className="black">Номер платежа</p>
-                <input
-                  type="text"
-                  placeholder="123"
-                  value={numberOfPayment}
-                  onChange={({ target: { value } }) => setNumberOfPayment(value)}
-                  disabled={isRead ? true : false}
-                />
-              </div>
-            }
+            <p className="black">Номер платежа</p>
+            <input
+              type="text"
+              placeholder="123"
+              value={numberOfPayment}
+              onChange={({ target: { value } }) => setNumberOfPayment(value)}
+              disabled={isRead ? true : false}
+            />
             <p className="black">Сумма</p>
             <div
               style={{
