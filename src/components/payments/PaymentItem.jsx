@@ -52,7 +52,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
       <div className="main container_task">
         <div
           className={
-            (item.residue < item.price.price && "bluelight") ||
+            (item.residue < item.price.price && item.price.price !== item.residue && "bluelight") ||
             (item.residue === 0 && "greenlight") ||
             (item.residue === item.price.price && "redlight")
           }
