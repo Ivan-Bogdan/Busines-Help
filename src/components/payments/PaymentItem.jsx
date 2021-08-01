@@ -52,8 +52,8 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
       <div className="main container_task">
         <div
           className={
-            (item.residue < item.price.price && item.price.price !== item.residue && "bluelight") ||
-            (item.residue === 0 && "greenlight") ||
+            (item.residue < item.price.price && "bluelight") ||
+            (item.residue === 0 && item.price.price !== item.residue && "greenlight") ||
             (item.residue === item.price.price && "redlight")
           }
           onClick={toogleReadPayment}
