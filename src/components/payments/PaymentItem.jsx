@@ -52,7 +52,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
       <div className="main container_task">
         <div
           className={
-            (item.residue > 0 && item.residue === item.price.price && "bluelight") ||
+            (item.residue < item.price.price && "bluelight") ||
             (item.residue === 0 && "greenlight") ||
             (item.residue === item.price.price && "redlight")
           }
@@ -62,7 +62,7 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
             <div>
               {new Date(item.date_pay).toLocaleString().substr(0, 10)}
             </div>
-            {item.residue > 0 && item.residue === item.price.price && (
+            {item.residue < item.price.price && (
               <div className="color-lightblue">В работе</div>
             )}
             {item.residue === 0 && <div className="color-green">Разнесено</div>}
