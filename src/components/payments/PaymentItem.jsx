@@ -62,10 +62,10 @@ const PaymentItem = ({ item, deleteItem, FetchData }) => {
             <div>
               {new Date(item.date_pay).toLocaleString().substr(0, 10)}
             </div>
-            {item.residue < item.price.price && item.price.price !== item.residue && (
+            {item.residue < item.price.price && (
               <div className="color-lightblue">В работе</div>
             )}
-            {item.residue === 0 && <div className="color-green">Разнесено</div>}
+            {item.residue === 0 && item.price.price !== item.residue && <div className="color-green">Разнесено</div>}
             {item.residue === item.price.price && <div className="color-red">Создано</div>}
           </div>
         </div>
