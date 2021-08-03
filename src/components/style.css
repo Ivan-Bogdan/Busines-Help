@@ -61,6 +61,12 @@ a:hover {
 	align-items: center;
 }
 
+.ellips {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .grey {
 	display: flex;
 	justify-content: center;

@@ -120,7 +120,7 @@ const Task = ({ task, deleteTask, FetchData }) => {
               <div className="w407" onClick={toogleReadTask}>
                 <div className="task_name">{clientCurrent}</div>
                 <div className="fz20 color-grey">{cityName}</div>
-                <div className="fw600 fz20">{task.name}</div>
+                <div className="fw600 fz20 ellips" >{task.name}</div>
               </div>
               <div>
                 <img
