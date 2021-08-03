@@ -48,7 +48,7 @@ const MyPayments = () => {
 
   useEffect(() => {
     FetchData();
-  }, [FetchData, localStorage.getItem('token')]);
+  }, [FetchData, localStorage]);
 
   return (
     <div>
