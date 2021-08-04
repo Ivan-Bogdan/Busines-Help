@@ -3,6 +3,13 @@
 
 .app {
 	overflow: hidden;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#root {
+	height: 100%;
 }
 .footer2 {
 	width: 100%;
@@ -116,8 +123,9 @@ a:hover {
 	width: 50px;
 	height: 50px;
 }
-
+html,
 body {
+	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 }
 a {
@@ -393,7 +401,10 @@ nav ul li a:hover {
 
 .main {
 	width: 100%;
-	/*  display: grid; */
+	flex: 1 1 auto;
+}
+.wrapper {
+	height: 100%;
 }
 
 .filter_div {
@@ -564,10 +575,6 @@ h2 {
 	width: 100%;
 	padding: 15px 0;
 	background: #4f5a4d;
-	display: flex;
-	position: fixed;
-	left: 0;
-	bottom: 0;
 }
 
 .footer p {

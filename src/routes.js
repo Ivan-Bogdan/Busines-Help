@@ -5,7 +5,7 @@ import { MyServ, MyClients, MyPayments } from "./components";
 import UpdateTask from "./components/tasks/UpdateTask";
 const Routes = () => {
   return (
-    <div>
+    <div className='wrapper'>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={App} />

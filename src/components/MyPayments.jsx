@@ -51,9 +51,9 @@ const MyPayments = () => {
   }, [FetchData, localStorage]);
 
   return (
-    <div>
+    <div className='app'>
       <Navbar />
-      <section>
+      <section className='main'>
         <div className="container">
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
