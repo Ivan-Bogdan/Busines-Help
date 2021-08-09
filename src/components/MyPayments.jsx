@@ -21,7 +21,7 @@ const MyPayments = () => {
     let payload = {
       limit: 10,
       offset: 0,
-      sort: "date_pay",
+      sort: sort,
       desc: true,
       filters: filters || []
     };
