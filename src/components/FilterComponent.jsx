@@ -21,8 +21,9 @@ const FilterComponent = ({ filterList, refetch, refetchSort, onClose }) => {
       ))
       }
       <button className='button5' onClick={() => {
+        const result = filters.map(item => item.value !== '' && item)
         refetchSort(sort);
-        refetch(filters)
+        refetch(result)
         onClose()
       }}>Применить</button>
     </div >
