@@ -121,7 +121,7 @@ const MyServ = () => {
                 refetch={FetchData}
               ></FilterComponent>
             )}
-            {tasks.sort((a, b) => new Date(b.date) - new Date(a.date)).map((task, index) => (
+            {tasks.map((task, index) => (
               <div key={index} className="task_item">
                 <Task
                   task={task}
