@@ -5,7 +5,7 @@ const FilterComponent = ({ filterList, refetch }) => {
   return (
     <div>
       {filterList.map((filterItem) => (
-        <div className='flex'>
+        <div className='flex' style={{ padding: "0 10px" }}>
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px" }}> {filterItem.name}</p>
           <input type='text'></input>
