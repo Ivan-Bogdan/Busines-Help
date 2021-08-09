@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const FilterComponent = ({ filterList, refetch }) => {
+const FilterComponent = ({ filterList, refetch, refetchSort }) => {
   const [sort, setSort] = useState('')
-  const [filters, setFilters] = useState([])
+  const [filters, setFilters] = useState(filterList.map((item) => { return { name: item.filter, value: '' } }))
   return (
     <div style={{ padding: "0 10px" }}>
       {filterList.map((filterItem) => (
@@ -11,12 +11,12 @@ const FilterComponent = ({ filterList, refetch }) => {
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           <input type='text' onChange={({ target }) => {
             const result = { name: filterItem.filter, value: target.value }
-            setFilters([...filters, { ...result }])
+            setFilters({ ...filters, })
           }} />
         </div>
       ))
       }
-      <button className='button5'>Применить</button>
+      <button className='button5' onClick={() => refetchSort(sort)}>Применить</button>
     </div >
   );
 };
