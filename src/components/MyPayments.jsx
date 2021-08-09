@@ -1,20 +1,29 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { delete_payment, get_payments_list, payment_create } from '../API/http';
 import Footer from '../Footer';
+import { filterForPage } from '../helpers';
 import Navbar from '../Navbar';
+import FilterComponent from './FilterComponent';
 import AddPayment from './payments/AddPayment';
 import PaymentItem from './payments/PaymentItem';
 
 const MyPayments = () => {
   const [isCreatePayment, setIsCreatePayment] = useState(false)
+  const [isOpenFilter, setOpenFilter] = useState(false);
+  const [sort, setSort] = useState('date_pay')
   const [payments, setPayments] = useState([]);
 
-  const FetchData = useCallback(async () => {
+  const toggleFilter = () => {
+    setOpenFilter(!isOpenFilter);
+  };
+
+  const FetchData = useCallback(async (filters) => {
     let payload = {
       limit: 10,
       offset: 0,
       sort: "date_pay",
       desc: true,
+      filters: filters || []
     };
     const result = await get_payments_list(payload);
     if (result.message) {
@@ -63,7 +72,18 @@ const MyPayments = () => {
             >
               Создать
             </button>
+            <div className="filter_div" align="right">
+              <button className="sorting" onClick={toggleFilter}></button>
+            </div>
           </div>
+          {isOpenFilter && (
+            <FilterComponent
+              refetchSort={setSort}
+              filterList={filterForPage.payments}
+              refetch={FetchData}
+              onClose={toggleFilter}
+            ></FilterComponent>
+          )}
           {payments.map((item, index) => (
             <div key={index} className="client_item">
               <PaymentItem

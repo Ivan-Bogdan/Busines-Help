@@ -9,6 +9,8 @@ import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
 import * as FPJS from "@fingerprintjs/fingerprintjs";
 import ClientItem from "./clients/ClientItem";
+import FilterComponent from "./FilterComponent";
+import { filterForPage } from "../helpers";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -19,18 +21,20 @@ const MyClients = () => {
   const [fingerprint, setFingerprint] = useState("");
   const [count, setCount] = useState(0);
   const [isCreateClient, setCreateClient] = useState(false);
+  const [isOpenFilter, setOpenFilter] = useState(false);
   const [clients, setClients] = useState([]);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [limit] = useState(10);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  const FetchData = useCallback(async () => {
+  const FetchData = useCallback(async (filters) => {
     let payload = {
       limit: limit,
       offset: selectedTaskPage * 10,
       sort: sort,
       desc: desc,
+      filters: filters || []
     };
     const result = await get_client_list(payload);
     if (result.message) {
@@ -41,6 +45,10 @@ const MyClients = () => {
       return setError("");
     }
   }, []);
+
+  const toggleFilter = () => {
+    setOpenFilter(!isOpenFilter);
+  };
 
   const createClient = async (name, unp, phone, type, city, address) => {
     let payload = {
@@ -92,8 +100,19 @@ const MyClients = () => {
             >
               Создать
             </button>
+            <div className="filter_div" align="right">
+              <button className="sorting" onClick={toggleFilter}></button>
+            </div>
             <button className="sorting"></button>
           </div>
+          {isOpenFilter && (
+            <FilterComponent
+              refetchSort={setSort}
+              filterList={filterForPage.clients}
+              refetch={FetchData}
+              onClose={toggleFilter}
+            ></FilterComponent>
+          )}
           {clients.map((item, index) => (
             <div key={index} className="client_item">
               <ClientItem
