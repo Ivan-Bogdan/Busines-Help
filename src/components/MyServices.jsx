@@ -35,7 +35,7 @@ const MyServ = () => {
   useEffect(() => {
     _getFingerprint();
     FetchData();
-  }, [_getFingerprint, FetchData]);
+  }, [_getFingerprint, FetchData, sort]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -120,6 +120,7 @@ const MyServ = () => {
                 refetchSort={setSort}
                 filterList={filterForPage.services}
                 refetch={FetchData}
+                onClose={toggleFilter}
               ></FilterComponent>
             )}
             {tasks.map((task, index) => (
