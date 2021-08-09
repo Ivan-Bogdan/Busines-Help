@@ -110,7 +110,7 @@ const Task = ({ task, deleteTask, FetchData }) => {
                   <span className="color-green">
                     {task.price.price - task.residue}
                   </span>
-                  / {task.residue}
+                  / <span color='red'>{task.residue}</span>
                 </div>
               </div>
             </div>
