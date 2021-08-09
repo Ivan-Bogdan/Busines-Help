@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   get_task_list,
   delete_task,
@@ -50,7 +50,7 @@ const MyServ = () => {
     setSort(sort);
   };
 
-  const FetchData = async (filters) => {
+  const FetchData = useCallback(async (filters) => {
     let payload = {
       limit: limit,
       sort: sort,
@@ -67,7 +67,7 @@ const MyServ = () => {
       setTasks(result.tasks);
       return setError("");
     }
-  };
+  }, [sort]);
 
   const _getFingerprint = () => {
     if (window.requestIdleCallback) {
