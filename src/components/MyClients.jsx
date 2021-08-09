@@ -103,7 +103,6 @@ const MyClients = () => {
             <div className="filter_div" align="right">
               <button className="sorting" onClick={toggleFilter}></button>
             </div>
-            <button className="sorting"></button>
           </div>
           {isOpenFilter && (
             <FilterComponent
