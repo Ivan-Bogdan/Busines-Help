@@ -35,7 +35,7 @@ const MyServ = () => {
   useEffect(() => {
     _getFingerprint();
     FetchData();
-  }, [_getFingerprint, FetchData, sort]);
+  }, [_getFingerprint, FetchData]);
 
   const toggleModal = () => {
     setModal(!modal);
