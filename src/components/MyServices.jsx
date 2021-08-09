@@ -12,6 +12,7 @@ import Task from "./tasks/Task";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
+import { filterForPage } from "../helpers";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -108,19 +109,16 @@ const MyServ = () => {
               </button>
               <div className="filter_div" align="right">
                 <button className="sorting" onClick={toggleFilter}></button>
-                {isOpenFilter && (
-                  <FilterComponent
-                    sort={sort}
-                    desc={desc}
-                    dataFilter={callbackFilter}
-                    onClose={toggleFilter}
-                  ></FilterComponent>
-                )}
               </div>
             </div>
             <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
+            {isOpenFilter && (
+              <FilterComponent
+                filterList={filterForPage.services}
+              ></FilterComponent>
+            )}
             {tasks.sort((a, b) => new Date(b.date) - new Date(a.date)).map((task, index) => (
               <div key={index} className="task_item">
                 <Task
