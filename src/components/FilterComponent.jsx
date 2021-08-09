@@ -26,7 +26,8 @@ const FilterComponent = ({ filterList, refetch, refetchSort, onClose }) => {
         refetchSort(sort);
         refetch(result)
         onClose()
-      }}>Применить</button>
+      }}
+        disabled={!sort}>Применить</button>
     </div >
   );
 };
