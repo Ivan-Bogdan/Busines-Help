@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const FilterComponent = ({ filterList, refetch, refetchSort, onClose }) => {
   const [sort, setSort] = useState('')
-  const [filters, setFilters] = useState(filterList.map(item => { return { ...item, value: '' } }))
+  const [filters, setFilters] = useState(filterList.map(item => { return { name: item.filter, value: '' } }))
 
   const handleChange = (e, index) => {
     const newDoc = [...filters];
