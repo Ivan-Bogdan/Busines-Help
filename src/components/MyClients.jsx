@@ -44,7 +44,7 @@ const MyClients = () => {
       setClients(result.clients);
       return setError("");
     }
-  }, []);
+  }, [sort]);
 
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);

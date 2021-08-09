@@ -31,7 +31,7 @@ const MyPayments = () => {
     } else {
       setPayments(result.payments);
     }
-  }, []);
+  }, [sort]);
 
   const createPayment = useCallback(
     async (data) => {
