@@ -13,7 +13,7 @@ const MyPayments = () => {
     let payload = {
       limit: 10,
       offset: 0,
-      sort: "name",
+      sort: "date_pay",
       desc: true,
     };
     const result = await get_payments_list(payload);
