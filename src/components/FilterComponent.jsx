@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterComponent = (filterList,) => {
+const FilterComponent = ({ filterList }) => {
   return (
     <div>
       {filterList.map((filterItem) => (
