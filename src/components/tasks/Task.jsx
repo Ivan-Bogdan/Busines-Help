@@ -108,11 +108,9 @@ const Task = ({ task, deleteTask, FetchData }) => {
                 <div className="paid">Оплачено/Долг</div>
                 <div className="price-debt">
                   <span className="color-green">
-                    {task.paid === 0 && "0"}
-                    {task.paid === 1 && task.price.price}
+                    {task.price.price - task.residue}
                   </span>
-                  / {task.paid === 0 && task.price.price}
-                  {task.paid === 1 && "0"}
+                  / {task.residue}
                 </div>
               </div>
             </div>
