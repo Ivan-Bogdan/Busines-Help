@@ -1,15 +1,17 @@
 import React from 'react';
 
-const FilterComponent = ({ filterList }) => {
+const FilterComponent = ({ filterList, refetch }) => {
+  const [sort, setSort] = useState('')
   return (
     <div>
       {filterList.map((filterItem) => (
         <div className='flex'>
-          <input type='checkbox'></input>
+          <input type='radio' value={filterItem.filter} onChange={({ target }) => setSort(target.name)} checked={sort === filterItem.filter ? true : false}></input>
           <p>{filterItem.name}</p>
           <input type='text'></input>
         </div>
       ))}
+      <button className='button5'>Применить</button>
     </div>
   );
 };

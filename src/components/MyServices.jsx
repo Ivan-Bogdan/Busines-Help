@@ -50,12 +50,13 @@ const MyServ = () => {
     setSort(sort);
   };
 
-  const FetchData = async () => {
+  const FetchData = async (filters) => {
     let payload = {
       limit: limit,
       sort: sort,
       desc: desc,
       offset: selectedTaskPage * 10,
+      filters: filters || []
     };
     const result = await get_task_list(payload);
     if (result.message) {
@@ -117,6 +118,7 @@ const MyServ = () => {
             {isOpenFilter && (
               <FilterComponent
                 filterList={filterForPage.services}
+                refetch={FetchData}
               ></FilterComponent>
             )}
             {tasks.sort((a, b) => new Date(b.date) - new Date(a.date)).map((task, index) => (
