@@ -27,11 +27,8 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
 
   };
 
-  const onChange = (e) => {
-    // const newDoc = [...filters];
-    setClient(e.target.value);
-    // newDoc[index][e.target.name] = e.target.value;
-    // setFilters(newDoc); 
+  const onChange = (event, { newValue }) => {
+    setClient(newValue);
   };
 
   const getSuggestionValue = (suggestion) => {
