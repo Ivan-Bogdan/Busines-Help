@@ -49,7 +49,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const inputProps = {
     placeholder: "Клиент",
     value: client,
-    onChange: handleChange,
+    onChange: (e, index) => handleChange(e, index, true),
   };
 
   return (
