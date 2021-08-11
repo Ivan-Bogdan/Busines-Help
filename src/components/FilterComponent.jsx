@@ -14,7 +14,6 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e, index, isClient) => {
-    console.log(e);
     if (isClient && clientId) {
       const newDoc = [...filters];
       newDoc[index][e.target.name] = clientId;
@@ -32,7 +31,6 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   };
 
   const getSuggestionValue = (suggestion, index) => {
-    console.log(index);
     const newDoc = [...filters];
     newDoc[index]["value"] = suggestion.id;
     setFilters(newDoc);
