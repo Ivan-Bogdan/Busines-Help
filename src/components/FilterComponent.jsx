@@ -37,7 +37,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   };
 
   const getSuggestionValue = (suggestion) => {
-    setClientId(suggestion.id);
+    const newDoc = [...filters];
+    newDoc[indzsex]["value"] = suggestion.id;
+    setFilters(newDoc);
     return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
 
