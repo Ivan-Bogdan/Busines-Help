@@ -76,7 +76,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
               value: client,
               name: "value",
               onChange: (event, lol) => {
-                onChange(event, lol)
+                onChange(event, lol, index)
                 console.log("event:", event);
                 console.log("lol:", lol);
               }
