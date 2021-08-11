@@ -72,10 +72,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
-            getSuggestionValue={(suggestion) => {
-              console.log(suggestion);
-              getSuggestionValue(suggestion, index)
-            }}
+            getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
             renderSuggestion={renderSuggestion}
             inputProps={{
               placeholder: "Клиент",
