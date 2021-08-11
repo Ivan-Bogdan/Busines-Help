@@ -37,6 +37,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   };
 
   const getSuggestionValue = (suggestion, index) => {
+    console.log(index);
     const newDoc = [...filters];
     newDoc[index]["value"] = suggestion.id;
     setFilters(newDoc);
@@ -68,7 +69,6 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           {filterItem.filter !== 'client' ? <input type={filterItem.type || "text"} name="value" onChange={(e) => handleChange(e, index)} /> : <Autosuggest
             name="value"
-            onChange={(e) => handleChange(e, index, true)}
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
