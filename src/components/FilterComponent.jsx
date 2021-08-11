@@ -69,7 +69,11 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             inputProps={{
               placeholder: "Клиент",
               value: client,
-              onChange: onChange
+              onChange: (event, lol) => {
+                onChange(event, lol)
+                console.log("event:", event);
+                console.log("lol:", lol);
+              }
             }}
           />}
         </div>
