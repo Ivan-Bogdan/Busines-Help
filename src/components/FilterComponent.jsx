@@ -76,7 +76,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
               placeholder: "Клиент",
               value: client,
               name: "value",
-
+              onChange: (e, lol) => {
+                onChange(e, lol, index)
+              }
             }}
           />}
         </div>
