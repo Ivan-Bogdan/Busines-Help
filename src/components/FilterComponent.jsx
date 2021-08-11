@@ -14,6 +14,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e, index, isClient) => {
+    console.log(e);
     if (isClient) {
       const newDoc = [...filters];
       setClient(e.target.value);
