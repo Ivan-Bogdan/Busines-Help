@@ -50,24 +50,23 @@ const MyServ = () => {
     setSort(sort);
   };
 
-  const FetchData = useCallback(async (filters) => {
+  const FetchData = useCallback(async (filters, sort) => {
     let payload = {
-      limit: limit,
-      sort: sort,
-      desc: desc,
+      limit,
+      sort,
+      desc,
       offset: selectedTaskPage * 10,
       filters: filters || []
     };
     const result = await get_task_list(payload);
     if (result.message) {
       setError(result.message);
-      // localStorage.clear();
     } else {
       setCount(result.count);
       setTasks(result.tasks);
       return setError("");
     }
-  }, [sort]);
+  }, []);
 
   const _getFingerprint = () => {
     if (window.requestIdleCallback) {

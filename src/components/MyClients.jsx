@@ -50,25 +50,6 @@ const MyClients = () => {
     setOpenFilter(!isOpenFilter);
   };
 
-  const createClient = async (name, unp, phone, type, city, address) => {
-    let payload = {
-      name: name,
-      unp: unp,
-      phone: phone,
-      type: parseInt(type, 10),
-      date: Date.now(),
-      city_id: city,
-      address: address,
-    };
-    const result = await create_client(payload);
-    if (result.message) {
-      alert(result.message);
-    } else {
-      setCreateClient(false);
-      FetchData();
-    }
-  };
-
   const toggleCreateClient = () => {
     setCreateClient(!isCreateClient);
   };

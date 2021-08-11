@@ -23,8 +23,7 @@ const FilterComponent = ({ filterList, refetch, refetchSort, onClose }) => {
       <button className='button5' onClick={() => {
         const result = filters.filter(item => item.value)
         console.log(result);
-        refetchSort(sort);
-        refetch(result)
+        refetch(result, sort)
         onClose()
       }}
         disabled={!sort}>Применить</button>
