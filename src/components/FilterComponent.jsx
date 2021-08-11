@@ -27,8 +27,11 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
 
   };
 
-  const onChange = (event, { newValue }) => {
-    setClient(newValue);
+  const onChange = (e, index) => {
+    const newDoc = [...filters];
+    setClient(e.target.value);
+    newDoc[index][e.target.name] = e.target.value;
+    setFilters(newDoc);
   };
 
   const getSuggestionValue = (suggestion) => {
@@ -69,7 +72,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             inputProps={{
               placeholder: "Клиент",
               value: client,
-              onChange: (e) => handleChange(e, index, true),
+              onChange: (e) => onChange(e, index),
             }}
           />}
         </div>
