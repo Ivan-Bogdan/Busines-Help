@@ -31,7 +31,7 @@ export const filterForPage = {
       filter: "name", name: "Название",
     },
     {
-      filter: "client", name: "Клиент",
+      filter: "client", name: "Клиент", type: "select"
     },
     {
       filter: "date", name: "Дата", type: "date"
@@ -40,7 +40,7 @@ export const filterForPage = {
       filter: "price", name: "Цена",
     },
     {
-      filter: "paid", name: "Оплачено/Неоплачено", type: "checkbox"
+      filter: "paid", name: "Оплачено/Неоплачено", type: "select"
     }
   ],
   clients: [
@@ -48,7 +48,7 @@ export const filterForPage = {
       filter: "name", name: "Название",
     },
     {
-      filter: "otype", name: "Тип",
+      filter: "otype", name: "Тип", type: "select"
     },
     {
       filter: "phone", name: "Номер Телефона",
@@ -59,7 +59,7 @@ export const filterForPage = {
   ],
   payments: [
     {
-      filter: "payments_type", name: "Тип платежа",
+      filter: "payments_type", name: "Тип платежа", type: "select"
     },
     {
       filter: "client", name: "Клиент",

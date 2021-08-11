@@ -116,7 +116,6 @@ const MyServ = () => {
           <div className="container">
             {isOpenFilter && (
               <FilterComponent
-                refetchSort={setSort}
                 filterList={filterForPage.services}
                 refetch={FetchData}
                 onClose={toggleFilter}
