@@ -31,7 +31,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
     console.log(event);
     const newDoc = [...filters];
     setClient(newValue);
-    newDoc[index][event.target.name] = clientId;
+    newDoc[index]["value"] = clientId;
     setFilters(newDoc);
 
   };
