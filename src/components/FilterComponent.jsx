@@ -14,8 +14,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e, index, isClient) => {
-    if (isClient && clientId) {
+    if (isClient) {
       const newDoc = [...filters];
+      setClient(e.target.value);
       newDoc[index][e.target.name] = clientId;
       setFilters(newDoc);
     } else {
@@ -67,7 +68,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             renderSuggestion={renderSuggestion}
             inputProps={{
               placeholder: "Клиент",
-              name: "value",
+              value: client,
               onChange: (e) => handleChange(e, index, true),
             }}
           />}
