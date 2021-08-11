@@ -17,7 +17,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
     if (isClient) {
       const newDoc = [...filters];
       setClient(e.target.value);
-      newDoc[index][e.target.name] = clientId;
+      newDoc[index][e.target.name] = e.target.value;
       setFilters(newDoc);
     } else {
       const newDoc = [...filters];
