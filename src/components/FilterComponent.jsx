@@ -36,9 +36,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
 
   };
 
-  const getSuggestionValue = (suggestion) => {
+  const getSuggestionValue = (suggestion, index) => {
     const newDoc = [...filters];
-    newDoc[indzsex]["value"] = suggestion.id;
+    newDoc[index]["value"] = suggestion.id;
     setFilters(newDoc);
     return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
@@ -72,7 +72,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
+            getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
             renderSuggestion={renderSuggestion}
             inputProps={{
               placeholder: "Клиент",
