@@ -69,7 +69,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             inputProps={{
               placeholder: "Клиент",
               value: client,
-              onChange: (e) => onChange(e, index),
+              onChange: onChange
             }}
           />}
         </div>
