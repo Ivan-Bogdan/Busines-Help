@@ -35,7 +35,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   };
 
   const getSuggestionValue = (suggestion) => {
-    setClientId(suggestion.id);
+    console.log(suggestion.id);
     return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
   };
 
