@@ -13,13 +13,20 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const handleChange = (e, index) => {
-    const newDoc = [...filters];
-    newDoc[index][e.target.name] = e.target.value;
-    setFilters(newDoc);
+  const handleChange = (e, index, isClient) => {
+    if (isClient && clientId) {
+      const newDoc = [...filters];
+      newDoc[index][e.target.name] = clientId;
+      setFilters(newDoc);
+    } else {
+      const newDoc = [...filters];
+      newDoc[index][e.target.name] = e.target.value;
+      setFilters(newDoc);
+    }
+
   };
 
-  const onChange = (event, { newValue, method }) => {
+  const onChange = (event, index, { newValue, method }) => {
     setClient(newValue);
   };
 
@@ -42,7 +49,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const inputProps = {
     placeholder: "Клиент",
     value: client,
-    onChange: onChange,
+    onChange: handleChange,
   };
 
   return (
@@ -52,6 +59,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           {filterItem.filter !== 'client' ? <input type={filterItem.type || "text"} name="value" onChange={(e) => handleChange(e, index)} /> : <Autosuggest
+            name="value"
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
