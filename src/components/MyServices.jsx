@@ -50,7 +50,7 @@ const MyServ = () => {
     setSort(sort);
   };
 
-  const FetchData = useCallback(async (filters, sort) => {
+  const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
       limit,
       sort,
