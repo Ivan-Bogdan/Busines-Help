@@ -15,10 +15,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
 
   const handleChange = (e, index, isClient) => {
     console.log(e);
-    if (isClient) {
+    if (isClient && clientId) {
       const newDoc = [...filters];
-      setClient(e.target.value);
-      newDoc[index][e.target.name] = e.target.value;
+      newDoc[index][e.target.name] = clientId;
       setFilters(newDoc);
     } else {
       const newDoc = [...filters];
@@ -67,6 +66,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           {filterItem.filter !== 'client' ? <input type={filterItem.type || "text"} name="value" onChange={(e) => handleChange(e, index)} /> : <Autosuggest
             name="value"
+            onChange={(e) => handleChange(e, index, true)}
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
@@ -76,11 +76,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
               placeholder: "Клиент",
               value: client,
               name: "value",
-              onChange: (event, lol) => {
-                onChange(event, lol, index)
-                console.log("event:", event);
-                console.log("lol:", lol);
-              }
+
             }}
           />}
         </div>
