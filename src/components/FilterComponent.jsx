@@ -65,7 +65,11 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             onSuggestionsClearRequested={onSuggestionsClearRequested}
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}
-            inputProps={inputProps}
+            inputProps={{
+              placeholder: "Клиент",
+              value: client,
+              onChange: (e) => handleChange(e, index, true),
+            }}
           />}
         </div>
       ))
