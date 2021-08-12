@@ -7,7 +7,7 @@ export default class Payment extends Component {
     super(props);
 
     this.state = {
-      payments_type: "CASH",
+      payments_type: "PAYMENT_ORDER",
       price: {
         price: 0,
         currency: "BYN",

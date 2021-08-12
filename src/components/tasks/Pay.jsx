@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import icon_delete from "../../assets/img/удалить.png";
 
 const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
-  const [payments_type, setPayment_type] = useState("CASH");
+  const [payments_type, setPayment_type] = useState("PAYMENT_ORDER");
   const [price, setPrice] = useState(0);
   const [currency, setCurrency] = useState("BYN");
   const [payment_number, setPayment_number] = useState("");
