@@ -5,10 +5,10 @@ const DateFilter = ({ change, index }) => {
   const [lastDate, setLastDate] = useState('')
 
   useEffect(() => {
-    if (firstDate && lastDate) {
-      change([firstDate, lastDate], index)
-    }
-  }, [index, firstDate, lastDate, change])
+
+    change([firstDate, lastDate], index)
+
+  }, [index, firstDate, lastDate])
   return (
     <div className='flex'>
       <input type="date" value={firstDate} onChange={(({ target }) => setFirstDate(target.value))} />
