@@ -5,7 +5,8 @@ const DateFilter = ({ change, index }) => {
   const [lastDate, setLastDate] = useState('')
 
   useEffect(() => {
-    change([firstDate, lastDate], index)
+    if (firstDate && lastDate)
+      change([firstDate, lastDate], index)
   }, [index, firstDate, lastDate])
   return (
     <div className='flex' style={{ width: "100%" }}>
