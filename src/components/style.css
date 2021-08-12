@@ -67,6 +67,13 @@ a:hover {
 	justify-content: space-between;
 	align-items: center;
 }
+
+.flex-date{
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .button5:disabled{
   background-color: #4caf4f5b;
   cursor: not-allowed;
@@ -814,6 +821,9 @@ span.psw {
 	.task_container {
 		flex-wrap: wrap;
 		height: auto;
+	}
+  .flex-date {
+		display: block;
 	}
 	.reg {
 		font-size: 22px;

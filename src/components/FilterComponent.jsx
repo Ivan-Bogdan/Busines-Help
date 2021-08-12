@@ -60,29 +60,31 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
         <div className='flex' >
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
-          {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" onChange={(e) => handleChange(e, index)} />}
-          {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} />}
-          {filterItem.type === 'client' &&
-            <Autosuggest
-              name="value"
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={onSuggestionsClearRequested}
-              getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
-              renderSuggestion={renderSuggestion}
-              inputProps={{
-                placeholder: "Клиент",
-                value: client,
-                name: "value",
-                onChange: (e, lol) => onChange(e, lol, index)
-              }}
-            />}
-          {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" onChange={(e) => handleChange(e, index)}>
-            <option value="" disabled selected defaultValue>
-              {filterItem.name}
-            </option>
-            {filterItem.data.length && filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
-          </select>}
+          <div style={{ width: "100%" }}>
+            {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" onChange={(e) => handleChange(e, index)} />}
+            {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} />}
+            {filterItem.type === 'client' &&
+              <Autosuggest
+                name="value"
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={onSuggestionsClearRequested}
+                getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
+                renderSuggestion={renderSuggestion}
+                inputProps={{
+                  placeholder: "Клиент",
+                  value: client,
+                  name: "value",
+                  onChange: (e, lol) => onChange(e, lol, index)
+                }}
+              />}
+            {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" onChange={(e) => handleChange(e, index)}>
+              <option value="" disabled selected defaultValue>
+                {filterItem.name}
+              </option>
+              {filterItem.data.length && filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
+            </select>}
+          </div>
         </div>
       ))
       }
