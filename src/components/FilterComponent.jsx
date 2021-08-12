@@ -79,9 +79,9 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
             />}
           {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" onChange={(e) => handleChange(e, index)}>
             <option value="" disabled selected>
-              Тип
+              {filterItem.name}
             </option>
-            {filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
+            {filterItem.data.length && filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
           </select>}
         </div>
       ))
