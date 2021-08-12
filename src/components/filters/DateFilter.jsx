@@ -8,8 +8,7 @@ const DateFilter = ({ change, index }) => {
     if (firstDate && lastDate) {
       change([firstDate, lastDate], index)
     }
-
-  }, [index,])
+  }, [index, firstDate, lastDate, change])
   return (
     <div className='flex'>
       <input type="date" value={firstDate} onChange={(({ target }) => setFirstDate(target.value))} />
