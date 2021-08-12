@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { find_client } from '../API/http';
 import { getNameOtype } from '../helpers';
+import DateFilter from './filters/DateFilter';
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
@@ -13,18 +14,17 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
   const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const handleChange = (e, index, isClient) => {
-    if (isClient && clientId) {
-      const newDoc = [...filters];
-      newDoc[index][e.target.name] = clientId;
-      setFilters(newDoc);
-    } else {
-      const newDoc = [...filters];
-      newDoc[index][e.target.name] = e.target.value;
-      setFilters(newDoc);
-    }
-
+  const handleChange = (e, index) => {
+    const newDoc = [...filters];
+    newDoc[index][e.target.name] = e.target.value;
+    setFilters(newDoc);
   };
+
+  const handleChangeDate = (value, index) => {
+    const newDoc = [...filters];
+    newDoc[index]["value"] = value;
+    setFilters(newDoc);
+  }
 
   const onChange = (event, { newValue }, index) => {
     setClient(newValue);
@@ -60,22 +60,23 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
         <div className='flex' >
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
-          {filterItem.filter !== 'client' ? <input type={filterItem.type || "text"} name="value" onChange={(e) => handleChange(e, index)} /> : <Autosuggest
-            name="value"
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={onSuggestionsClearRequested}
-            getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
-            renderSuggestion={renderSuggestion}
-            inputProps={{
-              placeholder: "Клиент",
-              value: client,
-              name: "value",
-              onChange: (e, lol) => {
-                onChange(e, lol, index)
-              }
-            }}
-          />}
+          {filterItem.filter !== 'client' && filterItem.filter !== 'date' && <input type={filterItem.type || "text"} name="value" onChange={(e) => handleChange(e, index)} />}
+          {filterItem.filter === 'date' && <DateFilter change={handleChangeDate} />}
+          {filterItem.filter === 'client' &&
+            <Autosuggest
+              name="value"
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={onSuggestionsClearRequested}
+              getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
+              renderSuggestion={renderSuggestion}
+              inputProps={{
+                placeholder: "Клиент",
+                value: client,
+                name: "value",
+                onChange: (e, lol) => onChange(e, lol, index)
+              }}
+            />}
         </div>
       ))
       }
