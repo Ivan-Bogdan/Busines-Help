@@ -37,7 +37,7 @@ export const filterForPage = {
       filter: "date", name: "Дата", type: "date"
     },
     {
-      filter: "price", name: "Цена", type: "text"
+      filter: "price", name: "Цена", type: "number"
     },
     {
       filter: "paid", name: "Оплачено/Неоплачено", type: "select"
@@ -82,7 +82,7 @@ export const filterForPage = {
       filter: "date_pay", name: "Дата", type: "date"
     },
     {
-      filter: "price", name: "Цена", type: "text"
+      filter: "price", name: "Цена", type: "number"
     }
   ]
 }
