@@ -60,7 +60,7 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
         <div className='flex' >
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
-          {filterItem.type !== 'client' && filterItem.type !== 'date' && <input type="text" name="value" onChange={(e) => handleChange(e, index)} />}
+          {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type="text" name="value" onChange={(e) => handleChange(e, index)} />}
           {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} />}
           {filterItem.type === 'client' &&
             <Autosuggest
@@ -77,8 +77,8 @@ const FilterComponent = ({ filterList, refetch, onClose }) => {
                 onChange: (e, lol) => onChange(e, lol, index)
               }}
             />}
-          {filterItem.type === 'select' && <select className='select1' name="value" onChange={(e) => handleChange(e, index)}>
-            {filterItem.data.map((item) => <option value={item.value}>{item.label}</option>)}
+          {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" onChange={(e) => handleChange(e, index)}>
+            {filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
           </select>}
         </div>
       ))
