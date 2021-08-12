@@ -28,16 +28,16 @@ export const getNameOtype = (otype, name, patronymic, family) => {
 export const filterForPage = {
   services: [
     {
-      filter: "name", name: "Название",
+      filter: "name", name: "Название", type: "text"
     },
     {
-      filter: "client", name: "Клиент", type: "select"
+      filter: "client", name: "Клиент", type: "client"
     },
     {
       filter: "date", name: "Дата", type: "date"
     },
     {
-      filter: "price", name: "Цена",
+      filter: "price", name: "Цена", type: "text"
     },
     {
       filter: "paid", name: "Оплачено/Неоплачено", type: "select"
@@ -45,7 +45,7 @@ export const filterForPage = {
   ],
   clients: [
     {
-      filter: "name", name: "Название",
+      filter: "name", name: "Название", type: "text"
     },
     {
       filter: "otype", name: "Тип", type: "select", data: [
@@ -56,13 +56,13 @@ export const filterForPage = {
         { value: 4, label: "ЧТУП" },
         { value: 5, label: "ИНОЕ" },
         { value: 6, label: "Иностранное предприятие" }
-    ]
+      ]
     },
     {
-      filter: "phone", name: "Номер Телефона",
+      filter: "phone", name: "Номер Телефона", type: "text"
     },
     {
-      filter: "unp", name: "УНП",
+      filter: "unp", name: "УНП", type: "text"
     }
   ],
   payments: [
@@ -76,13 +76,13 @@ export const filterForPage = {
       ]
     },
     {
-      filter: "client", name: "Клиент",
+      filter: "client", name: "Клиент", type: "client"
     },
     {
       filter: "date_pay", name: "Дата", type: "date"
     },
     {
-      filter: "price", name: "Цена",
+      filter: "price", name: "Цена", type: "text"
     }
   ]
 }
