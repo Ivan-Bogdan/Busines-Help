@@ -48,8 +48,11 @@ export default class Payment extends Component {
                 );
             }}
           >
-            <option value={`CASH`}>Наличные</option>
-            <option value={`REMITTANCE`}>Денежный перевод</option>
+            <option value={`PAYMENT_ORDER`}>Платежное поручение (банк)</option>
+            <option value={`RECEIPT`}>Квитанция (наличные)</option>
+            <option value={`CHEQUE`}>Чек КСА (наличные)</option>
+            <option value={`POS`}>Терминал (по карте)</option>
+            <option value={`OTHER`}>Иное</option>
           </select>
           <img
             src={icon_delete}
@@ -69,35 +72,35 @@ export default class Payment extends Component {
           />
         </div>
 
-        {this.state.payments_type === "REMITTANCE" && (
-          <div>
-            <p className="black">Номер платежа</p>
-            <input
-              type="text"
-              placeholder="154"
-              value={this.state.payment_number}
-              onChange={(data) => {
-                this.setState({ payment_number: data.target.value });
-                if (
-                  this.state.payments_type &&
-                  this.state.date_pay &&
-                  this.state.price.price &&
-                  this.state.price.currency &&
+
+        <div>
+          <p className="black">Номер платежа</p>
+          <input
+            type="text"
+            placeholder="154"
+            value={this.state.payment_number}
+            onChange={(data) => {
+              this.setState({ payment_number: data.target.value });
+              if (
+                this.state.payments_type &&
+                this.state.date_pay &&
+                this.state.price.price &&
+                this.state.price.currency &&
+                this.state.date_pay
+              )
+                this.props.updateObjPayment(
+                  this.state.payments_type,
+                  {
+                    price: this.state.price.price,
+                    currency: this.state.price.currency,
+                  },
+                  data.target.value,
                   this.state.date_pay
-                )
-                  this.props.updateObjPayment(
-                    this.state.payments_type,
-                    {
-                      price: this.state.price.price,
-                      currency: this.state.price.currency,
-                    },
-                    data.target.value,
-                    this.state.date_pay
-                  );
-              }}
-            />
-          </div>
-        )}
+                );
+            }}
+          />
+        </div>
+
         <p className="black">Сумма</p>
         <div
           style={{

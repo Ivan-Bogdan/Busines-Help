@@ -27,8 +27,11 @@ const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
           value={payments_type}
           onChange={(data) => setPayment_type(data.target.value)}
         >
-          <option value={`CASH`}>Наличные</option>
-          <option value={`REMITTANCE`}>Денежный перевод</option>
+          <option value={`PAYMENT_ORDER`}>Платежное поручение (банк)</option>
+          <option value={`RECEIPT`}>Квитанция (наличные)</option>
+          <option value={`CHEQUE`}>Чек КСА (наличные)</option>
+          <option value={`POS`}>Терминал (по карте)</option>
+          <option value={`OTHER`}>Иное</option>
         </select>
         <img
           src={icon_delete}
@@ -47,17 +50,17 @@ const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
         />
       </div>
 
-      {payments_type === "REMITTANCE" && (
-        <div>
-          <p className="black">Номер платежа</p>
-          <input
-            type="text"
-            placeholder="154"
-            value={payment_number}
-            onChange={(data) => setPayment_number(data.target.value)}
-          />
-        </div>
-      )}
+
+      <div>
+        <p className="black">Номер платежа</p>
+        <input
+          type="text"
+          placeholder="154"
+          value={payment_number}
+          onChange={(data) => setPayment_number(data.target.value)}
+        />
+      </div>
+
       <p className="black">Сумма</p>
       <div
         style={{
@@ -119,8 +122,11 @@ const Pay = ({ data, count, index, updatePayment, payments, setPayments }) => {
           <option value="" disabled selected>
             Добавить оплату
           </option>
-          <option value={`CASH`}>Наличные</option>
-          <option value={`REMITTANCE`}>Денежный перевод</option>
+          <option value={`PAYMENT_ORDER`}>Платежное поручение (банк)</option>
+          <option value={`RECEIPT`}>Квитанция (наличные)</option>
+          <option value={`CHEQUE`}>Чек КСА (наличные)</option>
+          <option value={`POS`}>Терминал (по карте)</option>
+          <option value={`OTHER`}>Иное</option>
         </select>
       </div>
     </div>

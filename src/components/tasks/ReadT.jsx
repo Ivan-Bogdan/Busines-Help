@@ -143,59 +143,6 @@ const ReadT = ({ onClose, task }) => {
               Оплачено
             </option>
           </select>
-          {/* {task.paid === "1" && (
-            <div>
-              <Payment
-                index={-1}
-                key={-1}
-                count={this.state.countPayments}
-                updatePayment={this.updatePayments}
-                updateObjPayment={this.updateObjPayment}
-              />
-
-              {[...Array(this.state.countPayments)].map((item, index) => (
-                <div key={index}>
-                  <Payment
-                    index={index}
-                    key={index}
-                    count={this.state.countPayments}
-                    updatePayment={this.updatePayments}
-                    updateObjPayment={this.updateObjPayment}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-
-          <Doc
-            count={this.state.countDoc}
-            updateDoc={this.updateDoc}
-            updateObjDoc={this.updateObjDoc}
-            index={-1}
-            key={-1}
-          /> */}
-
-          {/* {[...Array(this.state.countDoc)].map((item, index) => (
-            <div key={index}>
-              <Doc
-                index={index}
-                key={index}
-                count={this.state.countDoc}
-                updateDoc={this.updateDoc}
-                updateObjDoc={this.updateObjDoc}
-              />
-            </div>
-          ))} */}
-          {/* 
-          <div style={{ textAlign: "center" }}>
-            <button
-              type="submit"
-              className="button5"
-              onClick={this.Create_Task}
-            >
-              СОЗДАТЬ
-            </button>
-          </div> */}
         </div>
       </form>
     </div>

@@ -43,7 +43,7 @@ export const filterForPage = {
       filter: "paid", name: "Оплачено/Неоплачено", type: "select", data: [
         { value: 0, label: "Не оплачено" },
         { value: 1, label: "Оплачено" }
-      ]
+      ] 
     }
   ],
   clients: [
