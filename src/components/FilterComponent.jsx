@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Autosuggest from 'react-autosuggest';
-import { find_client } from '../API/http';
+import { find_client, get_client } from '../API/http';
 import { getNameOtype } from '../helpers';
 import DateFilter from './filters/DateFilter';
 
@@ -11,7 +11,6 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
   const [filters, setFilters] = useState(filterList)
 
   const [client, setClient] = useState("");
-  const [clientId, setClientId] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e, index) => {
@@ -26,7 +25,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
     setFilters(newDoc);
   }
 
-  const onChange = (event, { newValue }, index) => {
+  const onChange = (event, { newValue }) => {
     setClient(newValue);
   };
 
@@ -54,6 +53,16 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
     onChange: onChange
   };
 
+  const getClient = useCallback(async (clientId) => {
+    if (clientId) {
+      const result = await get_client({
+        id: clientId,
+      });
+      const { client } = result;
+      return (client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
+    }
+  }, [])
+
   return (
     <div style={{ padding: "0 10px" }}>
       {filterList.map((filterItem, index) => (
@@ -73,9 +82,9 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
                 renderSuggestion={renderSuggestion}
                 inputProps={{
                   placeholder: "Клиент",
-                  value: client,
+                  value: client || getClient(filterItem.value),
                   name: "value",
-                  onChange: (e, lol) => onChange(e, lol, index)
+                  onChange: onChange
                 }}
               />}
             {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)}>
