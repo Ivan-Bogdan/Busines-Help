@@ -118,7 +118,7 @@ const MyServ = () => {
           <div className="container">
             {isOpenFilter && (
               <FilterComponent
-                filterList={filterList.services}
+                filterList={filterForPage.services}
                 filterListData={filters}
                 refetch={FetchData}
                 setData={setFilters}
