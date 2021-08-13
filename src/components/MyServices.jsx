@@ -118,7 +118,8 @@ const MyServ = () => {
           <div className="container">
             {isOpenFilter && (
               <FilterComponent
-                filterList={filters}
+                filterList={filterList.services}
+                filterListData={filters}
                 refetch={FetchData}
                 setData={setFilters}
                 onClose={toggleFilter}

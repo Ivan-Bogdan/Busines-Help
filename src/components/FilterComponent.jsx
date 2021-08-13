@@ -6,9 +6,9 @@ import DateFilter from './filters/DateFilter';
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
+const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose }) => {
   const [sort, setSort] = useState('')
-  const [filters, setFilters] = useState(filterList)
+  const [filters, setFilters] = useState(filterListData)
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
