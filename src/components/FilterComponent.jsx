@@ -6,7 +6,7 @@ import DateFilter from './filters/DateFilter';
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose }) => {
+const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
   const [sort, setSort] = useState('')
   const [filters, setFilters] = useState(filterList)
 
@@ -62,7 +62,7 @@ const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           <div style={{ width: "100%" }}>
             {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)} />}
-            {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} />}
+            {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} value={filterItem.value} />}
             {filterItem.type === 'client' &&
               <Autosuggest
                 name="value"
@@ -78,7 +78,7 @@ const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose
                   onChange: (e, lol) => onChange(e, lol, index)
                 }}
               />}
-            {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" onChange={(e) => handleChange(e, index)}>
+            {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)}>
               <option value="" disabled selected defaultValue>
                 {filterItem.name}
               </option>

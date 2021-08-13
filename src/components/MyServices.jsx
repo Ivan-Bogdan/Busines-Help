@@ -55,7 +55,7 @@ const MyServ = () => {
   const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
       limit,
-      sort,
+      sort: sort || "name",
       desc,
       offset: selectedTaskPage * 10,
       filters: filters || []
@@ -119,7 +119,6 @@ const MyServ = () => {
             {isOpenFilter && (
               <FilterComponent
                 filterList={filters}
-                // filterListData={filters}
                 refetch={FetchData}
                 setData={setFilters}
                 onClose={toggleFilter}
