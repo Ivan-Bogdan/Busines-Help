@@ -120,7 +120,7 @@ const MyServ = () => {
               <FilterComponent
                 filterList={filters}
                 refetch={FetchData}
-                setFilters={setFilters}
+                setData={setFilters}
                 onClose={toggleFilter}
               ></FilterComponent>
             )}

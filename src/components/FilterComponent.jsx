@@ -6,7 +6,7 @@ import DateFilter from './filters/DateFilter';
 
 const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
 
-const FilterComponent = ({ filterList, refetch, setFilters, onClose }) => {
+const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
   const [sort, setSort] = useState('')
   const [filters, setFilters] = useState(filterList)
 
@@ -92,7 +92,7 @@ const FilterComponent = ({ filterList, refetch, setFilters, onClose }) => {
         const result = filters.filter(item => item.value)
         console.log(result);
         refetch(result, sort)
-        setFilters(filters)
+        setData(filters)
         onClose()
       }}
         disabled={!sort}>Применить</button>
