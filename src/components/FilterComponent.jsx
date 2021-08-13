@@ -1,20 +1,22 @@
 import React, { useState, useCallback } from 'react';
-import { find_client, get_client } from '../API/http';
-import { getNameOtype } from '../helpers';
 import DateFilter from './filters/DateFilter';
 import FilterClient from './filters/FilterClient';
-
-
 
 const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
 
   const [sort, setSort] = useState('')
   const [filters, setFilters] = useState(filterList)
 
-  const handleChange = (e, index) => {
-    const newDoc = [...filters];
-    newDoc[index][e.target.name] = e.target.value;
-    setFilters(newDoc);
+  const handleChange = (e, index, type) => {
+    if (type === 'number') {
+      const newDoc = [...filters];
+      newDoc[index][e.target.name] = Number(e.target.value);
+      setFilters(newDoc);
+    } else {
+      const newDoc = [...filters];
+      newDoc[index][e.target.name] = e.target.value;
+      setFilters(newDoc);
+    }
   };
 
   const handleChangeDate = (value, index) => {
@@ -30,7 +32,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           <div style={{ width: "100%" }}>
-            {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)} />}
+            {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index, filterItem.type)} />}
             {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} value={filterItem.value} />}
             {filterItem.type === 'client' && <FilterClient filters={filters} setFilters={setFilters} index={index} value={filterItem.value} />}
             {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)}>
