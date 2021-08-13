@@ -23,7 +23,7 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
 
   useEffect(() => {
     if (value) getClient(value)
-  }, [])
+  }, [getClient, value])
 
   const onChange = (event, { newValue }) => {
     setClient(newValue);
