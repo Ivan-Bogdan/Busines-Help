@@ -21,10 +21,7 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
   }, [])
 
   useEffect(() => {
-    if (value) {
-      console.log("214");
-      getClient(value)
-    }
+    if (value) getClient(value)
   }, [getClient, value])
 
   useEffect(() => {
