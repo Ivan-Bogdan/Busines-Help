@@ -8,7 +8,7 @@ const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(c
 
 const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose }) => {
   const [sort, setSort] = useState('')
-  const [filters, setFilters] = useState(filterListData)
+  const [filters, setFilters] = useState(filterList)
 
   const [client, setClient] = useState("");
   const [clientId, setClientId] = useState("");
@@ -61,7 +61,7 @@ const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose
           <input type='radio' value={filterItem.filter} name="radio" onChange={({ target }) => setSort(target.value)} checked={sort === filterItem.filter ? true : false}></input>
           <p className="ellips" style={{ padding: "0 10px", width: 250 }}> {filterItem.name}</p>
           <div style={{ width: "100%" }}>
-            {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" onChange={(e) => handleChange(e, index)} />}
+            {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)} />}
             {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} />}
             {filterItem.type === 'client' &&
               <Autosuggest
@@ -89,7 +89,7 @@ const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose
       ))
       }
       <button className='button5' onClick={() => {
-        const result = filters.filter(item => item.value)
+        const result = filters.map((item) => { return { name: item.name, value: item.value } }).filter(item => item.value)
         console.log(result);
         refetch(result, sort)
         setData(filters)
