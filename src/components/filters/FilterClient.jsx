@@ -27,6 +27,14 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
     }
   }, [getClient, value])
 
+  useEffect(() => {
+    if (client === "") {
+      const newDoc = [...filters];
+      newDoc[index]["value"] = "";
+      setFilters(newDoc);
+    }
+  }, [client])
+
   const onChange = (event, { newValue }) => {
     setClient(newValue);
   };
