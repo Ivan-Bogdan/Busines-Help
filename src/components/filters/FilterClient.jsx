@@ -9,7 +9,6 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
 
   const [client, setClient] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [updateClient, setUpdateClient] = useState("")
 
   const getClient = useCallback(async (clientId) => {
     if (clientId) {
@@ -17,7 +16,7 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
         id: clientId,
       });
       const { client } = result;
-      setUpdateClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
+      setClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
     }
   }, [])
 
@@ -60,7 +59,7 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
       renderSuggestion={renderSuggestion}
       inputProps={{
         placeholder: "Клиент",
-        value: updateClient || client,
+        value: client,
         name: "value",
         onChange: onChange
       }}
