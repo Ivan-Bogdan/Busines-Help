@@ -95,7 +95,9 @@ const FilterComponent = ({ filterList, filterListData, refetch, setData, onClose
         setData(filters)
         onClose()
       }}
-        disabled={!sort}>Применить</button>
+      >
+        Применить
+      </button>
     </div >
   );
 };
