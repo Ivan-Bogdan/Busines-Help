@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const DateFilter = ({ change, index }) => {
+const DateFilter = ({ value, change, index }) => {
   const [firstDate, setFirstDate] = useState('')
   const [lastDate, setLastDate] = useState('')
 
@@ -8,6 +8,14 @@ const DateFilter = ({ change, index }) => {
     if (firstDate && lastDate)
       change([firstDate, lastDate], index)
   }, [index, firstDate, lastDate])
+
+  useEffect(() => {
+    if (value) {
+      const [first, last] = value;
+      setFirstDate(first)
+      setLastDate(last)
+    }
+  }, [value])
   return (
     <div className='flex-date' style={{ width: "100%" }}>
       <input type="date" value={firstDate} onChange={(({ target }) => setFirstDate(target.value))} />
