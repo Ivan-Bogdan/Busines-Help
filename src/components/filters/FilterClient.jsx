@@ -22,7 +22,10 @@ const FilterClient = ({ filters, setFilters, index, value }) => {
   }, [])
 
   useEffect(() => {
-    if (value) getClient(value)
+    if (value) {
+      console.log("214");
+      getClient(value)
+    }
   }, [getClient, value])
 
   const onChange = (event, { newValue }) => {
