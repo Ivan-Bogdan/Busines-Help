@@ -32,6 +32,8 @@ const MyServ = () => {
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
+  const [filters, setFilters] = useState(filterForPage.services.map(item => { return { name: item.filter, value: '' } }))
+
   useEffect(() => {
     _getFingerprint();
     FetchData();
@@ -116,8 +118,9 @@ const MyServ = () => {
           <div className="container">
             {isOpenFilter && (
               <FilterComponent
-                filterList={filterForPage.services}
+                filterList={filters}
                 refetch={FetchData}
+                setFilters={setFilters}
                 onClose={toggleFilter}
               ></FilterComponent>
             )}
