@@ -1,18 +1,15 @@
 import React, { useState, useCallback } from 'react';
-import Autosuggest from 'react-autosuggest';
 import { find_client, get_client } from '../API/http';
 import { getNameOtype } from '../helpers';
 import DateFilter from './filters/DateFilter';
+import FilterClient from './filters/FilterClient';
 
-const renderSuggestion = (client) => <span>{`${client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name)}`}</span>;
+
 
 const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
+
   const [sort, setSort] = useState('')
   const [filters, setFilters] = useState(filterList)
-
-  const [updateClient, setUpdateClient] = useState("")
-  const [client, setClient] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (e, index) => {
     const newDoc = [...filters];
@@ -26,40 +23,6 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
     setFilters(newDoc);
   }
 
-  const onChange = (event, { newValue }) => {
-    setClient(newValue);
-  };
-
-  const getSuggestionValue = (suggestion, index) => {
-    const newDoc = [...filters];
-    newDoc[index]["value"] = suggestion.id;
-    setFilters(newDoc);
-    return suggestion.full_name && getNameOtype(suggestion.otype, suggestion.full_name.name, suggestion.full_name.patronymic, suggestion.full_name.family) || suggestion.name && getNameOtype(suggestion.otype, suggestion.name)
-  };
-
-  const onSuggestionsFetchRequested = ({ value }) => {
-    find_client(value)
-      .then((responce) => {
-        setSuggestions(responce.data.clients);
-      });
-  };
-
-  const onSuggestionsClearRequested = () => {
-    setSuggestions([]);
-  };
-
-  const getClient = useCallback(async (clientId) => {
-    if (clientId) {
-      const result = await get_client({
-        id: clientId,
-      });
-      const { client } = result;
-      setUpdateClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
-    }
-  }, [])
-
-  console.log(getClient("17d3ee3b-d14d-4b52-b372-71f1ac035e10"));
-
   return (
     <div style={{ padding: "0 10px" }}>
       {filterList.map((filterItem, index) => (
@@ -69,22 +32,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
           <div style={{ width: "100%" }}>
             {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)} />}
             {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} value={filterItem.value} />}
-            {filterItem.type === 'client' && getClient(filterItem.value)}
-            {filterItem.type === 'client' &&
-              <Autosuggest
-                name="value"
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={onSuggestionsClearRequested}
-                getSuggestionValue={(suggestion) => getSuggestionValue(suggestion, index)}
-                renderSuggestion={renderSuggestion}
-                inputProps={{
-                  placeholder: "Клиент",
-                  value: updateClient || client,
-                  name: "value",
-                  onChange: onChange
-                }}
-              />}
+            {filterItem.type === 'client' && <FilterClient filters={filters} setFilters={setFilters} index={index} value={filterItem.value} />}
             {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)}>
               <option value="" disabled selected defaultValue>
                 {filterItem.name}
