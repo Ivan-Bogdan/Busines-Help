@@ -37,7 +37,7 @@ const MyServ = () => {
   useEffect(() => {
     _getFingerprint();
     FetchData();
-  }, [_getFingerprint, FetchData]);
+  }, [_getFingerprint, FetchData, selectedTaskPage]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -68,7 +68,7 @@ const MyServ = () => {
       setTasks(result.tasks);
       return setError("");
     }
-  }, []);
+  }, [selectedTaskPage]);
 
   const _getFingerprint = () => {
     if (window.requestIdleCallback) {
