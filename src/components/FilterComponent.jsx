@@ -10,6 +10,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
   const [sort, setSort] = useState('')
   const [filters, setFilters] = useState(filterList)
 
+  const [updateClient, setUpdateClient] = useState("")
   const [client, setClient] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -47,19 +48,13 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
     setSuggestions([]);
   };
 
-  const inputProps = {
-    placeholder: "Клиент",
-    value: client,
-    onChange: onChange
-  };
-
   const getClient = useCallback(async (clientId) => {
     if (clientId) {
       const result = await get_client({
         id: clientId,
       });
       const { client } = result;
-      return (client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
+      setUpdateClient(client.full_name ? getNameOtype(client.otype, client.full_name.name, client.full_name.patronymic, client.full_name.family) : getNameOtype(client.otype, client.name));
     }
   }, [])
 
@@ -74,6 +69,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
           <div style={{ width: "100%" }}>
             {filterItem.type !== 'client' && filterItem.type !== 'date' && filterItem.type !== 'select' && <input type={filterItem.type} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)} />}
             {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} value={filterItem.value} />}
+            {filterItem.type === 'client' && getClient(filterItem.value)}
             {filterItem.type === 'client' &&
               <Autosuggest
                 name="value"
@@ -84,7 +80,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
                 renderSuggestion={renderSuggestion}
                 inputProps={{
                   placeholder: "Клиент",
-                  value: getClient(filterItem.value) || client,
+                  value: updateClient || client,
                   name: "value",
                   onChange: onChange
                 }}
