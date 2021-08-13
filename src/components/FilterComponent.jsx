@@ -63,6 +63,8 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
     }
   }, [])
 
+  console.log(getClient("17d3ee3b-d14d-4b52-b372-71f1ac035e10"));
+
   return (
     <div style={{ padding: "0 10px" }}>
       {filterList.map((filterItem, index) => (
@@ -82,7 +84,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
                 renderSuggestion={renderSuggestion}
                 inputProps={{
                   placeholder: "Клиент",
-                  value: client || getClient(filterItem.value),
+                  value: getClient(filterItem.value) || client,
                   name: "value",
                   onChange: onChange
                 }}
