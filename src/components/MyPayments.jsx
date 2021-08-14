@@ -13,15 +13,17 @@ const MyPayments = () => {
   const [sort, setSort] = useState('date_pay')
   const [payments, setPayments] = useState([]);
 
+  const [filters, setFilters] = useState(filterForPage.payments.map((item) => { return { ...item, value: "" } }))
+
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
   };
 
-  const FetchData = useCallback(async (filters) => {
+  const FetchData = useCallback(async (filters, sort = "date_pay") => {
     let payload = {
       limit: 10,
       offset: 0,
-      sort: sort,
+      sort: sort || "date_pay",
       desc: true,
       filters: filters || []
     };
@@ -78,9 +80,9 @@ const MyPayments = () => {
           </div>
           {isOpenFilter && (
             <FilterComponent
-              refetchSort={setSort}
-              filterList={filterForPage.payments}
+              filterList={filters}
               refetch={FetchData}
+              setData={setFilters}
               onClose={toggleFilter}
             ></FilterComponent>
           )}

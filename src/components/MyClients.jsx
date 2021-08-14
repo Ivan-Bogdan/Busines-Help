@@ -28,11 +28,13 @@ const MyClients = () => {
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-  const FetchData = useCallback(async (filters) => {
+  const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
+
+  const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
       limit: limit,
       offset: selectedTaskPage * 10,
-      sort: sort,
+      sort: sort || "name",
       desc: desc,
       filters: filters || []
     };
@@ -87,9 +89,9 @@ const MyClients = () => {
           </div>
           {isOpenFilter && (
             <FilterComponent
-              refetchSort={setSort}
-              filterList={filterForPage.clients}
+              filterList={filters}
               refetch={FetchData}
+              setData={setFilters}
               onClose={toggleFilter}
             ></FilterComponent>
           )}
