@@ -46,7 +46,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
       ))
       }
       <button className='button5' onClick={() => {
-        const result = filters.map((item) => { return { name: item.name, value: item.value } }).filter(item => item.value)
+        const result = filters.map((item) => { return { name: item.filter, value: item.value } }).filter(item => item.value)
         console.log(result);
         refetch(result, sort)
         setData(filters)
