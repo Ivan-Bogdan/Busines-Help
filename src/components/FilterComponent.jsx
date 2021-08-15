@@ -36,7 +36,7 @@ const FilterComponent = ({ filterList, refetch, setData, sortData, setSortData, 
             {filterItem.type === 'date' && <DateFilter change={handleChangeDate} index={index} value={filterItem.value} />}
             {filterItem.type === 'client' && <FilterClient filters={filters} setFilters={setFilters} index={index} value={filterItem.value} />}
             {filterItem.type === 'select' && <select className='select1' style={{ border: "1px solid #ccc" }} name="value" value={filterItem.value} onChange={(e) => handleChange(e, index)}>
-              <option value="241" disabled selected defaultValue>
+              <option value="" disabled selected defaultValue>
                 {filterItem.name}
               </option>
               {filterItem.value !== "" && <option value="">
