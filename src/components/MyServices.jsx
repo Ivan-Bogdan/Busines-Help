@@ -122,6 +122,8 @@ const MyServ = () => {
                 refetch={FetchData}
                 setData={setFilters}
                 onClose={toggleFilter}
+                sortData={sort}
+                setSort={setSort}
               ></FilterComponent>
             )}
             {tasks.map((task, index) => (
