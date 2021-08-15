@@ -39,7 +39,7 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
               <option value="" disabled selected defaultValue>
                 {filterItem.name}
               </option>
-              {filterItem.value === "" && <option value="">
+              {filterItem.value !== "" && <option value="">
                 Сброс
               </option>}
               {filterItem.data.length && filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
