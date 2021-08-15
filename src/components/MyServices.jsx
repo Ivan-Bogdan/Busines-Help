@@ -123,7 +123,7 @@ const MyServ = () => {
                 setData={setFilters}
                 onClose={toggleFilter}
                 sortData={sort}
-                setSort={setSort}
+                setSortData={setSort}
               ></FilterComponent>
             )}
             {tasks.map((task, index) => (

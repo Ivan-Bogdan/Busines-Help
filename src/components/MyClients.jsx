@@ -94,7 +94,7 @@ const MyClients = () => {
               setData={setFilters}
               onClose={toggleFilter}
               sortData={sort}
-              setSort={setSort}
+              setSortData={setSort}
             ></FilterComponent>
           )}
           {clients.map((item, index) => (

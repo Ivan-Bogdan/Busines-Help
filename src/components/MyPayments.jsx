@@ -85,7 +85,7 @@ const MyPayments = () => {
               setData={setFilters}
               onClose={toggleFilter}
               sortData={sort}
-              setSort={setSort}
+              setSortData={setSort}
             ></FilterComponent>
           )}
           {payments.map((item, index) => (
