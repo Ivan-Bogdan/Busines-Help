@@ -34,7 +34,7 @@ const MyServ = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
-
+  console.log(tasks);
   const scrollHandler = useCallback((e) => {
     // console.log(e.target.documentElement.scrollHeight);
     // console.log(e.target.documentElement.scrollTop);
@@ -48,19 +48,22 @@ const MyServ = () => {
   }, [count, tasks])
 
   useEffect(() => {
-    try {
-      if (fetching) {
-        setSelectedTaskPage(selectedTaskPage + 1)
-        FetchData(filters)
-      }
+    if (fetching) {
+      console.log("fetch");
+      get_task_list({
+        limit,
+        sort,
+        desc,
+        offset: selectedTaskPage * 10,
+        filters: filters || []
+      }).then((responce) => {
+        console.log(responce)
+        setSelectedTaskPage(prevState => prevState + 1)
+      }).finally(() => {
+        setFetching(false)
+      })
     }
-    catch (e) {
-      console.log(e);
-    }
-    finally {
-      setFetching(false)
-    }
-  }, [fetching])
+  }, [fetching,])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
@@ -100,7 +103,7 @@ const MyServ = () => {
       setError(result.message);
     } else {
       setCount(result.count);
-      setTasks([...tasks, ...result.tasks]);
+      setTasks(result.tasks);
       return setError("");
     }
   }, [selectedTaskPage]);
