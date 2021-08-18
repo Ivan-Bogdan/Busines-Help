@@ -30,7 +30,7 @@ const MyServ = () => {
 
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
-  const [fetching, setFetching] = useState(false)
+  const [fetching, setFetching] = useState(true)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
   console.log(tasks);
