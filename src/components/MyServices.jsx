@@ -35,9 +35,6 @@ const MyServ = () => {
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
   console.log(tasks);
   const scrollHandler = useCallback((e) => {
-    // console.log(e.target.documentElement.scrollHeight);
-    // console.log(e.target.documentElement.scrollTop);
-    // console.log(window.innerHeight);
     console.log(tasks.length);
     console.log(count);
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
