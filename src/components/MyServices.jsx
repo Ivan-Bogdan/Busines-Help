@@ -50,7 +50,7 @@ const MyServ = () => {
   useEffect(() => {
     try {
       if (fetching) {
-        setSelectedTaskPage(prevState => prevState + 1)
+        setSelectedTaskPage(selectedTaskPage + 1)
         FetchData(filters)
       }
     }
