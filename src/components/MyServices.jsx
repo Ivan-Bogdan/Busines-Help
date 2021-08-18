@@ -41,7 +41,7 @@ const MyServ = () => {
   }, [count, tasks])
 
   useEffect(() => {
-    if (fetching && tasks.length < count) {
+    if (fetching) {
       get_task_list({
         limit,
         sort,
@@ -55,7 +55,7 @@ const MyServ = () => {
         setFetching(false)
       })
     }
-  }, [fetching, sort, filters, tasks, count])
+  }, [fetching, sort, filters])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
