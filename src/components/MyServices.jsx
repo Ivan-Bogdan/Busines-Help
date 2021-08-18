@@ -13,6 +13,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
+import { useLazyLoading } from "./hooks/useLazyLoading";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -33,6 +34,15 @@ const MyServ = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
+
+  const [onScroll, containerRef] = useLazyLoading({
+    onIntersection: appendItems,
+    delay: 1200
+  });
+
+  const appendItems = useCallback(() => {
+    FetchData(filters)
+  }, [FetchData, filters]);
 
   useEffect(() => {
     _getFingerprint();
@@ -65,7 +75,7 @@ const MyServ = () => {
       setError(result.message);
     } else {
       setCount(result.count);
-      setTasks(result.tasks);
+      setTasks([...tasks, result.tasks]);
       return setError("");
     }
   }, [selectedTaskPage]);
@@ -115,7 +125,7 @@ const MyServ = () => {
             </div>
             <p style={{ color: "red" }}>{error}</p>
           </div>
-          <div className="container">
+          <div className="container" ref={containerRef} onScroll={onScroll}>
             {isOpenFilter && (
               <FilterComponent
                 filterList={filters}
@@ -135,40 +145,6 @@ const MyServ = () => {
                 ></Task>
               </div>
             ))}
-            <div className={isVisible ? "block3" : "block1"} style={{
-              right: 0,
-              position: 'absolute',
-            }}>
-              {!isVisible && (
-                <div
-                  className="page_list"
-                  onClick={() => setIsVisible(!isVisible)}
-                >
-                  {selectedTaskPage + 1}
-                </div>
-              )}
-              {isVisible && (
-                <div className="block2">
-                  <ul multiple>
-                    {[...Array(Math.ceil(count / limit))].map((item, acc) => (
-                      <li
-                        key={acc}
-                        value={acc}
-                        className={
-                          acc === selectedTaskPage ? "background_grey" : null
-                        }
-                        onClick={() => {
-                          setSelectedTaskPage(acc);
-                          setIsVisible(!isVisible);
-                        }}
-                      >
-                        {acc + 1}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
           </div>
         </section>
       </main>
