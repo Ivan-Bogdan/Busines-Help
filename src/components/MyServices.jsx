@@ -49,18 +49,21 @@ const MyServ = () => {
   useEffect(() => {
     if (fetching) {
       console.log("fetch");
-      get_task_list({
-        limit,
-        sort,
-        desc,
-        offset: selectedTaskPage * 10,
-        filters: filters || []
-      }).then((responce) => {
-        setTasks([...tasks, ...responce.tasks])
-        setSelectedTaskPage(prevState => prevState + 1)
-      }).finally(() => {
-        setFetching(false)
-      })
+      if (tasks.length < count) {
+        get_task_list({
+          limit,
+          sort,
+          desc,
+          offset: selectedTaskPage * 10,
+          filters: filters || []
+        }).then((responce) => {
+          setTasks([...tasks, ...responce.tasks])
+          setSelectedTaskPage(prevState => prevState + 1)
+        }).finally(() => {
+          setFetching(false)
+        })
+      }
+
     }
   }, [fetching, selectedTaskPage, sort, filters])
 
