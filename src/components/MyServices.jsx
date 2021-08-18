@@ -38,22 +38,23 @@ const MyServ = () => {
 
   const scrollHandler = (e) => {
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
+      console.log(12323);
       setFetching(true)
     }
   }
 
   useEffect(() => {
-    if (fetching) {
-      try {
+    try {
+      if (fetching) {
         FetchData(filters)
         setSelectedTaskPage(prevState => prevState + 1)
       }
-      catch (e) {
-        console.log(e);
-      }
-      finally {
-        setFetching(false)
-      }
+    }
+    catch (e) {
+      console.log(e);
+    }
+    finally {
+      setFetching(false)
     }
   }, [fetching, FetchData, filters])
 
