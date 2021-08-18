@@ -50,7 +50,6 @@ const MyServ = () => {
   useEffect(() => {
     if (fetching) {
       console.log("fetch");
-      FetchData(filters, sort)
       get_task_list({
         limit,
         sort,
