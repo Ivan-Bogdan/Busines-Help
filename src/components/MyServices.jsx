@@ -33,12 +33,9 @@ const MyServ = () => {
   const [fetching, setFetching] = useState(true)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
-  console.log(tasks);
+
   const scrollHandler = useCallback((e) => {
-    console.log(tasks.length);
-    console.log(count);
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-      console.log(12323);
       setFetching(true)
     }
   }, [count, tasks])
@@ -67,11 +64,6 @@ const MyServ = () => {
       document.removeEventListener('scroll', scrollHandler)
     }
   }, [fetching])
-
-  // useEffect(() => {
-  //   _getFingerprint();
-  //   FetchData();
-  // }, [_getFingerprint, FetchData]);
 
   const toggleModal = () => {
     setModal(!modal);
