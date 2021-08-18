@@ -48,21 +48,19 @@ const MyServ = () => {
 
   useEffect(() => {
     if (fetching) {
-      console.log("fetch");
-      if (tasks.length < count) {
-        get_task_list({
-          limit,
-          sort,
-          desc,
-          offset: selectedTaskPage * 10,
-          filters: filters || []
-        }).then((responce) => {
-          setTasks([...tasks, ...responce.tasks])
-          setSelectedTaskPage(prevState => prevState + 1)
-        }).finally(() => {
-          setFetching(false)
-        })
-      }
+      console.log("fetching");
+      get_task_list({
+        limit,
+        sort,
+        desc,
+        offset: selectedTaskPage * 10,
+        filters: filters || []
+      }).then((responce) => {
+        setTasks([...tasks, ...responce.tasks])
+        setSelectedTaskPage(prevState => prevState + 1)
+      }).finally(() => {
+        setFetching(false)
+      })
     }
   }, [fetching, selectedTaskPage, sort, filters])
 
@@ -73,10 +71,10 @@ const MyServ = () => {
     }
   }, [fetching])
 
-  useEffect(() => {
-    _getFingerprint();
-    FetchData();
-  }, [_getFingerprint, FetchData]);
+  // useEffect(() => {
+  //   _getFingerprint();
+  //   FetchData();
+  // }, [_getFingerprint, FetchData]);
 
   const toggleModal = () => {
     setModal(!modal);
