@@ -18,8 +18,6 @@ export default class Payment extends Component {
   }
 
   render() {
-    const props = this.props;
-    console.log(props);
     return (
       <div className="p5-background">
         <p className="black">Вид оплаты</p>
