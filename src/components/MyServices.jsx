@@ -50,6 +50,7 @@ const MyServ = () => {
   useEffect(() => {
     if (fetching) {
       console.log("fetch");
+      FetchData(filters, sort)
       get_task_list({
         limit,
         sort,
@@ -57,13 +58,13 @@ const MyServ = () => {
         offset: selectedTaskPage * 10,
         filters: filters || []
       }).then((responce) => {
-        console.log(responce)
+        setTasks(...tasks, ...responce.tasks)
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
       })
     }
-  }, [fetching,])
+  }, [fetching, tasks, filters, sort])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
