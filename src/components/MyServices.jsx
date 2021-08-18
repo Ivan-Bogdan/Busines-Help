@@ -77,7 +77,7 @@ const MyServ = () => {
       limit,
       sort: sort || "name",
       desc,
-      offset: selectedTaskPage * 10,
+      offset: 0,
       filters: filters || []
     };
     const result = await get_task_list(payload);
