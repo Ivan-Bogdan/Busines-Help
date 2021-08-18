@@ -41,7 +41,7 @@ const MyServ = () => {
     // console.log(window.innerHeight);
     console.log(tasks.length);
     console.log(count);
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
       console.log(12323);
       setFetching(true)
     }
