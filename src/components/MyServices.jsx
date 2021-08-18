@@ -35,7 +35,7 @@ const MyServ = () => {
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
-  const scrollHandler = useCallback((e, tasks, count) => {
+  const scrollHandler = useCallback((e, tasks = tasks, count = count) => {
     // console.log(e.target.documentElement.scrollHeight);
     // console.log(e.target.documentElement.scrollTop);
     // console.log(window.innerHeight);
@@ -45,7 +45,7 @@ const MyServ = () => {
       console.log(12323);
       setFetching(true)
     }
-  }, [])
+  }, [count, tasks])
 
   useEffect(() => {
     try {
@@ -62,10 +62,10 @@ const MyServ = () => {
     }
   }, [fetching, FetchData, filters])
 
-  useEffect((e) => {
-    document.addEventListener("scroll", scrollHandler(e, tasks, count))
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler)
     return () => {
-      document.removeEventListener('scroll', scrollHandler(e, tasks, count))
+      document.removeEventListener('scroll', scrollHandler)
     }
   }, [])
 
