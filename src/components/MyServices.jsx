@@ -13,7 +13,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
-import { useLazyLoading } from "./hooks/useLazyLoading";
+// import { useLazyLoading } from "./hooks/useLazyLoading";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -31,18 +31,50 @@ const MyServ = () => {
 
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
+  const [fetching, setFetching] = useState(true)
   const [isVisible, setIsVisible] = useState(false);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
-  const [onScroll, containerRef] = useLazyLoading({
-    onIntersection: appendItems,
-    delay: 1200
-  });
+  const scrollHandler = (e) => {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
+      setFetching(true)
+    }
+  }
 
-  const appendItems = useCallback(() => {
-    FetchData(filters)
-  }, [FetchData, filters]);
+  useEffect(async () => {
+    if (fetching) {
+      try {
+        const result = await get_task_list({
+          limit,
+          sort: sort || "name",
+          desc,
+          offset: selectedTaskPage * 10,
+          filters: filters || []
+        });
+        if (result.message) {
+          setError(result.message);
+        } else {
+          setTasks([...tasks, ...result.tasks]);
+          setSelectedTaskPage(selectedTaskPage + 1)
+          return setError("");
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+      finally {
+        setFetching(false)
+      }
+    }
+  }, [fetching])
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler)
+    return () => {
+      document.removeEventListener('scroll', scrollHandler)
+    }
+  }, [])
 
   useEffect(() => {
     _getFingerprint();
@@ -75,7 +107,7 @@ const MyServ = () => {
       setError(result.message);
     } else {
       setCount(result.count);
-      setTasks([...tasks, ...result.tasks]);
+      setTasks(result.tasks);
       return setError("");
     }
   }, [selectedTaskPage]);
@@ -125,7 +157,7 @@ const MyServ = () => {
             </div>
             <p style={{ color: "red" }}>{error}</p>
           </div>
-          <div className="container" ref={containerRef} onScroll={onScroll}>
+          <div className="container">
             {isOpenFilter && (
               <FilterComponent
                 filterList={filters}
