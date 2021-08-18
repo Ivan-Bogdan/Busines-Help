@@ -5,7 +5,9 @@ const DateFilter = ({ value, change, index }) => {
   const [lastDate, setLastDate] = useState('')
 
   useEffect(() => {
-    change([firstDate, lastDate], index)
+    if (firstDate && lastDate)
+      change([firstDate, lastDate], index)
+    else change("", index)
   }, [index, firstDate, lastDate])
 
   useEffect(() => {
