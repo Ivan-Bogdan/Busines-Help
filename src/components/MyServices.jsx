@@ -47,7 +47,7 @@ const MyServ = () => {
         sort,
         desc,
         offset: selectedTaskPage * 10,
-        filters: filters || []
+        filters: filters.filter(item => item.value) || []
       }).then((responce) => {
         setTasks([...tasks, ...responce.tasks])
         setSelectedTaskPage(prevState => prevState + 1)
