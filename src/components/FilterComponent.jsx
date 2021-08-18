@@ -2,9 +2,9 @@ import React, { useState, useCallback } from 'react';
 import DateFilter from './filters/DateFilter';
 import FilterClient from './filters/FilterClient';
 
-const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
+const FilterComponent = ({ filterList, refetch, setData, sortData, setSortData, onClose }) => {
 
-  const [sort, setSort] = useState('')
+  const [sort, setSort] = useState(sortData)
   const [filters, setFilters] = useState(filterList)
 
   const handleChange = (e, index, type) => {
@@ -39,6 +39,9 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
               <option value="" disabled selected defaultValue>
                 {filterItem.name}
               </option>
+              {filterItem.value !== "" && <option value="">
+                Сброс
+              </option>}
               {filterItem.data.length && filterItem.data.map((item, index) => <option key={index} value={item.value}>{item.label}</option>)}
             </select>}
           </div>
@@ -46,10 +49,11 @@ const FilterComponent = ({ filterList, refetch, setData, onClose }) => {
       ))
       }
       <button className='button5' onClick={() => {
-        const result = filters.map((item) => { return { name: item.name, value: item.value } }).filter(item => item.value)
+        const result = filters.map((item) => { return { name: item.filter, value: item.value } }).filter(item => item.value)
         console.log(result);
         refetch(result, sort)
         setData(filters)
+        setSortData(sort)
         onClose()
       }}
       >

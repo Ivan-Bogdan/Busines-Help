@@ -93,6 +93,8 @@ const MyClients = () => {
               refetch={FetchData}
               setData={setFilters}
               onClose={toggleFilter}
+              sortData={sort}
+              setSortData={setSort}
             ></FilterComponent>
           )}
           {clients.map((item, index) => (

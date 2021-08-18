@@ -84,6 +84,8 @@ const MyPayments = () => {
               refetch={FetchData}
               setData={setFilters}
               onClose={toggleFilter}
+              sortData={sort}
+              setSortData={setSort}
             ></FilterComponent>
           )}
           {payments.map((item, index) => (
