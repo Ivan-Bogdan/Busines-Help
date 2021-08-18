@@ -221,8 +221,11 @@ export default class Payment extends Component {
             <option value="" disabled selected>
               Добавить оплату
             </option>
-            <option value={`CASH`}>Наличные</option>
-            <option value={`REMITTANCE`}>Денежный перевод</option>
+            <option value={`PAYMENT_ORDER`}>Платежное поручение (банк)</option>
+            <option value={`RECEIPT`}>Квитанция (наличные)</option>
+            <option value={`CHEQUE`}>Чек КСА (наличные)</option>
+            <option value={`POS`}>Терминал (по карте)</option>
+            <option value={`OTHER`}>Иное</option>
           </select>
         </div>
       </div>
