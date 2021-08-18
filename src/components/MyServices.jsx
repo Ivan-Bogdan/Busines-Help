@@ -76,7 +76,7 @@ const MyServ = () => {
   useEffect(() => {
     _getFingerprint();
     FetchData();
-  }, [_getFingerprint, FetchData, selectedTaskPage]);
+  }, [_getFingerprint, FetchData]);
 
   const toggleModal = () => {
     setModal(!modal);
