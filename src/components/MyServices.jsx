@@ -42,23 +42,11 @@ const MyServ = () => {
     }
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     if (fetching) {
       try {
-        const result = await get_task_list({
-          limit,
-          sort: sort || "name",
-          desc,
-          offset: selectedTaskPage * 10,
-          filters: filters || []
-        });
-        if (result.message) {
-          setError(result.message);
-        } else {
-          setTasks([...tasks, ...result.tasks]);
-          setSelectedTaskPage(selectedTaskPage + 1)
-          return setError("");
-        }
+        FetchData(filters)
+        setSelectedTaskPage(prevState => prevState + 1)
       }
       catch (e) {
         console.log(e);
@@ -67,7 +55,7 @@ const MyServ = () => {
         setFetching(false)
       }
     }
-  }, [fetching])
+  }, [fetching, FetchData, filters])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
@@ -107,7 +95,7 @@ const MyServ = () => {
       setError(result.message);
     } else {
       setCount(result.count);
-      setTasks(result.tasks);
+      setTasks([...tasks, ...result.tasks]);
       return setError("");
     }
   }, [selectedTaskPage]);
