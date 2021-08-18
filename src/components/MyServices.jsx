@@ -63,7 +63,7 @@ const MyServ = () => {
         setFetching(false)
       })
     }
-  }, [fetching, tasks, filters, sort])
+  }, [fetching, selectedTaskPage])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
