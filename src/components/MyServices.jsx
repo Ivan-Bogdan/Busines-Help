@@ -30,8 +30,7 @@ const MyServ = () => {
 
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
-  const [fetching, setFetching] = useState(true)
-  const [isVisible, setIsVisible] = useState(false);
+  const [fetching, setFetching] = useState(false)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
   console.log(tasks);
@@ -63,14 +62,14 @@ const MyServ = () => {
         setFetching(false)
       })
     }
-  }, [fetching, selectedTaskPage])
+  }, [fetching, selectedTaskPage, sort, filters])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
     return () => {
       document.removeEventListener('scroll', scrollHandler)
     }
-  }, [])
+  }, [fetching])
 
   useEffect(() => {
     _getFingerprint();
@@ -83,11 +82,6 @@ const MyServ = () => {
 
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
-  };
-
-  const callbackFilter = (desc, sort) => {
-    setDesc(desc);
-    setSort(sort);
   };
 
   const FetchData = useCallback(async (filters, sort = "name") => {
