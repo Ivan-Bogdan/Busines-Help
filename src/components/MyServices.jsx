@@ -57,7 +57,7 @@ const MyServ = () => {
         offset: selectedTaskPage * 10,
         filters: filters || []
       }).then((responce) => {
-        setTasks(...tasks, ...responce.tasks)
+        setTasks([...tasks, ...responce.tasks])
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
