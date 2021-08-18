@@ -70,7 +70,7 @@ const MyServ = () => {
     return () => {
       document.removeEventListener('scroll', scrollHandler)
     }
-  }, [fetching])
+  }, [])
 
   useEffect(() => {
     _getFingerprint();
