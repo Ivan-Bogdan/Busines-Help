@@ -13,7 +13,6 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
-// import { useLazyLoading } from "./hooks/useLazyLoading";
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -37,10 +36,13 @@ const MyServ = () => {
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
   const scrollHandler = (e) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
-      console.log(12323);
-      setFetching(true)
-    }
+    console.log(e.target.documentElement.scrollHeight);
+    console.log(e.target.documentElement.scrollTop);
+    console.log(window.innerHeight);
+    // if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
+    //   console.log(12323);
+    //   setFetching(true)
+    // }
   }
 
   useEffect(() => {
