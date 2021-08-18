@@ -42,7 +42,6 @@ const MyServ = () => {
 
   useEffect(() => {
     if (fetching) {
-      console.log("fetching");
       get_task_list({
         limit,
         sort,
