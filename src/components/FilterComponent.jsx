@@ -52,7 +52,7 @@ const FilterComponent = ({ filterList, refetch, setData, sortData, setSortData, 
         const result = filters.map((item) => { return { name: item.filter, value: item.value } }).filter(item => item.value)
         console.log(result);
         refetch(result, sort)
-        setData(filters)
+        setData(result)
         setSortData(sort)
         onClose()
       }}
