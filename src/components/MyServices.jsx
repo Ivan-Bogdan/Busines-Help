@@ -41,7 +41,8 @@ const MyServ = () => {
     // console.log(window.innerHeight);
     console.log(tasks.length);
     console.log(count);
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && tasks.length < count) {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+      setSelectedTaskPage(prevState => prevState + 1)
       console.log(12323);
       setFetching(true)
     }
@@ -51,7 +52,6 @@ const MyServ = () => {
     try {
       if (fetching) {
         FetchData(filters)
-        setSelectedTaskPage(prevState => prevState + 1)
       }
     }
     catch (e) {
