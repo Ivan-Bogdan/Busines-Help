@@ -42,7 +42,6 @@ const MyServ = () => {
     console.log(tasks.length);
     console.log(count);
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-      setSelectedTaskPage(prevState => prevState + 1)
       console.log(12323);
       setFetching(true)
     }
@@ -51,6 +50,7 @@ const MyServ = () => {
   useEffect(() => {
     try {
       if (fetching) {
+        setSelectedTaskPage(prevState => prevState + 1)
         FetchData(filters)
       }
     }
