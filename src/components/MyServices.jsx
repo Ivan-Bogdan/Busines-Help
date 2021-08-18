@@ -75,6 +75,7 @@ const MyServ = () => {
       setError(result.message);
     } else {
       setCount(result.count);
+      console.log([...tasks, result.tasks]);
       setTasks([...tasks, result.tasks]);
       return setError("");
     }
