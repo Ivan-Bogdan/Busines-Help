@@ -63,8 +63,7 @@ const MyServ = () => {
   }, [fetching, FetchData, filters])
 
   useEffect(() => {
-    if (fetching)
-      document.addEventListener("scroll", scrollHandler)
+    document.addEventListener("scroll", scrollHandler)
     return () => {
       document.removeEventListener('scroll', scrollHandler)
     }
