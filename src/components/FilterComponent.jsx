@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import DateFilter from './filters/DateFilter';
 import FilterClient from './filters/FilterClient';
 
-const FilterComponent = ({ filterList, refetch, setData, sortData, setSortData, onClose }) => {
+const FilterComponent = ({ filterList, refetch, sortData, setSortData, onClose }) => {
 
   const [sort, setSort] = useState(sortData)
   const [filters, setFilters] = useState(filterList)
@@ -52,7 +52,6 @@ const FilterComponent = ({ filterList, refetch, setData, sortData, setSortData, 
         const result = filters.map((item) => { return { name: item.filter, value: item.value } }).filter(item => item.value)
         console.log(result);
         refetch(result, sort)
-        setData(result)
         setSortData(sort)
         onClose()
       }}
