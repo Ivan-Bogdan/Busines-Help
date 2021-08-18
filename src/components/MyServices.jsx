@@ -63,7 +63,6 @@ const MyServ = () => {
           setFetching(false)
         })
       }
-
     }
   }, [fetching, selectedTaskPage, sort, filters])
 
