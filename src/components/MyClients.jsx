@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import styled from "styled-components";
 import {
   create_client,
   delete_client,
@@ -11,6 +12,23 @@ import * as FPJS from "@fingerprintjs/fingerprintjs";
 import ClientItem from "./clients/ClientItem";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
+import { useLazyLoading } from "./hooks/useLazyLoading";
+
+
+const Container = styled.div`
+ 	max-width: 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0 auto;
+ @media screen and (max-width: /* 788 */820px) {
+  max-width: 50%;
+ }
+ @media screen and (max-width: 1315px) {
+  max-width: 100%;
+ }
+ @media screen and (min-width: 1440px) {
+  max-width: 1280px;
+ }
+`;
 
 const getHashable = (components) => {
   return components.map((component) => component.value).join("");
@@ -27,8 +45,31 @@ const MyClients = () => {
   const [limit] = useState(10);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
+  const [fetching, setFetching] = useState(true)
 
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
+
+  const appendItems = useCallback(() => {
+    get_client_list({
+      limit,
+      sort,
+      desc,
+      offset: selectedTaskPage * 10,
+      filters: filters.filter(item => item.value) || []
+    }).then((responce) => {
+      setClients([...clients, ...responce.clients])
+      setSelectedTaskPage(prevState => prevState + 1)
+    }).finally(() => {
+      setFetching(false)
+    })
+  }, [sort, filters]);
+
+  const [onScroll, containerRef] = useLazyLoading({
+    onIntersection: appendItems,
+    delay: 1200
+  });
+
+
 
   const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
@@ -73,8 +114,8 @@ const MyClients = () => {
   return (
     <div className='app'>
       <Navbar />
-      <section className='main'>
-        <div className="container">
+      <section className='main' >
+        <Container ref={containerRef} onScroll={onScroll}>
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
@@ -105,7 +146,7 @@ const MyClients = () => {
               />
             </div>
           ))}
-        </div>
+        </Container>
       </section>
       <Footer />
       <div className="App">

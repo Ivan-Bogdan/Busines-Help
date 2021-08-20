@@ -21,6 +21,7 @@
     "react-scripts": "1.0.17",
     "react-select": "^3.2.0",
     "react-text-mask": "^5.4.3",
+    "styled-components": "^5.3.0",
     "ua-parser-js": "^0.7.22"
   },
   "scripts": {
