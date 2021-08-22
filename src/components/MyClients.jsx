@@ -68,6 +68,8 @@ const MyClients = () => {
     onIntersection: appendItems,
     delay: 1200
   });
+  console.log(containerRef);
+  console.log(onScroll);
 
 
 
