@@ -117,7 +117,10 @@ const MyClients = () => {
     <div className='app'>
       <Navbar />
       <section className='main' >
-        <Container ref={containerRef} onScroll={onScroll}>
+        <Container ref={containerRef} onScroll={() => {
+          console.log(123);
+          return onScroll
+        }}>
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
