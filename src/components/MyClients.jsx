@@ -117,8 +117,8 @@ const MyClients = () => {
     <div className='app'>
       <Navbar />
       <section className='main' >
-        <Container ref={containerRef} onScroll={() => {
-          console.log(123);
+        <Container ref={containerRef} onScroll={(e) => {
+          console.log(e);
           return onScroll
         }}>
           <div className="flex" style={{ marginBottom: "20px" }}>
