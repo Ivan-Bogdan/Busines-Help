@@ -7,6 +7,8 @@ export function useLazyLoading({
   marginFromBottom = 10
 }) {
   const containerRef = useRef(null);
+  console.log(containerRef);
+  console.log(onIntersection);
 
   const onScroll = useCallback(
     throttle(() => {
