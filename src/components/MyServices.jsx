@@ -95,7 +95,7 @@ const MyServ = () => {
 
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });
-    if (result.message) {
+    if (result.message !== 'OK') {
       console.log(result.message);
     }
     FetchData();
