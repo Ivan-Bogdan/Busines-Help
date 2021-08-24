@@ -52,6 +52,7 @@ const MyServ = () => {
         setCount(responce.count)
         if (isRefetch) {
           setTasks(responce.tasks)
+          console.log(1233);
         } else {
           setTasks([...tasks, ...responce.tasks])
         }
