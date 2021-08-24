@@ -114,13 +114,10 @@ const MyClients = () => {
   }, []);
 
   return (
-    <div className='app'>
+    <div className='app' ref={containerRef} onScroll={onScroll}>
       <Navbar />
       <section className='main' >
-        <Container ref={containerRef} onScroll={(e) => {
-          console.log(e);
-          return onScroll
-        }}>
+        <div className="container">
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
@@ -151,7 +148,7 @@ const MyClients = () => {
               />
             </div>
           ))}
-        </Container>
+        </div>
       </section>
       <Footer />
       <div className="App">
