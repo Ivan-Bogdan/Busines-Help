@@ -75,6 +75,7 @@ const MyServ = () => {
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
     setFetching(true)
+    setTasks([])
   }, []);
 
   const deleteTask = async (task) => {
