@@ -73,24 +73,10 @@ const MyServ = () => {
     setOpenFilter(!isOpenFilter);
   };
 
-  const FetchData = useCallback(async (filters, sort = "name") => {
-    let payload = {
-      limit,
-      sort: sort || "name",
-      desc,
-      offset: 0,
-      filters: filters || []
-    };
-    const result = await get_task_list(payload);
-    if (result.message) {
-      setError(result.message);
-    } else {
-      setSelectedTaskPage(1);
-      setCount(result.count);
-      setTasks(result.tasks);
-      return setError("");
-    }
-  }, [selectedTaskPage]);
+  const FetchData = useCallback(() => {
+    setSelectedTaskPage(0)
+    setFetching(true)
+  }, []);
 
   const _getFingerprint = () => {
     if (window.requestIdleCallback) {
