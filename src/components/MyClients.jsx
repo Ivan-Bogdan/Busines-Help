@@ -35,8 +35,6 @@ const getHashable = (components) => {
 };
 
 const MyClients = () => {
-  const [error, setError] = useState(false);
-  const [fingerprint, setFingerprint] = useState("");
   const [count, setCount] = useState(0);
   const [isCreateClient, setCreateClient] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
@@ -95,7 +93,6 @@ const MyClients = () => {
       setSelectedTaskPage(1);
       setCount(result.count);
       setClients(result.clients);
-      return setError("");
     }
   }, [sort]);
 

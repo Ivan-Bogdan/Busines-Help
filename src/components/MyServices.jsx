@@ -20,7 +20,6 @@ const getHashable = (components) => {
 
 const MyServ = () => {
   const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(false);
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [limit] = useState(10);
@@ -78,23 +77,6 @@ const MyServ = () => {
     setFetching(true)
   }, []);
 
-  const _getFingerprint = () => {
-    if (window.requestIdleCallback) {
-      requestIdleCallback(() => {
-        FPJS.get((components) => {
-          const hash = FPJS.x64hash128(getHashable(components));
-          localStorage.setItem("fingerprint", hash);
-        });
-      });
-    } else {
-      setTimeout(() => {
-        FPJS.get((components) => {
-          console.log(FPJS.x64hash128(getHashable(components)));
-        });
-      }, 500);
-    }
-  };
-
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });
     if (result.message) {
@@ -121,7 +103,6 @@ const MyServ = () => {
                 <button className="sorting" onClick={toggleFilter}></button>
               </div>
             </div>
-            <p style={{ color: "red" }}>{error}</p>
           </div>
           <div className="container">
             {isOpenFilter && (
