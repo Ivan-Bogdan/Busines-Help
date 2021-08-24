@@ -91,7 +91,7 @@ const MyServ = () => {
     setFetching(true)
     setTasks([])
     setIsRefetch(true)
-  }, []);
+  }, [isRefetch, tasks, fetching, selectedTaskPage]);
 
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });
