@@ -58,6 +58,7 @@ const MyServ = () => {
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
+        setIsRefetch(false)
       })
     }
   }, [fetching, sort, filters, isRefetch])
