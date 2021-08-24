@@ -49,25 +49,36 @@ const MyClients = () => {
 
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
 
-  const appendItems = useCallback(() => {
-    get_client_list({
-      limit,
-      sort,
-      desc,
-      offset: selectedTaskPage * 10,
-      filters: filters.filter(item => item.value) || []
-    }).then((responce) => {
-      setClients([...clients, ...responce.clients])
-      setSelectedTaskPage(prevState => prevState + 1)
-    }).finally(() => {
-      setFetching(false)
-    })
-  }, [sort, filters]);
+  const scrollHandler = useCallback((e) => {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
+      setFetching(true)
+    }
+  }, [count, tasks, selectedTaskPage])
 
-  const [onScroll, containerRef] = useLazyLoading({
-    onIntersection: appendItems,
-    delay: 1200
-  });
+  useEffect(() => {
+    if (fetching) {
+      get_client_list({
+        limit,
+        sort,
+        desc,
+        offset: selectedTaskPage * 10,
+        filters: filters.filter(item => item.value) || []
+      }).then((responce) => {
+        setCount(responce.count)
+        setClients([...tasks, ...responce.clients])
+        setSelectedTaskPage(prevState => prevState + 1)
+      }).finally(() => {
+        setFetching(false)
+      })
+    }
+  }, [fetching, sort, filters])
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler)
+    return () => {
+      document.removeEventListener('scroll', scrollHandler)
+    }
+  }, [fetching])
 
   const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
@@ -104,10 +115,6 @@ const MyClients = () => {
     },
     [clients]
   );
-
-  useEffect(() => {
-    FetchData();
-  }, []);
 
   return (
     <div className='app'>
