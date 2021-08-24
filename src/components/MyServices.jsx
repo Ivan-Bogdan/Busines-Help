@@ -63,7 +63,7 @@ const MyServ = () => {
         setIsRefetch(false)
       })
     },
-    [sort, filters, selectedTaskPage, tasks, isRefetch]
+    [sort, filters, selectedTaskPage, tasks]
   )
 
   useEffect(() => {
