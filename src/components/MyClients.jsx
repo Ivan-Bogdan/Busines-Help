@@ -114,13 +114,13 @@ const MyClients = () => {
   }, []);
 
   return (
-    <div className='app' ref={containerRef} onScroll={(e) => {
-      console.log(e);
-      onScroll
-    }}>
+    <div className='app'>
       <Navbar />
       <section className='main' >
-        <div className="container" style={{ overflowY: 'scroll' }}>
+        <div className="container" style={{ overflowY: 'scroll' }} ref={containerRef} onScroll={(e) => {
+          console.log(e);
+          onScroll
+        }}>
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
