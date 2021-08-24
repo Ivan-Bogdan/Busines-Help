@@ -114,7 +114,10 @@ const MyClients = () => {
   }, []);
 
   return (
-    <div className='app' ref={containerRef} onScroll={onScroll}>
+    <div className='app' ref={containerRef} onScroll={(e) => {
+      console.log(e);
+      onScroll
+    }}>
       <Navbar />
       <section className='main' >
         <div className="container">
