@@ -61,7 +61,7 @@ const MyServ = () => {
         setIsRefetch(false)
       })
     }
-  }, [fetching, sort, filters, isRefetch])
+  }, [fetching, sort, filters])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
