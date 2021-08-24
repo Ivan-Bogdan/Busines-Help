@@ -32,6 +32,8 @@ const MyServ = () => {
   const [isRefetch, setIsRefetch] = useState(false)
   const [fetching, setFetching] = useState(true)
 
+  const [resultFilter, setResultFilter] = useState([])
+
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
   const scrollHandler = useCallback((e) => {
@@ -47,10 +49,9 @@ const MyServ = () => {
         sort,
         desc,
         offset: selectedTaskPage * 10,
-        filters: filters.filter(item => item.value) || []
+        filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        console.log(isRefetch);
         if (isRefetch) {
           setTasks(responce.tasks)
           console.log(1233);
@@ -63,7 +64,7 @@ const MyServ = () => {
         setIsRefetch(false)
       })
     },
-    [sort, filters, selectedTaskPage, tasks]
+    [sort, filters, selectedTaskPage, tasks, resultFilter, isRefetch]
   )
 
   useEffect(() => {
@@ -129,6 +130,7 @@ const MyServ = () => {
                 onClose={toggleFilter}
                 sortData={sort}
                 setSortData={setSort}
+                setResultFilter={setResultFilter}
               ></FilterComponent>
             )}
             {tasks.map((task, index) => (
