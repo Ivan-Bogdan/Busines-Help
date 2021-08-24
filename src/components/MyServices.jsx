@@ -29,6 +29,7 @@ const MyServ = () => {
 
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
+  const [isRefetch, setIsRefetch] = useState(false)
   const [fetching, setFetching] = useState(true)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
@@ -49,13 +50,17 @@ const MyServ = () => {
         filters: filters.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        setTasks([...tasks, ...responce.tasks])
+        if (isRefetch) {
+          setTasks(responce.tasks)
+        } else {
+          setTasks([...tasks, ...responce.tasks])
+        }
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
       })
     }
-  }, [fetching, sort, filters])
+  }, [fetching, sort, filters, isRefetch])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
@@ -76,6 +81,7 @@ const MyServ = () => {
     setSelectedTaskPage(0)
     setFetching(true)
     setTasks([])
+    setIsRefetch(true)
   }, []);
 
   const deleteTask = async (task) => {
