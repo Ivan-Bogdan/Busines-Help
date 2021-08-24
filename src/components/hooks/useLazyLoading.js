@@ -12,6 +12,7 @@ export function useLazyLoading({
       const containerScrollTop = containerRef.current.scrollTop;
       const containerHeight = containerRef.current.clientHeight;
       const scrollHeight = containerRef.current.scrollHeight;
+      console.log(containerScrollTop);
       if (
         scrollHeight -
         containerScrollTop -

@@ -68,10 +68,6 @@ const MyClients = () => {
     onIntersection: appendItems,
     delay: 1200
   });
-  console.log(containerRef);
-  console.log(onScroll);
-
-
 
   const FetchData = useCallback(async (filters, sort = "name") => {
     let payload = {
