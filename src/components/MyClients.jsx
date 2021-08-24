@@ -92,6 +92,7 @@ const MyClients = () => {
     if (result.message) {
       setError(result.message);
     } else {
+      setSelectedTaskPage(1);
       setCount(result.count);
       setClients(result.clients);
       return setError("");

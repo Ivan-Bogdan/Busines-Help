@@ -85,6 +85,7 @@ const MyServ = () => {
     if (result.message) {
       setError(result.message);
     } else {
+      setSelectedTaskPage(1);
       setCount(result.count);
       setTasks(result.tasks);
       return setError("");
