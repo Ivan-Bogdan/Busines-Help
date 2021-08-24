@@ -120,7 +120,7 @@ const MyClients = () => {
     }}>
       <Navbar />
       <section className='main' >
-        <div className="container">
+        <div className="container" style={{ overflowY: 'scroll' }}>
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
