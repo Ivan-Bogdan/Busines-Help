@@ -40,8 +40,8 @@ const MyServ = () => {
     }
   }, [count, tasks, selectedTaskPage])
 
-  useEffect(() => {
-    if (fetching) {
+  const taskListFn = useCallback(
+    () => {
       get_task_list({
         limit,
         sort,
@@ -61,8 +61,15 @@ const MyServ = () => {
         setFetching(false)
         setIsRefetch(false)
       })
+    },
+    [sort, filters, selectedTaskPage, tasks, isRefetch]
+  )
+
+  useEffect(() => {
+    if (fetching) {
+      taskListFn()
     }
-  }, [fetching, sort, filters])
+  }, [fetching])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
