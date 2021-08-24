@@ -88,7 +88,7 @@ const MyClients = () => {
     };
     const result = await get_client_list(payload);
     if (result.message) {
-      setError(result.message);
+      console.log(result.message);
     } else {
       setSelectedTaskPage(1);
       setCount(result.count);
