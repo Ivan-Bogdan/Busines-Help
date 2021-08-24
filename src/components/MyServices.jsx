@@ -29,7 +29,7 @@ const MyServ = () => {
 
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
-  const [isRefetch, setIsRefetch] = useState(false)
+  // const [isRefetch, setIsRefetch] = useState(false)
   const [fetching, setFetching] = useState(true)
 
   const [resultFilter, setResultFilter] = useState([])
@@ -52,19 +52,13 @@ const MyServ = () => {
         filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        if (isRefetch) {
-          setTasks(responce.tasks)
-          console.log(1233);
-        } else {
-          setTasks([...tasks, ...responce.tasks])
-        }
+        setTasks([...tasks, ...responce.tasks])
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
-        setIsRefetch(false)
       })
     },
-    [sort, filters, selectedTaskPage, tasks, resultFilter, isRefetch]
+    [sort, filters, selectedTaskPage, tasks, resultFilter]
   )
 
   useEffect(() => {
@@ -92,8 +86,7 @@ const MyServ = () => {
     setSelectedTaskPage(0)
     setFetching(true)
     setTasks([])
-    setIsRefetch(true)
-  }, [isRefetch, tasks, fetching, selectedTaskPage]);
+  }, []);
 
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });
