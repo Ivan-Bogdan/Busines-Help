@@ -53,7 +53,7 @@ const MyClients = () => {
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
       setFetching(true)
     }
-  }, [count, tasks, selectedTaskPage])
+  }, [count, clients, selectedTaskPage])
 
   useEffect(() => {
     if (fetching) {
@@ -65,7 +65,7 @@ const MyClients = () => {
         filters: filters.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        setClients([...tasks, ...responce.clients])
+        setClients([...clients, ...responce.clients])
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
@@ -120,10 +120,7 @@ const MyClients = () => {
     <div className='app'>
       <Navbar />
       <section className='main' >
-        <div className="container" style={{ overflowY: 'scroll' }} ref={containerRef} onScroll={(e) => {
-          console.log(e);
-          onScroll
-        }}>
+        <div className="container">
           <div className="flex" style={{ marginBottom: "20px" }}>
             <button
               type="submit"
