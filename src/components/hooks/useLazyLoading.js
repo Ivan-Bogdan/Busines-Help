@@ -4,7 +4,6 @@ import throttle from "lodash/throttle";
 export function useLazyLoading({
   onIntersection,
   delay = 1000,
-  marginFromBottom = 10
 }) {
   const containerRef = useRef(null);
 
@@ -15,15 +14,14 @@ export function useLazyLoading({
       const scrollHeight = containerRef.current.scrollHeight;
       if (
         scrollHeight -
-          containerScrollTop -
-          containerHeight -
-          marginFromBottom <=
-        0
+        containerScrollTop -
+        containerHeight <
+        100
       ) {
         onIntersection();
       }
     }, delay),
-    [onIntersection, containerRef, marginFromBottom, delay]
+    [onIntersection, containerRef, delay]
   );
 
   return [onScroll, containerRef];
