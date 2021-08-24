@@ -35,10 +35,7 @@ const MyServ = () => {
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
   const scrollHandler = useCallback((e) => {
-    console.log(Math.ceil(count / 10) < selectedTaskPage);
-    console.log(Math.ceil(count / 10));
-    console.log(selectedTaskPage);
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) < selectedTaskPage) {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
       setFetching(true)
     }
   }, [count, tasks, selectedTaskPage])
