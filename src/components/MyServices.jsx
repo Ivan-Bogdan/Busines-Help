@@ -50,6 +50,7 @@ const MyServ = () => {
         filters: filters.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
+        console.log(isRefetch);
         if (isRefetch) {
           setTasks(responce.tasks)
           console.log(1233);
