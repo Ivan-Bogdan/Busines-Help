@@ -69,7 +69,7 @@ const MyServ = () => {
   )
 
   useEffect(() => {
-    if (fetching) {
+    if (fetching && localStorage.getItem("token")) {
       taskListFn()
     }
   }, [fetching, isRefetch])

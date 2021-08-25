@@ -94,12 +94,13 @@ export default class Navbar extends Component {
 
             {!isAuthenticated() && (
               <div className="log">
-                <Link className="log__log-in" onClick={this.toggleModalSignIn}>
+                <Link className="log__log-in" onClick={this.toggleModalSignIn} to='#'>
                   Вход
                 </Link>
                 <Link
                   onClick={this.toggleModalSignUp}
                   className="log__registration"
+                  to='#'
                 >
                   Регистрация
                 </Link>

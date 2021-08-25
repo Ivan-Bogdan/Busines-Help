@@ -45,6 +45,7 @@ const MyClients = () => {
   const [sort, setSort] = useState("name");
   const [fetching, setFetching] = useState(true)
 
+  const [resultFilter, setResultFilter] = useState([])
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
 
   const scrollHandler = useCallback((e) => {
@@ -54,13 +55,13 @@ const MyClients = () => {
   }, [count, clients, selectedTaskPage])
 
   useEffect(() => {
-    if (fetching) {
+    if (fetching && localStorage.getItem("token")) {
       get_client_list({
         limit,
         sort,
         desc,
         offset: selectedTaskPage * 10,
-        filters: filters.filter(item => item.value) || []
+        filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
         setClients([...clients, ...responce.clients])
@@ -138,6 +139,7 @@ const MyClients = () => {
               onClose={toggleFilter}
               sortData={sort}
               setSortData={setSort}
+              setResultFilter={setResultFilter}
             ></FilterComponent>
           )}
           {clients.map((item, index) => (
