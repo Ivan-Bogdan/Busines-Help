@@ -82,6 +82,12 @@ const MyPayments = () => {
     setIsRefetch(true)
   }, []);
 
+  useEffect(() => {
+    if (fetching && localStorage.getItem("token")) {
+      taskListFn()
+    }
+  }, [fetching, isRefetch])
+
   const createPayment = useCallback(
     async (data) => {
       const result = await payment_create(data);
