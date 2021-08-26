@@ -70,26 +70,26 @@ const MyServ = () => {
   )
 
   useEffect(() => {
-    if (fetching && localStorage.getItem("token")) {
+    if (fetching && localStorage.getItem("token") || height && window.innerHeight > height) {
       taskListFn()
       console.log(123);
     }
-  }, [fetching, isRefetch])
+  }, [fetching, height, isRefetch])
 
   // console.log(window.innerHeight);
   useEffect(() => {
     setHeight(containerBox.current.clientHeight)
   })
 
-  useEffect(() => {
-    console.log(window.innerHeight);
-    console.log(height);
+  // useEffect(() => {
+  //   console.log(window.innerHeight);
+  //   console.log(height);
 
-    if (window.innerHeight > height) {
-      setFetching(true)
-      console.log("больше");
-    }
-  }, [height])
+  //   if (window.innerHeight > height) {
+  //     setFetching(true)
+  //     console.log("больше");
+  //   }
+  // }, [height])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
