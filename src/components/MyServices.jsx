@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   get_task_list,
   delete_task,
@@ -33,6 +33,10 @@ const MyServ = () => {
   const [fetching, setFetching] = useState(true)
 
   const [resultFilter, setResultFilter] = useState([])
+
+  const containerBox = useRef(null);
+  console.log(containerBox);
+  console.log(window.innerHeight);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
@@ -123,7 +127,7 @@ const MyServ = () => {
               </div>
             </div>
           </div>
-          <div className="container">
+          <div ref={containerBox} className="container">
             {isOpenFilter && (
               <FilterComponent
                 filterList={filters}
