@@ -35,8 +35,6 @@ const MyServ = () => {
   const [resultFilter, setResultFilter] = useState([])
 
   const containerBox = useRef(null);
-  console.log(containerBox);
-  console.log(window.innerHeight);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
@@ -79,6 +77,8 @@ const MyServ = () => {
   }, [fetching, isRefetch])
 
   useEffect(() => {
+    console.log(window.innerHeight);
+    console.log(containerBox.current.scrollHeight);
     if (window.innerHeight > containerBox.current.scrollHeight) {
       setFetching(true)
     }

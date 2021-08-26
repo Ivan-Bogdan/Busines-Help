@@ -59,29 +59,10 @@ const MyClients = () => {
     }
   }, [fetching])
 
-  // const FetchData = useCallback(async (filters, sort = "name") => {
-  //   let payload = {
-  //     limit: limit,
-  //     offset: selectedTaskPage * 10,
-  //     sort: sort || "name",
-  //     desc: desc,
-  //     filters: filters || []
-  //   };
-  //   const result = await get_client_list(payload);
-  //   if (result.message) {
-  //     console.log(result.message);
-  //   } else {
-  //     setSelectedTaskPage(1);
-  //     setCount(result.count);
-  //     setClients(result.clients);
-  //   }
-  // }, [sort]);
-
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
     setFetching(true)
     setClients([])
-    // setIsRefetch(true)
   }, []);
 
   const toggleFilter = () => {
