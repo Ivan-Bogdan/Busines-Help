@@ -76,12 +76,10 @@ const MyServ = () => {
     }
   }, [fetching, isRefetch])
 
-
+  console.log(window.scrollHeight);
+  console.log(containerBox.current.scrollHeight);
   useEffect(() => {
-    console.log(containerBox);
-    console.log(window.innerHeight);
     const { scrollHeight } = containerBox.current;
-    console.log(scrollHeight);
     if (window.innerHeight > scrollHeight) {
       setFetching(true)
     }
