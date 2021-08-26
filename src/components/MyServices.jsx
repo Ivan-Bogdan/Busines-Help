@@ -80,11 +80,12 @@ const MyServ = () => {
   useEffect(() => {
     console.log(containerBox);
     console.log(window.innerHeight);
-    console.log(containerBox.current.scrollHeight);
-    if (window.innerHeight > containerBox.current.scrollHeight) {
+    const { scrollHeight } = containerBox.current;
+    console.log(scrollHeight);
+    if (window.innerHeight > scrollHeight) {
       setFetching(true)
     }
-  }, [window, containerBox.current])
+  }, [window.scrollHeight, containerBox.current])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
@@ -106,7 +107,7 @@ const MyServ = () => {
     setFetching(true)
     setTasks([])
     setIsRefetch(true)
-  }, []);
+  });
 
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });
