@@ -87,6 +87,7 @@ const MyServ = () => {
 
     if (window.innerHeight > height) {
       setFetching(true)
+      console.log("больше");
     }
   }, [height])
 
