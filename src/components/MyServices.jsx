@@ -35,7 +35,7 @@ const MyServ = () => {
   const [resultFilter, setResultFilter] = useState([])
 
   const containerBox = useRef(null);
-  const [height, setHeight] = useState("124124")
+  const [height, setHeight] = useState(0)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
@@ -72,6 +72,7 @@ const MyServ = () => {
   useEffect(() => {
     if (fetching && localStorage.getItem("token")) {
       taskListFn()
+      console.log(123);
     }
   }, [fetching, isRefetch])
 
