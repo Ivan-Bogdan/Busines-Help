@@ -35,7 +35,7 @@ const MyServ = () => {
   const [resultFilter, setResultFilter] = useState([])
 
   const containerBox = useRef(null);
-  const [height, setHeight] = useState(0)
+  const [height, setHeight] = useState("124124")
   console.log(height);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
