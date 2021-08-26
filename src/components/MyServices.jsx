@@ -55,10 +55,8 @@ const MyServ = () => {
       }).then((responce) => {
         setCount(responce.count)
         if (isRefetch) {
-          console.log(1);
           setTasks(responce.tasks)
         } else {
-          console.log(2);
           setTasks([...tasks, ...responce.tasks])
         }
         setSelectedTaskPage(prevState => prevState + 1)
