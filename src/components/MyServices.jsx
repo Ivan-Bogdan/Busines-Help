@@ -70,7 +70,7 @@ const MyServ = () => {
   )
 
   useEffect(() => {
-    if (height !== 0 && Math.ceil(count / 10) > selectedTaskPage && window.innerHeight > height || fetching && localStorage.getItem("token")) {
+    if (height !== 0 && window.innerHeight > height || fetching && localStorage.getItem("token")) {
       taskListFn()
       console.log(123);
     }
