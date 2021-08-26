@@ -14,26 +14,6 @@ import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
 import { useLazyLoading } from "./hooks/useLazyLoading";
 
-
-const Container = styled.div`
- 	max-width: 100%;
-	padding: 0px 0px 0px 0px;
-	margin: 0 auto;
- @media screen and (max-width: /* 788 */820px) {
-  max-width: 50%;
- }
- @media screen and (max-width: 1315px) {
-  max-width: 100%;
- }
- @media screen and (min-width: 1440px) {
-  max-width: 1280px;
- }
-`;
-
-const getHashable = (components) => {
-  return components.map((component) => component.value).join("");
-};
-
 const MyClients = () => {
   const [count, setCount] = useState(0);
   const [isCreateClient, setCreateClient] = useState(false);
@@ -100,8 +80,8 @@ const MyClients = () => {
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
     setFetching(true)
-    setPayments([])
-    setIsRefetch(true)
+    setClients([])
+    // setIsRefetch(true)
   }, []);
 
   const toggleFilter = () => {
