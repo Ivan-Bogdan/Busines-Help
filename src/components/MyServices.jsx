@@ -81,14 +81,11 @@ const MyServ = () => {
     setHeight(containerBox.current.clientHeight)
   })
 
-  // useEffect(() => {
-  //   const { scrollHeight } = containerBox.current;
-  //   setHeight(scrollHeight);
-
-  //   if (window.innerHeight > scrollHeight) {
-  //     setFetching(true)
-  //   }
-  // }, [window.scrollHeight, containerBox.current])
+  useEffect(() => {
+    if (window.innerHeight > height) {
+      setFetching(true)
+    }
+  })
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
