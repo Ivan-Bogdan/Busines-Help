@@ -36,7 +36,6 @@ const MyServ = () => {
 
   const containerBox = useRef(null);
   const [height, setHeight] = useState("124124")
-  console.log(height);
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
 
@@ -82,10 +81,12 @@ const MyServ = () => {
   })
 
   useEffect(() => {
+    console.log(height);
+    console.log(window.innerHeight);
     if (window.innerHeight > height) {
       setFetching(true)
     }
-  })
+  }, [height])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
