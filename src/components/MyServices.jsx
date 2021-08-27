@@ -82,6 +82,9 @@ const MyServ = () => {
   }, [containerBox.current])
 
   useEffect(() => {
+    console.log(height !== 0 && window.innerHeight > height);
+    console.log(height !== 0);
+    console.log(window.innerHeight > height);
     if (height !== 0 && window.innerHeight > height) {
       setFetching(true)
     }
