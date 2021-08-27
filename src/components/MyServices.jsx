@@ -79,7 +79,7 @@ const MyServ = () => {
 
   useEffect(() => {
     setHeight(containerBox.current.clientHeight)
-  })
+  }, [containerBox.current])
 
   useEffect(() => {
     if (height !== 0 && window.innerHeight > height) {
