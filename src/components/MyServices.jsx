@@ -78,20 +78,9 @@ const MyServ = () => {
     }
   }, [fetching, height, isRefetch])
 
-  // console.log(window.innerHeight);
   useEffect(() => {
     setHeight(containerBox.current.clientHeight)
   })
-
-  // useEffect(() => {
-  //   console.log(window.innerHeight);
-  //   console.log(height);
-
-  //   if (window.innerHeight > height) {
-  //     setFetching(true)
-  //     console.log("больше");
-  //   }
-  // }, [height])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
