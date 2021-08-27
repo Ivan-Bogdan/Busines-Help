@@ -83,7 +83,7 @@ const MyServ = () => {
 
   useEffect(() => {
     console.log(height !== 0 && window.innerHeight > height);
-    console.log(height !== 0);
+    console.log(height);
     console.log(window.innerHeight > height);
     if (height !== 0 && window.innerHeight > height) {
       setFetching(true)
