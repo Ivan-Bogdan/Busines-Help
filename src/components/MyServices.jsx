@@ -35,6 +35,7 @@ const MyServ = () => {
   const [resultFilter, setResultFilter] = useState([])
 
   const containerBox = useRef(null);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
   const [height, setHeight] = useState(0)
 
   const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
@@ -44,6 +45,18 @@ const MyServ = () => {
       setFetching(true)
     }
   }, [count, tasks, selectedTaskPage])
+
+  const handleResize = useCallback(() => {
+    const windowSize = window.innerHeight;
+    setWindowHeight(windowSize)
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleResize)
+    }
+  }, [])
 
   const taskListFn = useCallback(
     () => {
@@ -71,10 +84,8 @@ const MyServ = () => {
 
   useEffect(() => {
     console.log(fetching);
-    console.log(height);
     if (fetching && localStorage.getItem("token")) {
       taskListFn()
-      console.log(123);
     }
   }, [fetching, height, isRefetch])
 
@@ -83,13 +94,10 @@ const MyServ = () => {
   })
 
   useEffect(() => {
-    console.log(height !== 0 && window.innerHeight > height);
-
-    console.log(window.innerHeight > height);
-    if (height !== 0 && window.innerHeight > height) {
+    if (height !== 0 && windowHeight !== 0 && windowHeight > height) {
       setFetching(true)
     }
-  }, [height])
+  }, [height, windowHeight])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
