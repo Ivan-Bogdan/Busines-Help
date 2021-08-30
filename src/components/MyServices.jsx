@@ -84,7 +84,7 @@ const MyServ = () => {
 
   useEffect(() => {
     console.log(fetching);
-    if (fetching && localStorage.getItem("token")) {
+    if (fetching && localStorage.getItem("token") || height !== 0 && windowHeight !== 0 && windowHeight > height) {
       taskListFn()
     }
   }, [fetching, height, windowHeight])
@@ -93,14 +93,14 @@ const MyServ = () => {
     setHeight(containerBox.current.clientHeight)
   })
 
-  useEffect(() => {
-    console.log(height);
-    console.log(windowHeight);
+  // useEffect(() => {
+  //   console.log(height);
+  //   console.log(windowHeight);
 
-    if (height !== 0 && windowHeight !== 0 && windowHeight > height) {
-      setFetching(true)
-    }
-  }, [height, windowHeight])
+  //   if () {
+  //     setFetching(true)
+  //   }
+  // }, [height, windowHeight])
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler)
