@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
 import {
-  create_client,
   delete_client,
   get_client_list,
 } from "../API/http";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import AddClient from "./clients/AddClient";
-import * as FPJS from "@fingerprintjs/fingerprintjs";
 import ClientItem from "./clients/ClientItem";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";

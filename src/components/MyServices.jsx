@@ -3,7 +3,6 @@ import {
   get_task_list,
   delete_task,
 } from "../API/http";
-import FPJS from "@fingerprintjs/fingerprintjs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/style.css";
 import "../components/Modal.css";
@@ -14,16 +13,12 @@ import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
 
-const getHashable = (components) => {
-  return components.map((component) => component.value).join("");
-};
-
 const MyServ = () => {
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
-  const [limit] = useState(10);
 
+  const [limit] = useState(10);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
@@ -32,13 +27,11 @@ const MyServ = () => {
   const [isRefetch, setIsRefetch] = useState(false)
   const [fetching, setFetching] = useState(true)
 
-  const [resultFilter, setResultFilter] = useState([])
-
   const containerBox = useRef(null);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
   const [height, setHeight] = useState(0)
 
-  const [filters, setFilters] = useState(filterForPage.services.map((item) => { return { ...item, value: "" } }))
+  const [resultFilter, setResultFilter] = useState([])
 
   const scrollHandler = useCallback((e) => {
     console.log(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight));
@@ -48,16 +41,8 @@ const MyServ = () => {
   }, [count, tasks, selectedTaskPage])
 
   const handleResize = useCallback(() => {
-    const windowSize = window.innerHeight;
-    setWindowHeight(windowSize)
+    setWindowHeight(window.innerHeight)
   }, []);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener('scroll', handleResize)
-    }
-  }, [])
 
   const taskListFn = useCallback(
     () => {
@@ -80,35 +65,8 @@ const MyServ = () => {
         setIsRefetch(false)
       })
     },
-    [sort, filters, selectedTaskPage, tasks, resultFilter, isRefetch]
+    [sort, selectedTaskPage, tasks, resultFilter, isRefetch]
   )
-
-  useEffect(() => {
-    console.log(fetching);
-    if (fetching && localStorage.getItem("token") || height !== 0 && windowHeight !== 0 && windowHeight > height) {
-      taskListFn()
-    }
-  }, [fetching, height, windowHeight])
-
-  useEffect(() => {
-    setHeight(containerBox.current.clientHeight)
-  })
-
-  // useEffect(() => {
-  //   console.log(height);
-  //   console.log(windowHeight);
-
-  //   if () {
-  //     setFetching(true)
-  //   }
-  // }, [height, windowHeight])
-
-  useEffect(() => {
-    document.addEventListener("scroll", scrollHandler)
-    return () => {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }, [fetching])
 
   const toggleModal = () => {
     setModal(!modal);
@@ -133,6 +91,31 @@ const MyServ = () => {
     FetchData();
   };
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler)
+    return () => {
+      document.removeEventListener('scroll', scrollHandler)
+    }
+  }, [fetching])
+
+  useEffect(() => {
+    console.log(fetching);
+    if (fetching && localStorage.getItem("token") || height !== 0 && windowHeight !== 0 && windowHeight > height) {
+      taskListFn()
+    }
+  }, [fetching, height, windowHeight])
+
+  useEffect(() => {
+    setHeight(containerBox.current.clientHeight)
+  })
+
   return (
     <div className="app">
       <Navbar />
@@ -155,7 +138,7 @@ const MyServ = () => {
           <div ref={containerBox} className="container">
             {isOpenFilter && (
               <FilterComponent
-                filterList={filters}
+                filterList={filterForPage.services.map((item) => { return { ...item, value: "" } })}
                 refetch={FetchData}
                 onClose={toggleFilter}
                 sortData={sort}
