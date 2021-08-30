@@ -87,7 +87,7 @@ const MyServ = () => {
     if (fetching && localStorage.getItem("token")) {
       taskListFn()
     }
-  }, [fetching, height, isRefetch])
+  }, [fetching])
 
   useEffect(() => {
     setHeight(containerBox.current.clientHeight)
