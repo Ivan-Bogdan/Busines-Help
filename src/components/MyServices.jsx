@@ -93,7 +93,7 @@ const MyServ = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('scroll', handleResize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
