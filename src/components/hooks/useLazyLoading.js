@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect } from 'react';
 
-export function useLazyLoading({containerBox, count, listFn, selectedTaskPage }) {
+export function useLazyLoading(containerBox, count, listFn, selectedTaskPage ) {
 	const [fetching, setFetching] = useState(true);
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const [height, setHeight] = useState(0);
 
-  console.log(containerBox, count, taskListFn, selectedTaskPage);
+  console.log(containerBox, count, selectedTaskPage);
 
 	const scrollHandler = useCallback(
 		(e) => {

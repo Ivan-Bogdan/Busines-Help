@@ -16,7 +16,7 @@ import { useLazyLoading } from "./hooks/useLazyLoading";
 
 const MyServ = () => {
 
-  const { setFetching } = useLazyLoading({ containerBox, count, taskListFn, selectedTaskPage })
+  const { setFetching } = useLazyLoading(containerBox, count, taskListFn, selectedTaskPage)
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
