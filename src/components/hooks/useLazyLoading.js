@@ -5,6 +5,8 @@ export function useLazyLoading({containerBox, count, listFn, selectedTaskPage })
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const [height, setHeight] = useState(0);
 
+  console.log(containerBox, count, taskListFn, selectedTaskPage);
+
 	const scrollHandler = useCallback(
 		(e) => {
 			if (
