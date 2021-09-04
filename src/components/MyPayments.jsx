@@ -4,6 +4,7 @@ import Footer from '../Footer';
 import { filterForPage } from '../helpers';
 import Navbar from '../Navbar';
 import FilterComponent from './FilterComponent';
+import { useLazyLoading } from './hooks/useLazyLoading';
 import AddPayment from './payments/AddPayment';
 import PaymentItem from './payments/PaymentItem';
 
