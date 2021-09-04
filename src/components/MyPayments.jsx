@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { delete_payment, get_payments_list, payment_create } from '../API/http';
 import Footer from '../Footer';
 import { filterForPage } from '../helpers';
@@ -13,7 +13,7 @@ const MyPayments = () => {
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [sort, setSort] = useState('date_pay')
 
-  const [fetching, setFetching] = useState(true)
+  const containerBox = useRef(null);
   const [isRefetch, setIsRefetch] = useState(false)
 
   const [count, setCount] = useState(0)
@@ -26,13 +26,7 @@ const MyPayments = () => {
     setOpenFilter(!isOpenFilter);
   };
 
-  const scrollHandler = useCallback((e) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
-      setFetching(true)
-    }
-  }, [count, payments, selectedTaskPage])
-
-  const taskListFn = useCallback(
+  const paymentsListFn = useCallback(
     () => {
       get_payments_list({
         limit: 10,
@@ -52,28 +46,7 @@ const MyPayments = () => {
     [sort, filters, selectedTaskPage, payments, resultFilter, isRefetch]
   )
 
-  useEffect(() => {
-    document.addEventListener("scroll", scrollHandler)
-    return () => {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }, [fetching])
-
-  // const FetchData = useCallback(async (filters, sort = "date_pay") => {
-  //   let payload = {
-  //     limit: 10,
-  //     offset: 0,
-  //     sort: sort || "date_pay",
-  //     desc: true,
-  //     filters: filters || []
-  //   };
-  //   const result = await get_payments_list(payload);
-  //   if (result.message) {
-  //     console.log(result.message);
-  //   } else {
-  //     setPayments(result.payments);
-  //   }
-  // }, [sort]);
+  const { setFetching } = useLazyLoading(containerBox, count, paymentsListFn, selectedTaskPage)
 
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
@@ -81,12 +54,6 @@ const MyPayments = () => {
     setPayments([])
     setIsRefetch(true)
   }, []);
-
-  useEffect(() => {
-    if (fetching && localStorage.getItem("token")) {
-      taskListFn()
-    }
-  }, [fetching, isRefetch])
 
   const createPayment = useCallback(
     async (data) => {
@@ -109,10 +76,6 @@ const MyPayments = () => {
     [payments]
   );
 
-  // useEffect(() => {
-  //   FetchData();
-  // }, [FetchData]);
-
   return (
     <div className='app'>
       <Navbar />
@@ -130,6 +93,8 @@ const MyPayments = () => {
               <button className="sorting" onClick={toggleFilter}></button>
             </div>
           </div>
+        </div>
+        <div ref={containerBox} className='container'>
           {isOpenFilter && (
             <FilterComponent
               filterList={filters}
@@ -161,7 +126,7 @@ const MyPayments = () => {
           />
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
