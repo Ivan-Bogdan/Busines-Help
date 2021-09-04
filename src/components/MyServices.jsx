@@ -56,6 +56,7 @@ const MyServ = () => {
     },
     [sort, selectedTaskPage, tasks, resultFilter, isRefetch]
   )
+
   const { setFetching } = useLazyLoading(containerBox, count, taskListFn, selectedTaskPage)
 
   const toggleModal = () => {

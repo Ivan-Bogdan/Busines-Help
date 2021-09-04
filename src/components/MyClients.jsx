@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   delete_client,
   get_client_list,
@@ -20,19 +20,16 @@ const MyClients = () => {
   const [limit] = useState(10);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
-  const [fetching, setFetching] = useState(true)
+
+
+  const containerBox = useRef(null);
+  const [isRefetch, setIsRefetch] = useState(false)
 
   const [resultFilter, setResultFilter] = useState([])
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
 
-  const scrollHandler = useCallback((e) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
-      setFetching(true)
-    }
-  }, [count, clients, selectedTaskPage])
-
-  useEffect(() => {
-    if (fetching && localStorage.getItem("token")) {
+  const clientsListFn = useCallback(
+    () => {
       get_client_list({
         limit,
         sort,
@@ -41,20 +38,21 @@ const MyClients = () => {
         filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        setClients([...clients, ...responce.clients])
+        if (isRefetch) {
+          setClients(responce.clients)
+        } else {
+          setClients([...clients, ...responce.clients])
+        }
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
+        setIsRefetch(false)
       })
-    }
-  }, [fetching, sort, filters])
+    },
+    [sort, selectedTaskPage, clients, resultFilter, isRefetch]
+  )
 
-  useEffect(() => {
-    document.addEventListener("scroll", scrollHandler)
-    return () => {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }, [fetching])
+  const { setFetching } = useLazyLoading(containerBox, count, clientsListFn, selectedTaskPage)
 
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
@@ -97,6 +95,8 @@ const MyClients = () => {
               <button className="sorting" onClick={toggleFilter}></button>
             </div>
           </div>
+        </div>
+        <div ref={containerBox} className="container">
           {isOpenFilter && (
             <FilterComponent
               filterList={filters}
@@ -117,7 +117,7 @@ const MyClients = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section >
       <Footer />
       <div className="App">
         {isCreateClient && (
@@ -127,7 +127,7 @@ const MyClients = () => {
           ></AddClient>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
