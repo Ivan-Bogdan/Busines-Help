@@ -1,29 +1,58 @@
-import { useRef, useCallback } from "react";
-import throttle from "lodash/throttle";
+import { useState, useCallback, useEffect } from 'react';
 
-export function useLazyLoading({
-  onIntersection,
-  delay = 1000,
-}) {
-  const containerRef = useRef(null);
+export function useLazyLoading({containerBox, count, listFn, selectedTaskPage }) {
+	const [fetching, setFetching] = useState(true);
+	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+	const [height, setHeight] = useState(0);
 
-  const onScroll = useCallback(
-    throttle(() => {
-      const containerScrollTop = containerRef.current.scrollTop;
-      const containerHeight = containerRef.current.clientHeight;
-      const scrollHeight = containerRef.current.scrollHeight;
-      console.log(containerScrollTop);
-      if (
-        scrollHeight -
-        containerScrollTop -
-        containerHeight <
-        100
-      ) {
-        onIntersection();
-      }
-    }, delay),
-    [onIntersection, containerRef, delay]
-  );
+	const scrollHandler = useCallback(
+		(e) => {
+			if (
+				e.target.documentElement.scrollHeight -
+					(e.target.documentElement.scrollTop + window.innerHeight) <
+					100 &&
+				Math.ceil(count / 10) > selectedTaskPage
+			) {
+				setFetching(true);
+			}
+		},
+		[count, selectedTaskPage]
+	);
 
-  return [onScroll, containerRef];
+	const handleResize = useCallback(() => {
+		setWindowHeight(window.innerHeight);
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+		document.addEventListener('scroll', scrollHandler);
+		return () => {
+			document.removeEventListener('scroll', scrollHandler);
+		};
+	}, [fetching]);
+
+	useEffect(() => {
+		console.log(fetching);
+		if (fetching && localStorage.getItem('token')) {
+			listFn();
+		}
+	}, [fetching]);
+
+	useEffect(() => {
+		if (height !== 0 && windowHeight !== 0 && windowHeight > height) {
+			listFn();
+		}
+	}, [height, windowHeight]);
+
+	useEffect(() => {
+		setHeight(containerBox && containerBox.current.clientHeight);
+	});
+
+	return { setFetching };
 }

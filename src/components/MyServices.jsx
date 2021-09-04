@@ -12,8 +12,11 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import FilterComponent from "./FilterComponent";
 import { filterForPage } from "../helpers";
+import { useLazyLoading } from "./hooks/useLazyLoading";
 
 const MyServ = () => {
+
+  const { setFetching } = useLazyLoading({ containerBox, count, taskListFn, selectedTaskPage })
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
   const [isOpenFilter, setOpenFilter] = useState(false);
@@ -25,23 +28,10 @@ const MyServ = () => {
   const [count, setCount] = useState(0);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
   const [isRefetch, setIsRefetch] = useState(false)
-  const [fetching, setFetching] = useState(true)
 
   const containerBox = useRef(null);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
-  const [height, setHeight] = useState(0)
 
   const [resultFilter, setResultFilter] = useState([])
-
-  const scrollHandler = useCallback((e) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && Math.ceil(count / 10) > selectedTaskPage) {
-      setFetching(true)
-    }
-  }, [count, tasks, selectedTaskPage])
-
-  const handleResize = useCallback(() => {
-    setWindowHeight(window.innerHeight)
-  }, []);
 
   const taskListFn = useCallback(
     () => {
@@ -89,37 +79,6 @@ const MyServ = () => {
     }
     FetchData();
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.addEventListener("scroll", scrollHandler)
-    return () => {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }, [fetching])
-
-  useEffect(() => {
-    console.log(fetching);
-    if (fetching && localStorage.getItem("token")) {
-      taskListFn()
-    }
-  }, [fetching])
-
-  useEffect(() => {
-    if (height !== 0 && windowHeight !== 0 && windowHeight > height) {
-      taskListFn()
-    }
-  }, [height, windowHeight])
-
-  useEffect(() => {
-    setHeight(containerBox.current.clientHeight)
-  })
 
   return (
     <div className="app">
