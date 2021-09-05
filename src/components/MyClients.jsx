@@ -54,12 +54,12 @@ const MyClients = () => {
 
   const { setFetching } = useLazyLoading(containerBox, count, clientsListFn, selectedTaskPage)
 
-  const FetchData = () => {
+  const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
     setFetching(true)
     setClients([])
     setIsRefetch(true)
-  };
+  });
 
   console.log(clients);
   console.log(isRefetch);
