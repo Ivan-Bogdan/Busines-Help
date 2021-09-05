@@ -58,12 +58,10 @@ const MyClients = () => {
 
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
-    setFetching(true)
     setClients([])
     setIsRefetch(true)
+    setFetching(true)
   });
-
-
 
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
