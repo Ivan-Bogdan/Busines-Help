@@ -29,7 +29,9 @@ const MyClients = () => {
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
   const clientsListFn = useCallback(
     () => {
+      console.log("clients", clients);
       console.log("isRefetch", isRefetch);
+      console.log("selectedTaskPage", selectedTaskPage);
       get_client_list({
         limit,
         sort,
@@ -61,9 +63,7 @@ const MyClients = () => {
     setIsRefetch(true)
   });
 
-  console.log(clients);
-  console.log(isRefetch);
-  console.log(selectedTaskPage);
+
 
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
