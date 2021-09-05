@@ -27,7 +27,6 @@ const MyClients = () => {
 
   const [resultFilter, setResultFilter] = useState([])
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
-  console.log("isRefetch", isRefetch);
   const clientsListFn = useCallback(
     () => {
       console.log("isRefetch", isRefetch);
