@@ -69,9 +69,9 @@ const MyServ = () => {
 
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
-    setFetching(true)
     setTasks([])
     setIsRefetch(true)
+    setFetching(true)
   });
 
   const deleteTask = async (task) => {

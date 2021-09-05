@@ -55,9 +55,9 @@ const MyPayments = () => {
 
   const FetchData = useCallback(() => {
     setSelectedTaskPage(0)
-    setFetching(true)
     setPayments([])
     setIsRefetch(true)
+    setFetching(true)
   }, []);
 
   const createPayment = useCallback(
