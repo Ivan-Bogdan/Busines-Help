@@ -15,13 +15,15 @@ export default class AddClient extends React.Component {
   }
 
   render() {
+    const { FetchData, onClose } = this.props
+
     return (
       <div className="modal" id="id01">
         <form className="modal-content animate">
           <div className="imgcontainer">
             <span
               className="close"
-              onClick={this.props.onClose}
+              onClick={onClose}
               title="Close Modal"
             >
               ×
@@ -31,7 +33,6 @@ export default class AddClient extends React.Component {
           </div>
 
           <div className="container3">
-            {this.props.children}
             <div className="flex ">
               <div
                 className={
@@ -70,22 +71,22 @@ export default class AddClient extends React.Component {
 
             {this.state.selectType === "entity" && (
               <Entity
-                onClose={this.props.onClose}
-                FetchData={this.props.FetchData}
+                onClose={onClose}
+                FetchData={FetchData}
               />
             )}
             {this.state.selectType === "entrepreneur" && (
               <Entrepreneur
                 key={0}
-                onClose={this.props.onClose}
-                FetchData={this.props.FetchData}
+                onClose={onClose}
+                FetchData={FetchData}
               />
             )}
             {this.state.selectType === "individual" && (
               <Individual
                 key={6}
-                onClose={this.props.onClose}
-                FetchData={this.props.FetchData}
+                onClose={onClose}
+                FetchData={FetchData}
               />
             )}
           </div>
