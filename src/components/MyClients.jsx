@@ -61,6 +61,10 @@ const MyClients = () => {
     setIsRefetch(true)
   }, []);
 
+  console.log(clients);
+  console.log(isRefetch);
+  console.log(selectedTaskPage);
+
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
   };
