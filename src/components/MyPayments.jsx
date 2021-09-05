@@ -37,7 +37,11 @@ const MyPayments = () => {
         filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
-        setPayments([...payments, ...responce.payments])
+        if (isRefetch) {
+          setPayments(responce.payments)
+        } else {
+          setPayments([...payments, ...responce.payments])
+        }
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)

@@ -58,6 +58,7 @@ const MyClients = () => {
     setSelectedTaskPage(0)
     setFetching(true)
     setClients([])
+    setIsRefetch(true)
   }, []);
 
   const toggleFilter = () => {
