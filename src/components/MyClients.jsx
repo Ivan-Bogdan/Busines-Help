@@ -30,6 +30,7 @@ const MyClients = () => {
 
   const clientsListFn = useCallback(
     () => {
+      console.log("isRefetch", isRefetch);
       get_client_list({
         limit,
         sort,
