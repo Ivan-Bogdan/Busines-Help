@@ -17,7 +17,8 @@ const MyClients = () => {
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [clients, setClients] = useState([]);
   const [selectedTaskPage, setSelectedTaskPage] = useState(0);
-  const [limit] = useState(10);
+  const [offset, setOffset] = useState(10)
+  const [limit, setLimit] = useState(10);
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
@@ -29,11 +30,12 @@ const MyClients = () => {
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
   const clientsListFn = useCallback(
     () => {
+      console.log('isRefetch', isRefetch);
       get_client_list({
         limit,
         sort,
         desc,
-        offset: selectedTaskPage * 10,
+        offset: selectedTaskPage * offset,
         filters: resultFilter.filter(item => item.value) || []
       }).then((responce) => {
         setCount(responce.count)
@@ -48,7 +50,7 @@ const MyClients = () => {
         setIsRefetch(false)
       })
     },
-    [sort, selectedTaskPage, clients, resultFilter, isRefetch]
+    [sort, selectedTaskPage, clients, resultFilter, isRefetch, offset]
   )
 
   const { setFetching } = useLazyLoading(containerBox, count, clientsListFn, selectedTaskPage)
