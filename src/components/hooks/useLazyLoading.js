@@ -44,10 +44,15 @@ export function useLazyLoading(containerBox, count, listFn, selectedTaskPage) {
 	}, [fetching]);
 
 	useEffect(() => {
-		if (height !== 0 && windowHeight !== 0 && windowHeight > height) {
+		if (
+			height !== 0 &&
+			windowHeight !== 0 &&
+			windowHeight > height &&
+			Math.ceil(count / 10) > selectedTaskPage
+		) {
 			listFn();
 		}
-	}, [height, windowHeight]);
+	}, [height, windowHeight, count, selectedTaskPage]);
 
 	useEffect(() => {
 		setHeight(containerBox && containerBox.current.clientHeight);
