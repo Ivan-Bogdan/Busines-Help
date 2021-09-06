@@ -74,9 +74,9 @@ const MyPayments = () => {
   const deletePayment = useCallback(
     async (id) => {
       const result = await delete_payment({ id });
-      if (result.message !== "OK") {
-      } else
+      if (result.message === "OK") {
         FetchData();
+      }
     },
     [payments]
   );

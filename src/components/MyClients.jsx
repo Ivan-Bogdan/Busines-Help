@@ -74,9 +74,9 @@ const MyClients = () => {
   const deleteClient = useCallback(
     async (item) => {
       const result = await delete_client({ id: item });
-      if (result.message) {
-      } else
+      if (result.message === "OK") {
         FetchData();
+      }
     },
     [clients]
   );
