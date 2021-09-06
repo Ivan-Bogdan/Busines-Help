@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 
-export function useLazyLoading(containerBox, count, listFn, selectedTaskPage ) {
+export function useLazyLoading(containerBox, count, listFn, selectedTaskPage) {
 	const [fetching, setFetching] = useState(true);
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const [height, setHeight] = useState(0);
@@ -44,10 +44,15 @@ export function useLazyLoading(containerBox, count, listFn, selectedTaskPage ) {
 	}, [fetching]);
 
 	useEffect(() => {
-		if (Math.ceil(count / 10) > selectedTaskPage && height !== 0 && windowHeight !== 0 && windowHeight > height) {
+		if (
+			Math.ceil(count / 10) > selectedTaskPage &&
+			height !== 0 &&
+			windowHeight !== 0 &&
+			windowHeight > height
+		) {
 			listFn();
 		}
-	}, [height, windowHeight]);
+	}, [height, windowHeight, selectedTaskPage, count]);
 
 	useEffect(() => {
 		setHeight(containerBox && containerBox.current.clientHeight);
