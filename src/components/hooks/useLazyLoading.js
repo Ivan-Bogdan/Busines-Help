@@ -48,7 +48,7 @@ export function useLazyLoading(containerBox, count, listFn, selectedTaskPage) {
 			height !== 0 &&
 			windowHeight !== 0 &&
 			windowHeight > height &&
-			Math.ceil(count / 10) > selectedTaskPage
+			Math.ceil(count / 10) > selectedTaskPage - 1
 		) {
 			listFn();
 		}
