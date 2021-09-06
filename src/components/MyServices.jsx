@@ -45,13 +45,13 @@ const MyServ = () => {
         setCount(responce.count)
         if (isRefetch) {
           setTasks(responce.tasks)
+          setIsRefetch(false)
         } else {
           setTasks([...tasks, ...responce.tasks])
         }
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
-        setIsRefetch(false)
       })
     },
     [sort, selectedTaskPage, tasks, resultFilter, isRefetch]
