@@ -41,6 +41,7 @@ const MyClients = () => {
         setCount(responce.count)
         if (isRefetch) {
           setClients(responce.clients)
+          setIsRefetch(false)
         } else {
           setClients([...clients, ...responce.clients])
         }
