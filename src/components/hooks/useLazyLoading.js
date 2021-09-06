@@ -44,6 +44,8 @@ export function useLazyLoading(containerBox, count, listFn, selectedTaskPage) {
 	}, [fetching]);
 
 	useEffect(() => {
+    console.log("count",count);
+    console.log("selectedTaskPage",selectedTaskPage);
 		if (
 			height !== 0 &&
 			windowHeight !== 0 &&
