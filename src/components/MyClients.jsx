@@ -21,7 +21,6 @@ const MyClients = () => {
   const [desc, setDesc] = useState(false);
   const [sort, setSort] = useState("name");
 
-
   const containerBox = useRef(null);
   const [isRefetch, setIsRefetch] = useState(false)
 
@@ -29,9 +28,6 @@ const MyClients = () => {
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
   const clientsListFn = useCallback(
     () => {
-      console.log("clients", clients);
-      console.log("isRefetch", isRefetch);
-      console.log("selectedTaskPage", selectedTaskPage);
       get_client_list({
         limit,
         sort,
