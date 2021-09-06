@@ -26,8 +26,10 @@ const MyClients = () => {
 
   const [resultFilter, setResultFilter] = useState([])
   const [filters, setFilters] = useState(filterForPage.clients.map((item) => { return { ...item, value: "" } }))
+
   const clientsListFn = useCallback(
     () => {
+      console.log(isRefetch);
       get_client_list({
         limit,
         sort,
