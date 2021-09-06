@@ -72,7 +72,7 @@ const MyServ = () => {
     setTasks([])
     setIsRefetch(true)
     setFetching(true)
-  });
+  }, []);
 
   const deleteTask = async (task) => {
     const result = await delete_task({ task_id: task });

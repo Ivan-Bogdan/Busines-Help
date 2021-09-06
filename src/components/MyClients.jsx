@@ -59,7 +59,7 @@ const MyClients = () => {
     setClients([])
     setIsRefetch(true)
     setFetching(true)
-  });
+  }, []);
 
   const toggleFilter = () => {
     setOpenFilter(!isOpenFilter);
