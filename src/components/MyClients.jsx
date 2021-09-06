@@ -44,7 +44,6 @@ const MyClients = () => {
         } else {
           setClients([...clients, ...responce.clients])
         }
-      }).finally(() => {
         setSelectedTaskPage(prevState => prevState + 1)
         setFetching(false)
       })
