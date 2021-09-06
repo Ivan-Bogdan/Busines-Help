@@ -48,7 +48,6 @@ const MyClients = () => {
         setSelectedTaskPage(prevState => prevState + 1)
       }).finally(() => {
         setFetching(false)
-        setIsRefetch(false)
       })
     },
     [sort, selectedTaskPage, clients, resultFilter, isRefetch, offset]
