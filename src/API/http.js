@@ -58,6 +58,7 @@ export const authenticate = (data, next) => {
   if (typeof window !== 'undefined') {
     if (data !== undefined) {
       localStorage.setItem('token', data.data.token);
+      location.reload()
     } else {
       return false;
     }
